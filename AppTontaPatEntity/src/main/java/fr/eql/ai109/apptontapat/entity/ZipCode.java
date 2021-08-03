@@ -35,9 +35,11 @@ public class ZipCode implements Serializable{
 	@Column(name = "z_label")
 	private String label;
 	@Column(name = "longitude")
-	private Long longitude;
+	private Long longitude; //  changer en double
 	@Column(name = "latitude")
-	private Long latitude;
+	private Long latitude; // changer en double
+//	@Column(name = "code")
+//	private String code;
 	@OneToMany(mappedBy = "zipcode", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Account> accounts;
 	@OneToMany(mappedBy = "zipcode", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
