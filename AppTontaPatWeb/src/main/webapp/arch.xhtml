@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+	<ui:insert name="head"></ui:insert>
+	<h:outputStylesheet library="css" name="myStyle.css" />
+	<script src="https://kit.fontawesome.com/dd20401fcd.js"
+		crossorigin="anonymous"></script>
+</h:head>
+
+<h:body>
+	<b:navBar class="navbar-fixed-top">
+		<b:container fluid="true">
+			<b:row class="row-header">
+				<b:column medium-screen="3">
+
+					<img src="resources/image/logo.png" class="logo-header"></img>
+				</b:column>
+				<b:column medium-screen="8" class="navlink-header">
+					<b:navbarLinks>
+						<b:navLink value="Recherche" href="#"></b:navLink>
+						<b:navLink value="Service" href="#"></b:navLink>
+						<b:navLink value="Contact" href="#"></b:navLink>
+					</b:navbarLinks>
+				</b:column>
+				<b:column medium-screen="4" class="compte-header">
+					<div class="container-hamburger">
+						
+						<b:dropMenu iconAwesome="fa-user-alt " value=""
+							class="padding-dropdown">
+							<b:navLink value="Mes terrains"></b:navLink>
+							<b:navLink value="Mes troupeaux"></b:navLink>
+							<b:navLink></b:navLink>
+							<b:navLink header="Mon compte"></b:navLink>
+							<b:navLink value="Modifier"></b:navLink>
+							<b:navLink></b:navLink>
+							<b:navLink value="Deconnexion"></b:navLink>
+						</b:dropMenu>
+					</div>
+				</b:column>
+			</b:row>
+		</b:container>
+	</b:navBar>
+	<b:container class="container-accueil">
+		<b:row>
+			<b:column style-class="cat-content content-accueil">
+				<ui:insert name="content"></ui:insert>
+			</b:column>
+		</b:row>
+	</b:container>
+	<div
+		class="cat-footer cat-flex-justify-content cat-flex-align-items fixed-bottom">
+		<h2>mywebsite - 2021</h2>
+	</div>
+</h:body>
+
+</html>
