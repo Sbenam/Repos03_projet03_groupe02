@@ -12,6 +12,7 @@ servira pour la NAVIGATION BAR -->
 <h:head>
 	<ui:insert name="head"></ui:insert>
 	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="stylePerso.css" />
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -22,6 +23,7 @@ servira pour la NAVIGATION BAR -->
 	<link rel="icon" type="image/x-icon" href="images/MoutonBlanc.ico" />
 	<!-- Font Awesome icons (free version)-->
 	<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+	<script src="js/myScripts.js"></script>
 </h:head>
 <h:body>
 	<!-- NAVIGATION-->
@@ -62,14 +64,14 @@ servira pour la NAVIGATION BAR -->
 
 							<li>
 								<button class="dropdown-item" type="button">
-									<a href="#" class="dropdown-item"><i class="fas fa-sign-in-alt"></i> S'inscrire</a>
+									<a href="#" class="dropdown-item" onclick="connect()"><i class="fas fa-sign-in-alt"></i> S'inscrire</a>
 								</button>
 							</li>
 						</ul>
-
 					</div>
 				</div>
 			</div>
+		</div>
 	</nav>
 	<ui:insert name="content"></ui:insert>
 	<!-- Footer-->
@@ -109,6 +111,7 @@ servira pour la NAVIGATION BAR -->
 			<small>Copyright &copy; Tontàpat 2021</small>
 		</div>
 	</div>
+
 </h:body>
 
 </html>
