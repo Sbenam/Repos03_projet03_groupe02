@@ -1,3 +1,14 @@
+
+const close = document.getElementById("close");
+
+const container = document.getElementById("container");
+
+
+close.addEventListener("click", () => {
+    container.classList.remove("active");
+    }) ;
+
+
 /*!
 * Start Bootstrap - Agency v7.0.5 (https://startbootstrap.com/theme/agency)
 * Copyright 2013-2021 Start Bootstrap
