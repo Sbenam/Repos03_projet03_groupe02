@@ -19,7 +19,7 @@ public class PageManageBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		setPage("connectedPage"); // Default include.
+		setPage("ConnectedPage"); // Default include.
 		setPage2("blank");
 	}
 
