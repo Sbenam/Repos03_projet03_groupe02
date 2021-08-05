@@ -1,12 +1,4 @@
 
-const close = document.getElementById("close");
-
-const container = document.getElementById("container");
-
-
-close.addEventListener("click", () => {
-    container.classList.remove("active");
-    }) ;
 
 
 /*!
