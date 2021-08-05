@@ -14,8 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "role")
-public class Role implements Serializable{
+@Table(name = "statue")
+public class Statue implements Serializable{
 
 	/**
 	 * 
@@ -33,7 +33,7 @@ public class Role implements Serializable{
 	private Integer id;
 	@Column(name = "r_label")
 	private String label;
-	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "statue", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Account> accounts;
 
 	
@@ -41,7 +41,7 @@ public class Role implements Serializable{
 	/*****************************************************************************************/
 	/*                                     Constructors                                      */
 	/*****************************************************************************************/
-	public Role(Integer id, String label, Set<Account> accounts) {
+	public Statue(Integer id, String label, Set<Account> accounts) {
 		super();
 		this.id = id;
 		this.label = label;
@@ -50,7 +50,7 @@ public class Role implements Serializable{
 
 
 
-	public Role() {
+	public Statue() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

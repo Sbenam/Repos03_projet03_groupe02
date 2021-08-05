@@ -56,6 +56,11 @@
 	height:74.5px;
 }
 
+.btnCalltoAction {
+	position: relative;
+    top: 70px;
+}
+
 .backgroundBoxBlue {
 	background-color: #457B9D ;
 }
@@ -11097,7 +11102,7 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #ffff;
-  background-image: url("https://pixabay.com/get/gcf8b3afaffa06c5a3e28e57301b4c783728a5224070ebafb6d14fcebf1b13341e214f53522429e493cc4661597c4daba_1920.jpg");
+  background-image: url("/AppTontaPatWeb/images/accueil/home.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -11108,6 +11113,9 @@ header.masthead .masthead-subheading {
   font-style: italic;
   line-height: 1.5rem;
   margin-bottom: 25px;
+      position: relative;
+    top: 100px;
+    left: -19px;
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 header.masthead .masthead-heading {
@@ -11115,6 +11123,8 @@ header.masthead .masthead-heading {
   font-weight: 700;
   line-height: 3.25rem;
   margin-bottom: 2rem;
+  position: relative;
+    top: 95px;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
@@ -11152,7 +11162,7 @@ header.masthead .masthead-heading {
   left: 0;
   transition: all 0.2s ease-in-out;
   opacity: 0;
-  background-color: rgba(26, 188, 156, 0.9);
+  background-color: rgba(33, 26, 30, 0.7);
 }
 .recherche .recherche-item .recherche-item-caption:hover {
   opacity: 1;
