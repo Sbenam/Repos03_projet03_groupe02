@@ -18,10 +18,9 @@
 					<div class="mb-3 align-left">
 						<label for="emailInput" class="form-label">Votre email</label><input
 							type="email" class="form-control" id="emailInput"
-							placeholder="jerome@Gmail.com"/><label
-							for="password-input" class="form-label ">Votre mot de
-							passe</label><input type="password" class="form-control"
-							id="password-input" rows="3"/><label
+							placeholder="jerome@Gmail.com" /><label for="password-input"
+							class="form-label ">Votre mot de passe</label><input
+							type="password" class="form-control" id="password-input" rows="3" /><label
 							for="repeat-password-input" class="form-label ">Confirmer
 							votre mot de passe</label><input type="password" class="form-control"
 							id="repeat-password-input" rows="3"></input>
@@ -32,8 +31,12 @@
 								et j'accepte les conditions d'utilisation</label>
 						</div>
 						<div class="d-grid gap-2">
-							<button class="btn btn-primary " type="submit"
-								>Submit form</button>
+							<button class="btn btn-primary " type="submit">
+								<f:ajax render=":pagefooter2">
+									<h:commandLink styleClass="" value="Suite"
+										action="#{PageManageBean.setPage2('inscription2')}"></h:commandLink>
+								</f:ajax>
+							</button>
 						</div>
 					</div>
 				</div>

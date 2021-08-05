@@ -51,14 +51,16 @@ servira pour la NAVIGATION BAR -->
 					<li class="nav-item mx-0 mx-lg-1"><f:ajax
 							render=":contentPage">
 							<h:commandLink styleClass="nav-link py-3 px-0 px-lg-3 rounded"
-								value="Recherche" action="#{testManageBean.setPage('test')}"></h:commandLink>
+								value="Recherche"
+								action="#{PageManageBean.setPage('connectedPage')}"></h:commandLink>
 						</f:ajax></li>
 
 
 					<li class="nav-item mx-0 mx-lg-1"><f:ajax
 							render=":pagefooter2">
 							<h:commandLink styleClass="nav-link py-3 px-0 px-lg-3 rounded"
-								value="Contact" action="#{testManageBean.setPage2('inscription1')}"></h:commandLink>
+								value="Services"
+								action="#{PageManageBean.setPage2('inscription1')}"></h:commandLink>
 						</f:ajax></li>
 					<li class="nav-item mx-0 mx-lg-1"><a
 						class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
@@ -83,8 +85,14 @@ servira pour la NAVIGATION BAR -->
 
 						<li>
 							<button class="dropdown-item" type="button">
-								<a href="#" class="dropdown-item" onclick="connect()"><i
-									class="fas fa-sign-in-alt"></i> S'inscrire</a>
+								<h:form>
+									<f:ajax render=":pagefooter2">
+										<h:commandLink styleClass="dropdown-item"
+											value=""
+											action="#{PageManageBean.setPage2('inscription1')}"><i
+										class="fas fa-sign-in-alt"></i> S'inscrire</h:commandLink>
+									</f:ajax>
+								</h:form>
 							</button>
 						</li>
 					</ul>
@@ -95,11 +103,11 @@ servira pour la NAVIGATION BAR -->
 	</nav>
 
 	<h:panelGroup id="contentPage">
-		<ui:include src="#{testManageBean.page}.xhtml"></ui:include>
+		<ui:include src="#{PageManageBean.page}.xhtml"></ui:include>
 
 	</h:panelGroup>
 	<h:panelGroup id="pagefooter2">
-		<ui:include src="#{testManageBean.page2}.xhtml"></ui:include>
+		<ui:include src="#{PageManageBean.page2}.xhtml"></ui:include>
 
 	</h:panelGroup>
 

@@ -6,9 +6,9 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-@ManagedBean(name = "testManageBean", eager = true)
+@ManagedBean(name = "PageManageBean", eager = true)
 @ViewScoped
-public class testManageBean implements Serializable {
+public class PageManageBean implements Serializable {
 
 	/**
 	* 
@@ -19,7 +19,7 @@ public class testManageBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		setPage("test2"); // Default include.
+		setPage("connectedPage"); // Default include.
 		setPage2("blank");
 	}
 
