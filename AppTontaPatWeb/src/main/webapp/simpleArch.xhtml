@@ -6,8 +6,10 @@ servira pour la NAVIGATION BAR -->
 <!DOCTYPE html
 	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--xmlns:ui="http://xmlns.jcp.org/jsf/facelets== on a rajouté cette balise; ce sont les librairies de tag jsf -->
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
 	<ui:insert name="head"></ui:insert>
@@ -15,94 +17,132 @@ servira pour la NAVIGATION BAR -->
 	<h:outputStylesheet library="css" name="stylePerso.css" />
 
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
 
 	<!-- Favicon-->
 	<link rel="icon" type="image/x-icon" href="images/MoutonBlanc.ico" />
 	<!-- Font Awesome icons (free version)-->
-	<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+	<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
+		crossorigin="anonymous"></script>
 	<script src="js/myScripts.js"></script>
 
 </h:head>
 <h:body>
 	<!-- NAVIGATION-->
-	<nav class="navbar navbar-expand-lg navbar-dark  text-uppercase fixed-top" id="mainNav">
-		<div class="container">
-			<a href="#page-top"><img class="logo" src="images/MoutonBlanc.ico" /></a>
-			<button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
-				Menu <i class="fas fa-bars"></i>
-			</button>
-			<div class="collapse navbar-collapse justify-content-md-center" id="navbarResponsive">
+	<nav
+		class="navbar navbar-expand-lg navbar-dark  text-uppercase fixed-top"
+		id="mainNav">
+	<div class="container">
+		<a href="#page-top"><img class="logo" src="images/MoutonBlanc.ico" /></a>
+		<button
+			class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
+			type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+			aria-expanded="false" aria-label="Toggle navigation">
+			Menu <i class="fas fa-bars"></i>
+		</button>
+		<div class="collapse navbar-collapse justify-content-md-center"
+			id="navbarResponsive">
+			<h:form>
 				<ul class="navbar-nav mx-auto">
-					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-							href="#recherche">Recherche</a></li>
-					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">Nos
-							Services</a></li>
-					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-							href="#contact">Contact</a></li>
+					<li class="nav-item mx-0 mx-lg-1"><f:ajax
+							render=":contentPage">
+							<h:commandLink styleClass="nav-link py-3 px-0 px-lg-3 rounded"
+								value="Recherche"
+								action="#{PageManageBean.setPage('connectedPage')}"></h:commandLink>
+						</f:ajax></li>
+
+
+					<li class="nav-item mx-0 mx-lg-1"><f:ajax
+							render=":pagefooter2">
+							<h:commandLink styleClass="nav-link py-3 px-0 px-lg-3 rounded"
+								value="Services"
+								action="#{PageManageBean.setPage2('inscription1')}"></h:commandLink>
+						</f:ajax></li>
+					<li class="nav-item mx-0 mx-lg-1"><a
+						class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
 				</ul>
+			</h:form>
+			<div class="nav navbar-nav navbar-right">
+				<div class="dropdown">
+					<button
+						class="btn-custom backgroundBoxBlue text-white  dropdown-toggle"
+						type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
+						aria-expanded="false">
+						<span class="fa fa-user"></span> ☰
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
 
-				<div class="nav navbar-nav navbar-right">
-					<div class="dropdown">
-						<button class="btn-custom backgroundBoxBlue text-white  dropdown-toggle" type="button"
-							id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-							<span class="fa fa-user"></span> ☰
-						</button>
-						<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+						<li>
+							<button class="dropdown-item" type="button">
+								<a href="#" class="dropdown-item"><i
+									class="fas fa-user-circle"></i> Se connecter</a>
+							</button>
+						</li>
 
-							<li>
-								<button class="dropdown-item" type="button">
-									<a href="#" class="dropdown-item"><i class="fas fa-user-circle"></i> Se
-										connecter</a>
-								</button>
-							</li>
-
-							<li>
-								<button class="dropdown-item" type="button">
-									<a href="#" class="dropdown-item" onclick="connect()"><i class="fas fa-sign-in-alt"></i> S'inscrire</a>
-								</button>
-							</li>
-						</ul>
-					</div>
+						<li>
+							<button class="dropdown-item" type="button">
+								<h:form>
+									<f:ajax render=":pagefooter2">
+										<h:commandLink styleClass="dropdown-item"
+											value=""
+											action="#{PageManageBean.setPage2('inscription1')}"><i
+										class="fas fa-sign-in-alt"></i> S'inscrire</h:commandLink>
+									</f:ajax>
+								</h:form>
+							</button>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
+	</div>
 	</nav>
+
+	<h:panelGroup id="contentPage">
+		<ui:include src="#{PageManageBean.page}.xhtml"></ui:include>
+
+	</h:panelGroup>
+	<h:panelGroup id="pagefooter2">
+		<ui:include src="#{PageManageBean.page2}.xhtml"></ui:include>
+
+	</h:panelGroup>
+
+
 	<ui:insert name="content"></ui:insert>
 	<!-- Footer-->
 	<footer class="footer text-center">
-		<div class="container">
-			<div class="row">
-				<!-- Footer Location-->
-				<div class="col-lg-4 mb-5 mb-lg-0">
-					<h4 class="text-uppercase mb-4">Adresse</h4>
-					<p class="lead mb-0">
-						9 Bd du Général de Gaulle <br /> 92120 MONTROUGE
-					</p>
-				</div>
-				<!-- Footer Social Icons-->
-				<div class="col-lg-4 mb-5 mb-lg-0">
-					<h4 class="text-uppercase mb-4">Tontàpat</h4>
-					<a class="btn btn-outline-light btn-social mx-1" href="#!"><i
-							class="fab fa-fw fa-facebook-f"></i></a> <a class="btn btn-outline-light btn-social mx-1"
-						href="#!"><i class="fab fa-fw fa-twitter"></i></a> <a
-						class="btn btn-outline-light btn-social mx-1" href="#!"><i
-							class="fab fa-fw fa-linkedin-in"></i></a> <a class="btn btn-outline-light btn-social mx-1"
-						href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-				</div>
-				<!-- Footer About Text-->
-				<div class="col-lg-4">
-					<h4 class="text-uppercase mb-4">A PROPOS DE NOUS</h4>
-					<p class="lead mb-0">
-						Groupe2@eql.com
-					</p>
-				</div>
+	<div class="container">
+		<div class="row">
+			<!-- Footer Location-->
+			<div class="col-lg-4 mb-5 mb-lg-0">
+				<h4 class="text-uppercase mb-4">Adresse</h4>
+				<p class="lead mb-0">
+					9 Bd du Général de Gaulle <br /> 92120 MONTROUGE
+				</p>
+			</div>
+			<!-- Footer Social Icons-->
+			<div class="col-lg-4 mb-5 mb-lg-0">
+				<h4 class="text-uppercase mb-4">Tontàpat</h4>
+				<a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+					class="fab fa-fw fa-facebook-f"></i></a> <a
+					class="btn btn-outline-light btn-social mx-1" href="#!"><i
+					class="fab fa-fw fa-twitter"></i></a> <a
+					class="btn btn-outline-light btn-social mx-1" href="#!"><i
+					class="fab fa-fw fa-linkedin-in"></i></a> <a
+					class="btn btn-outline-light btn-social mx-1" href="#!"><i
+					class="fab fa-fw fa-dribbble"></i></a>
+			</div>
+			<!-- Footer About Text-->
+			<div class="col-lg-4">
+				<h4 class="text-uppercase mb-4">A PROPOS DE NOUS</h4>
+				<p class="lead mb-0">Groupe2@eql.com</p>
 			</div>
 		</div>
+	</div>
 	</footer>
 	<!-- Copyright Section-->
 	<div class="copyright py-4 text-center text-white">
