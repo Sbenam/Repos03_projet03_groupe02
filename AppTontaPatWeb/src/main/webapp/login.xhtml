@@ -5,19 +5,37 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:b="http://bootsfaces.net/ui">
 
-<ui:composition template="/arch.xhtml">
-
-	<ui:define name="head">
-		<title>Identification</title>
-
-	</ui:define>
-
-	<ui:define name="content">
-		<main class="col-12 main-accueil-1"> </main>
-
-
-	</ui:define>
-
+<ui:composition template="/simpleArch.xhtml">
+<ui:define name="content">
+	<section class="conexion-popup">
+	<div class="container-fluid">
+		<div class="row justify-content-md-center">
+			<div class="col-3"></div>
+			<div class="col-9 py-5 my-5">
+	
+				<h3>Rejoignez la communauté</h3>
+				<h5>Venez faire pâturer votre terrain</h5>
+				<div class="pt-5 mt-5 mb-5 align-left">
+					<label for="emailInput" class="form-label">Votre email</label>
+					<input
+						type="email" class="form-control" id="emailInput"
+						placeholder="jerome@Gmail.com" />
+						<label for="password-input"
+						class="form-label ">Votre mot de passe</label>
+						<input
+						type="password" class="form-control" id="password-input" rows="3"></input>
+						
+					
+						<div class="d-grid gap-2">
+							<button class="btn btn-primary " type="submit"
+								>Se connecter</button>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+</ui:define>
 </ui:composition>
 
 </html>
