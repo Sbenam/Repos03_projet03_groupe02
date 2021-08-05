@@ -38,6 +38,8 @@ public class Field implements Serializable{
 	private String name;
 	@Column(name = "f_adress")
 	private String adress;
+	@Column(name = "f_photo")
+	private String photo;
 	@Column(name = "f_surface")
 	private Integer surface;
 	@Column(name = "f_adding")

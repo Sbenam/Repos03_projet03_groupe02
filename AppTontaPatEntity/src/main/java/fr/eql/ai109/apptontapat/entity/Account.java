@@ -61,7 +61,7 @@ public class Account implements Serializable{
 	private Date withdraw;
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "id")
-	private Role role;
+	private Statue statue;
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "id")
 	private ZipCode zipcode;
@@ -89,7 +89,7 @@ public class Account implements Serializable{
 	}
 
 	public Account(Integer id, String surName, String name, String adress, String phone, String email, String password,
-			String siret, String description, String photo, Date birth, Date registration, Date withdraw, Role role,
+			String siret, String description, String photo, Date birth, Date registration, Date withdraw, Statue role,
 			ZipCode zipcode, Desactivation desactivation, EvacuateA evacuatea, Set<Herd> herds, Set<Field> fields) {
 		super();
 		this.id = id;
@@ -105,7 +105,7 @@ public class Account implements Serializable{
 		this.birth = birth;
 		this.registration = registration;
 		this.withdraw = withdraw;
-		this.role = role;
+		this.statue = role;
 		this.zipcode = zipcode;
 		this.desactivation = desactivation;
 		this.evacuatea = evacuatea;
@@ -247,12 +247,12 @@ public class Account implements Serializable{
 	
 
 
-	public Role getRole() {
-		return role;
+	public Statue getStatue() {
+		return statue;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setStatue(Statue statue) {
+		this.statue = statue;
 	}
 
 
