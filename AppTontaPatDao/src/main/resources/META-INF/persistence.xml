@@ -12,7 +12,7 @@
     	<class>fr.eql.ai109.apptontapat.entity.Datum</class>
     	<class>fr.eql.ai109.apptontapat.entity.Refusal</class>
     	<class>fr.eql.ai109.apptontapat.entity.Account</class>
-    	<class>fr.eql.ai109.apptontapat.entity.Role</class>
+    	<class>fr.eql.ai109.apptontapat.entity.Statue</class>
     	<class>fr.eql.ai109.apptontapat.entity.ZipCode</class>
     	<class>fr.eql.ai109.apptontapat.entity.Desactivation</class>
     	<class>fr.eql.ai109.apptontapat.entity.EvacuateA</class>

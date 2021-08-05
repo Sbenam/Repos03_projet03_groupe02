@@ -34,12 +34,12 @@ public class ZipCode implements Serializable{
 	private Integer id;
 	@Column(name = "z_label")
 	private String label;
+	@Column(name = "code")
+	private String code;
 	@Column(name = "longitude")
-	private Long longitude; //  changer en double
+	private Double longitude;
 	@Column(name = "latitude")
-	private Long latitude; // changer en double
-//	@Column(name = "code")
-//	private String code;
+	private Double latitude;
 	@OneToMany(mappedBy = "zipcode", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Account> accounts;
 	@OneToMany(mappedBy = "zipcode", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -52,12 +52,12 @@ public class ZipCode implements Serializable{
 	/*****************************************************************************************/
 	public ZipCode() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+	
 
 
 
-	public ZipCode(Integer id, String label, Long longitude, Long latitude, Set<Account> accounts, Set<Herd> herds,
+	public ZipCode(Integer id, String label, Double longitude, Double latitude, Set<Account> accounts, Set<Herd> herds,
 			Set<Field> fields) {
 		super();
 		this.id = id;
@@ -69,6 +69,18 @@ public class ZipCode implements Serializable{
 		this.fields = fields;
 	}
 
+	public ZipCode(Integer id, String label, String code, Double longitude, Double latitude, Set<Account> accounts,
+			Set<Herd> herds, Set<Field> fields) {
+		super();
+		this.id = id;
+		this.label = label;
+		this.code = code;
+		this.longitude = longitude;
+		this.latitude = latitude;
+		this.accounts = accounts;
+		this.herds = herds;
+		this.fields = fields;
+	}
 
 
 	/******************************************************************************************/
@@ -99,25 +111,25 @@ public class ZipCode implements Serializable{
 
 
 
-	public Long getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
 
 
-	public void setLongitude(Long longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
 
 
 
-	public Long getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
 
 
 
-	public void setLatitude(Long latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
