@@ -7,15 +7,22 @@
 
 <ui:composition template="/simpleArch.xhtml">
 <ui:define name="content">
+
+<div class="popup-container" id="container">
 	<section class="conexion-popup">
+	  <button id="close" class="popup-button">&times;</button>
+	  
+	  
 	<div class="container-fluid">
+	
 		<div class="row justify-content-md-center">
 			<div class="col-3"></div>
 			<div class="col-9 py-5 my-5">
-	
-				<h3>Rejoignez la communauté</h3>
+			<div  class="alert alert-success" role="alert">
+				<h3 >Rejoignez la communauté </h3>
 				<h5>Venez faire pâturer votre terrain</h5>
-				<div class="pt-5 mt-5 mb-5 align-left">
+				</div>
+				<div class="mt-4 mb-5 align-left">
 					<label for="emailInput" class="form-label">Votre email</label>
 					<input
 						type="email" class="form-control" id="emailInput"
@@ -26,15 +33,19 @@
 						type="password" class="form-control" id="password-input" rows="3"></input>
 						
 					
-						<div class="d-grid gap-2">
+						<div class="d-grid gap-2 pt-4">
 							<button class="btn btn-primary " type="submit"
 								>Se connecter</button>
+						</div>
+						<div class="d-grid gap-2">
+							<p class="text-center">Vous n'avez pas de compte? Cliquez pour vous inscrire <a href="#">ici</a></p>
 						</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	</section>
+	</div>
 </ui:define>
 </ui:composition>
 
