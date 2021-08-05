@@ -48,6 +48,8 @@ public class Field implements Serializable{
 	private Date starting;
 	@Column(name = "f_ending")
 	private Date ending;
+	@Column(name = "f_photo")
+	private String photo;
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "id")
 	private Retret retret;
