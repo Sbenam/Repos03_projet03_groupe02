@@ -1,23 +1,56 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:b="http://bootsfaces.net/ui">
-
-<ui:composition template="/arch.xhtml">
-
-	<ui:define name="head">
-		<title>Identification</title>
-
-	</ui:define>
-
-	<ui:define name="content">
-		<main class="col-12 main-accueil-1"> </main>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 
-	</ui:define>
+	<div class="popup-container" id="container">
+		<section class="conexion-popup">
+
+			<h:form>
+				<f:ajax render=":pagefooter2">
+					<button id="close" class="popup-button">
+						<h:commandLink styleClass="dropdown-item" value=""
+							action="#{PageManageBean.setPage2('blank')}">
+							<i class="far fa-window-close"></i>
+						</h:commandLink>
+					</button>
+				</f:ajax>
+			</h:form>
+
+			<div class="container-fluid">
+
+				<div class="row justify-content-md-center">
+					<div class="col-3"></div>
+					<div class="col-9 py-5 my-5">
+						<div class="alert alert-success" role="alert">
+							<h3>Rejoignez la communauté</h3>
+							<h5>Venez faire pâturer votre terrain</h5>
+						</div>
+						<div class="mt-4 mb-5 align-left">
+							<label for="emailInput" class="form-label">Votre email</label> <input
+								type="email" class="form-control" id="emailInput"
+								placeholder="jerome@Gmail.com" /> <label for="password-input"
+								class="form-label ">Votre mot de passe</label> <input
+								type="password" class="form-control" id="password-input"
+								rows="3"></input>
+
+
+							<div class="d-grid gap-2 pt-4">
+								<button class="btn btn-primary " type="submit">Se
+									connecter</button>
+							</div>
+							<div class="d-grid gap-2">
+								<p class="text-center">
+									Vous n'avez pas de compte? Cliquez pour vous inscrire <a
+										href="#">ici</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 
 </ui:composition>
-
-</html>

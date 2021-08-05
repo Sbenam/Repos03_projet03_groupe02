@@ -75,26 +75,30 @@ servira pour la NAVIGATION BAR -->
 						<span class="fa fa-user"></span> ☰
 					</button>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-
-						<li>
-							<button class="dropdown-item" type="button">
-								<a href="#" class="dropdown-item"><i
-									class="fas fa-user-circle"></i> Se connecter</a>
-							</button>
-						</li>
-
 						<li>
 							<button class="dropdown-item" type="button">
 								<h:form>
+									<f:ajax  render=":pagefooter2">
+										<h:commandLink styleClass="dropdown-item" value=""
+											action="#{PageManageBean.setPage2('login')}">
+											<i class="fas fa-user-circle"></i> Se connecter</h:commandLink>
+									</f:ajax>
+								</h:form>
+								
+							</button>
+						</li>
+
+						 <li>
+							<button class="dropdown-item" type="button">
+								<h:form>
 									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item"
-											value=""
-											action="#{PageManageBean.setPage2('inscription1')}"><i
-										class="fas fa-sign-in-alt"></i> S'inscrire</h:commandLink>
+										<h:commandLink styleClass="dropdown-item" value=""
+											action="#{PageManageBean.setPage2('inscription1')}">
+											<i class="fas fa-sign-in-alt"></i> S'inscrire</h:commandLink>
 									</f:ajax>
 								</h:form>
 							</button>
-						</li>
+						</li> 
 					</ul>
 				</div>
 			</div>
