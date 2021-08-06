@@ -1,4 +1,4 @@
-package fr.eql.ai109.apptontapat.web;
+package fr.eql.ai109.apptontapat.controller;
 
 import java.io.Serializable;
 

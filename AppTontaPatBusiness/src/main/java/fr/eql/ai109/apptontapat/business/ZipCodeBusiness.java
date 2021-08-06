@@ -21,6 +21,11 @@ public class ZipCodeBusiness implements ZipCodeIBusiness{
 	public List<ZipCode> getAllBu() {
 		return zipCodeIDao.getAll();
 	}
+
+	@Override
+	public List<String> getAllBuCity() {
+		return zipCodeIDao.getAllCity();
+	}
 	
 	
 	
