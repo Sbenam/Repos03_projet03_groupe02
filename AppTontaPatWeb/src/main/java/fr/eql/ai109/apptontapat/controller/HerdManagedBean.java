@@ -21,14 +21,8 @@ public class HerdManagedBean implements Serializable{
 
 	@EJB
 	private HerdIbusiness herdIBusiness;
-	private Herd herd = herdIBusiness.extraireTroupeauParId(2);
 	public Herd getHerdById(int id) {
 		return herdIBusiness.extraireTroupeauParId(id);
 	}
-	public Herd getHerd() {
-		return herd;
-	}
-	public void setHerd(Herd herd) {
-		this.herd = herd;
-	}
+
 }
