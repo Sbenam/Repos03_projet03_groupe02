@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<section class="conexion-popup">
+		<div class="container-fluid">
+			<div class="row justify-content-md-center">
+				<div class="col-3"></div>
+				<div class="col-9">
+					<ul class="breadcrumbs">
+						<li><a href="" class="current">1. Email </a></li>
+						<li><a href="">2. Vos informations</a></li>
+						<li><a href="">3. Vos coordonnées</a></li>
+					</ul>
+					<h3>Rejoignez la communauté</h3>
+					<h5>Venez faire paturer votre terrain</h5>
+					<div class="mb-3 align-left">
+						<label for="emailInput" class="form-label">Votre email</label><input
+							type="email" class="form-control" id="emailInput"
+							placeholder="jerome@Gmail.com" /><label for="password-input"
+							class="form-label ">Votre mot de passe</label><input
+							type="password" class="form-control" id="password-input" rows="3" /><label
+							for="repeat-password-input" class="form-label ">Confirmer
+							votre mot de passe</label><input type="password" class="form-control"
+							id="repeat-password-input" rows="3"></input>
+						<div class="inline-input">
+							<input class="form-check-input " type="checkbox" value=""
+								id="flexCheckChecked" checked="true" /><label
+								class="form-check-label" for="flexCheckChecked">J'ai lu
+								et j'accepte les conditions d'utilisation</label>
+						</div>
+						<div class="d-grid gap-2">
+							<button class="btn btn-primary " type="submit">
+								<f:ajax render=":pagefooter2">
+									<h:commandLink styleClass="" value="Suite"
+										action="#{PageManageBean.setPage2('inscription2')}"></h:commandLink>
+								</f:ajax>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+</ui:composition>
