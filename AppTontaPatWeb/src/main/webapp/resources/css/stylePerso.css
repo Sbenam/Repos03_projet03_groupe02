@@ -296,3 +296,190 @@ ul {
 .padding-form input{
     margin-bottom: 2em;
 }
+
+.padding-container-terrain {
+    margin-top: 8em;
+
+}
+
+.padding-container-terrain .col-8 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 3em;
+    border-right: solid 1px var(--black);
+}
+
+.padding-container-terrain .col-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4em;
+
+}
+
+.header-terrain {
+    display: inline-flex;
+    align-items: center;
+
+}
+
+.header-terrain h2 {
+    margin-right: 2em;
+}
+
+.description-terrain {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+}
+
+.body-terrain-container {
+    display: flex;
+    width: 100%;
+}
+
+.image-terrain {
+    background-image: url("http://localhost:8090/AppTontaPatWeb/images/terrain.jpg");
+    width: 56%;
+    height: 268px;
+    background-size: cover;
+    border-radius: 5px;
+    margin-bottom: 2em;
+}
+
+.composition-terrain {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-self: stretch;
+}
+.composition-terrain p {
+    margin-right: 10px;
+}
+
+.adresse-terrain {
+    width: 100%;
+}
+
+.fa-check-square {
+    color: var(--primary);
+}
+
+.fa-window-close {
+    color: #E63946;
+}
+
+.fa-star {
+    color: #FF9914;
+}
+
+.card-terrain .card{
+    transform: none;
+}
+
+.btn-infos-terrain{
+    float: right;
+}
+.navbar-default {
+	background-color: transparent !important;
+	border-color: transparent !important;
+	/* 	position: fixed !important; */
+}
+
+.logo-header {
+	width: 95px;
+	height: 95px;
+}
+
+.container-hamburger {
+	width: 50px;
+	height: 50px;
+	background-color: white;
+	border-radius: 40px;
+	color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 19px;
+}
+
+.padding-dropdown {
+	padding: 10px;
+}
+
+.navlink-header {
+	display: flex;
+	justify-content: center;
+	font-size: 20px;
+}
+
+.navlink-header a {
+	border: 1px solid transparent !important;
+	border-top: 0px !important;
+}
+
+.navlink-header a:hover {
+	background-color: transparent !important;
+	border-top: 0 !important;
+	border-image-slice: 1 !important;
+	border-image-source: linear-gradient(to left, transparent 23%, white, transparent 80%) !important;
+}
+
+.navlink-header a:focus {
+	background-color: transparent !important;
+	border-top: 0 !important;
+	border-image-slice: 1 !important;
+	border-image-source: linear-gradient(to left, transparent 23%, white, transparent 80%) !important;
+}
+
+.row-header {
+	display: flex;
+	align-items: center;
+}
+
+.compte-header {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.dropdown a {
+	color: black;
+}
+
+.dropdown a:hover {
+	color: grey;
+}
+
+.dropdown a:active {
+	color: blue;
+}
+
+.dropdown a:focus {
+	color: grey;
+}
+
+.caret {
+	display: none !important;
+}
+
+.dropdown-menu {
+	background-color: white !important;
+}
+
+.main-accueil-1 {
+	background-image:
+		url("http://localhost:8090/AppVeloWeb/resources/image/home.jpg");
+	min-height: 100vh;
+}
+
+.container-accueil {
+	margin: 0;
+	width: 100% !important;
+}
+
+.content-accueil {
+	padding: 0 !important;
+}
