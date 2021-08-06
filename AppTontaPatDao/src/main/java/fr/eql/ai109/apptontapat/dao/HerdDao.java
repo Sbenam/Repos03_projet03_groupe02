@@ -27,8 +27,8 @@ public class HerdDao extends GenericDao<Herd> implements HerdIDao{
 	public Herd getHerdById(int id) {
 		Herd herd = null;
 		List<Herd> herds = null;
-		Query query = em.createQuery("SELECT u FROM Herd u WHERE u.id=:loginParam");
-		query.setParameter("loginParam", id);
+		Query query = em.createQuery("SELECT u FROM Herd u WHERE u.id=:idParam");
+		query.setParameter("idParam", id);
 		herds = (List<Herd>) query.getResultList();
 		if (herds.size() > 0) {
 			herd = herds.get(0);
