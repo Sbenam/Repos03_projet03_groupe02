@@ -54,6 +54,9 @@ public class ZipCode implements Serializable{
 		super();
 	}
 	
+	public ZipCode(Integer id) {
+		this.id = id;
+	}
 
 
 

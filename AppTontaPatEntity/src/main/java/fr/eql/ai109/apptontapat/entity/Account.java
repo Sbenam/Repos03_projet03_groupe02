@@ -85,7 +85,6 @@ public class Account implements Serializable{
 
 	public Account() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Account(Integer id, String surName, String name, String adress, String phone, String email, String password,
@@ -111,6 +110,12 @@ public class Account implements Serializable{
 		this.evacuatea = evacuatea;
 		this.herds = herds;
 		this.fields = fields;
+	}
+	
+	public Account(String surName, String name,ZipCode zipcode) {
+		this.surName = surName;
+		this.name = name;
+		this.zipcode = zipcode;
 	}
 
 	/******************************************************************************************/
