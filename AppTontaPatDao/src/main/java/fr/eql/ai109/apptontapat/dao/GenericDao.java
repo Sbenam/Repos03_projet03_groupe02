@@ -18,6 +18,9 @@ public abstract class GenericDao<T> implements GenericIDao<T> {
 	//	Session session = null;
 	//	Transaction tx = null;
 
+//    EntityManagerFactory emf = Persistence.createEntityManagerFactory("AppTontaPat");    
+//    EntityManager em = emf.createEntityManager();    
+
 	@PersistenceContext(unitName = "AppTontaPat")
 	protected EntityManager em;
 	public T add(T t) {
@@ -67,8 +70,10 @@ public abstract class GenericDao<T> implements GenericIDao<T> {
 		return t;
 	}
 
+	
 	public T getById(int i) {
 		T t = null;
+		System.out.println("rllfkf"+em);
 		try {
 
 			String className = ((ParameterizedType) getClass().getGenericSuperclass())
@@ -79,7 +84,8 @@ public abstract class GenericDao<T> implements GenericIDao<T> {
 			t= (T)em.find(clazz, i);
 		} catch (Exception e) {
 			e.printStackTrace();
-		} 
+		}
+		System.out.println(em);
 		return t;
 	}
 
