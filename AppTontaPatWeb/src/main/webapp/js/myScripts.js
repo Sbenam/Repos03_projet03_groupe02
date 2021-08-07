@@ -14,3 +14,12 @@ function informations3(){
     document.body.innerHTML +="<section class=\"conexion-popup\"><div class=\"container-fluid\"><div class=\"row justify-content-md-center\"><div class=\"col-3\"></div><div class=\"col-9\"><ul class=\"breadcrumbs\"><li><a href=\"\">1. Email </a></li><li><a href=\"\">2. Vos informations</a></li><li><a href=\"\" class=\"current\">3. Vos coordonnées</a></li></ul><h3>Rejoignez la communauté</h3><h5>Venez faire paturer votre terrain</h5><div class=\"mb-3 align-left\"><div class=\"padding-form\"><label for=\"adresse-input\" class=\"form-label\">Adresse</label><input type=\"text\" class=\"form-control\" id=\"adresse-input\" placeholder=\"149 rue J.B Charcot\"><label for=\"zipcode-input\" class=\"form-label \">Code postal</label><input type=\"number\" class=\"form-control\" id=\"zipcode-input\" rows=\"3\"placeholder=\"92400\"></input><div class=\"d-grid gap-2\"><button class=\"btn btn-primary \" type=\"submit\" >Fin</button></div></div></div></div></div></div></section>"
 
 }
+
+/* global bootstrap: false */
+(function () {
+  'use strict'
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+    new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+})()
