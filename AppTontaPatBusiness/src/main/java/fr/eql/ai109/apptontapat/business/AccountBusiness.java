@@ -18,8 +18,8 @@ public class AccountBusiness implements AccountIBusiness {
 
 	// En a t'on reéllement besoin !
 	@Override
-	public Boolean exists(Account account) {
-		return aidao.exists(account);
+	public Boolean exists(String email) {
+		return aidao.exists(email);
 	}
 
 	@Override
