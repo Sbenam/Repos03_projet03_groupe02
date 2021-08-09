@@ -30,39 +30,32 @@
 							<h5>Venez faire pâturer votre terrain</h5>
 						</div>
 						<div class="mt-4 mb-5 align-left">
-							<label for="inpLogin" class="form-label">Votre email</label> 
-							<h:inputText value="#{mbAccount.email}" 
-								type="email" class="form-control" id="inpLogin"
-								placeholder="jerome@Gmail.com" /> 
-								
-								<label for="inpPassword"
-								class="form-label ">Votre mot de passe</label>
-							<h:inputSecret value="#{mbAccount.password}" type="password"
-								class="form-control" id="inpPassword" rows="3">
+							<h:form styleClass="">
+								<label for="inpLogin" class="form-label">Votre email</label>
+								<h:inputText value="#{mbAccount.email}" type="email"
+									class="form-control" id="inpLogin"
+									placeholder="jerome@Gmail.com" />
+
+								<label for="inpPassword" class="form-label ">Votre mot
+									de passe</label>
+								<h:inputSecret value="#{mbAccount.password}" type="password"
+									class="form-control" id="inpPassword" rows="3">
 								</h:inputSecret>
+								<h:outputText value="#{mbAccount.error}"></h:outputText>
 
-
-							<div class="d-grid gap-2 pt-4">
-								<button class="btn btn-primary " type="submit">Se
-									connecter</button>
-							</div>
-							<div class="d-grid gap-2">
-								<p class="text-center">
-									Vous n'avez pas de compte? Cliquez pour vous inscrire <a
-										href="#">ici</a>
-								</p>
-							</div>
-
-							<!-- fiv de test -->
-							<button class="btn btn-danger" type="button">
-								<h:form>
-
-									<h:commandLink styleClass="" style="font-size:40px; color:red;"
+								<div class="d-grid gap-2 pt-4">
+									<h:commandLink styleClass="btn btn-primary" style="color:red;"
 										value="" action="#{mbAccount.connect}">
-										<i class="fas fa-sign-in-alt"></i> S'inscrire</h:commandLink>
+										<i class="fas fa-sign-in-alt"></i> Connecter</h:commandLink>
+								</div>
+								<div class="d-grid gap-2">
+									<p class="text-center">
+										Vous n'avez pas de compte? Cliquez pour vous inscrire <a
+											href="#">ici</a>
+									</p>
+								</div>
 
-								</h:form>
-							</button>
+							</h:form>
 
 
 
