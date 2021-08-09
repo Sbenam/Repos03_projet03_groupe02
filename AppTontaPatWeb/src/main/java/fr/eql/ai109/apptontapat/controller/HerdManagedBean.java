@@ -42,7 +42,7 @@ public class HerdManagedBean implements Serializable {
 	
 	public void getHerdById(int id) {
 		System.out.println("test d'apelle de function get test et id: "+id);
-		herd=	 herdIBusiness.extraireTroupeauParId(id);
+		herd=herdIBusiness.extraireTroupeauParId(id);
 	}
 
 	public Herd getHerd() {
