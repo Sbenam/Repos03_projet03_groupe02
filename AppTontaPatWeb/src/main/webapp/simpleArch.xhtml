@@ -9,7 +9,8 @@ servira pour la NAVIGATION BAR -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
 	<ui:insert name="head"></ui:insert>
@@ -27,7 +28,7 @@ servira pour la NAVIGATION BAR -->
 	<!-- Font Awesome icons (free version)-->
 	<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
 		crossorigin="anonymous"></script>
-	<script src="js/myScripts.js"></script>
+
 
 </h:head>
 <h:body>
@@ -78,17 +79,17 @@ servira pour la NAVIGATION BAR -->
 						<li>
 							<button class="dropdown-item" type="button">
 								<h:form>
-									<f:ajax  render=":pagefooter2">
+									<f:ajax render=":pagefooter2">
 										<h:commandLink styleClass="dropdown-item" value=""
 											action="#{PageManageBean.setPage2('login')}">
 											<i class="fas fa-user-circle"></i> Se connecter</h:commandLink>
 									</f:ajax>
 								</h:form>
-								
+
 							</button>
 						</li>
 
-						 <li>
+						<li>
 							<button class="dropdown-item" type="button">
 								<h:form>
 									<f:ajax render=":pagefooter2">
@@ -98,7 +99,7 @@ servira pour la NAVIGATION BAR -->
 									</f:ajax>
 								</h:form>
 							</button>
-						</li> 
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -153,6 +154,81 @@ servira pour la NAVIGATION BAR -->
 			<small>Copyright &copy; Tontàpat 2021</small>
 		</div>
 	</div>
+
+
+	<!-- Menu Absolute right -->
+	<div class="d-flex flex-column flex-shrink-0 bg-light menu-right"
+		style="width: 4.5rem">
+		<ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+			<li class="nav-item"><h:form>
+					<f:ajax render=":contentPage">
+						<h:commandLink pt:data-bs-toggle="tooltip" title="Recherche"
+							pt:data-bs-placement="left"
+							styleClass="nav-link py-3 border-bottom" value=""
+							action="#{PageManageBean.setPage('ConnectedPage')}">
+							<i class="fas fa-search-location"></i>
+						</h:commandLink>
+					</f:ajax>
+				</h:form></li>
+			<li><h:form>
+					<f:ajax render=":contentPage">
+						<h:commandLink pt:data-bs-toggle="tooltip" title="Mes terrains"
+							pt:data-bs-placement="left"
+							styleClass="nav-link py-3 border-bottom" value=""
+							action="#{PageManageBean.setPage('terrain_detail')}">
+							<i class="fas fa-leaf"></i>
+						</h:commandLink>
+					</f:ajax>
+				</h:form></li>
+			<li><h:form>
+					<f:ajax render=":contentPage">
+						<h:commandLink pt:data-bs-toggle="tooltip" title="Mes troupeaux"
+							pt:data-bs-placement="left"
+							styleClass="nav-link py-3 border-bottom" value=""
+							action="#{PageManageBean.setPage('troupeau_detail')}">
+							<i class="fas fa-paw"></i>
+						</h:commandLink>
+					</f:ajax>
+				</h:form></li>
+
+			<li><a href="#" class="nav-link py-3 border-bottom"
+				title="Prestations" data-bs-toggle="tooltip"
+				data-bs-placement="right"> <i class="fas fa-sticky-note"></i>
+			</a></li>
+		</ul>
+		<div class="dropdown border-top">
+			<a href="#"
+				class="
+          d-flex
+          align-items-center
+          justify-content-center
+          p-3
+          link-dark
+          text-decoration-none
+          dropdown-toggle
+        "
+				id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+				<img src="https://github.com/mdo.png" alt="mdo" width="24"
+				height="24" class="rounded-circle" />
+			</a>
+			<ul class="dropdown-menu text-small shadow"
+				aria-labelledby="dropdownUser3">
+				<li><a class="dropdown-item" href="#">Nouveau terrain</a></li>
+				<li><a class="dropdown-item" href="#">Nouveau troupeau</a></li>
+				<li>
+					<hr class="dropdown-divider" />
+				</li>
+				<li><a class="dropdown-item" href="#">Profile</a></li>
+				<li>
+					<hr class="dropdown-divider" />
+				</li>
+				<li><a class="dropdown-item" href="#">Deconexion</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+	<script src="js/myScripts.js"></script>
 
 </h:body>
 

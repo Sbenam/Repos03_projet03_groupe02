@@ -17,32 +17,17 @@
 					<h5>Venez faire paturer votre terrain</h5>
 					<div class="mb-3 align-left">
 						<div class="padding-form">
-							<label for="adresse-input" class="form-label">Adresse</label><input
+							<label for="adresse-input" class="form-label">Adresse</label> <input
 								type="text" class="form-control" id="adresse-input"
-								placeholder="149 rue J.B Charcot" /><label for="zipcode-input"
-								class="form-label ">Code postal</label><input type="number"
-								class="form-control" id="zipcode-input" rows="3"
-								placeholder="92400"></input>
+								placeholder="149 rue J.B Charcot" value="#{mbAccount.name}" />
+							<label for="zipcode-input" class="form-label ">Code
+								postal</label><input type="number" class="form-control"
+								id="zipcode-input" rows="3" placeholder="92400"></input>
 							<div class="d-grid gap-2">
 								<button class="btn btn-primary " type="submit">Fin</button>
 							</div>
 						</div>
 					</div>
-					<h4>"#{mbZipCode.getAllCity()[0]}"
-					
-						Ses chats:
-						<ui:repeat var="zipcode" value="#{mbZipCode.getAllCity()}">
-
-							<!-- 		 <ui:repeat var ="cat" value="#{mbCat.connectedUserCats}">
- -->
-							<br />
-
-							<h:outputLabel value="zipcode.toString()" />
-						</ui:repeat>
-
-
-					</h4>
-
 				</div>
 			</div>
 		</div>
