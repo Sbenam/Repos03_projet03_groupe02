@@ -29,8 +29,8 @@
 							<h3>Rejoignez la communauté</h3>
 							<h5>Venez faire pâturer votre terrain</h5>
 						</div>
-							<div class="mt-4 mb-5 align-left">
-						<h:form styleClass="">
+						<div class="mt-4 mb-5 align-left">
+							<h:form styleClass="">
 								<label for="inpLogin" class="form-label">Votre email</label>
 								<h:inputText value="#{mbAccount.email}" type="email"
 									class="form-control" id="inpLogin"
@@ -44,8 +44,9 @@
 								<h:outputText value="#{mbAccount.error}"></h:outputText>
 
 								<div class="d-grid gap-2 pt-4">
-									<button class="btn btn-primary " type="submit">Se
-										connecter</button>
+									<h:commandLink styleClass="btn btn-primary" style="color:red;"
+										value="" action="#{mbAccount.connect}">
+										<i class="fas fa-sign-in-alt"></i> Connecter</h:commandLink>
 								</div>
 								<div class="d-grid gap-2">
 									<p class="text-center">
@@ -54,22 +55,16 @@
 									</p>
 								</div>
 
-								<!-- fiv de test -->
-								<div class="d-grid gap-2 pt-4">
-									<h:commandLink styleClass="btn btn-danger " style="color:red;"
-										value="" action="#{mbAccount.connect}">
-										<i class="fas fa-sign-in-alt"></i> S'inscrire</h:commandLink>
-								</div>
-						</h:form>
+							</h:form>
 
 
 
 
+						</div>
 					</div>
 				</div>
 			</div>
-	</div>
-	</section>
+		</section>
 	</div>
 
 </ui:composition>
