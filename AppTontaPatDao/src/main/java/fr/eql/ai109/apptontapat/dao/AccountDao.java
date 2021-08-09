@@ -17,7 +17,7 @@ public class AccountDao extends GenericDao<Account> implements AccountIDao{
 	public Boolean exists(Account account) {
 		List<Account> accounts = null;
 
-		Query query = em.createQuery("SELECT a FROM Account a WHERE a.email=:emailParam");
+		Query query = em.createQuery(" SELECT a FROM Account a WHERE a.email=:emailParam ");
 		query.setParameter("emailParam", account.getEmail());
 		accounts = query.getResultList();
 		
@@ -28,7 +28,7 @@ public class AccountDao extends GenericDao<Account> implements AccountIDao{
 	public Account authenticate(String email, String password) {
 		Account account = null;
 		List<Account> accounts = null;
-			Query query = em.createQuery("SELECT a FROM Account a WHERE a.email=:emailParam AND a.password=:passwordParam");
+			Query query = em.createQuery(" SELECT a FROM Account a WHERE a.email=:emailParam AND a.password=:passwordParam ");
 			query.setParameter("emailParam", email);
 			query.setParameter("passwordParam", password);
 			accounts = query.getResultList();

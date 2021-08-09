@@ -39,6 +39,8 @@ public class AccountManagedBean implements Serializable {
 
 	public String connect() {
 		System.out.println("Entrer dans connection");
+		System.out.println(email);
+		System.out.println(password);
 		String forward = null;
 		account = accountIBusiness.connection(email, password);
 		if (account != null) {
