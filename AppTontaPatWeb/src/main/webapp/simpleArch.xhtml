@@ -99,7 +99,71 @@ servira pour la NAVIGATION BAR -->
 									</f:ajax>
 								</h:form>
 							</button>
+
 						</li>
+
+						 
+						
+						<li>
+							<button class="dropdown-item" type="button">
+								<h:form>
+									<f:ajax render=":pagefooter2">
+										<h:commandLink styleClass="dropdown-item" value=""
+											action="#{PageManageBean.setPage2('addfield1')}">
+											<i class="fas fa-sign-in-alt"></i> ajout terrain</h:commandLink>
+									</f:ajax>
+								</h:form>
+							</button>
+						</li>
+						
+						<li>
+							<button class="dropdown-item" type="button">
+								<h:form>
+									<f:ajax render=":pagefooter2">
+										<h:commandLink styleClass="dropdown-item" value=""
+											action="#{PageManageBean.setPage2('addherd1')}">
+											<i class="fas fa-sign-in-alt"></i> ajout troupeau</h:commandLink>
+									</f:ajax>
+								</h:form>
+							</button>
+						</li>
+						
+						<li>
+							<button class="dropdown-item" type="button">
+								<h:form>
+									<f:ajax render=":pagefooter2">
+										<h:commandLink styleClass="dropdown-item" value=""
+											action="#{PageManageBean.setPage2('updatefield')}">
+											<i class="fas fa-sign-in-alt"></i> update troupeau</h:commandLink>
+									</f:ajax>
+								</h:form>
+							</button>
+						</li>
+						
+						<li>
+							<button class="dropdown-item" type="button">
+								<h:form>
+									<f:ajax render=":pagefooter2">
+										<h:commandLink styleClass="dropdown-item" value=""
+											action="#{PageManageBean.setPage2('updateaccount')}">
+											<i class="fas fa-sign-in-alt"></i> update account</h:commandLink>
+									</f:ajax>
+								</h:form>
+							</button>
+						</li>
+						<li>
+							<button class="dropdown-item" type="button">
+								<h:form>
+									<f:ajax render=":pagefooter2">
+										<h:commandLink styleClass="dropdown-item" value=""
+											action="#{PageManageBean.setPage2('detailaccount')}">
+											<i class="fas fa-sign-in-alt"></i> profil</h:commandLink>
+									</f:ajax>
+								</h:form>
+							</button>
+						</li>
+						
+
 					</ul>
 				</div>
 			</div>

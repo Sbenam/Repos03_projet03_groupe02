@@ -1,0 +1,77 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<div class="popup-containerAjoutField" id="container">
+<section class="conexion-popupAjout">
+	<div class="container-fluid">
+		<div class="row justify-content-md-center">
+			<div class="col-1"></div>
+			<h:form>
+				<f:ajax render=":pagefooter2">
+					<button id="close" class="popup-buttonAjout">
+						<h:commandLink styleClass="dropdown-item" value=""
+							action="#{PageManageBean.setPage2('blank')}">
+							<i class="far fa-window-close"></i>
+						</h:commandLink>
+					</button>
+				</f:ajax>
+			</h:form>
+			
+			<div class="col-9">
+				
+				<h3 class="mt-5">Ajoutez un terrain</h3>
+				<div class="mb-3 align-left">
+					<div class="padding-form">
+						
+<form>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description :</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  
+   <div class="form-group col-md-4">
+    <h:outputLabel for="start" value="Début de disponibilité :"/>
+    <h:selectOneMenu id="start" class="form-control" value="{mbZipCode.selectedCity}" >
+    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
+	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
+      </h:selectOneMenu>
+   
+  </div>
+  
+  
+   <div class="form-group col-md-4">
+    <h:outputLabel for="ending" value="Fin de disponibilité :"/>
+    <h:selectOneMenu id="ending" class="form-control" value="{mbZipCode.selectedCity}" >
+    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
+	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
+      </h:selectOneMenu>
+   
+  
+  </div>
+</form>
+	<hr/>
+						<div class="d-grid gap-2">
+							<button class="btn btn-primary w-25" type="submit">Enregistrer</button>
+						<h:form>
+				<f:ajax render=":pagefooter2">
+						<h:commandLink styleClass="dropdown-item" value=""
+							action="#{PageManageBean.setPage2('blank')}">
+							<button class="btn btn-primary w-25" type="submit">Annuler</button>
+						</h:commandLink>
+					
+				</f:ajax>
+			</h:form>
+						
+						</div>
+						
+							
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</div>
+</ui:composition>
