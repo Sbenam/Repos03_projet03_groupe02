@@ -206,6 +206,122 @@ div.col-3:nth-child(even) {
     flex-grow: 3;
 }
 
+.conexion-popupAjout {
+    position: fixed;
+    width: 50%;
+    height: 700px;
+     background-color: var(--bs-light); 
+     
+    top: 2em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+    box-shadow: 10px 10px 5px 0px var(--primary-dark);
+    -webkit-box-shadow: 5px 5px 15px 0px var(--primary-dark);
+    -moz-box-shadow: 10px 10px 5px 0px var(--primary-dark);
+}
+
+.conexion-popupModif {
+    position: fixed;
+    width: 60%;
+    top: 100px;
+    left: 20%;
+    
+}
+
+
+.conexion-popupModif .col-2 {
+    background-color: var(--primary);
+    height: 600px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity:0.7;
+
+}
+
+.popup-containerAjoutField {
+    position: fixed;
+    top : 100px ;
+    left : 0;
+    bottom : 0 ;
+    right : 0;
+   
+        background-image: url(https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2019.2F01.2F14.2F5837f0c3-ad4c-4f67-b181-e26a2a845cae.2Ejpeg/850x478/quality/90/crop-from/center/vous-adorez-l-odeur-de-l-herbe-coupee-qu-est-ce-que-cela-signifie.jpeg);
+        background-color: rgba(241, 250, 238);
+    background-repeat: no-repeat;
+    background-size: 800px 900px;
+
+}
+
+.popup-containerAjoutHerd {
+    position: fixed;
+    top : 100px ;
+    left : 0;
+    bottom : 0 ;
+    right : 0;
+   
+        background-image: url(https://sf1.bibamagazine.fr/wp-content/uploads/biba/2017/08/Les-chevres-nouvelles-coqueluches-d-Instagram.jpg);
+        background-color: rgba(241, 250, 238);
+    background-repeat: no-repeat;
+    background-size: 900px 900px;
+
+}
+
+.popup-containerModifField {
+    position: fixed;
+    top : 100px ;
+    left : 0;
+    bottom : 0 ;
+    right : 0;
+        background-color: rgba(241, 250, 238);
+    background-repeat: no-repeat;
+    background-size: 900px 900px;
+
+}
+.popup-buttonAjout {
+    background-color: #fff;
+    color:#000;
+ 
+    position:absolute;
+    top : 10px;
+    right :10px;
+}
+
+.conexion-popupAjout .col-3 {
+    
+    height: 600px;
+   
+
+}
+
+.conexion-popupAjout .col-9 {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+
+}
+
+.conexion-popupAjout .align-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 3;
+}
+
+.photo {
+	background-image: url(https://cdn.icon-icons.com/icons2/1286/PNG/512/97_85237.png);
+    background-size: contain;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    right: 180px;
+    border-color: var(--primary);
+    border-style: solid;
+	
+}
 
 ul {
     margin: 0;
@@ -274,6 +390,66 @@ ul {
     border-left-color: var(--primary);
 }
 
+.breadcrumbsAjout {
+    overflow: hidden;
+    width: 100%;
+    margin: 1em;
+    display: flex;
+    place-content: center;
+}
+
+.breadcrumbsAjout li {
+    float: left;
+    margin: 0 .75em 0 1em;
+}
+
+.breadcrumbsAjout a {
+    background: var(--grey);
+    padding: .7em 1em;
+    float: left;
+    text-decoration: none;
+    
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+    
+}
+
+.breadcrumbsAjout a:hover,
+.breadcrumbsAjout .current {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.breadcrumbsAjout a::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;
+    border-width: 1.5em 0 1.5em 1em;
+    border-style: solid;
+    border-color: var(--grey) var(--grey) var(--grey) transparent;
+    left: -1em;
+}
+
+.breadcrumbsAjout a:hover::before,
+.breadcrumbsAjout .current::before {
+    border-color: var(--primary) var(--primary) var(--primary) transparent;
+}
+
+.breadcrumbsAjout a::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;
+    border-top: 1.5em solid transparent;
+    border-bottom: 1.5em solid transparent;
+    border-left: 1em solid var(--grey);
+    right: -1em;
+}
+
+.breadcrumbsAjout a:hover::after,
+.breadcrumbsAjout .current::after {
+    border-left-color: var(--primary);
+}
 
 .form-check-input:checked {
     background-color: var(--primary);
