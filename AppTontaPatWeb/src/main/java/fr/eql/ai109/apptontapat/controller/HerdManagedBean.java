@@ -9,7 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import fr.eql.ai109.apptontapat.entity.Herd;
-import fr.eql.ai109.apptontapat.ibusiness.HerdIbusiness;
+import fr.eql.ai109.apptontapat.ibusiness.HerdIBusiness;
 
 @ManagedBean(name = "mbHerd")
 @SessionScoped
@@ -21,7 +21,7 @@ public class HerdManagedBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	private HerdIbusiness herdIBusiness;
+	private HerdIBusiness herdIBusiness;
 
 	public Herd getHerdByIdAccount(int id) {
 		return herdIBusiness.extraireTroupeauParIdAccount(id);

@@ -20,6 +20,8 @@ public class FieldManagedBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@EJB
 	private FieldIBusiness fieldIBusiness;
+	
+	
 	public Field getFieldById(int id) {
 		return fieldIBusiness.extraireTerrainParId(id);
 	}

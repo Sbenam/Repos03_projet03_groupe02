@@ -4,7 +4,7 @@ import java.util.List;
 
 import fr.eql.ai109.apptontapat.entity.Herd;
 
-public interface HerdIbusiness {
+public interface HerdIBusiness {
 	Herd extraireTroupeauParId(int id);
 	Herd extraireTroupeauParIdAccount(int id);
 	List<Herd> extraireToutLesTroupeaux();
