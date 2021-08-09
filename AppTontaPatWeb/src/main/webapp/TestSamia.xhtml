@@ -5,15 +5,21 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-<ui:composition template="/arch.xhtml">
+<ui:composition template="/archTestSamia.xhtml">
 	
 	<ui:define name="head">
 		<title>Identification</title>
 	</ui:define>
 
 	<ui:define name="content">
-	<h4>troupeau en session : <h:outputLabel value="#{mbHerd.getHerdById(15).seize}" /></h4>
-		<h4>terrain en session : <h:outputLabel value="#{mbField.getFieldById(5).name}" /></h4>
+	<h4>Teste de la fonction getHerdById pour id=15 : <h:outputLabel value="#{mbHerd.getHerdById(15).seize}" /></h4>
+		<h4>Teste de la fonction getFieldById pour id=17 : <h:outputLabel value="#{mbField.getFieldById(17).name}" /></h4>
+		<h4>Teste de la fonction getFieldByIdAccount pour id=17 : <h:outputLabel value="#{mbField.getFieldByIdAccount(17).name}" /></h4>
+		<h4>Teste de la fonction getHerdByIdAccount pour id=17 : <h:outputLabel value="#{mbHerd.getHerdByIdAccount(17).seize}" /></h4>
+		<h4>Teste de la fonction getAll : nombre des terrains  <h:outputLabel value="#{mbField.getAllField().size()}" /></h4>
+		<h4>Teste de la fonction getAllByIdAcocunt : nombre des terrains du compte  n 10 est égale à   <h:outputLabel value="#{mbField.getAllFieldByIdAccount(10).size()}" /></h4>
+		<h4>Teste de la fonction getAll : nombre des troupeaux  <h:outputLabel value="#{mbHerd.getAllHerd().size()}" /></h4>
+		<h4>Teste de la fonction getAllByIdAcocunt : nombre des troupeaux du compte  n 66 est égale à   <h:outputLabel value="#{mbHerd.getAllHerdByIdAccount(66).size()}" /></h4>
 	</ui:define>
 	
 </ui:composition>

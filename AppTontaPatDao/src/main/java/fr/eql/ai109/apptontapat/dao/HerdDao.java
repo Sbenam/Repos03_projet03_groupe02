@@ -35,5 +35,34 @@ public class HerdDao extends GenericDao<Herd> implements HerdIDao{
 		}
 		return herd;
 	}
+	
+	public Herd getHerdByIdAccount(int id) {
+		Herd herd = null;
+		List<Herd> herds = null;
+		Query query = em.createQuery("SELECT u FROM Herd u WHERE u.account.id=:idParam");
+		query.setParameter("idParam", id);
+		herds = (List<Herd>) query.getResultList();
+		if (herds.size() > 0) {
+			herd = herds.get(0);
+		}
+		return herd;
+	}
+
+	@Override
+	public List<Herd> getAllHerd() {
+		List<Herd> herds = null;
+		Query query = em.createQuery("SELECT u FROM Herd u ");
+		herds = (List<Herd>) query.getResultList();
+		return herds;
+	}
+
+	@Override
+	public List<Herd> getAllHerdByIdAccount(int id) {
+		List<Herd> herds = null;
+		Query query = em.createQuery("SELECT u FROM Herd u WHERE u.account.id=:idParam");
+		query.setParameter("idParam", id);
+		herds = (List<Herd>) query.getResultList();
+		return herds;
+	}
 
 }

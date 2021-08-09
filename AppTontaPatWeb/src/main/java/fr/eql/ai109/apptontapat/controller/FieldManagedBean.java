@@ -1,6 +1,7 @@
 package fr.eql.ai109.apptontapat.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -22,5 +23,16 @@ public class FieldManagedBean implements Serializable{
 	public Field getFieldById(int id) {
 		return fieldIBusiness.extraireTerrainParId(id);
 	}
+	
+	public Field getFieldByIdAccount(int id) {
+		return fieldIBusiness.extraireTerrainParIdAccount(id);
+	}
 
+	public List<Field> getAllField() {
+		return fieldIBusiness.extraireToutLesTerrain();
+	}
+	
+	public List<Field> getAllFieldByIdAccount(int id) {
+		return fieldIBusiness.extraireToutLesTerrainParIdAccount(id);
+	}
 }

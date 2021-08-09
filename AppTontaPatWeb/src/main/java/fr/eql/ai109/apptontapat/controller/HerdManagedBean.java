@@ -1,6 +1,7 @@
 package fr.eql.ai109.apptontapat.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -24,5 +25,13 @@ public class HerdManagedBean implements Serializable{
 	public Herd getHerdById(int id) {
 		return herdIBusiness.extraireTroupeauParId(id);
 	}
-
+	public Herd getHerdByIdAccount(int id) {
+		return herdIBusiness.extraireTroupeauParIdAccount(id);
+	}
+	public List<Herd> getAllHerd() {
+		return herdIBusiness.extraireToutLesTroupeaux();
+	}
+	public List<Herd> getAllHerdByIdAccount(int id) {
+		return herdIBusiness.extraireToutLesTroupeauxParIdAccount(id);
+	}
 }

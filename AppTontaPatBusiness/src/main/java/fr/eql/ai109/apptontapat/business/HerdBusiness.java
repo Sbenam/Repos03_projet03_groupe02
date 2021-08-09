@@ -1,5 +1,7 @@
 package fr.eql.ai109.apptontapat.business;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
@@ -20,6 +22,24 @@ public class HerdBusiness implements HerdIbusiness{
 	public Herd extraireTroupeauParId(int id) {
 		// TODO Auto-generated method stub
 		return herdIDao.getHerdById(id);
+	}
+
+	@Override
+	public Herd extraireTroupeauParIdAccount(int id) {
+		// TODO Auto-generated method stub
+		return herdIDao.getHerdByIdAccount(id);
+	}
+
+	@Override
+	public List<Herd> extraireToutLesTroupeaux() {
+		// TODO Auto-generated method stub
+		return herdIDao.getAllHerd();
+	}
+
+	@Override
+	public List<Herd> extraireToutLesTroupeauxParIdAccount(int id) {
+		// TODO Auto-generated method stub
+		return herdIDao.getAllHerdByIdAccount(id);
 	}
 
 }
