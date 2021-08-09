@@ -38,24 +38,42 @@ public class AccountManagedBean implements Serializable {
 	}
 
 	public String connect() {
+		System.out.println("Entrer dans connection");
 		String forward = null;
 		account = accountIBusiness.connection(email, password);
 		if (account != null) {
-			forward = "" /*"/ConnectedPage.xhtml?faces-redirection=true"*/;
+			forward = "simpleArch.xhtml?faces-redirection=true";
 		} else {
-//			FacesMessage facesMessage = new FacesMessage(
-//					FacesMessage.SEVERITY_WARN,
-//					"Identifiant et/ou mot de passe incorrect(s)",
-//					"Identifiant et/ou mot de passe incorrect(s)"
-//					);
-//			FacesContext.getCurrentInstance().addMessage("loginForm:inpLogin", facesMessage);
-//			FacesContext.getCurrentInstance().addMessage("loginForm:inpPassword", facesMessage);
-			forward = "" /*"/login.xhtml?faces-redirection=false"*/;
+			FacesMessage facesMessage = new FacesMessage(
+					FacesMessage.SEVERITY_WARN,
+					"Identifiant et/ou mot de passe incorrect(s)",
+					"Identifiant et/ou mot de passe incorrect(s)"
+					);
+			FacesContext.getCurrentInstance().addMessage("loginForm:inpLogin", facesMessage);
+			FacesContext.getCurrentInstance().addMessage("loginForm:inpPassword", facesMessage);
+			//forward = "" /*"/login.xhtml?faces-redirection=false"*/;
+			System.out.println("Non connectée");
 		}
 		return forward;
 	}
 
 	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public String getName() {
 		return name;
