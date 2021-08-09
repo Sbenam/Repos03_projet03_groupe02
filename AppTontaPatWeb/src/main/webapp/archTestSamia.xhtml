@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+	<ui:insert name="head"></ui:insert>
+	<h:outputStylesheet library="css" name="myStyle.css" />
+</h:head>
+
+<h:body>
+	<div class="cat-header cat-flex-justify-content cat-flex-align-items">
+		<h1>My Website</h1>
+	</div>
+	<b:container>
+		<b:row>
+			<b:column style-class="cat-content">
+				<ui:insert name="content"></ui:insert>
+			</b:column>
+		</b:row>
+	</b:container>
+	<div class="cat-footer cat-flex-justify-content cat-flex-align-items">
+		<h2>mywebsite - 2021</h2>
+	</div>
+</h:body>
+
+</html>

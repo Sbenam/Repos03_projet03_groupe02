@@ -30,6 +30,8 @@ public class Herd implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
+	@Column(name = "h_name")
+	private String name;
 	@Column(name = "h_seize")
 	private Integer seize;
 	@Column(name = "h_adress")
@@ -69,13 +71,13 @@ public class Herd implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	
-	public Herd(Integer id, Integer seize, String adress, Integer area, String photo, Date adding, Date withdraw,
-			Date starting, Date ending, ZipCode zipcode, Set<Service> services, Account account, Race race,
-			TakeOut takeout) {
+
+	public Herd(Integer id, String name, Integer seize, String adress, Integer area, String photo, Date adding,
+			Date withdraw, Date starting, Date ending, ZipCode zipcode, Set<Service> services, Account account,
+			Race race, TakeOut takeout) {
 		super();
 		this.id = id;
+		this.name = name;
 		this.seize = seize;
 		this.adress = adress;
 		this.area = area;
@@ -90,6 +92,10 @@ public class Herd implements Serializable{
 		this.race = race;
 		this.takeout = takeout;
 	}
+
+
+
+
 
 
 
@@ -244,7 +250,13 @@ public class Herd implements Serializable{
 		this.takeout = takeout;
 	}
 	
-
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	
 }
