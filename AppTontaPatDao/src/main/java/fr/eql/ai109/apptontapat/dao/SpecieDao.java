@@ -29,4 +29,13 @@ public class SpecieDao extends GenericDao<Specie> implements SpecieIDao{
 		return species;
 	}
 
+
+	@Override
+	public List<String> getAllSpecieLabel() {
+		List<String> speciesLabel = null;
+		Query query = em.createQuery("SELECT u.Label FROM Specie u ");
+		speciesLabel = (List<String>) query.getResultList();
+		return speciesLabel;
+	}
+
 }

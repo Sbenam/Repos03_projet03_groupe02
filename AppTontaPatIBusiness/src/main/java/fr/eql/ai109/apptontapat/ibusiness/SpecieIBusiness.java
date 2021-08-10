@@ -6,4 +6,5 @@ import fr.eql.ai109.apptontapat.entity.Specie;
 
 public interface SpecieIBusiness {
 	public List<Specie> extraireToutLesSpecies();
+	public List<String> extraireToutLesLabelsSpecies();
 }

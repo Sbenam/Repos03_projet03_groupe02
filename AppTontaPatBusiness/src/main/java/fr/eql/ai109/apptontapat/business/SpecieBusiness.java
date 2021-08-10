@@ -22,4 +22,9 @@ public class SpecieBusiness implements SpecieIBusiness{
 		return specieIDao.getAllSpecie();
 	}
 
+	@Override
+	public List<String> extraireToutLesLabelsSpecies() {
+		return specieIDao.getAllSpecieLabel();
+	}
+
 }
