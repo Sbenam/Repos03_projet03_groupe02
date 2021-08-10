@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
 
 @ManagedBean(name = "mbService")
@@ -25,6 +26,7 @@ public class ServiceManagedBean implements Serializable{
 	
 	private Field field;
 	private List<Herd> herds;
+	private List<ZipCode> zipcodes;
 	
 	// TODO vin retrait de init()
 	@PostConstruct
@@ -37,13 +39,21 @@ public class ServiceManagedBean implements Serializable{
 	private ServiceIBusiness serviceIBusiness;
 
 	
-	public List<Herd> search(Field field) {
-		herds = null;
+	public List<ZipCode> search(ZipCode zipcode) {
+		zipcodes = null;
 		
-		herds = serviceIBusiness.search(field);
+		zipcodes = serviceIBusiness.search(field);
 		
-		return herds;
+		return zipcodes;
 	}
+
+//	public List<Herd> search(Field field) {
+//		herds = null;
+//		
+//		herds = serviceIBusiness.search(field);
+//		
+//		return herds;
+//	}
 
 	
 	public List<Herd> getHerds() {
