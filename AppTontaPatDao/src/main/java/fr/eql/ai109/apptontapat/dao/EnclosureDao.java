@@ -26,4 +26,13 @@ public class EnclosureDao extends GenericDao<Enclosure> implements EnclosureIDao
 		return enclosures;
 	}
 
+
+	@Override
+	public List<String> getAllEnclosureLabel() {
+		List<String> Labels = null;
+		Query query = em.createQuery("SELECT u.label FROM Enclosure u ");
+		Labels = (List<String>) query.getResultList();
+		return Labels;
+	}
+
 }

@@ -22,4 +22,9 @@ public class WaterBusiness implements WaterIBusiness{
 		return waterIDao.getAllWater();
 	}
 
+	@Override
+	public List<String> extraireToutLesWaterLabels() {
+		return waterIDao.getAllWaterLabel();
+	}
+
 }

@@ -6,4 +6,5 @@ import fr.eql.ai109.apptontapat.entity.Water;
 
 public interface WaterIDao extends GenericIDao<Water>{
 	public List<Water> getAllWater();
+	public List<String> getAllWaterLabel();
 }

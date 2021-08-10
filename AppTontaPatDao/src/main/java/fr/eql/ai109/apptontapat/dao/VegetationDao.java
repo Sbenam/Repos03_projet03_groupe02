@@ -26,4 +26,12 @@ public class VegetationDao extends GenericDao<Vegetation> implements VegetationI
 		return vegetations;
 	}
 
+	@Override
+	public List<String> getAllVegetationLabel() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM Vegetation u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
+	}
+
 }

@@ -6,4 +6,5 @@ import fr.eql.ai109.apptontapat.entity.Vegetation;
 
 public interface VegetationIBusiness {
 	List<Vegetation> extraireToutesLesVegetation();
+	List<String> extraireToutesLesVegetationLabels();
 }

@@ -6,4 +6,5 @@ import fr.eql.ai109.apptontapat.entity.Shelter;
 
 public interface ShelterIDao extends GenericIDao<Shelter>{
 	public List<Shelter> getAllShelter();
+	public List<String> getAllShelterLabel();
 }

@@ -22,4 +22,9 @@ public class SlopeBusiness implements SlopeIbusiness{
 		return slopeIDao.getAllSlope();
 	}
 
+	@Override
+	public List<String> extraireToutLesSlopesLabels() {
+		return slopeIDao.getAllSlopeLabel();
+	}
+
 }

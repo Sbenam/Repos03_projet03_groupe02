@@ -22,4 +22,9 @@ public class GlassHeightBusiness implements GlassHeightIbusiness{
 		return glassHeightIDao.getAllGlassHeight();
 	}
 
+	@Override
+	public List<String> extraireToutLesGlassHeightLabels() {
+		return glassHeightIDao.getAllGlassHeightLabel();
+	}
+
 }

@@ -25,4 +25,12 @@ public class SlopeDao extends GenericDao<Slope> implements SlopeIDao{
 		return slopes;
 	}
 
+	@Override
+	public List<String> getAllSlopeLabel() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM Slope u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
+	}
+
 }

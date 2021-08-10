@@ -6,4 +6,5 @@ import fr.eql.ai109.apptontapat.entity.Humidity;
 
 public interface HumidityIBusiness {
 	List<Humidity> extraireToutLesHumidity();
+	List<String> extraireToutLesHumidityLabels();
 }

@@ -22,4 +22,9 @@ public class ShelterBusiness implements ShelterIBusiness{
 		return shelterIDao.getAllShelter();
 	}
 
+	@Override
+	public List<String> extraireToutLesSheltersLabels() {
+		return shelterIDao.getAllShelterLabel();
+	}
+
 }

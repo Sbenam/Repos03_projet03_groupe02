@@ -26,4 +26,13 @@ public class GlassHeightDao extends GenericDao<GlassHeight> implements GlassHeig
 		return glassHeights;
 	}
 
+
+	@Override
+	public List<String> getAllGlassHeightLabel() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM GlassHeight u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
+	}
+
 }

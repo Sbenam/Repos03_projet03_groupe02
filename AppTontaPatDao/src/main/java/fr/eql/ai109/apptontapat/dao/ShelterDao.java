@@ -26,4 +26,13 @@ public class ShelterDao extends GenericDao<Shelter> implements ShelterIDao{
 		return shelters;
 	}
 
+
+	@Override
+	public List<String> getAllShelterLabel() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM Shelter u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
+	}
+
 }

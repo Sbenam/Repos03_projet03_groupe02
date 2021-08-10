@@ -28,4 +28,12 @@ public class HumidityDao extends GenericDao<Humidity> implements HumidityIDao{
 		return humidities;
 	}
 
+	@Override
+	public List<String> getAllHumidityLabel() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM Humidity u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
+	}
+
 }

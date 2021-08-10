@@ -23,4 +23,9 @@ public class EnclosureBusiness implements EnclosureIbusiness{
 		return enclosureIDao.getAllEnclosure();
 	}
 
+	@Override
+	public List<String> extraireToutesLesEnclosuresLabels() {
+		return enclosureIDao.getAllEnclosureLabel();
+	}
+
 }

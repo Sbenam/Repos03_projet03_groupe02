@@ -24,4 +24,11 @@ public class VegetationBusiness implements VegetationIBusiness{
 		return vegetationIDao.getAllVegetation();
 	}
 
+
+
+	@Override
+	public List<String> extraireToutesLesVegetationLabels() {
+		return vegetationIDao.getAllVegetationLabel();
+	}
+
 }

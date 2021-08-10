@@ -6,4 +6,5 @@ import fr.eql.ai109.apptontapat.entity.Shelter;
 
 public interface ShelterIBusiness {
 	public List<Shelter> extraireToutLesShelters();
+	public List<String> extraireToutLesSheltersLabels();
 }

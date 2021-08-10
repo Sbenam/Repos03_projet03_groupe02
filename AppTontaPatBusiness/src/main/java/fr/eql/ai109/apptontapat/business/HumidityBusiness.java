@@ -22,4 +22,9 @@ public class HumidityBusiness implements HumidityIBusiness{
 		return humidityIDao.getAllHumidity();
 	}
 
+	@Override
+	public List<String> extraireToutLesHumidityLabels() {
+		return humidityIDao.getAllHumidityLabel();
+	}
+
 }

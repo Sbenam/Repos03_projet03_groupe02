@@ -28,4 +28,12 @@ public class WaterDao extends GenericDao<Water> implements WaterIDao{
 		return waters;
 	}
 
+	@Override
+	public List<String> getAllWaterLabel() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM Water u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
+	}
+
 }
