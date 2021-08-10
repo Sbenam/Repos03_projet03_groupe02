@@ -21,7 +21,7 @@ public class SmallTableManagedBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private List<Specie> species = new ArrayList<Specie>();
+	private List<String> species = new ArrayList<String>();
 	private String selectedSpecie ;
 
 	@EJB
@@ -32,16 +32,16 @@ public class SmallTableManagedBean implements Serializable{
 		species = getAll();
 	}
 	
-	public List<Specie> getAll() {
-		return specieIBusiness.extraireToutLesSpecies();
+	public List<String> getAll() {
+		return specieIBusiness.extraireToutLesLabelsSpecies();
 	}
 	
 	
-	public List<Specie> getSpecies() {
+	public List<String> getSpecies() {
 		return species;
 	}
 
-	public void setSpecies(List<Specie> species) {
+	public void setSpecies(List<String> species) {
 		this.species = species;
 	}
 
