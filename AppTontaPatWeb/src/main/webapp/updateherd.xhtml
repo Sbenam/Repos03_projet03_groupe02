@@ -30,9 +30,9 @@
   <h:form>
 <div class="form-group col-md-4">
     <h:outputLabel for="race" value="Race :"/>
-    <h:selectOneMenu id="race" class="form-control" value="{mbZipCode.selectedCity}" >
+    <h:selectOneMenu id="race" class="form-control" value="{mbHerd.selectedSpecie}" >
     <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
+	<f:selectItems value="#{mbHerd.species}"></f:selectItems>
       </h:selectOneMenu>
    
   </div>
