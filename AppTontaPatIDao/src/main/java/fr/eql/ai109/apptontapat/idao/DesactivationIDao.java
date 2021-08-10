@@ -5,4 +5,5 @@ import fr.eql.ai109.apptontapat.entity.Desactivation;
 
 public interface DesactivationIDao extends GenericIDao<Desactivation>{
 	public List<Desactivation> getAllDesactivation();
+	public List<String> getAllDesactivationLabels();
 }

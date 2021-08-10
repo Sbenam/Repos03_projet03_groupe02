@@ -25,4 +25,12 @@ public class EvacuateaDao extends GenericDao<EvacuateA> implements EvacuateaIDao
 		return evacuateas;
 	}
 
+	@Override
+	public List<String> getAllEvacuateaLabels() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM EvacuateA u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
+	}
+
 }

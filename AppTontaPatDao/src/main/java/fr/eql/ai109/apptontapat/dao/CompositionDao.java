@@ -25,4 +25,12 @@ public class CompositionDao extends GenericDao<Composition> implements Compositi
 		return compositions;
 	}
 
+	@Override
+	public List<String> getAllCompositionLabels() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM Composition u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
+	}
+
 }
