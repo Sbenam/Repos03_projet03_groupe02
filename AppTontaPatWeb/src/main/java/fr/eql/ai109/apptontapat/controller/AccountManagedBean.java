@@ -26,7 +26,6 @@ public class AccountManagedBean implements Serializable {
 	private String adress;
 	private String cgu;
 	private String email;
-	private String error;
 	private String password;
 	private String passwordVerif;
 	private ZipCode zipCode;
@@ -54,7 +53,6 @@ public class AccountManagedBean implements Serializable {
 					"Identifiant et/ou mot de passe incorrect(s)", "Identifiant et/ou mot de passe incorrect(s)");
 			FacesContext.getCurrentInstance().addMessage("loginForm:inpLogin", facesMessage);
 			FacesContext.getCurrentInstance().addMessage("loginForm:inpPassword", facesMessage);
-			error = "erreur de mdp";
 			System.out.println("Erreur de connexion");
 		}
 		return forward;
@@ -116,13 +114,6 @@ public class AccountManagedBean implements Serializable {
 		this.password = password;
 	}
 
-	public String getError() {
-		return error;
-	}
-
-	public void setError(String error) {
-		this.error = error;
-	}
 	public String getPasswordVerif() {
 		System.out.println(passwordVerif);
 		return passwordVerif;

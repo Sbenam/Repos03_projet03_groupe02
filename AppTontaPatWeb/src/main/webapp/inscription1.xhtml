@@ -5,10 +5,21 @@
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
   <section class="conexion-popup">
+    <h:form>
+      <f:ajax render=":pagefooter2">
+        <h:commandLink
+          styleClass="btn-close"
+          value=""
+          action="#{PageManageBean.setPage2('blank')}"
+          style="position: absolute; right: 5px; top: 5px"
+        >
+        </h:commandLink>
+      </f:ajax>
+    </h:form>
     <div class="container-fluid">
       <div class="row justify-content-md-center">
         <div class="col-3"></div>
-        <div class="col-9">
+        <div class="col-9 scrollTrue" >
           <ul class="breadcrumbs">
             <li><a href="" class="current">1. Email </a></li>
             <li><a href="">2. Vos informations</a></li>
@@ -25,27 +36,59 @@
                 class="form-control"
                 id="inpLogin"
                 placeholder="jerome@Gmail.com"
-              />
-
+                validatorMessage="Invalid Email Format"
+                required="true"
+              >
+                <f:validateRegex
+                  pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"
+                />
+              </h:inputText>
+              <div class="d-grid gap-2 pt-4">
+                <h:message
+                  for="inpLogin"
+                  errorClass="alert alert-danger"
+                ></h:message>
+              </div>
               <label for="password-input" class="form-label"
                 >Votre mot de passe</label
-              ><h:inputText
+              ><h:inputSecret
                 value="#{mbAccount.password}"
                 type="password"
                 class="form-control"
                 id="inpPassword"
                 rows="3"
-              />
+                validatorMessage="Le mot de passe doit contenir 8 caractères minimum dont une lettre majuscule , une lettre minuscule et un nombre"
+                required="true"
+              >
+                <f:validateRegex
+                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                />
+              </h:inputSecret>
+              <div class="d-grid gap-2 pt-4">
+                <h:message
+                  for="inpPassword"
+                  errorClass="alert alert-danger"
+                ></h:message>
+              </div>
 
               <label for="repeat-password-input" class="form-label"
                 >Confirmer votre mot de passe</label
-              ><h:inputText
+              ><h:inputSecret
                 value="#{mbAccount.passwordVerif}"
                 type="password"
                 class="form-control"
-                id="repeat-password-input"
+                id="repeatpasswordinput"
                 rows="3"
+                validatorMessage="Le mot de passe doit contenir 8 caractères minimum dont une lettre majuscule , une lettre minuscule et un nombre"
+                required="true"
               />
+
+              <div class="d-grid gap-2 pt-4">
+                <h:message
+                  for="repeatpasswordinput"
+                  errorClass="alert alert-danger"
+                ></h:message>
+              </div>
 
               <div class="inline-input">
                 <h:selectBooleanCheckbox
@@ -59,15 +102,13 @@
                 >
               </div>
               <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="submit">
                   <f:ajax render=":pagefooter2">
                     <h:commandLink
-                      styleClass=""
+                      styleClass="btn btn-primary"
                       value="Suite"
                       action="#{mbAccount.verifmail()}"
                     ></h:commandLink>
                   </f:ajax>
-                </button>
               </div>
             </h:form>
           </div>
