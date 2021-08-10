@@ -28,4 +28,12 @@ public class TakeoutDao extends GenericDao<TakeOut> implements TakeoutIDao{
 		return takeouts;
 	}
 
+	@Override
+	public List<String> getAllTakeOutLabels() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM TakeOut u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
+	}
+
 }

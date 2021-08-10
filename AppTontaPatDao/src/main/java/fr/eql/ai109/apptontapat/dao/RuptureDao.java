@@ -26,4 +26,12 @@ public class RuptureDao extends GenericDao<Rupture> implements RuptureIDao{
 		return ruptures;
 	}
 
+	@Override
+	public List<String> getAllCompositionLabels() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM Rupture u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
+	}
+
 }

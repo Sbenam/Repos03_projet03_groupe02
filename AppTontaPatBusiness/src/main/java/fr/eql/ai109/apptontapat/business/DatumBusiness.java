@@ -22,4 +22,9 @@ public class DatumBusiness implements DatumIBusiness{
 		return datumIDao.getAllDatum();
 	}
 
+	@Override
+	public List<String> extraireToutesLesDatumLabels() {
+		return datumIDao.getAllDatumLabels();
+	}
+
 }
