@@ -1,70 +1,90 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+  <div class="popup-container" id="container">
+    <section class="conexion-popup">
+      <h:form>
+        <f:ajax render=":pagefooter2">
+          <h:commandLink
+            styleClass="btn-close"
+            value=""
+            action="#{PageManageBean.setPage2('blank')}"
+            style="position: absolute; right: 5px; top: 5px"
+          >
+          </h:commandLink>
+        </f:ajax>
+      </h:form>
 
+      <div class="container-fluid" style="z-index: 99999999999999999999999">
+        <div class="row justify-content-md-center">
+          <div class="col-3"></div>
+          <div class="col-9 py-5 my-5">
+            <div class="alert alert-success" role="alert">
+              <h3>Rejoignez la communauté</h3>
+              <h5>Venez faire pâturer votre terrain</h5>
+            </div>
+            <div class="mt-4 mb-5 align-left">
+              <h:form id="loginForm">
+                <label for="inpLogin" class="form-label">Votre email</label>
+                <h:inputText
+                  value="#{mbAccount.email}"
+                  type="email"
+                  class="form-control"
+                  id="inpLogin"
+                  placeholder="jerome@Gmail.com"
+                />
 
-	<div class="popup-container" id="container">
-		<section class="conexion-popup">
+                <label for="inpPassword" class="form-label"
+                  >Votre mot de passe</label
+                >
+                <h:inputSecret
+                  value="#{mbAccount.password}"
+                  type="password"
+                  class="form-control"
+                  id="inpPassword"
+                  rows="3"
+                >
+                </h:inputSecret>
 
-			<h:form>
-				<f:ajax render=":pagefooter2">
-					<button id="close" class="popup-button">
-						<h:commandLink styleClass="dropdown-item" value=""
-							action="#{PageManageBean.setPage2('blank')}">
-							<i class="far fa-window-close"></i>
-						</h:commandLink>
-					</button>
-				</f:ajax>
-			</h:form>
+                <div class="d-grid gap-2 pt-4">
+                  <h:message
+                    for="inpPassword"
+                    warnClass="alert alert-danger"
+                  ></h:message>
+                </div>
 
-			<div class="container-fluid"
-				style="z-index: 99999999999999999999999;">
-
-				<div class="row justify-content-md-center">
-					<div class="col-3"></div>
-					<div class="col-9 py-5 my-5">
-						<div class="alert alert-success" role="alert">
-							<!--  <h4>troupeau en session : <h:outputLabel value="#{mbHerd.getHerdById(5).seize}" /></h4>-->
-							<h3>Rejoignez la communauté</h3>
-							<h5>Venez faire pâturer votre terrain</h5>
-						</div>
-						<div class="mt-4 mb-5 align-left">
-							<h:form styleClass="">
-								<label for="inpLogin" class="form-label">Votre email</label>
-								<h:inputText value="#{mbAccount.email}" type="email"
-									class="form-control" id="inpLogin"
-									placeholder="jerome@Gmail.com" />
-
-								<label for="inpPassword" class="form-label ">Votre mot
-									de passe</label>
-								<h:inputSecret value="#{mbAccount.password}" type="password"
-									class="form-control" id="inpPassword" rows="3">
-								</h:inputSecret>
-								<h:outputText value="#{mbAccount.error}"></h:outputText>
-
-								<div class="d-grid gap-2 pt-4">
-									<h:commandLink styleClass="btn btn-primary" style="color:red;"
-										value="" action="#{mbAccount.connect}">
-										<i class="fas fa-sign-in-alt"></i> Connecter</h:commandLink>
-								</div>
-								<div class="d-grid gap-2">
-									<p class="text-center">
-										Vous n'avez pas de compte? Cliquez pour vous inscrire <a
-											href="#">ici</a>
-									</p>
-								</div>
-
-							</h:form>
-
-
-
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	</div>
-
+                <div class="d-grid gap-2 pt-4">
+                  <h:commandLink
+                    styleClass="btn btn-primary"
+                    value=""
+                    action="#{mbAccount.connect}"
+                  >
+                    <i class="fas fa-sign-in-alt"></i> Connecter</h:commandLink
+                  >
+                </div>
+              </h:form>
+              <div class="d-grid gap-2" style="display: inline-flex !important">
+                <p class="text-center">
+                  Vous n'avez pas de compte? Cliquez pour vous inscrire
+                  <h:form style="width: fit-content">
+                    <f:ajax render=":pagefooter2">
+                      <h:commandLink
+                        styleClass="text-warning "
+                        value="ici"
+                        action="#{PageManageBean.setPage2('inscription1')}"
+                      >
+                      </h:commandLink>
+                    </f:ajax>
+                  </h:form>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </ui:composition>
