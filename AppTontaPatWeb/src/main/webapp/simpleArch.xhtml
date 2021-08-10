@@ -169,6 +169,18 @@ servira pour la NAVIGATION BAR -->
 									<f:ajax render=":pagefooter2">
 										<h:commandLink styleClass="dropdown-item" value=""
 											action="#{PageManageBean.setPage2('updatefield')}">
+											<i class="fas fa-sign-in-alt"></i> update terrain</h:commandLink>
+									</f:ajax>
+								</h:form>
+							</button>
+						</li>
+						
+						<li>
+							<button class="dropdown-item" type="button">
+								<h:form>
+									<f:ajax render=":pagefooter2">
+										<h:commandLink styleClass="dropdown-item" value=""
+											action="#{PageManageBean.setPage2('updateherd')}">
 											<i class="fas fa-sign-in-alt"></i> update troupeau</h:commandLink>
 									</f:ajax>
 								</h:form>
