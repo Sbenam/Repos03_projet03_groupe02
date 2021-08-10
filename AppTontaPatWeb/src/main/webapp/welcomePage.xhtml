@@ -134,8 +134,26 @@ servira pour la NAVIGATION BAR -->
 				href="#recherche">Inscrivez-vous ici !</a>
 		</div>
 		</header>
-
+		
+		
+		<h4>Terain:
+ 		 <ui:repeat var ="herd" value="#{mbService.herds}">
+	
+<!-- 		 <ui:repeat var ="cat" value="#{mbCat.connectedUserCats}">
+ -->		 
+		 <br/>
+		 
+		 <h:outputText value= "herd.name" />
+		 </ui:repeat>
+		 
+		 
+		 </h4>
+		 
+		 
 		<!-- recherche Section-->
+<!-- 		<h:dataTable value="#{mbService.herds[0]}" var="h">
+			<h:outputText value="h.name"/>
+		</h:dataTable>-->
 		<section class="page-section recherche backgroundBoxGreen"
 			id="recherche">
 		<div class="container">
