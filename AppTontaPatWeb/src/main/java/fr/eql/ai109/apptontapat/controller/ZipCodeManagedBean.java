@@ -1,6 +1,7 @@
 package fr.eql.ai109.apptontapat.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -18,7 +19,11 @@ public class ZipCodeManagedBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private List<String> cities = new ArrayList<String>();
 	
+	private String selectedCity ;
+	
+
 	@EJB
 	private ZipCodeIBusiness zipcodeibusiness;
 	
@@ -27,6 +32,19 @@ public class ZipCodeManagedBean implements Serializable {
 	}
 	public List<ZipCode> getAll(){
 		return zipcodeibusiness.getAllBu();
+	}
+	
+	public List<String> getCities() {
+		return cities;
+	}
+	public void setCities(List<String> cities) {
+		this.cities = cities;
+	}
+	public String getSelectedCity() {
+		return selectedCity;
+	}
+	public void setSelectedCity(String selectedCity) {
+		this.selectedCity = selectedCity;
 	}
 	
 

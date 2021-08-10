@@ -21,4 +21,10 @@ public class ZipCodeDao extends GenericDao<ZipCode> implements ZipCodeIDao{
 		return cityNames;
 	}
 
+	@Override
+	public List<String> getCityByCode(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
