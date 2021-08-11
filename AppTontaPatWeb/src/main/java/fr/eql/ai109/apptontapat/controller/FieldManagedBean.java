@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import fr.eql.ai109.apptontapat.entity.Field;
+import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.entity.Slope;
 import fr.eql.ai109.apptontapat.ibusiness.CompositionIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.FieldIBusiness;
@@ -27,6 +28,7 @@ public class FieldManagedBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private Field field = new Field();
 	private List<String> slopes = new ArrayList<String>();
 	private String selectedSlope ;
 	private List<String> grasses = new ArrayList<String>();
@@ -78,6 +80,16 @@ public class FieldManagedBean implements Serializable{
 		return compoIBusiness.extraireToutesLesCompositionLabels();
 	}
 	
+	
+	
+	
+	public Field getField() {
+		return field;
+	}
+
+	public void setField(Field field) {
+		this.field = field;
+	}
 	
 	
 	public Field getFieldById(int id) {
