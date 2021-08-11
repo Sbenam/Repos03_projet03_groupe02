@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
+import fr.eql.ai109.apptontapat.entity.Incident;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.ZipCodeIBusiness;
 import fr.eql.ai109.apptontapat.idao.ZipCodeIDao;
@@ -30,6 +31,11 @@ public class ZipCodeBusiness implements ZipCodeIBusiness{
 	@Override
 	public String extraireVilleAvecCodePostale(String code) {
 		return zipCodeIDao.getCityByCode(code);
+	}
+
+	@Override
+	public ZipCode extraireIncidentParId(int id) {
+		return zipCodeIDao.getZipCodeById(id);
 	}
 
 	

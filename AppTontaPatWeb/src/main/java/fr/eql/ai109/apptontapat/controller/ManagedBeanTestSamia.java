@@ -13,6 +13,7 @@ import fr.eql.ai109.apptontapat.entity.EvacuateA;
 import fr.eql.ai109.apptontapat.entity.GlassHeight;
 import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.entity.Humidity;
+import fr.eql.ai109.apptontapat.entity.Incident;
 import fr.eql.ai109.apptontapat.entity.Race;
 import fr.eql.ai109.apptontapat.entity.Refusal;
 import fr.eql.ai109.apptontapat.entity.Retret;
@@ -23,6 +24,7 @@ import fr.eql.ai109.apptontapat.entity.Specie;
 import fr.eql.ai109.apptontapat.entity.TakeOut;
 import fr.eql.ai109.apptontapat.entity.Vegetation;
 import fr.eql.ai109.apptontapat.entity.Water;
+import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.CompositionIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.DatumIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.DesactivationIBusiness;
@@ -31,6 +33,7 @@ import fr.eql.ai109.apptontapat.ibusiness.EvacuateaIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.GlassHeightIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.HerdIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.HumidityIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.IncidentIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.RaceIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.RefusalIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.RetretIBusiness;
@@ -53,11 +56,11 @@ public class ManagedBeanTestSamia implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	HerdIbusiness a;
+	ZipCodeIBusiness a;
 	
-	/*public String getAll() {
-		return a.extraireVilleAvecCodePostale("95348");
-	}*/
+	public ZipCode getAll() {
+		return a.extraireIncidentParId(2);
+	}
 	/*public Herd getAll() {
 		Herd h = new Herd();
 		return a.ajoutTroupeau(new Herd("troupeau féroce"));

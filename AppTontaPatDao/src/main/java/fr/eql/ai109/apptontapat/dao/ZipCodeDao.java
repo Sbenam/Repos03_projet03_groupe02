@@ -6,6 +6,7 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
 
+import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.idao.ZipCodeIDao;
 
@@ -32,6 +33,19 @@ public class ZipCodeDao extends GenericDao<ZipCode> implements ZipCodeIDao{
 			cityName =citiesName.get(0);
 		}
 		return cityName;
+	}
+
+	@Override
+	public ZipCode getZipCodeById(int id) {
+		ZipCode zipcode = null;
+		List<ZipCode> zipcodes = null;
+		Query query = em.createQuery("SELECT u FROM ZipCode u WHERE u.id=:idParam");
+		query.setParameter("idParam", id);
+		zipcodes = (List<ZipCode>) query.getResultList();
+		if (zipcodes.size() > 0) {
+			zipcode = zipcodes.get(0);
+		}
+		return zipcode;
 	}
 
 }
