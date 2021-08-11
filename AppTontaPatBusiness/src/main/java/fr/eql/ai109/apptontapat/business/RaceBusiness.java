@@ -22,4 +22,9 @@ public class RaceBusiness implements RaceIBusiness{
 		return raceIDao.getAllRace();
 	}
 
+	@Override
+	public List<String> extraireTouteLesracesLabels() {
+		return raceIDao.getAllRaceLabels();
+	}
+
 }

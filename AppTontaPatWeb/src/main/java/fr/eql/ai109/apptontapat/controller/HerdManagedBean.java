@@ -23,7 +23,7 @@ public class HerdManagedBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private List<String> species = new ArrayList<String>();
-	private String selectedSpecie ;
+	private String selectedSpecie;
 	
 	@PostConstruct
 	public void init() {

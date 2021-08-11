@@ -50,9 +50,9 @@ public class ManagedBeanTestSamia implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	WaterIBusiness a;
+	RaceIBusiness a;
 	
 	public List<String> getAll() {
-		return a.extraireToutLesWaterLabels();
+		return a.extraireTouteLesracesLabels();
 	}
 }
