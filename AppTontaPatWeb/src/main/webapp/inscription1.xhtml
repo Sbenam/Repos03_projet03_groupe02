@@ -29,7 +29,14 @@
           <h5>Venez faire paturer votre terrain</h5>
           <div class="mb-3 align-left">
             <h:form id="loginForm">
-              <label for="emailInput" class="form-label">Votre email</label>
+              <label
+                for="emailInput"
+                class="form-label"
+                data-bs-toggle="tooltip"
+                title="exemple@gmail.com"
+                data-bs-placement="right"
+                >Votre email</label
+              >
               <h:inputText
                 class="form-control"
                 id="inpLogin"
@@ -37,18 +44,33 @@
                 value="#{mbAccount.email}"
               >
               </h:inputText>
-              <h:message for="inpLogin"></h:message>
-              <div class="d-grid gap-2 pt-4"></div>
-              <label for="password-input" class="form-label"
-              >Votre mot de passe</label
+              <div class="d-grid gap-2 pt-4">
+                <h:message
+                  for="inpLogin"
+                  warnClass="alert alert-danger"
+                ></h:message>
+              </div>
+
+              <label
+                for="password-input"
+                class="form-label"
+                data-bs-toggle="tooltip"
+                title="Doit contenir 8 caractère dont une majuscule et un caractère spécial"
+                data-bs-placement="right"
+                >Votre mot de passe</label
               >
               <h:inputSecret
-              value="#{mbAccount.password}"
-              class="form-control"
-              id="password-input"
+                value="#{mbAccount.password}"
+                class="form-control"
+                id="password-input"
               >
-            </h:inputSecret>
-            <h:message for="password-input"></h:message>
+              </h:inputSecret>
+              <div class="d-grid gap-2 pt-4">
+                <h:message
+                  for="password-input"
+                  warnClass="alert alert-danger"
+                ></h:message>
+              </div>
 
               <label for="repeatpasswordinput" class="form-label"
                 >Confirmer votre mot de passe</label
@@ -59,6 +81,12 @@
                 class="form-control"
                 id="repeatpasswordinput"
               />
+              <div class="d-grid gap-2 pt-4">
+                <h:message
+                  for="repeatpasswordinput"
+                  warnClass="alert alert-danger"
+                ></h:message>
+              </div>
 
               <div class="inline-input">
                 <h:selectBooleanCheckbox

@@ -1,6 +1,7 @@
 package fr.eql.ai109.apptontapat.controller;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 import javax.ejb.EJB;
@@ -21,7 +22,6 @@ public class AccountManagedBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	// TODO: vin
 	private String name;
 	private String surNname;
 	private String adress;
@@ -31,6 +31,8 @@ public class AccountManagedBean implements Serializable {
 	private String passwordVerif;
 	private ZipCode zipCode;
 	private Account account;
+	private Date birth;
+	private int phone;
 
 	@EJB
 	private AccountIBusiness accountIBusiness;
@@ -40,12 +42,8 @@ public class AccountManagedBean implements Serializable {
 	}
 
 	public String connect() {
-		// TODO sysout Account
-		System.err.println("Passage dans la function connect");
-		System.err.println("email : " + email + " password: " + password);
 		String forward = null;
 		account = accountIBusiness.connection(email, password);
-		System.err.println("Account: " + account);
 		if (account != null) {
 			forward = "/simpleArch.xhtml?faces-redirection=true";
 		} else {
@@ -53,11 +51,57 @@ public class AccountManagedBean implements Serializable {
 					"Identifiant et/ou mot de passe incorrect(s)", "Identifiant et/ou mot de passe incorrect(s)");
 			FacesContext.getCurrentInstance().addMessage("loginForm:inpLogin", facesMessage);
 			FacesContext.getCurrentInstance().addMessage("loginForm:inpPassword", facesMessage);
-			System.out.println("Erreur de connexion");
 		}
 		return forward;
 	}
 
+	public void verifmail(PageManageBean managedBean) {
+
+		boolean RMailV = Pattern.matches(
+				"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", email);
+		boolean Rpassword = Pattern.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$", password);
+
+
+		if (RMailV && Rpassword && passwordVerif.equals(password)) {
+			managedBean.setPage2("inscription2");
+		} else {
+
+			if (RMailV) {
+				managedBean.setPage2("inscription1");
+				FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_WARN,
+						"Identifiant et/ou mot de passe incorrect(s)", "mot de passe incorrect(s)");
+				FacesContext.getCurrentInstance().addMessage("loginForm:password-input", facesMessage);
+
+			}
+			if (Rpassword && !RMailV) {
+				managedBean.setPage2("inscription1");
+				FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_WARN, "Email incorrect ",
+						"Email incorrect : " + email);
+				FacesContext.getCurrentInstance().addMessage("loginForm:inpLogin", facesMessage);
+
+			}
+			if (!passwordVerif.equals(password)) {
+				managedBean.setPage2("inscription1");
+				FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_WARN,
+						"Identifiant et/ou mot de passe incorrect(s)", "Les deux mots de passe doivent être similaire");
+				FacesContext.getCurrentInstance().addMessage("loginForm:repeatpasswordinput", facesMessage);
+
+			} else {
+				managedBean.setPage2("inscription1");
+				FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_WARN,
+						"Identifiant et/ou mot de passe incorrect(s)", "Mauvais format de mot de passe");
+				FacesMessage facesMessageMail = new FacesMessage(FacesMessage.SEVERITY_WARN,
+						"Identifiant et/ou mot de passe incorrect(s)", "Email mauvais format");
+				FacesContext.getCurrentInstance().addMessage("loginForm:password-input", facesMessage);
+				FacesContext.getCurrentInstance().addMessage("loginForm:inpLogin", facesMessageMail);
+			}
+		}
+
+	}
+
+	public void verifFormP2(PageManageBean managedBean){
+		System.out.println("Entrer dans la phase n°2");
+	}
 	public String getName() {
 		return name;
 	}
@@ -136,34 +180,20 @@ public class AccountManagedBean implements Serializable {
 		this.cgu = cgu;
 	}
 
-	public void verifmail(PageManageBean managedBean) {
-		System.out.println("verifmail function (email): " +email);
-		if (email != null) {
-			
-			boolean RMailV = Pattern.matches(
-					"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", email);
-			boolean Rpassword = Pattern.matches(
-					"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", email);
-			if (RMailV && Rpassword ) {
-				System.out.println("verif mail " + RMailV);
-				managedBean.setPage2("inscription2");
-			} elseif (Rmail) {
-				managedBean.setPage2("inscription1");
-				FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_WARN,
-					"Identifiant et/ou mot de passe incorrect(s)", "Email incorrect");
-			FacesContext.getCurrentInstance().addMessage("loginForm:inpPassword", facesMessage);
-			System.out.println("Erreur de connexion");
-				System.out.println("verif mail " + RMailV);
-			} elseif (Rpassword) {
-				managedBean.setPage2("inscription1");
-				FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_WARN,
-					"Identifiant et/ou mot de passe incorrect(s)", "mot de passe incorrect(s)");
-			FacesContext.getCurrentInstance().addMessage("loginForm:password-input", facesMessage);
-			System.out.println("Erreur de connexion");
-				System.out.println("verif passeword " + Rpassword);
-			}
-		}
-		System.out.println("-------------------------------------------");
+	public Date getBirth() {
+		return birth;
+	}
+
+	public void setBirth(Date birth) {
+		this.birth = birth;
+	}
+
+	public int getPhone() {
+		return phone;
+	}
+
+	public void setPhone(int phone) {
+		this.phone = phone;
 	}
 
 }
