@@ -150,6 +150,7 @@ div.col-3:nth-child(even) {
     position: fixed;
     width: 75%;
     height: 600px;
+    max-width: 900px;
     background-color: var(--white);
     margin-top: 4em;
     top: 2em;
@@ -808,4 +809,8 @@ main {
 
 .header-Accueil {
     min-height: 100vh;
+}
+
+.menu-top-welcome li a{
+    color: var(--white) !important;
 }
