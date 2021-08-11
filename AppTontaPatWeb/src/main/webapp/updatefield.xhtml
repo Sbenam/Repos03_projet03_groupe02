@@ -75,14 +75,14 @@
    
   </div>
   
-<!--   <div class="form-group col-md-4">
+  <div class="form-group col-md-4">
     <h:outputLabel for="composition" value="Composition :"/>
     <h:selectOneMenu id="composition" class="form-control" value="{mbField.selectedCompo}" >
     <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
 	<f:selectItems value="#{mbField.compos}"></f:selectItems>
       </h:selectOneMenu>
    
-  </div> -->
+  </div>
   			
   </h:form>
   
@@ -122,22 +122,14 @@
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
   
-   <div class="form-group col-md-4">
-    <h:outputLabel for="start" value="Début de disponibilité :"/>
-    <h:selectOneMenu id="start" class="form-control" value="{mbZipCode.selectedCity}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
-      </h:selectOneMenu>
-   
-  </div>
-  
-  
-   <div class="form-group col-md-4">
-    <h:outputLabel for="ending" value="Fin de disponibilité :"/>
-    <h:selectOneMenu id="ending" class="form-control" value="{mbZipCode.selectedCity}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
-      </h:selectOneMenu>
+	<label for="dispoinput" class="form-label ">Début de
+										disponibilité</label><input type="date" class="form-control w-25"
+										id="dispoinput" rows="3"></input> 
+										
+										<label for="dispo_end_input"
+										class="form-label ">Fin de disponibilité</label><input
+										type="date" class="form-control w-25" id="dispo_end_input"
+										rows="3"></input>
    
   
   </div>

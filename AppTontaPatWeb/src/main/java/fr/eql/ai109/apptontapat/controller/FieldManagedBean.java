@@ -57,8 +57,7 @@ public class FieldManagedBean implements Serializable{
 		grasses = getAllGrassLabels();
 		humidities = getAllHumidityLabels() ;
 		Veggies = getAllVeggyLabels() ;
-		//manque compo
-		//compos = 
+		compos = getAllCompoLabels();
 		
 	}
 	
@@ -75,9 +74,9 @@ public class FieldManagedBean implements Serializable{
 	public List<String> getAllVeggyLabels() {
 		return veggyIBusiness.extraireToutesLesVegetationLabels();
 	}
-//	public List<String> getAllCompoLabels() {
-//		
-//	}
+	public List<String> getAllCompoLabels() {
+		return compoIBusiness.extraireToutesLesCompositionLabels();
+	}
 	
 	
 	
