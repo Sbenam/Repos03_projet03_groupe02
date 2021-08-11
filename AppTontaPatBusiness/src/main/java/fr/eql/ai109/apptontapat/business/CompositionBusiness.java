@@ -24,4 +24,10 @@ public class CompositionBusiness implements CompositionIBusiness{
 		return compositionIDao.getAllComposition();
 	}
 
+
+	@Override
+	public List<String> extraireToutesLesCompositionLabels() {
+		return compositionIDao.getAllCompositionLabels();
+	}
+
 }

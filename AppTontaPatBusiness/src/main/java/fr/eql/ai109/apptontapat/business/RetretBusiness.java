@@ -23,4 +23,9 @@ public class RetretBusiness implements RetretIBusiness{
 		return retretIDao.getAllRetret();
 	}
 
+	@Override
+	public List<String> extraireToutLesRetretLabels() {
+		return retretIDao.getAllRetretLabels();
+	}
+
 }

@@ -6,4 +6,5 @@ import fr.eql.ai109.apptontapat.entity.Retret;
 
 public interface RetretIDao extends GenericIDao<Retret> {
 	public List<Retret> getAllRetret();
+	public List<String> getAllRetretLabels();
 }

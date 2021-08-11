@@ -28,4 +28,12 @@ public class DesactivationDao extends GenericDao<Desactivation> implements Desac
 		return desactivations;
 	}
 
+	@Override
+	public List<String> getAllDesactivationLabels() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM Desactivation u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
+	}
+
 }

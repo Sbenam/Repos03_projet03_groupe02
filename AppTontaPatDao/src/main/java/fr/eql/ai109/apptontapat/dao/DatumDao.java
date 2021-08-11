@@ -26,4 +26,12 @@ public class DatumDao extends GenericDao<Datum> implements DatumIDao{
 		return datums;
 	}
 
+	@Override
+	public List<String> getAllDatumLabels() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM Datum u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
+	}
+
 }

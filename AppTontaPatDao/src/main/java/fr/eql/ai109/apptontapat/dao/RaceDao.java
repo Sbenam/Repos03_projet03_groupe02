@@ -27,4 +27,12 @@ public class RaceDao extends GenericDao<Race> implements RaceIDao{
 		return races;
 	}
 
+	@Override
+	public List<String> getAllRaceLabels() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM Race u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
+	}
+
 }
