@@ -26,14 +26,7 @@
 
 
 							  <h:form>
- <div class="form-group col-md-4">
-    <h:outputLabel for="race" value="Race :"/>
-    <h:selectOneMenu id="race" class="form-control" value="{mbHerd.selectedRace}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbHerd.races}"></f:selectItems>
-      </h:selectOneMenu>
-   
-  </div>
+
   
   
   <div class="form-group col-md-4">
@@ -44,7 +37,16 @@
       </h:selectOneMenu>
    
   </div>
+ <div class="form-group col-md-4">
+    <h:outputLabel for="race" value="Race :"/>
+    <h:selectOneMenu id="race" class="form-control" value="{mbHerd.selectedRace}" >
+    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
+	<f:selectItems value="#{mbHerd.races}"></f:selectItems>
+      </h:selectOneMenu>
+   
+  </div>
 
+</h:form>
 
 
 									  <label for="nameInput" class="form-label">Taille du troupeau :</label><input
@@ -63,9 +65,7 @@
 										rows="3"></input>
 
 
-								</div>
-						</div>
-						</h:form>
+						
 
 						<hr />
 
