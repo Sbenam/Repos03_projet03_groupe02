@@ -2,683 +2,936 @@
 Tout le contenu de simple arch sera affiché sur TOTUES les pages comme ce qu'on a mis dans les div
 servira pour la NAVIGATION BAR -->
 
-
-<!DOCTYPE html
-	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--xmlns:ui="http://xmlns.jcp.org/jsf/facelets== on a rajouté cette balise; ce sont les librairies de tag jsf -->
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+  <h:head>
 
-<h:head>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+	integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+	crossorigin=""/>
+    <h:outputStylesheet library="css" name="style.css" />
+    <h:outputStylesheet library="css" name="stylePerso.css" />
 
-	<h:outputStylesheet library="css" name="style.css" />
-	<h:outputStylesheet library="css" name="stylePerso.css" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-	<meta charset="utf-8" />
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<meta name="description" content="" />
-	<meta name="author" content="" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="images/MoutonBlanc.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/myScripts.js"></script>
+  </h:head>
+  <h:body>
+    <!-- NAVIGATION-->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark text-uppercase fixed-top"
+      id="mainNav"
+    >
+      <div class="container">
+        <a href="#page-top"
+          ><img class="logo" src="images/MoutonBlanc.ico"
+        /></a>
+        <button
+          class="
+            navbar-toggler
+            text-uppercase
+            font-weight-bold
+            bg-primary
+            text-white
+            rounded
+          "
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          Menu <i class="fas fa-bars"></i>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-md-center"
+          id="navbarResponsive"
+        >
+          <h:form>
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#recherche"
+                  >Recherche</a
+                >
+              </li>
 
-	<!-- Favicon-->
-	<link rel="icon" type="image/x-icon" href="images/MoutonBlanc.ico" />
-	<!-- Font Awesome icons (free version)-->
-	<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
-		crossorigin="anonymous"></script>
-	<script src="js/myScripts.js"></script>
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#service"
+                  >Services</a
+                >
+              </li>
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </h:form>
+          <div class="nav navbar-nav navbar-right">
+            <div class="dropdown">
+              <button
+                class="btn-custom backgroundBoxBlue text-white dropdown-toggle"
+                type="button"
+                id="dropdownMenu2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="fa fa-user"></span> ☰
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li>
+                  <button class="dropdown-item" type="button">
+                    <h:form>
+                      <f:ajax render=":pagefooter2">
+                        <h:commandLink
+                          styleClass="dropdown-item"
+                          value=""
+                          action="#{PageManageBean.setPage2('login')}"
+                        >
+                          <i class="fas fa-user-circle"></i> Se
+                          connecter</h:commandLink
+                        >
+                      </f:ajax>
+                    </h:form>
+                  </button>
+                </li>
 
-</h:head>
-<h:body>
-	<!-- NAVIGATION-->
-	<nav
-		class="navbar navbar-expand-lg navbar-dark  text-uppercase fixed-top"
-		id="mainNav">
-	<div class="container">
-		<a href="#page-top"><img class="logo" src="images/MoutonBlanc.ico" /></a>
-		<button
-			class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
-			type="button" data-bs-toggle="collapse"
-			data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-			aria-expanded="false" aria-label="Toggle navigation">
-			Menu <i class="fas fa-bars"></i>
-		</button>
-		<div class="collapse navbar-collapse justify-content-md-center"
-			id="navbarResponsive">
-			<h:form>
-				<ul class="navbar-nav mx-auto">
-					<li class="nav-item mx-0 mx-lg-1"><f:ajax
-							render=":contentPage">
-							<h:commandLink styleClass="nav-link py-3 px-0 px-lg-3 rounded"
-								value="Recherche"
-								action="#{PageManageBean.setPage('connectedPage')}"></h:commandLink>
-						</f:ajax></li>
+                <li>
+                  <button class="dropdown-item" type="button">
+                    <h:form>
+                      <f:ajax render=":pagefooter2">
+                        <h:commandLink
+                          styleClass="dropdown-item"
+                          value=""
+                          action="#{PageManageBean.setPage2('inscription1')}"
+                        >
+                          <i class="fas fa-sign-in-alt"></i>
+                          S'inscrire</h:commandLink
+                        >
+                      </f:ajax>
+                    </h:form>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
 
+    <h:panelGroup id="pagefooter2">
+      <ui:include src="#{PageManageBean.page2}.xhtml"></ui:include>
+    </h:panelGroup>
 
-					<li class="nav-item mx-0 mx-lg-1"><f:ajax
-							render=":pagefooter2">
-							<h:commandLink styleClass="nav-link py-3 px-0 px-lg-3 rounded"
-								value="Services"
-								action="#{PageManageBean.setPage2('inscription1')}"></h:commandLink>
-						</f:ajax></li>
-					<li class="nav-item mx-0 mx-lg-1"><a
-						class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
-				</ul>
-			</h:form>
-			<div class="nav navbar-nav navbar-right">
-				<div class="dropdown">
-					<button
-						class="btn-custom backgroundBoxBlue text-white  dropdown-toggle"
-						type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
-						aria-expanded="false">
-						<span class="fa fa-user"></span> ☰
-					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-						<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax  render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('login')}">
-											<i class="fas fa-user-circle"></i> Se connecter</h:commandLink>
-									</f:ajax>
-								</h:form>
-								
-							</button>
-						</li>
+    <!-- SimpleArch : footer + navbar -->
 
-						 <li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('inscription1')}">
-											<i class="fas fa-sign-in-alt"></i> S'inscrire</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li> 
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	</nav>
+    <title>Tontàpat - Bienvenue</title>
+    <!-- Content main page -->
 
-	
-	<h:panelGroup id="pagefooter2">
-		<ui:include src="#{PageManageBean.page2}.xhtml"></ui:include>
+    <!--  Masthead-->
+    <header class="masthead">
+      <div class="container">
+        <div class="masthead-subheading">Bienvenue sur notre site!</div>
+        <div class="masthead-heading text-uppercase">
+          Retrouvez des moutons près de chez vous
+        </div>
+        <a
+          class="btn btnCalltoAction btn-confirmation btn-xl text-uppercase"
+          href="#recherche"
+          >Inscrivez-vous ici !</a
+        >
+      </div>
+    </header>
 
-	</h:panelGroup>
+    <!-- recherche Section-->
+    <section class="page-section recherche backgroundBoxGreen" id="recherche">
+      <div class="container">
+        <!-- recherche Section Heading-->
+        <h2
+          class="
+            page-section-heading
+            text-center text-uppercase text-secondary
+            mb-0
+          "
+        >
+          Recherche
+        </h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="divider-custom-line"></div>
+        </div>
+        <!-- Apres la barre d'etoile -->
+        <!-- recherche Grid Items-->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d335869.0132554424!2d2.6247221552246236!3d48.877721368526124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sfr!4v1628006041022!5m2!1sfr!2sfr"
+          width="100%"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+    </section>
 
+    <!-- About Section-->
+    <section
+      class="page-section recherche backgroundBoxBlue text-white mb-0"
+      id="service"
+    >
+      <div class="container">
+        <!-- About Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-white">
+          Nos Services
+        </h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="divider-custom-line"></div>
+        </div>
+        <!-- Apres la barre d'etoile -->
+        <!-- recherche Grid Items-->
+        <div class="row justify-content-center">
+          <!-- recherche Item 1-->
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div
+              class="recherche-item mx-auto"
+              data-bs-toggle="modal"
+              data-bs-target="#rechercheModal1"
+            >
+              <div
+                class="
+                  recherche-item-caption
+                  d-flex
+                  align-items-center
+                  justify-content-center
+                  h-100
+                  w-100
+                "
+              >
+                <div
+                  class="recherche-item-caption-content text-center text-white"
+                >
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img
+                class="img-fluid"
+                src="https://www.plantezcheznous.com/wp-content/uploads/2017/04/moutons-1200x600.jpg"
+                alt="..."
+              />
+            </div>
+          </div>
+          <!-- recherche Item 2-->
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div
+              class="recherche-item mx-auto"
+              data-bs-toggle="modal"
+              data-bs-target="#rechercheModal2"
+            >
+              <div
+                class="
+                  recherche-item-caption
+                  d-flex
+                  align-items-center
+                  justify-content-center
+                  h-100
+                  w-100
+                "
+              >
+                <div
+                  class="recherche-item-caption-content text-center text-white"
+                >
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img
+                class="img-fluid"
+                src="https://cdn.radiofrance.fr/s3/cruiser-production/2021/06/0a002399-321a-47b9-9f45-3bd5da46ca34/838_gettyimages-1221019001.webp"
+                alt="..."
+              />
+            </div>
+          </div>
+          <!-- recherche Item 3-->
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div
+              class="recherche-item mx-auto"
+              data-bs-toggle="modal"
+              data-bs-target="#rechercheModal3"
+            >
+              <div
+                class="
+                  recherche-item-caption
+                  d-flex
+                  align-items-center
+                  justify-content-center
+                  h-100
+                  w-100
+                "
+              >
+                <div
+                  class="recherche-item-caption-content text-center text-white"
+                >
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img
+                class="img-fluid"
+                src="https://prmeng.rosselcdn.net/sites/default/files/dpistyles_v2/ena_16_9_extra_big/2021/07/01/node_208477/38572031/public/2021/07/01/B9727557226Z.1_20210701145018_000%2BG4LIESMTI.2-0.jpg?itok=kczncLQl1625144636"
+                alt="..."
+              />
+            </div>
+          </div>
+          <!-- recherche Item 4-->
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+            <div
+              class="recherche-item mx-auto"
+              data-bs-toggle="modal"
+              data-bs-target="#rechercheModal4"
+            >
+              <div
+                class="
+                  recherche-item-caption
+                  d-flex
+                  align-items-center
+                  justify-content-center
+                  h-100
+                  w-100
+                "
+              >
+                <div
+                  class="recherche-item-caption-content text-center text-white"
+                >
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img
+                class="img-fluid"
+                src="https://lemagdesanimaux.ouest-france.fr/images/dossiers/2021-04/mouton-070146.jpg"
+                alt="..."
+              />
+            </div>
+          </div>
+          <!-- recherche Item 5-->
+          <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
+            <div
+              class="recherche-item mx-auto"
+              data-bs-toggle="modal"
+              data-bs-target="#rechercheModal5"
+            >
+              <div
+                class="
+                  recherche-item-caption
+                  d-flex
+                  align-items-center
+                  justify-content-center
+                  h-100
+                  w-100
+                "
+              >
+                <div
+                  class="recherche-item-caption-content text-center text-white"
+                >
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img
+                class="img-fluid"
+                src="https://depuismonhamac.jardiland.com/wp-content/uploads/2021/04/adopter-un-mouton1.jpg"
+                alt="..."
+              />
+            </div>
+          </div>
+          <!-- recherche Item 6-->
+          <div class="col-md-6 col-lg-4">
+            <div
+              class="recherche-item mx-auto"
+              data-bs-toggle="modal"
+              data-bs-target="#rechercheModal6"
+            >
+              <div
+                class="
+                  recherche-item-caption
+                  d-flex
+                  align-items-center
+                  justify-content-center
+                  h-100
+                  w-100
+                "
+              >
+                <div
+                  class="recherche-item-caption-content text-center text-white"
+                >
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img
+                class="img-fluid"
+                src="https://static.actu.fr/uploads/2020/06/22de-2790869-2-960x640.jpg"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
 
+        <!-- recherche Modals-->
+        <!-- recherche Modal 1-->
+        <div
+          class="recherche-modal modal fade"
+          id="rechercheModal1"
+          tabindex="-1"
+          aria-labelledby="rechercheModal1"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+              <div class="modal-header border-0">
+                <button
+                  class="btn-confirmation"
+                  type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body text-center pb-5">
+                <div class="container">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                      <!-- recherche Modal - Title-->
+                      <h2
+                        class="
+                          recherche-modal-title
+                          text-secondary text-uppercase
+                          mb-0
+                        "
+                      >
+                        Bilan carbone et qualité de vie
+                      </h2>
+                      <!-- Icon Divider-->
+                      <div class="divider-custom">
+                        <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon">
+                          <i class="fas fa-star"></i>
+                        </div>
+                        <div class="divider-custom-line"></div>
+                      </div>
+                      <!-- Apres la barre d'etoile -->
+                      <!-- recherche Modal - Image-->
+                      <img
+                        class="img-fluid rounded mb-5"
+                        src="https://www.plantezcheznous.com/wp-content/uploads/2017/04/moutons-1200x600.jpg"
+                        alt="..."
+                      />
+                      <!-- recherche Modal - Text-->
+                      <p class="mb-4 text-dark">
+                        Le pâturage a l’avantage de ne pas produire de déchets
+                        verts, il ne fait pas de bruit et améliore le bilan
+                        carbone du fait de la limitation du transport de
+                        matériaux et du non usage d’équipements motorisés.
+                      </p>
+                      <button
+                        class="btn btn-confirmation"
+                        href="#!"
+                        data-bs-dismiss="modal"
+                      >
+                        <i class="fas fa-times fa-fw"></i> Fermer
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- recherche Modal 2-->
+        <div
+          class="recherche-modal modal fade"
+          id="rechercheModal2"
+          tabindex="-1"
+          aria-labelledby="rechercheModal2"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+              <div class="modal-header border-0">
+                <button
+                  class="btn-confirmation"
+                  type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body text-center pb-5">
+                <div class="container">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                      <!-- recherche Modal - Title-->
+                      <h2
+                        class="
+                          recherche-modal-title
+                          text-secondary text-uppercase
+                          mb-0
+                        "
+                      >
+                        Préservation de la flore endémique
+                      </h2>
+                      <!-- Icon Divider-->
+                      <div class="divider-custom">
+                        <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon">
+                          <i class="fas fa-star"></i>
+                        </div>
+                        <div class="divider-custom-line"></div>
+                      </div>
+                      <!-- recherche Modal - Image-->
+                      <img
+                        class="img-fluid rounded mb-5"
+                        src="https://cdn.radiofrance.fr/s3/cruiser-production/2021/06/0a002399-321a-47b9-9f45-3bd5da46ca34/838_gettyimages-1221019001.webp"
+                        alt="..."
+                      />
+                      <!-- recherche Modal - Text-->
+                      <p class="mb-4 text-dark">
+                        Il améliore la biodiversité en favorisant
+                        l’hétérogénéité des espèces présentes sur site : ceci
+                        s’explique par les substrats créés par les déjections
+                        des moutons mais aussi par leurs préférences
+                        alimentaires qui privilégient certaines espèces.
+                      </p>
+                      <button
+                        class="btn btn-confirmation"
+                        href="#!"
+                        data-bs-dismiss="modal"
+                      >
+                        <i class="fas fa-times fa-fw"></i> Fermer
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- recherche Modal 3-->
+        <div
+          class="recherche-modal modal fade"
+          id="rechercheModal3"
+          tabindex="-1"
+          aria-labelledby="rechercheModal3"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+              <div class="modal-header border-0">
+                <button
+                  class="btn-confirmation"
+                  type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body text-center pb-5">
+                <div class="container">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                      <!-- recherche Modal - Title-->
+                      <h2
+                        class="
+                          recherche-modal-title
+                          text-secondary text-uppercase
+                          mb-0
+                        "
+                      >
+                        Sauvegarde d’espèces patrimoniales
+                      </h2>
+                      <!-- Icon Divider-->
+                      <div class="divider-custom">
+                        <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon">
+                          <i class="fas fa-star"></i>
+                        </div>
+                        <div class="divider-custom-line"></div>
+                      </div>
+                      <!-- recherche Modal - Image-->
+                      <img
+                        class="img-fluid rounded mb-5"
+                        src="https://prmeng.rosselcdn.net/sites/default/files/dpistyles_v2/ena_16_9_extra_big/2021/07/01/node_208477/38572031/public/2021/07/01/B9727557226Z.1_20210701145018_000%2BG4LIESMTI.2-0.jpg?itok=kczncLQl1625144636"
+                        alt="..."
+                      />
+                      <!-- recherche Modal - Text-->
+                      <p class="mb-4 text-dark">
+                        Les races de mouton choisies correspondent à une
+                        dynamique de sauvegarde d’espèces anciennes menacées. Il
+                        présente un avantage social. Le pâturage est possible
+                        même sur des terrains inaccessibles ou impraticables aux
+                        machines et permet de maintenir un milieu ouvert sans
+                        mécanisation.
+                      </p>
+                      <button
+                        class="btn btn-confirmation"
+                        href="#!"
+                        data-bs-dismiss="modal"
+                      >
+                        <i class="fas fa-times fa-fw"></i> Fermer
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- recherche Modal 4-->
+        <div
+          class="recherche-modal modal fade"
+          id="rechercheModal4"
+          tabindex="-1"
+          aria-labelledby="rechercheModal4"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+              <div class="modal-header border-0">
+                <button
+                  class="btn-confirmation"
+                  type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body text-center pb-5">
+                <div class="container">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                      <!-- recherche Modal - Title-->
+                      <h2
+                        class="
+                          recherche-modal-title
+                          text-secondary text-uppercase
+                          mb-0
+                        "
+                      >
+                        Quand et où ?
+                      </h2>
+                      <!-- Icon Divider-->
+                      <div class="divider-custom">
+                        <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon">
+                          <i class="fas fa-star"></i>
+                        </div>
+                        <div class="divider-custom-line"></div>
+                      </div>
+                      <!-- recherche Modal - Image-->
+                      <img
+                        class="img-fluid rounded mb-5"
+                        src="https://lemagdesanimaux.ouest-france.fr/images/dossiers/2021-04/mouton-070146.jpg"
+                        alt="..."
+                      />
+                      <!-- recherche Modal - Text-->
+                      <p class="mb-4 text-dark">
+                        Quel que soit le système de pâturage adopté, les
+                        périodes de pâturage doivent être adaptées aux résultats
+                        attendus. Par exemple, l’éco-pâturage mené au printemps
+                        va être efficace contre les graminées. S’il est mené en
+                        été, il sera efficace sur les jeunes pousses d’arbres,
+                        et s’il est mené en automne-hiver, il aura peu d’impact
+                        sur les graminées et les pousses d’arbres et créera peu
+                        de dommage sur la flore. Que ce soit pour contrôler,
+                        sans intervention mécanique ni produit chimique, la
+                        diffusion de certaines plantes invasives ou simplement
+                        comme mode de tonte alternatif, l’éco-pâturage est de
+                        plus en plus envisagé en milieu urbain puisque cette
+                        pratique présente de multiples avantages sur les plans
+                        environnemental, social et économique.
+                      </p>
+                      <button
+                        class="btn btn-confirmation"
+                        href="#!"
+                        data-bs-dismiss="modal"
+                      >
+                        <i class="fas fa-times fa-fw"></i> Fermer
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- recherche Modal 5-->
+        <div
+          class="recherche-modal modal fade"
+          id="rechercheModal5"
+          tabindex="-1"
+          aria-labelledby="rechercheModal5"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+              <div class="modal-header border-0">
+                <button
+                  class="btn-confirmation"
+                  type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body text-center pb-5">
+                <div class="container">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                      <!-- recherche Modal - Title-->
+                      <h2
+                        class="
+                          recherche-modal-title
+                          text-secondary text-uppercase
+                          mb-0
+                        "
+                      >
+                        Dimension sociale
+                      </h2>
+                      <!-- Icon Divider-->
+                      <div class="divider-custom">
+                        <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon">
+                          <i class="fas fa-star"></i>
+                        </div>
+                        <div class="divider-custom-line"></div>
+                      </div>
+                      <!-- recherche Modal - Image-->
+                      <img
+                        class="img-fluid rounded mb-5"
+                        src="https://depuismonhamac.jardiland.com/wp-content/uploads/2021/04/adopter-un-mouton1.jpg"
+                        alt="..."
+                      />
+                      <!-- recherche Modal - Text-->
+                      <p class="mb-4 text-dark">
+                        L’éco-pâturage permet de créer du lien social. Il est
+                        souvent très apprécié des riverains qui valorisent un
+                        retour de la nature en ville et y trouvent un charme
+                        bucolique. En effet, cette pratique contribue à donner
+                        une image « verte » et positive du site voire de la
+                        ville. C’est aussi une belle opportunité de sensibiliser
+                        le grand public à la gestion écologique des espaces
+                        verts et naturels : en général, les animaux bénéficient
+                        d’un capital sympathie auprès des habitants !
+                      </p>
+                      <button
+                        class="btn btn-confirmation"
+                        href="#!"
+                        data-bs-dismiss="modal"
+                      >
+                        <i class="fas fa-times fa-fw"></i> Fermer
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- recherche Modal 6-->
+        <div
+          class="recherche-modal modal fade"
+          id="rechercheModal6"
+          tabindex="-1"
+          aria-labelledby="rechercheModal6"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+              <div class="modal-header border-0">
+                <button
+                  class="btn-confirmation"
+                  type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body text-center pb-5">
+                <div class="container">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                      <!-- recherche Modal - Title-->
+                      <h2
+                        class="
+                          recherche-modal-title
+                          text-secondary text-uppercase
+                          mb-0
+                        "
+                      >
+                        Dimension économique
+                      </h2>
+                      <!-- Icon Divider-->
+                      <div class="divider-custom">
+                        <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon">
+                          <i class="fas fa-star"></i>
+                        </div>
+                        <div class="divider-custom-line"></div>
+                      </div>
+                      <!-- recherche Modal - Image-->
+                      <img
+                        class="img-fluid rounded mb-5"
+                        src="https://static.actu.fr/uploads/2020/06/22de-2790869-2-960x640.jpg"
+                        alt="..."
+                      />
+                      <!-- recherche Modal - Text-->
+                      <p class="mb-4 text-dark">
+                        Le projet d’éco-pâturage, s’il a été bien conçu, se
+                        traduit par une charge de travail réduite pour les
+                        gestionnaires puisqu’une fois les animaux installés, les
+                        actions de tonte et de fauche sont limitées à la gestion
+                        des secteurs de refus. Il n’y a donc pas ou peu de
+                        production ni d’export de végétation. Encore beaucoup
+                        trop utilisées pour leur seule activité de broutage, les
+                        bêtes peuvent être souvent valorisées à travers
+                        plusieurs filières plus ou moins développées (production
+                        de lait, viande, laine,…). Cela est d’autant plus le cas
+                        lorsque l’éco-pâturage est pratiqué en collaboration
+                        avec un éleveur local.
+                      </p>
+                      <button
+                        class="btn btn-confirmation"
+                        href="#!"
+                        data-bs-dismiss="modal"
+                      >
+                        <i class="fas fa-times fa-fw"></i> Fermer
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section-->
+    <section class="page-section backgroundBoxGreen" id="contact">
+      <div class="container">
+        <!-- Contact Section Heading-->
+        <h2
+          class="
+            page-section-heading
+            text-center text-uppercase text-secondary
+            mb-0
+          "
+        >
+          Contacts
+        </h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="divider-custom-line"></div>
+        </div>
+        <!-- Apres la barre d'etoile -->
+        <!-- Contact Section Form-->
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-xl-7">
+            <img
+              class="img-fluid"
+              src="https://static.actu.fr/uploads/2020/09/chevre.jpg"
+              alt="..."
+            />
+            <p class="pt-3" style="text-align: justify; letter-spacing: 1.5px">
+              Vous souhaitez une offre alternative à l’utilisation de matériel
+              agricole et de tondeuses pour entretenir vos espaces verts ? Que
+              vous soyez une entreprise privée, une collectivité publique ou un
+              particulier, notre société vous offre un grand choix de services
+              parfaitement adaptés à vos exigences en France. Vous souhaitez en
+              savoir plus sur notre gamme de services ? Consultez nos offres.
+              Faites connaissance avec notre entreprise. Nous sommes à votre
+              disposition pour toute demande ou question.
+              <p style="text-align: justify; letter-spacing: 1.5px">
+                N’hésitez pas à nous contacter.
+              </p>
+            </p>
+            <button class="btn btn-confirmation">Ecrivez-nous!</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Bootstrap core JS-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    ></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
-<!-- SimpleArch : footer + navbar -->
-
-
-		<title>Tontàpat - Bienvenue</title>
-		<!-- Content main page -->
-
-
-
-
-		<!--  Masthead-->
-		<header class="masthead">
-		<div class="container">
-			<div class="masthead-subheading">Bienvenue sur notre site!</div>
-			<div class="masthead-heading text-uppercase">Retrouvez des
-				moutons près de chez vous</div>
-			<a class="btn btnCalltoAction btn-confirmation btn-xl text-uppercase"
-				href="#recherche">Inscrivez-vous ici !</a>
-		</div>
-		</header>
-
-		<!-- recherche Section-->
-		<section class="page-section recherche backgroundBoxGreen"
-			id="recherche">
-		<div class="container">
-			<!-- recherche Section Heading-->
-			<h2
-				class="page-section-heading text-center text-uppercase text-secondary mb-0">Recherche</h2>
-			<!-- Icon Divider-->
-			<div class="divider-custom">
-				<div class="divider-custom-line"></div>
-				<div class="divider-custom-icon">
-					<i class="fas fa-star"></i>
-				</div>
-				<div class="divider-custom-line"></div>
-			</div>
-			<!-- Apres la barre d'etoile -->
-			<!-- recherche Grid Items-->
-			<iframe
-				src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d335869.0132554424!2d2.6247221552246236!3d48.877721368526124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sfr!4v1628006041022!5m2!1sfr!2sfr"
-				width="100%" height="450" style="border: 0;" allowfullscreen=""
-				loading="lazy"></iframe>
-		</div>
-		</section>
-
-		<!-- About Section-->
-		<section
-			class="page-section recherche backgroundBoxBlue text-white mb-0"
-			id="about">
-		<div class="container">
-			<!-- About Section Heading-->
-			<h2
-				class="page-section-heading text-center text-uppercase text-white">Nos
-				Services</h2>
-			<!-- Icon Divider-->
-			<div class="divider-custom divider-light">
-				<div class="divider-custom-line"></div>
-				<div class="divider-custom-icon">
-					<i class="fas fa-star"></i>
-				</div>
-				<div class="divider-custom-line"></div>
-			</div>
-			<!-- Apres la barre d'etoile -->
-			<!-- recherche Grid Items-->
-			<div class="row justify-content-center">
-				<!-- recherche Item 1-->
-				<div class="col-md-6 col-lg-4 mb-5">
-					<div class="recherche-item mx-auto" data-bs-toggle="modal"
-						data-bs-target="#rechercheModal1">
-						<div
-							class="recherche-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-							<div
-								class="recherche-item-caption-content text-center text-white">
-								<i class="fas fa-plus fa-3x"></i>
-							</div>
-						</div>
-						<img class="img-fluid"
-							src="https://www.plantezcheznous.com/wp-content/uploads/2017/04/moutons-1200x600.jpg"
-							alt="..." />
-					</div>
-				</div>
-				<!-- recherche Item 2-->
-				<div class="col-md-6 col-lg-4 mb-5">
-					<div class="recherche-item mx-auto" data-bs-toggle="modal"
-						data-bs-target="#rechercheModal2">
-						<div
-							class="recherche-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-							<div
-								class="recherche-item-caption-content text-center text-white">
-								<i class="fas fa-plus fa-3x"></i>
-							</div>
-						</div>
-						<img class="img-fluid"
-							src="https://cdn.radiofrance.fr/s3/cruiser-production/2021/06/0a002399-321a-47b9-9f45-3bd5da46ca34/838_gettyimages-1221019001.webp"
-							alt="..." />
-					</div>
-				</div>
-				<!-- recherche Item 3-->
-				<div class="col-md-6 col-lg-4 mb-5">
-					<div class="recherche-item mx-auto" data-bs-toggle="modal"
-						data-bs-target="#rechercheModal3">
-						<div
-							class="recherche-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-							<div
-								class="recherche-item-caption-content text-center text-white">
-								<i class="fas fa-plus fa-3x"></i>
-							</div>
-						</div>
-						<img class="img-fluid"
-							src="https://prmeng.rosselcdn.net/sites/default/files/dpistyles_v2/ena_16_9_extra_big/2021/07/01/node_208477/38572031/public/2021/07/01/B9727557226Z.1_20210701145018_000%2BG4LIESMTI.2-0.jpg?itok=kczncLQl1625144636"
-							alt="..." />
-					</div>
-				</div>
-				<!-- recherche Item 4-->
-				<div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-					<div class="recherche-item mx-auto" data-bs-toggle="modal"
-						data-bs-target="#rechercheModal4">
-						<div
-							class="recherche-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-							<div
-								class="recherche-item-caption-content text-center text-white">
-								<i class="fas fa-plus fa-3x"></i>
-							</div>
-						</div>
-						<img class="img-fluid"
-							src="https://lemagdesanimaux.ouest-france.fr/images/dossiers/2021-04/mouton-070146.jpg"
-							alt="..." />
-					</div>
-				</div>
-				<!-- recherche Item 5-->
-				<div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-					<div class="recherche-item mx-auto" data-bs-toggle="modal"
-						data-bs-target="#rechercheModal5">
-						<div
-							class="recherche-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-							<div
-								class="recherche-item-caption-content text-center text-white">
-								<i class="fas fa-plus fa-3x"></i>
-							</div>
-						</div>
-						<img class="img-fluid"
-							src="https://depuismonhamac.jardiland.com/wp-content/uploads/2021/04/adopter-un-mouton1.jpg"
-							alt="..." />
-					</div>
-				</div>
-				<!-- recherche Item 6-->
-				<div class="col-md-6 col-lg-4">
-					<div class="recherche-item mx-auto" data-bs-toggle="modal"
-						data-bs-target="#rechercheModal6">
-						<div
-							class="recherche-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-							<div
-								class="recherche-item-caption-content text-center text-white">
-								<i class="fas fa-plus fa-3x"></i>
-							</div>
-						</div>
-						<img class="img-fluid"
-							src="https://static.actu.fr/uploads/2020/06/22de-2790869-2-960x640.jpg"
-							alt="..." />
-					</div>
-				</div>
-			</div>
-
-			<!-- recherche Modals-->
-			<!-- recherche Modal 1-->
-			<div class="recherche-modal modal fade" id="rechercheModal1"
-				tabindex="-1" aria-labelledby="rechercheModal1" aria-hidden="true">
-				<div class="modal-dialog modal-xl">
-					<div class="modal-content">
-						<div class="modal-header border-0">
-							<button class="btn-confirmation" type="button"
-								data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body text-center pb-5">
-							<div class="container">
-								<div class="row justify-content-center">
-									<div class="col-lg-8">
-										<!-- recherche Modal - Title-->
-										<h2
-											class="recherche-modal-title text-secondary text-uppercase mb-0">Bilan
-											carbone et qualité de vie</h2>
-										<!-- Icon Divider-->
-										<div class="divider-custom">
-											<div class="divider-custom-line"></div>
-											<div class="divider-custom-icon">
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="divider-custom-line"></div>
-										</div>
-										<!-- Apres la barre d'etoile -->
-										<!-- recherche Modal - Image-->
-										<img class="img-fluid rounded mb-5"
-											src="https://www.plantezcheznous.com/wp-content/uploads/2017/04/moutons-1200x600.jpg"
-											alt="..." />
-										<!-- recherche Modal - Text-->
-										<p class="mb-4 text-dark">Le pâturage a l’avantage de ne
-											pas produire de déchets verts, il ne fait pas de bruit et
-											améliore le bilan carbone du fait de la limitation du
-											transport de matériaux et du non usage d’équipements
-											motorisés.</p>
-										<button class="btn btn-confirmation" href="#!"
-											data-bs-dismiss="modal">
-											<i class="fas fa-times fa-fw"></i> Fermer
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- recherche Modal 2-->
-			<div class="recherche-modal modal fade" id="rechercheModal2"
-				tabindex="-1" aria-labelledby="rechercheModal2" aria-hidden="true">
-				<div class="modal-dialog modal-xl">
-					<div class="modal-content">
-						<div class="modal-header border-0">
-							<button class="btn-confirmation" type="button"
-								data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body text-center pb-5">
-							<div class="container">
-								<div class="row justify-content-center">
-									<div class="col-lg-8">
-										<!-- recherche Modal - Title-->
-										<h2
-											class="recherche-modal-title text-secondary text-uppercase mb-0">Préservation
-											de la flore endémique</h2>
-										<!-- Icon Divider-->
-										<div class="divider-custom">
-											<div class="divider-custom-line"></div>
-											<div class="divider-custom-icon">
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="divider-custom-line"></div>
-										</div>
-										<!-- recherche Modal - Image-->
-										<img class="img-fluid rounded mb-5"
-											src="https://cdn.radiofrance.fr/s3/cruiser-production/2021/06/0a002399-321a-47b9-9f45-3bd5da46ca34/838_gettyimages-1221019001.webp"
-											alt="..." />
-										<!-- recherche Modal - Text-->
-										<p class="mb-4 text-dark ">Il améliore la biodiversité en
-											favorisant l’hétérogénéité des espèces présentes sur site :
-											ceci s’explique par les substrats créés par les déjections
-											des moutons mais aussi par leurs préférences alimentaires qui
-											privilégient certaines espèces.</p>
-										<button class="btn btn-confirmation" href="#!"
-											data-bs-dismiss="modal">
-											<i class="fas fa-times fa-fw"></i> Fermer
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- recherche Modal 3-->
-			<div class="recherche-modal modal fade" id="rechercheModal3"
-				tabindex="-1" aria-labelledby="rechercheModal3" aria-hidden="true">
-				<div class="modal-dialog modal-xl">
-					<div class="modal-content">
-						<div class="modal-header border-0">
-							<button class="btn-confirmation" type="button"
-								data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body text-center pb-5">
-							<div class="container">
-								<div class="row justify-content-center">
-									<div class="col-lg-8">
-										<!-- recherche Modal - Title-->
-										<h2
-											class="recherche-modal-title text-secondary text-uppercase mb-0">Sauvegarde
-											d’espèces patrimoniales</h2>
-										<!-- Icon Divider-->
-										<div class="divider-custom">
-											<div class="divider-custom-line"></div>
-											<div class="divider-custom-icon">
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="divider-custom-line"></div>
-										</div>
-										<!-- recherche Modal - Image-->
-										<img class="img-fluid rounded mb-5"
-											src="https://prmeng.rosselcdn.net/sites/default/files/dpistyles_v2/ena_16_9_extra_big/2021/07/01/node_208477/38572031/public/2021/07/01/B9727557226Z.1_20210701145018_000%2BG4LIESMTI.2-0.jpg?itok=kczncLQl1625144636"
-											alt="..." />
-										<!-- recherche Modal - Text-->
-										<p class="mb-4 text-dark">Les races de mouton choisies
-											correspondent à une dynamique de sauvegarde d’espèces
-											anciennes menacées. Il présente un avantage social. Le
-											pâturage est possible même sur des terrains inaccessibles ou
-											impraticables aux machines et permet de maintenir un milieu
-											ouvert sans mécanisation.</p>
-										<button class="btn btn-confirmation" href="#!"
-											data-bs-dismiss="modal">
-											<i class="fas fa-times fa-fw"></i> Fermer
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- recherche Modal 4-->
-			<div class="recherche-modal modal fade" id="rechercheModal4"
-				tabindex="-1" aria-labelledby="rechercheModal4" aria-hidden="true">
-				<div class="modal-dialog modal-xl">
-					<div class="modal-content">
-						<div class="modal-header border-0">
-							<button class="btn-confirmation" type="button"
-								data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body text-center pb-5">
-							<div class="container">
-								<div class="row justify-content-center">
-									<div class="col-lg-8">
-										<!-- recherche Modal - Title-->
-										<h2
-											class="recherche-modal-title text-secondary text-uppercase mb-0">Quand
-											et où ?</h2>
-										<!-- Icon Divider-->
-										<div class="divider-custom">
-											<div class="divider-custom-line"></div>
-											<div class="divider-custom-icon">
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="divider-custom-line"></div>
-										</div>
-										<!-- recherche Modal - Image-->
-										<img class="img-fluid rounded mb-5"
-											src="https://lemagdesanimaux.ouest-france.fr/images/dossiers/2021-04/mouton-070146.jpg"
-											alt="..." />
-										<!-- recherche Modal - Text-->
-										<p class="mb-4 text-dark">Quel que soit le système de
-											pâturage adopté, les périodes de pâturage doivent être
-											adaptées aux résultats attendus. Par exemple, l’éco-pâturage
-											mené au printemps va être efficace contre les graminées. S’il
-											est mené en été, il sera efficace sur les jeunes pousses
-											d’arbres, et s’il est mené en automne-hiver, il aura peu
-											d’impact sur les graminées et les pousses d’arbres et créera
-											peu de dommage sur la flore. Que ce soit pour contrôler, sans
-											intervention mécanique ni produit chimique, la diffusion de
-											certaines plantes invasives ou simplement comme mode de tonte
-											alternatif, l’éco-pâturage est de plus en plus envisagé en
-											milieu urbain puisque cette pratique présente de multiples
-											avantages sur les plans environnemental, social et
-											économique.</p>
-										<button class="btn btn-confirmation" href="#!"
-											data-bs-dismiss="modal">
-											<i class="fas fa-times fa-fw"></i> Fermer
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- recherche Modal 5-->
-			<div class="recherche-modal modal fade" id="rechercheModal5"
-				tabindex="-1" aria-labelledby="rechercheModal5" aria-hidden="true">
-				<div class="modal-dialog modal-xl">
-					<div class="modal-content">
-						<div class="modal-header border-0">
-							<button class="btn-confirmation" type="button"
-								data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body text-center pb-5">
-							<div class="container">
-								<div class="row justify-content-center">
-									<div class="col-lg-8">
-										<!-- recherche Modal - Title-->
-										<h2
-											class="recherche-modal-title text-secondary text-uppercase mb-0">Dimension
-											sociale</h2>
-										<!-- Icon Divider-->
-										<div class="divider-custom">
-											<div class="divider-custom-line"></div>
-											<div class="divider-custom-icon">
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="divider-custom-line"></div>
-										</div>
-										<!-- recherche Modal - Image-->
-										<img class="img-fluid rounded mb-5"
-											src="https://depuismonhamac.jardiland.com/wp-content/uploads/2021/04/adopter-un-mouton1.jpg"
-											alt="..." />
-										<!-- recherche Modal - Text-->
-										<p class="mb-4 text-dark">L’éco-pâturage permet de créer
-											du lien social. Il est souvent très apprécié des riverains
-											qui valorisent un retour de la nature en ville et y trouvent
-											un charme bucolique. En effet, cette pratique contribue à
-											donner une image « verte » et positive du site voire de la
-											ville. C’est aussi une belle opportunité de sensibiliser le
-											grand public à la gestion écologique des espaces verts et
-											naturels : en général, les animaux bénéficient d’un capital
-											sympathie auprès des habitants !</p>
-										<button class="btn btn-confirmation" href="#!"
-											data-bs-dismiss="modal">
-											<i class="fas fa-times fa-fw"></i> Fermer
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- recherche Modal 6-->
-			<div class="recherche-modal modal fade" id="rechercheModal6"
-				tabindex="-1" aria-labelledby="rechercheModal6" aria-hidden="true">
-				<div class="modal-dialog modal-xl">
-					<div class="modal-content">
-						<div class="modal-header border-0">
-							<button class="btn-confirmation" type="button"
-								data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body text-center pb-5">
-							<div class="container">
-								<div class="row justify-content-center">
-									<div class="col-lg-8">
-										<!-- recherche Modal - Title-->
-										<h2
-											class="recherche-modal-title text-secondary text-uppercase mb-0">Dimension
-											économique</h2>
-										<!-- Icon Divider-->
-										<div class="divider-custom">
-											<div class="divider-custom-line"></div>
-											<div class="divider-custom-icon">
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="divider-custom-line"></div>
-										</div>
-										<!-- recherche Modal - Image-->
-										<img class="img-fluid rounded mb-5"
-											src="https://static.actu.fr/uploads/2020/06/22de-2790869-2-960x640.jpg"
-											alt="..." />
-										<!-- recherche Modal - Text-->
-										<p class="mb-4 text-dark">Le projet d’éco-pâturage, s’il a
-											été bien conçu, se traduit par une charge de travail réduite
-											pour les gestionnaires puisqu’une fois les animaux installés,
-											les actions de tonte et de fauche sont limitées à la gestion
-											des secteurs de refus. Il n’y a donc pas ou peu de production
-											ni d’export de végétation. Encore beaucoup trop utilisées
-											pour leur seule activité de broutage, les bêtes peuvent être
-											souvent valorisées à travers plusieurs filières plus ou moins
-											développées (production de lait, viande, laine,…). Cela est
-											d’autant plus le cas lorsque l’éco-pâturage est pratiqué en
-											collaboration avec un éleveur local.</p>
-										<button class="btn btn-confirmation" href="#!"
-											data-bs-dismiss="modal">
-											<i class="fas fa-times fa-fw"></i> Fermer
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-		</div>
-		</section>
-		<!-- Contact Section-->
-		<section class="page-section backgroundBoxGreen" id="contact">
-		<div class="container">
-			<!-- Contact Section Heading-->
-			<h2
-				class="page-section-heading text-center text-uppercase text-secondary mb-0">Contacts</h2>
-			<!-- Icon Divider-->
-			<div class="divider-custom">
-				<div class="divider-custom-line"></div>
-				<div class="divider-custom-icon">
-					<i class="fas fa-star"></i>
-				</div>
-				<div class="divider-custom-line"></div>
-			</div>
-			<!-- Apres la barre d'etoile -->
-			<!-- Contact Section Form-->
-			<div class="row justify-content-center">
-				<div class="col-lg-8 col-xl-7">
-					<img class="img-fluid"
-						src="https://static.actu.fr/uploads/2020/09/chevre.jpg" alt="..." />
-					<p class="pt-3" style="text-align: justify; letter-spacing: 1.5px;">
-						Vous souhaitez une offre alternative à l’utilisation de matériel
-						agricole et de tondeuses pour entretenir vos espaces verts ? Que
-						vous soyez une entreprise privée, une collectivité publique ou un
-						particulier, notre société vous offre un grand choix de services
-						parfaitement adaptés à vos exigences en France. Vous souhaitez en
-						savoir plus sur notre gamme de services ? Consultez nos offres.
-						Faites connaissance avec notre entreprise. Nous sommes à votre
-						disposition pour toute demande ou question.
-						<p style="text-align: justify; letter-spacing: 1.5px;">N’hésitez
-							pas à nous contacter.</p>
-					</p>
-					<button class="btn btn-confirmation">Ecrivez-nous!</button>
-				</div>
-
-			</div>
-		</div>
-		</section>
-
-
-
-
-
-
-
-
-
-
-		<!-- Bootstrap core JS-->
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-		<!-- Core theme JS-->
-		<script src="js/scripts.js"></script>
-		<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
-
-	
-	<!-- Footer-->
-	<footer class="footer text-center">
-	<div class="container">
-		<div class="row">
-			<!-- Footer Location-->
-			<div class="col-lg-4 mb-5 mb-lg-0">
-				<h4 class="text-uppercase mb-4">Adresse</h4>
-				<p class="lead mb-0">
-					9 Bd du Général de Gaulle <br /> 92120 MONTROUGE
-				</p>
-			</div>
-			<!-- Footer Social Icons-->
-			<div class="col-lg-4 mb-5 mb-lg-0">
-				<h4 class="text-uppercase mb-4">Tontàpat</h4>
-				<a class="btn btn-outline-light btn-social mx-1" href="#!"><i
-					class="fab fa-fw fa-facebook-f"></i></a> <a
-					class="btn btn-outline-light btn-social mx-1" href="#!"><i
-					class="fab fa-fw fa-twitter"></i></a> <a
-					class="btn btn-outline-light btn-social mx-1" href="#!"><i
-					class="fab fa-fw fa-linkedin-in"></i></a> <a
-					class="btn btn-outline-light btn-social mx-1" href="#!"><i
-					class="fab fa-fw fa-dribbble"></i></a>
-			</div>
-			<!-- Footer About Text-->
-			<div class="col-lg-4">
-				<h4 class="text-uppercase mb-4">A PROPOS DE NOUS</h4>
-				<p class="lead mb-0">Groupe2@eql.com</p>
-			</div>
-		</div>
-	</div>
-	</footer>
-	<!-- Copyright Section-->
-	<div class="copyright py-4 text-center text-white">
-		<div class="container">
-			<small>Copyright &copy; Tontàpat 2021</small>
-		</div>
-	</div>
-	
-
-
-
-
-
-
-</h:body>
+    <!-- Footer-->
+    <footer class="footer text-center">
+      <div class="container">
+        <div class="row">
+          <!-- Footer Location-->
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <h4 class="text-uppercase mb-4">Adresse</h4>
+            <p class="lead mb-0">
+              9 Bd du Général de Gaulle <br /> 92120 MONTROUGE
+            </p>
+          </div>
+          <!-- Footer Social Icons-->
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <h4 class="text-uppercase mb-4">Tontàpat</h4>
+            <a class="btn btn-outline-light btn-social mx-1" href="#!"
+              ><i class="fab fa-fw fa-facebook-f"></i
+            ></a>
+            <a class="btn btn-outline-light btn-social mx-1" href="#!"
+              ><i class="fab fa-fw fa-twitter"></i
+            ></a>
+            <a class="btn btn-outline-light btn-social mx-1" href="#!"
+              ><i class="fab fa-fw fa-linkedin-in"></i
+            ></a>
+            <a class="btn btn-outline-light btn-social mx-1" href="#!"
+              ><i class="fab fa-fw fa-dribbble"></i
+            ></a>
+          </div>
+          <!-- Footer About Text-->
+          <div class="col-lg-4">
+            <h4 class="text-uppercase mb-4">A PROPOS DE NOUS</h4>
+            <p class="lead mb-0">Groupe2@eql.com</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Copyright Section-->
+    <div class="copyright py-4 text-center text-white">
+      <div class="container">
+        <small>Copyright &copy; Tontàpat 2021</small>
+      </div>
+    </div>
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+  </h:body>
 </html>
