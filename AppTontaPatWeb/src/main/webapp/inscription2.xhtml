@@ -1,46 +1,67 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-
-
-	<section class="conexion-popup">
-		<div class="container-fluid">
-			<div class="row justify-content-md-center">
-				<div class="col-3"></div>
-				<div class="col-9">
-					<ul class="breadcrumbs">
-						<li><a href="">1. Email </a></li>
-						<li><a href="" class="current">2. Vos informations</a></li>
-						<li><a href="">3. Vos coordonnées</a></li>
-					</ul>
-					<h3>Rejoignez la communauté</h3>
-					<h5>Venez faire paturer votre terrain</h5>
-					<div class="mb-3 align-left">
-						<label for="surnameInput" class="form-label">Nom</label><input
-							type="text" class="form-control" id="nameInput"
-							placeholder="Cuquemy" /><label for="name-input"
-							class="form-label ">Prénom</label><input type="text"
-							class="form-control" id="name-input" rows="3" placeholder="Paul"></input><label
-							for="birth-date-input" class="form-label ">Date de
-							naissance</label><input type="date" class="form-control"
-							id="birth-date-input" rows="3"></input><label for="phone-input"
-							class="form-label ">Numéro de téléphone</label><input type="tel"
-							class="form-control" id="phone-input" rows="3"
-							placeholder="0612345678"></input>
-						<div class="d-grid gap-2">
-							<button class="btn btn-primary " type="submit">
-								<f:ajax render=":pagefooter2">
-									<h:commandLink styleClass="" value="Suite"
-										action="#{PageManageBean.setPage2('inscription3')}"></h:commandLink>
-								</f:ajax>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
+<ui:composition
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+  <section class="conexion-popup">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-3"></div>
+        <div class="col-9">
+          <ul class="breadcrumbs">
+            <li><a href="">1. Email </a></li>
+            <li><a href="" class="current">2. Vos informations</a></li>
+            <li><a href="">3. Vos coordonnées</a></li>
+          </ul>
+          <h3>Rejoignez la communauté</h3>
+          <h5>Venez faire paturer votre terrain</h5>
+          <div class="mb-3 align-left">
+            <h:form>
+              <label for="surnameInput" class="form-label">Nom</label
+              ><h:inputText
+                type="text"
+                class="form-control"
+                id="nameInput"
+                placeholder="Cuquemy"
+                value="#{mbAccount.name}"
+              /><label for="name-input" class="form-label">Prénom</label
+              ><h:inputText
+                type="text"
+                class="form-control"
+                id="name-input"
+                rows="3"
+                placeholder="Paul"
+                value="#{mbAccount.surNname}"
+              /><label for="birth-date-input" class="form-label"
+                >Date de naissance</label
+              ><h:inputText
+                type="date"
+                class="form-control"
+                id="birth-date-input"
+                rows="3"
+                value="#{mbAccount.birth}"
+              /><label for="phone-input" class="form-label"
+                >Numéro de téléphone</label
+              ><h:inputText
+                type="tel"
+                class="form-control"
+                id="phone-input"
+                rows="3"
+                placeholder="0612345678"
+                value="#{mbAccount.phone}"
+              />
+              <div class="d-grid gap-2">
+                <h:commandLink
+                  styleClass=""
+                  value="Suite"
+                  action="#{mbAccount.verifFormP2(PageManageBean)}"
+                ></h:commandLink>
+              </div>
+            </h:form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </ui:composition>
