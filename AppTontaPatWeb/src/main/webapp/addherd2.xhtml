@@ -3,100 +3,91 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<div class="popup-containerAjoutHerd" id="container">
-	<section class="conexion-popupAjout">
-		<div class="container-fluid">
-			<div class="row justify-content-md-center">
-				<div class="col-1"></div>
-				<h:form>
-				<f:ajax render=":pagefooter2">
-					<button id="close" class="popup-buttonAjout">
-						<h:commandLink styleClass="dropdown-item" value=""
-							action="#{PageManageBean.setPage2('blank')}">
-							<i class="far fa-window-close"></i>
-						</h:commandLink>
-					</button>
-				</f:ajax>
-			</h:form>
-				
-				<div class="col-9">
-					
-					<h3 class="mt-5">Ajouter un troupeau</h3>
-					<div class="mb-3 align-left">
-						
-							
-	  <h:form>
-  <div style="flex-wrap:wrap;">
-  <div class="form-group col-md-4">
+	<div class="popup-containerAjoutHerd" id="container">
+		<section class="conexion-popupAjout">
+			<div class="container-fluid">
+				<div class="row justify-content-md-center">
+					<div class="col-1"></div>
+					<h:form>
+						<f:ajax render=":pagefooter2">
+							<button id="close" class="popup-buttonAjout">
+								<h:commandLink styleClass="dropdown-item" value=""
+									action="#{PageManageBean.setPage2('blank')}">
+									<i class="far fa-window-close"></i>
+								</h:commandLink>
+							</button>
+						</f:ajax>
+					</h:form>
+
+					<div class="col-9">
+
+						<h3 class="mt-5">Ajouter un troupeau</h3>
+						<div class="mb-3 align-left">
+
+
+							  <h:form>
+ <div class="form-group col-md-4">
     <h:outputLabel for="race" value="Race :"/>
-    <h:selectOneMenu id="race" class="form-control" value="{mbZipCode.selectedCity}" >
+    <h:selectOneMenu id="race" class="form-control" value="{mbHerd.selectedRace}" >
     <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
+	<f:selectItems value="#{mbHerd.races}"></f:selectItems>
       </h:selectOneMenu>
    
-  </div>		
+  </div>
+  
+  
   <div class="form-group col-md-4">
     <h:outputLabel for="specie" value="Espèce :"/>
-    <h:selectOneMenu id="specie" class="form-control" value="{mbZipCode.selectedCity}" >
+    <h:selectOneMenu id="specie" class="form-control" value="{mbHerd.selectedSpecie}" >
     <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
+	<f:selectItems value="#{mbHerd.species}"></f:selectItems>
       </h:selectOneMenu>
    
   </div>
-  
-  
- <div class="form-group col-md-4">
-    <h:outputLabel for="size" value="Taille du Troupeau :"/>
-    <h:selectOneMenu id="size" class="form-control" value="{mbZipCode.selectedCity}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
-      </h:selectOneMenu>
-   
-  </div>
-  
- <div class="form-group col-md-4">
-    <h:outputLabel for="start" value="Début de disponibilité :"/>
-    <h:selectOneMenu id="start" class="form-control" value="{mbZipCode.selectedCity}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
-      </h:selectOneMenu>
-   
-  </div>
-  
-  
-   <div class="form-group col-md-4">
-    <h:outputLabel for="ending" value="Fin de disponibilité :"/>
-    <h:selectOneMenu id="ending" class="form-control" value="{mbZipCode.selectedCity}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
-      </h:selectOneMenu>
-   
-  
-  </div>
-  </div>
-  </h:form>					
-				
-							<hr/>
+
+
+
+									  <label for="nameInput" class="form-label">Taille du troupeau :</label><input
+							type="name" class="form-control w-25" id="nameInput"
+							placeholder="200" />
 							
 							
+
+									<label for="dispoinput" class="form-label ">Début de
+										disponibilité</label><input type="date" class="form-control w-25"
+										id="dispoinput" rows="3"></input> 
+										
+										<label for="dispo_end_input"
+										class="form-label ">Fin de disponibilité</label><input
+										type="date" class="form-control w-25" id="dispo_end_input"
+										rows="3"></input>
+
+
+								</div>
+						</div>
+						</h:form>
+
+						<hr />
+
+
 						<div class="d-grid gap-2">
 							<button class="btn btn-primary w-25" type="submit">Enregistrer</button>
-						<h:form>
-				<f:ajax render=":pagefooter2">
-						<h:commandLink styleClass="dropdown-item" value=""
-							action="#{PageManageBean.setPage2('blank')}">
-							<button class="btn btn-primary w-25" type="submit">Annuler</button>
-						</h:commandLink>
-					
-				</f:ajax>
-			</h:form>
-						
+							<h:form>
+								<f:ajax render=":pagefooter2">
+									<h:commandLink styleClass="dropdown-item" value=""
+										action="#{PageManageBean.setPage2('blank')}">
+										<button class="btn btn-primary w-25" type="submit">Annuler</button>
+									</h:commandLink>
+
+								</f:ajax>
+							</h:form>
+
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+	</div>
 	</section>
-</div>
+	</div>
 
 </ui:composition>

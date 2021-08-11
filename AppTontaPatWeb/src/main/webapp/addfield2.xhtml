@@ -26,56 +26,54 @@
 						
 		
 							
-			
-  <h:form>
-  <div style="flex-wrap:wrap;">
-  <div class="form-group col-md-4">
+		  <h:form>
+<div class="form-group col-md-4">
     <h:outputLabel for="grass" value="Hauteur d'herbe :"/>
-    <h:selectOneMenu id="grass" class="form-control" value="{mbZipCode.selectedCity}" >
+    <h:selectOneMenu id="grass" class="form-control" value="{mbField.selectedGrass}" >
     <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
+	<f:selectItems value="#{mbField.grasses}"></f:selectItems>
       </h:selectOneMenu>
    
   </div>
   
   
-  <div class="form-group col-md-4">
+   <div class="form-group col-md-4">
     <h:outputLabel for="slope" value="Pente :"/>
-    <h:selectOneMenu id="slope" class="form-control" value="{mbZipCode.selectedCity}" >
+    <h:selectOneMenu id="slope" class="form-control" value="{mbField.selectedSlope}" >
     <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
+	<f:selectItems value="#{mbField.slopes}"></f:selectItems>
       </h:selectOneMenu>
    
-  </div>
+  </div> 
   
   <div class="form-group col-md-4">
     <h:outputLabel for="humidity" value="Humidité :"/>
-    <h:selectOneMenu id="humidity" class="form-control" value="{mbZipCode.selectedCity}" >
+    <h:selectOneMenu id="humidity" class="form-control" value="{mbField.selectedHumidity}" >
     <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
+	<f:selectItems value="#{mbField.humidities}"></f:selectItems>
       </h:selectOneMenu>
    
   </div>
   
  <div class="form-group col-md-4">
     <h:outputLabel for="veggie" value="Végétation :"/>
-    <h:selectOneMenu id="veggie" class="form-control" value="{mbZipCode.selectedCity}" >
+    <h:selectOneMenu id="veggie" class="form-control" value="{mbField.selectedVeggy}" >
     <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
+	<f:selectItems value="#{mbField.veggies}"></f:selectItems>
       </h:selectOneMenu>
    
   </div>
   
   <div class="form-group col-md-4">
     <h:outputLabel for="composition" value="Composition :"/>
-    <h:selectOneMenu id="composition" class="form-control" value="{mbZipCode.selectedCity}" >
+    <h:selectOneMenu id="composition" class="form-control" value="{mbField.selectedCompo}" >
     <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
+	<f:selectItems value="#{mbField.compos}"></f:selectItems>
       </h:selectOneMenu>
    
   </div>
-  </div>
-  </h:form>				
+  			
+  </h:form>
 		
 		<div style="display:inline-block;">				
 <div class="form-check form-switch">
