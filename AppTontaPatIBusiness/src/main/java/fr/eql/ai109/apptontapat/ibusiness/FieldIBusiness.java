@@ -9,4 +9,6 @@ public interface FieldIBusiness {
 	Field extraireTerrainParIdAccount(int id);
 	List<Field> extraireToutLesTerrain();
 	List<Field> extraireToutLesTerrainParIdAccount(int id);
+	Field ajoutTerrain(Field field);
+	Field mettreAJourUnTerrain(Field field);
 }

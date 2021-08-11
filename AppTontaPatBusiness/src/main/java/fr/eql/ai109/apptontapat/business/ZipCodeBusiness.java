@@ -26,7 +26,12 @@ public class ZipCodeBusiness implements ZipCodeIBusiness{
 	public List<String> getAllBuCity() {
 		return zipCodeIDao.getAllCity();
 	}
-	
+
+	@Override
+	public String extraireVilleAvecCodePostale(String code) {
+		return zipCodeIDao.getCityByCode(code);
+	}
+
 	
 	
 }

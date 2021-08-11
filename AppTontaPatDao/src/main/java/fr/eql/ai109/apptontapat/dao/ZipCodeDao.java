@@ -22,9 +22,16 @@ public class ZipCodeDao extends GenericDao<ZipCode> implements ZipCodeIDao{
 	}
 
 	@Override
-	public List<String> getCityByCode(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getCityByCode(String code) {
+		List<String> citiesName = null;
+		String cityName = null;
+		Query query = em.createQuery("SELECT u.label FROM ZipCode u WHERE u.code=:codeParam");
+		query.setParameter("codeParam",code);
+		citiesName= query.getResultList();
+		if (citiesName.size() > 0) {
+			cityName =citiesName.get(0);
+		}
+		return cityName;
 	}
 
 }
