@@ -33,7 +33,6 @@ servira pour la NAVIGATION BAR -->
       src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
       crossorigin="anonymous"
     ></script>
-    <script src="js/myScripts.js"></script>
   </h:head>
   <h:body>
     <!-- NAVIGATION-->
@@ -149,7 +148,7 @@ servira pour la NAVIGATION BAR -->
     <!-- Content main page -->
 
     <!--  Masthead-->
-    <header class="masthead">
+    <header class="masthead header-Accueil" id="page-top">
       <div class="container">
         <div class="masthead-subheading">Bienvenue sur notre site!</div>
         <div class="masthead-heading text-uppercase">
@@ -186,14 +185,8 @@ servira pour la NAVIGATION BAR -->
         </div>
         <!-- Apres la barre d'etoile -->
         <!-- recherche Grid Items-->
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d335869.0132554424!2d2.6247221552246236!3d48.877721368526124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sfr!4v1628006041022!5m2!1sfr!2sfr"
-          width="100%"
-          height="450"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-        ></iframe>
+      
+		<div id="mapid"></div>
       </div>
     </section>
 
@@ -931,7 +924,8 @@ servira pour la NAVIGATION BAR -->
       </div>
     </div>
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin=""></script>
+	integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+	crossorigin=""></script>
+	<script src="js/myScripts.js"></script>
   </h:body>
 </html>
