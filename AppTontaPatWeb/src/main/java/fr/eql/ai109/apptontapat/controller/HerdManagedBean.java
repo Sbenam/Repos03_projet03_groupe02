@@ -23,6 +23,8 @@ public class HerdManagedBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private Herd herd = new Herd();
+	private String test;
 	private List<String> races = new ArrayList<String>();
 	private String selectedRace ;
 	private List<String> species = new ArrayList<String>();
@@ -31,7 +33,7 @@ public class HerdManagedBean implements Serializable {
 	
 	@PostConstruct
 	public void init() {
-//		races = getAllRaceLabels(); 
+		races = getAllRaceLabels(); 
 		species = getAllSpecieLabels();
 	}
 	
@@ -42,9 +44,9 @@ public class HerdManagedBean implements Serializable {
 	@EJB
 	private SpecieIBusiness specieIBusiness;
 	
-//	public List<String> getAllRaceLabels() {
-//		return raceIBusiness.extraireTouteLesraces() ;
-//	}
+	public List<String> getAllRaceLabels() {
+		return raceIBusiness.extraireTouteLesracesLabels();
+	}
 	public List<String> getAllSpecieLabels() {
 		return specieIBusiness.extraireToutLesLabelsSpecies() ;
 	}
@@ -58,8 +60,7 @@ public class HerdManagedBean implements Serializable {
 	public List<Herd> getAllHerdByIdAccount(int id) {
 		return herdIBusiness.extraireToutLesTroupeauxParIdAccount(id);
 	}
-	private Herd herd = new Herd();
-	private String test;
+	
 
 	
 	
