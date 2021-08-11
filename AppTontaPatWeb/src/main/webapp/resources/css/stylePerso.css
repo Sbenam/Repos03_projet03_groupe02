@@ -512,6 +512,7 @@ ul {
 
 .description-terrain {
     width: 100%;
+    max-width:900px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -520,6 +521,7 @@ ul {
 
 .body-terrain-container {
     display: flex;
+    place-content: center;
     width: 100%;
 }
 

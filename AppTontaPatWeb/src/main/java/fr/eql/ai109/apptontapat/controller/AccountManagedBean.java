@@ -15,6 +15,7 @@ import javax.faces.context.FacesContext;
 import fr.eql.ai109.apptontapat.entity.Account;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.AccountIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.ZipCodeIBusiness;
 import fr.eql.ai109.apptontapat.web.PageManageBean;
 
 @ManagedBean(name = "mbAccount", eager = true)
@@ -30,6 +31,7 @@ public class AccountManagedBean implements Serializable {
 	private String email;
 	private String password;
 	private String passwordVerif;
+	private int nZipcode;
 	private ZipCode zipCode;
 	private Account account;
 	private String birth;
@@ -38,6 +40,9 @@ public class AccountManagedBean implements Serializable {
 
 	@EJB
 	private AccountIBusiness accountIBusiness;
+
+	@EJB
+	private ZipCodeIBusiness zipcodeibusiness;
 
 	public void inscription(Account account) {
 		setAccount((accountIBusiness.inscription(account) != null) ? account : null);
@@ -58,16 +63,28 @@ public class AccountManagedBean implements Serializable {
 	}
 
 	public String addAccount() {
+		account = new Account();
 		String forward = null;
+		// recupere zipcode
+		// inclut zipcode dans account
+
+		System.out.println(" surname : " + surNname);
+		System.out.println(" name : " + name);
+		System.out.println(" adress : " + adress);
+		System.out.println(" phone : " + phone);
+		System.out.println(" email : " + email);
+		System.out.println(" password : " + password);
+		System.out.println(" birth : " + dBirth);
+
 		account.setSurName(surNname);
 		account.setName(name);
 		account.setAdress(adress);
-		account.setPhone("0"+phone);
+		account.setPhone("0" + phone);
 		account.setEmail(email);
 		account.setPassword(password);
 		account.setBirth(dBirth);
 		account.setRegistration(new Date());
-		
+
 		if (account != null) {
 			forward = "/simpleArch.xhtml?faces-redirection=true";
 		} else {
@@ -78,7 +95,7 @@ public class AccountManagedBean implements Serializable {
 		}
 		return forward;
 	}
-	
+
 	public void verifmail(PageManageBean managedBean) {
 
 		boolean RMailV = Pattern.matches(
@@ -132,8 +149,8 @@ public class AccountManagedBean implements Serializable {
 				"0" + Integer.toString(phone));
 
 		try {
-			dBirth = new SimpleDateFormat("dd/MM/yyyy").parse(birth);
-			System.out.println(dBirth);
+			dBirth = new SimpleDateFormat("yyyy-MM-dd").parse(birth);
+			System.out.println("post format dbirth: "+dBirth);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -259,4 +276,11 @@ public class AccountManagedBean implements Serializable {
 		this.phone = phone;
 	}
 
+	public int getnZipcode() {
+		return nZipcode;
+	}
+
+	public void setnZipcode(int nZipcode) {
+		this.nZipcode = nZipcode;
+	}
 }
