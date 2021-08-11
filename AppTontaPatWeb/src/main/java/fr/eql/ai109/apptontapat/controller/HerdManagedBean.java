@@ -13,6 +13,7 @@ import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.ibusiness.HerdIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.RaceIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.SpecieIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.ZipCodeIBusiness;
 
 @ManagedBean(name = "mbHerd")
 @SessionScoped
@@ -43,6 +44,9 @@ public class HerdManagedBean implements Serializable {
 	private RaceIBusiness raceIBusiness;
 	@EJB
 	private SpecieIBusiness specieIBusiness;
+	@EJB
+	private ZipCodeIBusiness zipCodeIBusiness;
+	
 	
 	public List<String> getAllRaceLabels() {
 		return raceIBusiness.extraireTouteLesracesLabels();
@@ -60,13 +64,18 @@ public class HerdManagedBean implements Serializable {
 	public List<Herd> getAllHerdByIdAccount(int id) {
 		return herdIBusiness.extraireToutLesTroupeauxParIdAccount(id);
 	}
-	
+	public String getCityWithZipCode(String zipCode) {
+		return zipCodeIBusiness.extraireVilleAvecCodePostale(zipCode) ;
+	}
 
 	
 	
 	public void getHerdById(int id) {
 		System.out.println("test d'apelle de function get test et id: "+id);
 		herd=herdIBusiness.extraireTroupeauParId(id);
+		
+//		System.out.println(" test1 methode "+ getCityWithZipCode("24252"));
+//		System.out.println(" test2: " + herd.getZipcode().getLabel());
 	}
 
 	public Herd getHerd() {

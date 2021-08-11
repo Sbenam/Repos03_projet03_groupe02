@@ -28,23 +28,23 @@
 					
 						<label for="nameInput" class="form-label">Nom du terrain :</label><input
 							type="name" class="form-control" id="nameInput"
-							placeholder="Jardin de mamie" /> 
-							<h:outputText value="#{mbField.field.adress}"></h:outputText>
+							placeholder="Jardin de mamie"  value="#{mbField.field.name}"/> 
+							
 							
 							<label for="adresseInput"
 							class="form-label ">Adresse du terrain :</label><input
-							type="adresse" class="form-control" id="adresseInput" placeholder="9 bd du Générale de Gaulle" />
+							type="adresse" class="form-control" id="adresseInput" placeholder="9 bd du Générale de Gaulle"  value="#{mbField.field.adress}"/>
 							
 							<label for="nameInput" class="form-label">Code postal du terrain :</label><input
 							type="name" class="form-control w-25" id="nameInput"
 							placeholder="92300" /> 
 							
-							<input class="form-control w-50" type="text" value="Ville" aria-label="Ville" disabled="true" />
+							<input class="form-control w-50" type="text" value="#{mbField.field.zipcode.label}" aria-label="Ville" disabled="true" />
 						
 
 							<label for="nameInput" class="form-label ">Surface du terrain : </label>
 <div class="input-group w-25">
-<input type="text" class="form-control" placeholder="1000" />
+<input type="text" class="form-control" placeholder="1000"  value="#{mbField.field.surface}"/>
   <div class="input-group-append">
     <span class="input-group-text" id="">m²</span>
   </div>
@@ -56,7 +56,7 @@
 <div class="form-group col-md-4">
     <h:outputLabel for="grass" value="Hauteur d'herbe :"/>
     <h:selectOneMenu id="grass" class="form-control" value="{mbField.selectedGrass}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
+    <f:selectItem itemLabel="#{mbField.field.glassheight.label}" itemValue="" noSelectionOption="true"></f:selectItem>
 	<f:selectItems value="#{mbField.grasses}"></f:selectItems>
       </h:selectOneMenu>
    
@@ -66,7 +66,7 @@
    <div class="form-group col-md-4">
     <h:outputLabel for="slope" value="Pente :"/>
     <h:selectOneMenu id="slope" class="form-control" value="{mbField.selectedSlope}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
+    <f:selectItem itemLabel="#{mbField.field.slope.label}" itemValue="" noSelectionOption="true"></f:selectItem>
 	<f:selectItems value="#{mbField.slopes}"></f:selectItems>
       </h:selectOneMenu>
    
@@ -75,7 +75,7 @@
   <div class="form-group col-md-4">
     <h:outputLabel for="humidity" value="Humidité :"/>
     <h:selectOneMenu id="humidity" class="form-control" value="{mbField.selectedHumidity}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
+    <f:selectItem itemLabel="#{mbField.field.humidity.label}" itemValue="" noSelectionOption="true"></f:selectItem>
 	<f:selectItems value="#{mbField.humidities}"></f:selectItems>
       </h:selectOneMenu>
    
@@ -84,7 +84,7 @@
  <div class="form-group col-md-4">
     <h:outputLabel for="veggie" value="Végétation :"/>
     <h:selectOneMenu id="veggie" class="form-control" value="{mbField.selectedVeggy}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
+    <f:selectItem itemLabel="#{mbField.field.vegetation.label}" itemValue="" noSelectionOption="true"></f:selectItem>
 	<f:selectItems value="#{mbField.veggies}"></f:selectItems>
       </h:selectOneMenu>
    
@@ -93,7 +93,7 @@
   <div class="form-group col-md-4">
     <h:outputLabel for="composition" value="Composition :"/>
     <h:selectOneMenu id="composition" class="form-control" value="{mbField.selectedCompo}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
+    <f:selectItem itemLabel="#{mbField.field.composition.label}" itemValue="" noSelectionOption="true"></f:selectItem>
 	<f:selectItems value="#{mbField.compos}"></f:selectItems>
       </h:selectOneMenu>
    
