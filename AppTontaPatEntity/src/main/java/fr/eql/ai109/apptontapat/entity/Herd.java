@@ -37,7 +37,7 @@ public class Herd implements Serializable{
 	@Column(name = "h_adress")
 	private String adress;
 	@Column(name = "h_area")
-	private Integer area;
+	private Float area;
 	@Column(name = "h_photo")
 	private String photo;
 	@Column(name = "h_adding")
@@ -72,7 +72,7 @@ public class Herd implements Serializable{
 	}
 
 
-	public Herd(Integer id, String name, Integer seize, String adress, Integer area, String photo, Date adding,
+	public Herd(Integer id, String name, Integer seize, String adress, Float area, String photo, Date adding,
 			Date withdraw, Date starting, Date ending, ZipCode zipcode, Set<Service> services, Account account,
 			Race race, TakeOut takeout) {
 		super();
@@ -133,12 +133,12 @@ public class Herd implements Serializable{
 	}
 
 
-	public Integer getArea() {
+	public Float getArea() {
 		return area;
 	}
 
 
-	public void setArea(Integer area) {
+	public void setArea(Float area) {
 		this.area = area;
 	}
 

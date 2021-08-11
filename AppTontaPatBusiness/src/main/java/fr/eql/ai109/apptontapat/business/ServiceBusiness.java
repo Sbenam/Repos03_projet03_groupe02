@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
 import fr.eql.ai109.apptontapat.idao.ServiceIDao;
 
@@ -18,6 +19,11 @@ public class ServiceBusiness implements ServiceIBusiness {
 	@EJB
 	private ServiceIDao serviceIDao;
 	
+//	@Override
+//	public List<ZipCode> search(Field field) {		
+//		return serviceIDao.search(field.getZipcode().getLatitude(), field.getZipcode().getLatitude());
+//	}
+
 	@Override
 	public List<Herd> search(Field field) {		
 		return search(field.getZipcode().getLatitude(), field.getZipcode().getLatitude());

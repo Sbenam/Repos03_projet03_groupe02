@@ -39,21 +39,21 @@ public class ServiceManagedBean implements Serializable{
 	private ServiceIBusiness serviceIBusiness;
 
 	
-	public List<ZipCode> search(ZipCode zipcode) {
-		zipcodes = null;
-		
-		zipcodes = serviceIBusiness.search(field);
-		
-		return zipcodes;
-	}
-
-//	public List<Herd> search(Field field) {
-//		herds = null;
+//	public List<ZipCode> search(ZipCode zipcode) {
+//		zipcodes = null;
 //		
-//		herds = serviceIBusiness.search(field);
+//		zipcodes = serviceIBusiness.search(field);
 //		
-//		return herds;
+//		return zipcodes;
 //	}
+
+	public List<Herd> search(Field field) {
+		herds = null;
+		
+		herds = serviceIBusiness.search(field);
+		
+		return herds;
+	}
 
 	
 	public List<Herd> getHerds() {
