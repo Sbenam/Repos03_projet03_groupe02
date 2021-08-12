@@ -1,5 +1,6 @@
 package fr.eql.ai109.apptontapat.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,6 +11,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import fr.eql.ai109.apptontapat.entity.Account;
@@ -53,6 +55,13 @@ public class AccountManagedBean implements Serializable {
 		account = accountIBusiness.connection(email, password);
 		if (account != null) {
 			forward = "simpleArch.xhtml?faces-redirection=true";
+			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+			try {
+				ec.redirect(ec.getRequestContextPath() + "/simpleArch.xhtml");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else {
 			FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_WARN,
 					"Identifiant et/ou mot de passe incorrect(s)", "Identifiant et/ou mot de passe incorrect(s)");
@@ -150,7 +159,7 @@ public class AccountManagedBean implements Serializable {
 
 		try {
 			dBirth = new SimpleDateFormat("yyyy-MM-dd").parse(birth);
-			System.out.println("post format dbirth: "+dBirth);
+			System.out.println("post format dbirth: " + dBirth);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
