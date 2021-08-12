@@ -474,6 +474,10 @@ ul {
 
 }
 
+.test{
+	padding-top: 160px;
+}
+
 .padding-form input{
     margin-bottom: 2em;
 }
@@ -780,3 +784,17 @@ main {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+
+
+/*----------*/
+
+
+.carousel-inner img {
+    width: 100%
+}
+
+.carousel-item img {
+    width: 320px;
+    height: 240px !important
+}
