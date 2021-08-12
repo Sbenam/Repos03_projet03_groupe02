@@ -9,4 +9,6 @@ public interface HerdIbusiness {
 	Herd extraireTroupeauParIdAccount(int id);
 	List<Herd> extraireToutLesTroupeaux();
 	List<Herd> extraireToutLesTroupeauxParIdAccount(int id);
+	Herd ajoutTroupeau(Herd herd);
+	Herd mettreAJourUnTroupeau(Herd herd);
 }

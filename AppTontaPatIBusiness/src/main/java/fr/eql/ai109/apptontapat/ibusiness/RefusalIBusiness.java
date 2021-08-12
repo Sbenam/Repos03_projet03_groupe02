@@ -5,4 +5,5 @@ import fr.eql.ai109.apptontapat.entity.Refusal;
 
 public interface RefusalIBusiness {
 	List<Refusal> extraireToutesLesRefusal();
+	List<String> extraireToutesLesRefusalLabels();
 }

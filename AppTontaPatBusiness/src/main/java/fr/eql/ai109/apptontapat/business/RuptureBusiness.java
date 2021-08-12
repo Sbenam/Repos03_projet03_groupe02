@@ -22,4 +22,9 @@ public class RuptureBusiness implements RuptureIBusiness{
 		return ruptureIDao.getAllComposition();
 	}
 
+	@Override
+	public List<String> extraireToutesLesRuptureLabels() {
+		return ruptureIDao.getAllCompositionLabels();
+	}
+
 }

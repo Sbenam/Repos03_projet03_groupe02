@@ -11,7 +11,9 @@ import javax.faces.bean.SessionScoped;
 
 import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.ibusiness.HerdIbusiness;
+import fr.eql.ai109.apptontapat.ibusiness.RaceIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.SpecieIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.ZipCodeIBusiness;
 
 @ManagedBean(name = "mbHerd")
 @SessionScoped
@@ -22,23 +24,36 @@ public class HerdManagedBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private Herd herd = new Herd();
+	private String test;
+	private List<String> races = new ArrayList<String>();
+	private String selectedRace ;
 	private List<String> species = new ArrayList<String>();
-	private String selectedSpecie ;
+	private String selectedSpecie;
+	
 	
 	@PostConstruct
 	public void init() {
-		species = getAllSpeciesLabel() ;
+		races = getAllRaceLabels(); 
+		species = getAllSpecieLabels();
 	}
 	
 	@EJB
 	private HerdIbusiness herdIBusiness;
-	SpecieIBusiness specieIBusiness;
+	@EJB
+	private RaceIBusiness raceIBusiness;
+	@EJB
+	private SpecieIBusiness specieIBusiness;
+	@EJB
+	private ZipCodeIBusiness zipCodeIBusiness;
 	
 	
-	public List<String> getAllSpeciesLabel() {
-		return specieIBusiness.extraireToutLesLabelsSpecies();
+	public List<String> getAllRaceLabels() {
+		return raceIBusiness.extraireTouteLesracesLabels();
 	}
-	
+	public List<String> getAllSpecieLabels() {
+		return specieIBusiness.extraireToutLesLabelsSpecies() ;
+	}
 
 	public Herd getHerdByIdAccount(int id) {
 		return herdIBusiness.extraireTroupeauParIdAccount(id);
@@ -49,14 +64,18 @@ public class HerdManagedBean implements Serializable {
 	public List<Herd> getAllHerdByIdAccount(int id) {
 		return herdIBusiness.extraireToutLesTroupeauxParIdAccount(id);
 	}
-	private Herd herd = new Herd();
-	private String test;
+	public String getCityWithZipCode(String zipCode) {
+		return zipCodeIBusiness.extraireVilleAvecCodePostale(zipCode) ;
+	}
 
 	
 	
 	public void getHerdById(int id) {
 		System.out.println("test d'apelle de function get test et id: "+id);
 		herd=herdIBusiness.extraireTroupeauParId(id);
+		
+//		System.out.println(" test1 methode "+ getCityWithZipCode("24252"));
+//		System.out.println(" test2: " + herd.getZipcode().getLabel());
 	}
 
 	public Herd getHerd() {
@@ -73,28 +92,41 @@ public class HerdManagedBean implements Serializable {
 		return test;
 	}
 
-	
-	
-	
+	public List<String> getRaces() {
+		return races;
+	}
+
+	public void setRaces(List<String> races) {
+		this.races = races;
+	}
+
+	public String getSelectedRace() {
+		return selectedRace;
+	}
+
+	public void setSelectedRace(String selectedRace) {
+		this.selectedRace = selectedRace;
+	}
 
 	public List<String> getSpecies() {
 		return species;
 	}
 
-
 	public void setSpecies(List<String> species) {
 		this.species = species;
 	}
-
 
 	public String getSelectedSpecie() {
 		return selectedSpecie;
 	}
 
-
 	public void setSelectedSpecie(String selectedSpecie) {
 		this.selectedSpecie = selectedSpecie;
 	}
+
+	
+	
+	
 
 
 }

@@ -28,4 +28,12 @@ public class RefusalDao extends GenericDao<Refusal> implements RefusalIDao{
 		return refusals;
 	}
 
+	@Override
+	public List<String> getAllRefusalLabels() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM Refusal u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
+	}
+
 }

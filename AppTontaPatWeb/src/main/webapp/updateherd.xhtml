@@ -2,7 +2,19 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	>
+	
+	<!-- appel -->	
+<!-- Attend l'id acompte -->
+	<h:outputText value="#{mbHerd.getHerdById(4)}"></h:outputText>
+	
+<!-- sortie -->	
+	<!-- <h:outputText value="#{mbHerd.herd.adress}"></h:outputText> -->
+	
+	
+	
+	
 <div class="popup-containerModifField" id="container">
 	<section class="conexion-popupModif">
 		<div class="container-fluid">
@@ -16,75 +28,71 @@
 					
 						<label for="nameInput" class="form-label">Nom du troupeau :</label><input
 							type="name" class="form-control" id="nameInput"
-							placeholder="Jardin de mamie" /> <label for="adresseInput"
+							placeholder="Jardin de mamie" value="#{mbHerd.herd.name}"/>
+						
+
+
+							<label for="adresseInput"
 							class="form-label ">Adresse du troupeau :</label><input
-							type="adresse" class="form-control" id="adresseInput" placeholder="9 bd du Générale de Gaulle" />
+							type="adresse" class="form-control" id="adresseInput" placeholder="9 bd du Générale de Gaulle" value="#{mbHerd.herd.adress}" />
 							
-							<label for="nameInput" class="form-label">Code postal  :</label><input
-							type="name" class="form-control w-25" id="nameInput"
+							<label for="zipcodeInput" class="form-label">Code postal  :</label><input
+							type="zipcode" class="form-control w-25" id="zipcodeInput"
 							placeholder="92300" /> 
+							<!-- <h:inputText value="#{mbHerd.getCityWithZipCode('20225')}"></h:inputText> -->
 							
-							<input class="form-control w-50" type="text" value="Ville" aria-label="Ville" disabled="true" />
+							<input class="form-control w-50" type="text" aria-label="Ville" disabled="true" value="#{mbHerd.herd.zipcode.label}" />
 						
 			<hr/>
   <h:form>
-<div class="form-group col-md-4">
-    <h:outputLabel for="race" value="Race :"/>
-    <h:selectOneMenu id="race" class="form-control" value="{mbHerd.selectedSpecie}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
+
+  
+  
+  <div class="form-group col-md-4">
+    <h:outputLabel for="specie" value="Espèce :"/>
+    <h:selectOneMenu id="specie" class="form-control" value="{mbHerd.selectedSpecie}" >
+    <f:selectItem itemLabel="#{mbHerd.herd.race.specie.label}" itemValue="" noSelectionOption="true"></f:selectItem>
 	<f:selectItems value="#{mbHerd.species}"></f:selectItems>
       </h:selectOneMenu>
    
   </div>
   
-  
-  <div class="form-group col-md-4">
-    <h:outputLabel for="specie" value="Espèce :"/>
-    <h:selectOneMenu id="specie" class="form-control" value="{mbZipCode.selectedCity}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
+   <div class="form-group col-md-4">
+    <h:outputLabel for="race" value="Race :"/>
+    <h:selectOneMenu id="race" class="form-control" value="{mbHerd.selectedRace}" >
+    <f:selectItem itemLabel="#{mbHerd.herd.race.label}" itemValue="" noSelectionOption="true"></f:selectItem>
+	<f:selectItems value="#{mbHerd.races}"></f:selectItems>
       </h:selectOneMenu>
    
   </div>
-  
-  <div class="form-group col-md-4">
-    <h:outputLabel for="size" value="Taille du troupeau :"/>
-    <h:selectOneMenu id="size" class="form-control" value="{mbZipCode.selectedCity}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
-      </h:selectOneMenu>
-   
-  </div>
+  </h:form>
+  <label for="nameInput" class="form-label">Taille du troupeau :</label><input
+							type="name" class="form-control w-25" id="nameInput"
+							placeholder="200" value="#{mbHerd.herd.seize}"  />
   
   			
-  </h:form>
+  
   
 <hr/>
-<form>
+ <form>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Description :</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" value="#{mbHerd.herd.adress}" ></textarea>
   </div>
   
-   <div class="form-group col-md-4">
-    <h:outputLabel for="start" value="Début de disponibilité :"/>
-    <h:selectOneMenu id="start" class="form-control" value="{mbZipCode.selectedCity}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
-      </h:selectOneMenu>
-   
-  </div>
-  
-  
-   <div class="form-group col-md-4">
-    <h:outputLabel for="ending" value="Fin de disponibilité :"/>
-    <h:selectOneMenu id="ending" class="form-control" value="{mbZipCode.selectedCity}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbZipCode.cities}"></f:selectItems>
-      </h:selectOneMenu>
+ 	<label for="dispoinput" class="form-label ">Début de
+										disponibilité</label><input type="date" class="form-control w-25"
+										id="dispoinput" rows="3" value="#{mbHerd.herd.starting}" ></input> 
+	<h:inputText pt:type="date" class="form-control w-25" id="dispoinput" rows="3" value="#{mbHerd.herd.starting}" ></h:inputText>
+	
+										
+										<label for="dispo_end_input"
+										class="form-label ">Fin de disponibilité</label><input
+										type="date" class="form-control w-25" id="dispo_end_input"
+										rows="3" value="#{mbHerd.herd.ending}" ></input>
    
   
-  </div>
+ 
 </form>
 						<div class="d-grid gap-2">
 							<button class="btn btn-primary w-25" type="submit">Enregistrer</button>

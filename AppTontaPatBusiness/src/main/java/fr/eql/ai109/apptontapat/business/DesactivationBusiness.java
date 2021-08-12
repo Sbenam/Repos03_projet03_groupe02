@@ -24,4 +24,9 @@ public class DesactivationBusiness implements DesactivationIBusiness{
 		return desactivationIDao.getAllDesactivation();
 	}
 
+	@Override
+	public List<String> extraireToutesLesDesactivationLabels() {
+		return desactivationIDao.getAllDesactivationLabels();
+	}
+
 }

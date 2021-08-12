@@ -40,4 +40,14 @@ public class FieldBusiness implements FieldIBusiness{
 		return fieldIDao.getAllByIdAccount(id);
 	}
 
+	@Override
+	public Field ajoutTerrain(Field field) {
+		return fieldIDao.add(field);
+	}
+
+	@Override
+	public Field mettreAJourUnTerrain(Field field) {
+		return fieldIDao.update(field);
+	}
+
 }

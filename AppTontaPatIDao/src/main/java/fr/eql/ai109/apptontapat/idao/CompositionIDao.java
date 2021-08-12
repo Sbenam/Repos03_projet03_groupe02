@@ -6,4 +6,5 @@ import fr.eql.ai109.apptontapat.entity.Composition;
 
 public interface CompositionIDao extends GenericIDao<Composition>{
 	public List<Composition> getAllComposition();
+	public List<String> getAllCompositionLabels();
 }

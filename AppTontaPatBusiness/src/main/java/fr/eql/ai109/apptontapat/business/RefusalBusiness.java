@@ -22,4 +22,9 @@ public class RefusalBusiness implements RefusalIBusiness{
 		return refusalIDao.getAllRefusal();
 	}
 
+	@Override
+	public List<String> extraireToutesLesRefusalLabels() {
+		return refusalIDao.getAllRefusalLabels();
+	}
+
 }

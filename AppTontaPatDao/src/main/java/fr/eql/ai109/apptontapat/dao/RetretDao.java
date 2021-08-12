@@ -16,7 +16,7 @@ import fr.eql.ai109.apptontapat.idao.RetretIDao;
 public class RetretDao extends GenericDao<Retret> implements RetretIDao{
 	
 	@PersistenceContext(unitName = "AppTontaPat")
-	protected EntityManager em;
+	protected EntityManager String;
 
 	@Override
 	public List<Retret> getAllRetret() {
@@ -24,6 +24,14 @@ public class RetretDao extends GenericDao<Retret> implements RetretIDao{
 		Query query = em.createQuery("SELECT u FROM Retret u ");
 		retrets = (List<Retret>) query.getResultList();
 		return retrets;
+	}
+
+	@Override
+	public List<String> getAllRetretLabels() {
+		List<String> labels = null;
+		Query query = em.createQuery("SELECT u.label FROM Retret u ");
+		labels = (List<String>) query.getResultList();
+		return labels;
 	}
 
 }
