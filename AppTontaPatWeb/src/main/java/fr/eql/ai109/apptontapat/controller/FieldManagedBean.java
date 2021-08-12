@@ -83,9 +83,9 @@ public class FieldManagedBean implements Serializable{
 	public List<String> getAllCompoLabels() {
 		return compoIBusiness.extraireToutesLesCompositionLabels();
 	}
-	public String getCityWithZipCode(String zipCode) {
-		return zipCodeIBusiness.extraireVilleAvecCodePostale(zipCode) ;
-	}
+//	public String getCityWithZipCode(String zipCode) {
+//		return zipCodeIBusiness.extraireVilleAvecCodePostale(zipCode) ;
+//	}
 	
 	
 	

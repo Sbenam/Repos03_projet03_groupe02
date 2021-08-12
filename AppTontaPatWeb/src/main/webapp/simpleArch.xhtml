@@ -199,7 +199,7 @@ servira pour la NAVIGATION BAR -->
 							</button>
 						</li>
 						
-            <li>
+         		   <li>
 							<button class="dropdown-item" type="button">
 								<h:form>
 									<f:ajax render=":pagefooter2">
@@ -211,6 +211,20 @@ servira pour la NAVIGATION BAR -->
 							</button>
 						</li>
 
+
+ 					<li>
+							<button class="dropdown-item" type="button">
+								<h:form>
+									<f:ajax render=":pagefooter2">
+										<h:commandLink styleClass="dropdown-item" value=""
+											action="#{PageManageBean.setPage2('research')}">
+											<i class="fas fa-sign-in-alt"></i> recherche</h:commandLink>
+									</f:ajax>
+								</h:form>
+							</button>
+						</li>
+						
+						
               </ul>
             </div>
           </div>
@@ -283,7 +297,7 @@ servira pour la NAVIGATION BAR -->
                 pt:data-bs-placement="left"
                 styleClass="nav-link py-3 border-bottom"
                 value=""
-                action="#{PageManageBean.setPage('ConnectedPage')}"
+                action="#{PageManageBean.setPage('research')}"
               >
                 <i class="fas fa-search-location"></i>
               </h:commandLink>
