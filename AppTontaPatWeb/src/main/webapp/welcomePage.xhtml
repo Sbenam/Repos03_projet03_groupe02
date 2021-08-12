@@ -9,6 +9,7 @@ servira pour la NAVIGATION BAR -->
   xmlns:h="http://java.sun.com/jsf/html"
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
   xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 >
   <h:head>
 
@@ -34,8 +35,10 @@ servira pour la NAVIGATION BAR -->
       crossorigin="anonymous"
     ></script>
   </h:head>
+
   <h:body>
-    <!-- NAVIGATION-->
+
+  <!-- NAVIGATION-->
     <nav
       class="navbar navbar-expand-lg navbar-dark text-uppercase fixed-top"
       id="mainNav"
@@ -138,12 +141,13 @@ servira pour la NAVIGATION BAR -->
       </div>
     </nav>
 
+    <!-- Page footer 2 popup apparition-->
     <h:panelGroup id="pagefooter2">
       <ui:include src="#{PageManageBean.page2}.xhtml"></ui:include>
     </h:panelGroup>
 
+	
     <!-- SimpleArch : footer + navbar -->
-
     <title>Tontàpat - Bienvenue</title>
     <!-- Content main page -->
 
@@ -184,8 +188,18 @@ servira pour la NAVIGATION BAR -->
           <div class="divider-custom-line"></div>
         </div>
         <!-- Apres la barre d'etoile -->
-        <!-- recherche Grid Items-->
-      
+		
+        <!-- recherche input hidden -->
+		<ui:repeat var="h" value="#{mbHerd.getAllHerd()}" varStatus="status">
+			<h:inputHidden pt:class="herdlong" value="#{h.zipcode.longitude}" />
+			<h:inputHidden pt:class="herdlat" value="#{h.zipcode.latitude}" />
+		</ui:repeat>
+		<ui:repeat var="f" value="#{mbField.getAllField()}" varStatus="status">
+			<h:inputHidden pt:class="fieldlong" value="#{f.zipcode.longitude}" />
+			<h:inputHidden pt:class="fieldlat" value="#{f.zipcode.latitude}" />
+		</ui:repeat>
+		
+		<!-- Map leaflet -->
 		<div id="mapid"></div>
       </div>
     </section>
@@ -881,25 +895,25 @@ servira pour la NAVIGATION BAR -->
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
+	
     <!-- Footer-->
     <footer class="footer text-center">
-      <div class="container">
-        <div class="row">
-          <!-- Footer Location-->
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Adresse</h4>
-            <p class="lead mb-0">
-              9 Bd du Général de Gaulle <br /> 92120 MONTROUGE
-            </p>
-          </div>
-          <!-- Footer Social Icons-->
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Tontàpat</h4>
-            <a class="btn btn-outline-light btn-social mx-1" href="#!"
-              ><i class="fab fa-fw fa-facebook-f"></i
-            ></a>
-            <a class="btn btn-outline-light btn-social mx-1" href="#!"
+		<div class="container">
+			<div class="row">
+				<!-- Footer Location-->
+				<div class="col-lg-4 mb-5 mb-lg-0">
+					<h4 class="text-uppercase mb-4">Adresse</h4>
+					<p class="lead mb-0">
+						9 Bd du Général de Gaulle <br /> 92120 MONTROUGE
+					</p>
+				</div>
+				<!-- Footer Social Icons-->
+				<div class="col-lg-4 mb-5 mb-lg-0">
+					<h4 class="text-uppercase mb-4">Tontàpat</h4>
+					<a class="btn btn-outline-light btn-social mx-1" href="#!"
+					><i class="fab fa-fw fa-facebook-f"></i
+						></a>
+						<a class="btn btn-outline-light btn-social mx-1" href="#!"
               ><i class="fab fa-fw fa-twitter"></i
             ></a>
             <a class="btn btn-outline-light btn-social mx-1" href="#!"
@@ -907,25 +921,28 @@ servira pour la NAVIGATION BAR -->
             ></a>
             <a class="btn btn-outline-light btn-social mx-1" href="#!"
               ><i class="fab fa-fw fa-dribbble"></i
-            ></a>
-          </div>
-          <!-- Footer About Text-->
+				></a>
+			</div>
+			<!-- Footer About Text-->
           <div class="col-lg-4">
-            <h4 class="text-uppercase mb-4">A PROPOS DE NOUS</h4>
-            <p class="lead mb-0">Groupe2@eql.com</p>
-          </div>
+			  <h4 class="text-uppercase mb-4">A PROPOS DE NOUS</h4>
+			  <p class="lead mb-0">Groupe2@eql.com</p>
+			</div>
         </div>
       </div>
     </footer>
     <!-- Copyright Section-->
     <div class="copyright py-4 text-center text-white">
-      <div class="container">
-        <small>Copyright &copy; Tontàpat 2021</small>
+		<div class="container">
+			<small>Copyright &copy; Tontàpat 2021</small>
       </div>
     </div>
+	
+	<!-- leaflet JS -->
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
 	integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 	crossorigin=""></script>
+	<!-- Perso JS-->
 	<script src="js/myScripts.js"></script>
-  </h:body>
+</h:body>
 </html>
