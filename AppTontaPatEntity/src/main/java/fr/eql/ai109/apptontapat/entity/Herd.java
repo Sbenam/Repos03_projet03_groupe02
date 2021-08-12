@@ -93,7 +93,24 @@ public class Herd implements Serializable{
 		this.takeout = takeout;
 	}
 
-
+	public Herd(String name, Integer seize, String adress, Integer area, String photo, Date adding,
+			Date withdraw, Date starting, Date ending, ZipCode zipcode, Set<Service> services, Account account,
+			Race race, TakeOut takeout) {
+		this.name = name;
+		this.seize = seize;
+		this.adress = adress;
+		this.area = area;
+		this.photo = photo;
+		this.adding = adding;
+		this.withdraw = withdraw;
+		this.starting = starting;
+		this.ending = ending;
+		this.zipcode = zipcode;
+		this.services = services;
+		this.account = account;
+		this.race = race;
+		this.takeout = takeout;
+	}
 
 
 

@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import fr.eql.ai109.apptontapat.entity.Field;
+import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.entity.Slope;
 import fr.eql.ai109.apptontapat.ibusiness.CompositionIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.FieldIBusiness;
@@ -17,6 +18,7 @@ import fr.eql.ai109.apptontapat.ibusiness.GlassHeightIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.HumidityIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.SlopeIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.VegetationIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.ZipCodeIBusiness;
 
 @ManagedBean(name = "mbField")
 @SessionScoped
@@ -27,6 +29,7 @@ public class FieldManagedBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private Field field = new Field();
 	private List<String> slopes = new ArrayList<String>();
 	private String selectedSlope ;
 	private List<String> grasses = new ArrayList<String>();
@@ -50,6 +53,8 @@ public class FieldManagedBean implements Serializable{
 	private VegetationIBusiness veggyIBusiness;
 	@EJB
 	private CompositionIBusiness compoIBusiness;
+	@EJB
+	private ZipCodeIBusiness zipCodeIBusiness;
 	
 	@PostConstruct
 	public void init() {
@@ -57,8 +62,8 @@ public class FieldManagedBean implements Serializable{
 		grasses = getAllGrassLabels();
 		humidities = getAllHumidityLabels() ;
 		Veggies = getAllVeggyLabels() ;
-		//manque compo
-		//compos = 
+		compos = getAllCompoLabels();
+		
 		
 	}
 	
@@ -75,15 +80,29 @@ public class FieldManagedBean implements Serializable{
 	public List<String> getAllVeggyLabels() {
 		return veggyIBusiness.extraireToutesLesVegetationLabels();
 	}
-//	public List<String> getAllCompoLabels() {
-//		
+	public List<String> getAllCompoLabels() {
+		return compoIBusiness.extraireToutesLesCompositionLabels();
+	}
+//	public String getCityWithZipCode(String zipCode) {
+//		return zipCodeIBusiness.extraireVilleAvecCodePostale(zipCode) ;
 //	}
 	
 	
 	
-	public Field getFieldById(int id) {
-		return fieldIBusiness.extraireTerrainParId(id);
+	public Field getField() {
+		return field;
 	}
+
+	public void setField(Field field) {
+		this.field = field;
+	}
+	
+	
+	public void getFieldById(int id) {
+		field = fieldIBusiness.extraireTerrainParId(id);
+	}
+	
+	
 	
 	public Field getFieldByIdAccount(int id) {
 		return fieldIBusiness.extraireTerrainParIdAccount(id);

@@ -42,4 +42,14 @@ public class HerdBusiness implements HerdIbusiness{
 		return herdIDao.getAllHerdByIdAccount(id);
 	}
 
+	@Override
+	public Herd ajoutTroupeau(Herd herd) {
+		return herdIDao.add(herd);
+	}
+
+	@Override
+	public Herd mettreAJourUnTroupeau(Herd herd) {
+		return herdIDao.update(herd);
+	}
+
 }
