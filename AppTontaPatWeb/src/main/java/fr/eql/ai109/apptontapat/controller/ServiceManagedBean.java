@@ -13,7 +13,7 @@ import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.ibusiness.FieldIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
 
-@ManagedBean(name = "mbService")
+@ManagedBean(name="mbService")
 @SessionScoped
 public class ServiceManagedBean implements Serializable{
 
@@ -62,13 +62,13 @@ public class ServiceManagedBean implements Serializable{
 	}
 
 	
-//	public List<Herd> getHerds() {
-//		return herds;
-//	}
-//
-//	public void setHerds(List<Herd> herds) {
-//		this.herds = herds;
-//	}
+	public List<Herd> getHerds() {
+		return herds;
+	}
+
+	public void setHerds(List<Herd> herds) {
+		this.herds = herds;
+	}
 	
 	public Field getField() {
 		return field;
