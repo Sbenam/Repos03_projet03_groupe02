@@ -12,5 +12,6 @@ public interface ServiceIDao extends GenericIDao<Service> {
 	List<Herd> search(Field field);
 //	List<ZipCode> search(Field field);
 	List<Herd> search(Double latitude, Double longitude);
+	List<Float> distances(Field field);
 	
 }

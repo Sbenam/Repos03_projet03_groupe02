@@ -9,4 +9,5 @@ public interface ServiceIBusiness {
 	List<Herd> search(Field field);
 //	List<ZipCode> search(Field field);
 	List<Herd> search(Double latitude, Double longitude);
+	List<Float> distanceBU(Field field);
 }

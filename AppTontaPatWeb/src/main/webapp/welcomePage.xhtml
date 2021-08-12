@@ -136,7 +136,7 @@ servira pour la NAVIGATION BAR -->
 		</header>
 		
 		<!-- Test -->
-		<h4>TROUPEAU: </h4>
+		<!-- <h4>TROUPEAU: </h4>
 		<h:form>
 	<h:outputLabel for="grass" value="Hauteur d'herbe :" />
 	<h:selectOneMenu id="grass" class="form-control"
@@ -147,7 +147,22 @@ servira pour la NAVIGATION BAR -->
  	</h:selectOneMenu>
 </h:form>
 
-
+<h4> troupeauxxx :
+ 		 <ui:repeat var ="herd" value="#{mbService.herds}">
+	
+		 <br/>
+		 
+		 <h:outputLabel value= "nom : #{herd.name} - id : #{herd.id}" />
+		 </ui:repeat>
+	</h4>
+<h4> distance :
+ 		 <ui:repeat var ="dist" value="#{mbService.dists}">
+	
+		 <br/>
+		 
+		 <h:outputLabel value= "-> #{dist}" />
+		 </ui:repeat>
+	</h4> -->
 	<!--<h:outputText   value="#{mbService.herds}" />
  		  <h:dataTable value="#{mbService.search2()}" var="h">
 			<h:outputText value="h.name"/>

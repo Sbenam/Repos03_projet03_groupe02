@@ -33,5 +33,10 @@ public class ServiceBusiness implements ServiceIBusiness {
 	public List<Herd> search(Double latitude, Double longitude) {
 		return serviceIDao.search(latitude, longitude);
 	}
+
+	@Override
+	public List<Float> distanceBU(Field field) {
+		return serviceIDao.distances(field);
+	}
 		
 }

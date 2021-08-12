@@ -27,15 +27,15 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 
 	@Override
 	public List<Herd> search(Field field) {
-//		// TODO vin
-//		List<Herd> herds = 	null ; //search(field.getZipcode().getLatitude(), field.getZipcode().getLongitude());
-//		Query query = em.createQuery(" SELECT h "
-//		+ "FROM Field f INNER JOIN ZipCode zf ON f.zipcode = zf.id, "
-//		+ "ZipCode zh JOIN Herd h ON zh.id = h.zipcode "
-//		+ "WHERE 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) < h.area "
-//		+ "AND f.id=:idParam ");
-//				query.setParameter("idParam", field.getId());
-//		herds = query.getResultList();
+		// TODO vin
+		List<Herd> herds = 	null ; //search(field.getZipcode().getLatitude(), field.getZipcode().getLongitude());
+		Query query = em.createQuery(" SELECT h "
+		+ "FROM Field f INNER JOIN ZipCode zf ON f.zipcode = zf.id, "
+		+ "ZipCode zh JOIN Herd h ON zh.id = h.zipcode "
+		+ "WHERE 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) < h.area "
+		+ "AND f.id=:idParam ");
+				query.setParameter("idParam", field.getId());
+		herds = query.getResultList();
 		
 		return search(field.getZipcode().getLatitude(), field.getZipcode().getLongitude()) ;
 	}
@@ -46,7 +46,7 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 		
 		Query query = em.createQuery(" SELECT h "
 				+ "FROM Herd h "
-				+ "WHERE SQRT(POW(h.zipcode.longitude - :longitudeParam, 2) + POW(h.zipcode.latitude - :latitudeParam, 2)) < h.area ");
+				+ "WHERE (100 * SQRT(POW((h.zipcode.longitude - :longitudeParam), 2) + POW((h.zipcode.latitude - :latitudeParam), 2))) < h.area ");
 		query.setParameter("longitudeParam", longitude);
 		query.setParameter("latitudeParam", latitude);
 		herds = query.getResultList();
@@ -54,9 +54,17 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 		return herds;
 	}
 
-	public String searchTest() {
+	@Override
+	public List<Float> distances(Field field) {
+		List<Float> dstcs = null;
 		
-		return null;
-		
+		Query query = em.createQuery(" SELECT 100 * SQRT(POW(h.zipcode.longitude - (:longitudeParam), 2) + POW(h.zipcode.latitude - (:latitudeParam), 2)) "
+				+ "FROM Herd h "
+				+ "WHERE 100 * SQRT(POW(h.zipcode.longitude - (:longitudeParam), 2) + POW(h.zipcode.latitude - (:latitudeParam), 2)) < h.area ");
+		query.setParameter("longitudeParam", field.getZipcode().getLongitude());
+		query.setParameter("latitudeParam", field.getZipcode().getLatitude());
+		dstcs = query.getResultList();
+		System.out.println("\r<<<<<<<<<<<<<<<<<<<<<<"+dstcs.size());
+		return dstcs;
 	}
 }

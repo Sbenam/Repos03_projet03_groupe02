@@ -18,18 +18,15 @@ import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
 public class ServiceManagedBean implements Serializable{
 
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	
 	private Field field;
 	private List<Herd> herds;
 	private Herd herd;
+	private List<Float> dists;
 //	private List<ZipCode> zipcodes;
 	
-	// TODO vin retrait de init()
 	
 	@EJB
 	private ServiceIBusiness serviceIBusiness;
@@ -45,16 +42,20 @@ public class ServiceManagedBean implements Serializable{
 //		return zipcodes;
 //	}
 
+	
+	// TODO vin retrait de init()
 	@PostConstruct
 	public void init() {
-		Field f = fieldIBusiness.extraireTerrainParId(3);
-		System.out.println("\n-----------------"+f+"------------------");
+		Field f = fieldIBusiness.extraireTerrainParId(22);
+		System.out.println("\n-----------------nom du terrain "+f.getName()+"------------------");
 		herds = serviceIBusiness.search(f);
 		System.out.println("\n-----------------"+herds.size()+"------------------");
 		System.out.println("\n-----------------"+herds.get(0).getName()+"------------------");
 		System.out.println("\n-----------------"+herds.get(0).getZipcode().getLabel()+"------------------");
+		dists = serviceIBusiness.distanceBU(f);
 	}
 
+	
 	public List<Herd> search(Field field) {
 		return serviceIBusiness.search(field);
 	}
@@ -87,6 +88,14 @@ public class ServiceManagedBean implements Serializable{
 
 	public void setHerd(Herd herd) {
 		this.herd = herd;
+	}
+
+	public List<Float> getDists() {
+		return dists;
+	}
+
+	public void setDists(List<Float> dists) {
+		this.dists = dists;
 	}
 
 
