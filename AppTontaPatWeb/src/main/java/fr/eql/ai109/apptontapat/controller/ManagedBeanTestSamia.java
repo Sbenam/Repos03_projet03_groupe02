@@ -1,6 +1,10 @@
 package fr.eql.ai109.apptontapat.controller;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -62,8 +66,10 @@ public class ManagedBeanTestSamia implements Serializable{
 	@EJB
 	ServiceIBusiness a;
 	
-	public List<Service> getAll() {
-		return a.extraireToutesLesPrestations();
+	public Service getAll() {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date(2021, 01, 25); 
+		return a.annoterUnePrestation(122, 5, date, "commentaire");
 	}
 	/*public Herd getAll() {
 		Herd h = new Herd();

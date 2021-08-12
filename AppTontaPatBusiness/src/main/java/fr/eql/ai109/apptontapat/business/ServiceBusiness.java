@@ -1,5 +1,7 @@
 package fr.eql.ai109.apptontapat.business;
 
+
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -37,5 +39,15 @@ public class ServiceBusiness implements ServiceIBusiness{
 	public Service ajoutPrestation(Service service) {
 		return serviceIDao.add(service);
 	}
+
+	@Override
+	public Service annoterUnePrestation(Integer id, Integer rateNote, Date rateDate, String rateComment) {
+		Service service = serviceIDao.annotedService(id, rateNote, rateDate, rateComment);
+		serviceIDao.update(service);
+		return service;
+	}
+
+
+
 
 }
