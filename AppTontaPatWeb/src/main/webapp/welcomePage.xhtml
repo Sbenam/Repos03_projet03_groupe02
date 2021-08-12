@@ -137,8 +137,19 @@ servira pour la NAVIGATION BAR -->
 		
 		<!-- Test -->
 		<h4>TROUPEAU: </h4>
-		<!--<h:outputText   value="#{mbService.search2()[0].name}" />
- 		 <h:dataTable value="#{mbService.search2()}" var="h">
+		<h:form>
+	<h:outputLabel for="grass" value="Hauteur d'herbe :" />
+	<h:selectOneMenu id="grass" class="form-control"
+		value="{mbService.herd}">
+		<f:selectItem itemLabel="#{mbService.herd.name}" itemValue=""
+			noSelectionOption="true"></f:selectItem>
+	<f:selectItems value="#{mbService.herds}"></f:selectItems>
+ 	</h:selectOneMenu>
+</h:form>
+
+
+	<!--<h:outputText   value="#{mbService.herds}" />
+ 		  <h:dataTable value="#{mbService.search2()}" var="h">
 			<h:outputText value="h.name"/>
 		</h:dataTable> -->
 		 <!-- Fin Test -->

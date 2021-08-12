@@ -26,6 +26,7 @@ public class ServiceManagedBean implements Serializable{
 	
 	private Field field;
 	private List<Herd> herds;
+	private Herd herd;
 //	private List<ZipCode> zipcodes;
 	
 	// TODO vin retrait de init()
@@ -48,8 +49,10 @@ public class ServiceManagedBean implements Serializable{
 	public void init() {
 		Field f = fieldIBusiness.extraireTerrainParId(3);
 		System.out.println("\n-----------------"+f+"------------------");
-		List<Herd> hs = serviceIBusiness.search(f);
-		System.out.println("\n-----------------"+hs.size()+"------------------");
+		herds = serviceIBusiness.search(f);
+		System.out.println("\n-----------------"+herds.size()+"------------------");
+		System.out.println("\n-----------------"+herds.get(0).getName()+"------------------");
+		System.out.println("\n-----------------"+herds.get(0).getZipcode().getLabel()+"------------------");
 	}
 
 	public List<Herd> search(Field field) {
@@ -77,5 +80,14 @@ public class ServiceManagedBean implements Serializable{
 	public void setField(Field field) {
 		this.field = field;
 	}
+
+	public Herd getHerd() {
+		return herd;
+	}
+
+	public void setHerd(Herd herd) {
+		this.herd = herd;
+	}
+
 
 }
