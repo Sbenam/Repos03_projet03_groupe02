@@ -146,73 +146,6 @@ servira pour la NAVIGATION BAR -->
     </h:panelGroup>
 
 	
-<<<<<<< HEAD
-	<!-- <h:panelGroup id="pagefooter2">
-		<ui:include src="#{PageManageBean.page2}.xhtml"></ui:include>
-
-	</h:panelGroup>
- -->
-
-
-
-<!-- SimpleArch : footer + navbar -->
-
-
-		<title>Tontàpat - Bienvenue</title>
-		<!-- Content main page -->
-
-
-
-
-		<!--  Masthead-->
-		<header class="masthead">
-		<div class="container">
-			<div class="masthead-subheading">Bienvenue sur notre site!</div>
-			<div class="masthead-heading text-uppercase">Retrouvez des
-				moutons près de chez vous</div>
-			<a class="btn btnCalltoAction btn-confirmation btn-xl text-uppercase"
-				href="#recherche">Inscrivez-vous ici !</a>
-		</div>
-		</header>
-		
-		<!-- Test -->
-		<!-- <h4>TROUPEAU: </h4>
-		<h:form>
-	<h:outputLabel for="grass" value="Hauteur d'herbe :" />
-	<h:selectOneMenu id="grass" class="form-control"
-		value="{mbService.herd}">
-		<f:selectItem itemLabel="#{mbService.herd.name}" itemValue=""
-			noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbService.herds}"></f:selectItems>
- 	</h:selectOneMenu>
-</h:form>
-
-<h4> troupeauxxx :
- 		 <ui:repeat var ="herd" value="#{mbService.herds}">
-	
-		 <br/>
-		 
-		 <h:outputLabel value= "nom : #{herd.name} - id : #{herd.id}" />
-		 </ui:repeat>
-	</h4>
-<h4> distance :
- 		 <ui:repeat var ="dist" value="#{mbService.dists}">
-	
-		 <br/>
-		 
-		 <h:outputLabel value= "-> #{dist}" />
-		 </ui:repeat>
-	</h4> -->
-	<!--<h:outputText   value="#{mbService.herds}" />
- 		  <h:dataTable value="#{mbService.search2()}" var="h">
-			<h:outputText value="h.name"/>
-		</h:dataTable> -->
-		 <!-- Fin Test -->
-		 
-		<!-- recherche Section-->
-		<section class="page-section recherche backgroundBoxGreen"
-			id="recherche">
-=======
     <!-- SimpleArch : footer + navbar -->
     <title>Tontàpat - Bienvenue</title>
     <!-- Content main page -->
@@ -260,9 +193,10 @@ servira pour la NAVIGATION BAR -->
 			<h:inputHidden id="herdlong" value="#{h.zipcode.longitude}" />
 			<h:inputHidden id="herdlat" value="#{h.zipcode.latitude}" />
 			<div>
-				<h:outputText id="herdi" value="#{h.zipcode.longitude}" style="color: green;" /><span> -------- </span>
+				<h:outputText id="herdi" value="#{h.zipcode.longitude}" style="color: green;" /><span> -------- </span> 
 				<h:outputText id="herdilong" value="#{h.zipcode.latitude}" />
 			</div>
+			
 		</ui:repeat>
 		
 		<!-- Map leaflet -->
@@ -964,7 +898,6 @@ servira pour la NAVIGATION BAR -->
 	
     <!-- Footer-->
     <footer class="footer text-center">
->>>>>>> master
 		<div class="container">
 			<div class="row">
 				<!-- Footer Location-->
