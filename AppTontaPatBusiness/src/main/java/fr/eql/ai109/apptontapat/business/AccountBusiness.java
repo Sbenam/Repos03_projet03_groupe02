@@ -32,4 +32,10 @@ public class AccountBusiness implements AccountIBusiness {
 	public Account connection(String email, String password) {
 		return aidao.authenticate(email, password);
 	}
+
+
+	@Override
+	public Account mettreAjourUnCompte(Account account) {
+		return aidao.update(account);
+	}
 }
