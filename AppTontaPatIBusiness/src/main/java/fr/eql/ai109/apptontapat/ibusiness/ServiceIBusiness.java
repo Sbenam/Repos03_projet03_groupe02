@@ -4,7 +4,6 @@ import java.util.List;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
-import fr.eql.ai109.apptontapat.entity.ZipCode;
 
 public interface ServiceIBusiness {
 	List<Herd> search(Field field);

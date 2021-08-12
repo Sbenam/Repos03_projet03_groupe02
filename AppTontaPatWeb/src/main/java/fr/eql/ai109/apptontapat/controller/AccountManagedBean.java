@@ -1,7 +1,7 @@
 package fr.eql.ai109.apptontapat.controller;
 
 import java.io.Serializable;
-import java.lang.System.Logger;
+// import java.lang.System.Logger;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;

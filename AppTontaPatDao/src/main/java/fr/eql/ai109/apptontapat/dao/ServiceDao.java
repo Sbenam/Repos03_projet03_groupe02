@@ -28,27 +28,34 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 	@Override
 	public List<Herd> search(Field field) {
 		// TODO vin
-		List<Herd> herds = 	search(field.getZipcode().getLatitude(), field.getZipcode().getLongitude());
+		List<Herd> herds = 	null ; //search(field.getZipcode().getLatitude(), field.getZipcode().getLongitude());
 		Query query = em.createQuery(" SELECT h "
-		+ "FROM Field f JOIN ZipCode zf ON f.zipcode = zf.id, "
-		+ "ZipCode zh JOIN Herd h ON zh.id = h.zipcode "
-		+ "WHERE 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) < (h.area + 50) "
-		+ "AND h.id=:idParam ");
-		query.setParameter("idParam", field.getId());
-		return herds;
+		+ "FROM Field f INNER JOIN ZipCode zf ON f.zipcode = zf.id, "
+		+ "ZipCode zh INNER JOIN Herd h ON zh.id = h.zipcode "
+		+ "WHERE 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) < h.area "
+		+ "AND f.id=:idParam ");
+				query.setParameter("idParam", field.getId());
+		herds = query.getResultList();
+		return herds ; //search(field.getZipcode().getLatitude(), field.getZipcode().getLongitude()) ;
 	}
 
 	@Override
 	public List<Herd> search(Double latitude, Double longitude) {
 		List<Herd> herds = null;
 		
-		Query query = em.createQuery(" SELECT h FROM Herd h WHERE SQRT(POW(h.zipcode.longitude - :longitudeParam, 2) + POW(h.zipcode.latitude - :latitudeParam, 2)) < 0.6 ");
+		Query query = em.createQuery(" SELECT h "
+				+ "FROM Field f INNER JOIN ZipCode zf ON f.zipcode = zf.id"
+				+ "WHERE SQRT(POW(h.zipcode.longitude - :longitudeParam, 2) + POW(h.zipcode.latitude - :latitudeParam, 2)) < h.area ");
 		query.setParameter("longitudeParam", longitude);
 		query.setParameter("latitudeParam", latitude);
 		herds = query.getResultList();
-		
+		System.out.println("\r<<<<<<<<<<<<<<<<<<<<<<"+herds.size());
 		return herds;
 	}
 
-
+	public String searchTest() {
+		
+		return null;
+		
+	}
 }
