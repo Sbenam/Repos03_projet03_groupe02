@@ -1,14 +1,11 @@
 package fr.eql.ai109.apptontapat.controller;
 
 import java.io.Serializable;
-<<<<<<< HEAD
 // import java.lang.System.Logger;
-=======
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
->>>>>>> master
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
