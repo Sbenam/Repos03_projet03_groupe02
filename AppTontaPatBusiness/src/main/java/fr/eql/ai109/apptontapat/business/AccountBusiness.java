@@ -17,8 +17,8 @@ public class AccountBusiness implements AccountIBusiness {
 
 	// En a t'on reéllement besoin !
 	@Override
-	public Boolean exists(Account account) {
-		return aidao.exists(account);
+	public Boolean exists(String email) {
+		return aidao.exists(email);
 	}
 
 	@Override
@@ -31,5 +31,11 @@ public class AccountBusiness implements AccountIBusiness {
 	@Override
 	public Account connection(String email, String password) {
 		return aidao.authenticate(email, password);
+	}
+
+
+	@Override
+	public Account mettreAjourUnCompte(Account account) {
+		return aidao.update(account);
 	}
 }

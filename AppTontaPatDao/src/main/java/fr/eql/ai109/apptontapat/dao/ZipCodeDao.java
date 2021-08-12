@@ -17,7 +17,7 @@ public class ZipCodeDao extends GenericDao<ZipCode> implements ZipCodeIDao{
 	@Override
 	public List<String> getAllCity() {
 		List<String> cityNames = null;
-		Query query = em.createQuery("SELECT u.label FROM ZipCode u");
+		Query query = em.createQuery("SELECT z.label FROM ZipCode z");
 		cityNames = query.getResultList();
 		return cityNames;
 	}

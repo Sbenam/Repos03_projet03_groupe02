@@ -5,12 +5,13 @@ import fr.eql.ai109.apptontapat.entity.Account;
 public interface AccountIBusiness {
 
 	// En a t'on reéllement besoin !
-	Boolean exists(Account account);
+	Boolean exists(String email);
 
 	Account inscription(Account account);
 	
 	Account connection(String login, String password);
 	
+	Account mettreAjourUnCompte(Account account);
 //	List<Account> findAll();
 
 }

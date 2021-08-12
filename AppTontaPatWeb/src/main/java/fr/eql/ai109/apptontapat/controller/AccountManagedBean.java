@@ -52,7 +52,7 @@ public class AccountManagedBean implements Serializable {
 		String forward = null;
 		account = accountIBusiness.connection(email, password);
 		if (account != null) {
-			forward = "/simpleArch.xhtml?faces-redirection=true";
+			forward = "simpleArch.xhtml?faces-redirection=true";
 		} else {
 			FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_WARN,
 					"Identifiant et/ou mot de passe incorrect(s)", "Identifiant et/ou mot de passe incorrect(s)");
