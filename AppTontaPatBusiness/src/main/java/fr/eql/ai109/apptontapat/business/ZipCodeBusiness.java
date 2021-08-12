@@ -38,6 +38,11 @@ public class ZipCodeBusiness implements ZipCodeIBusiness{
 		return zipCodeIDao.getZipCodeById(id);
 	}
 
+	@Override
+	public ZipCode extraireZipCodeAvecCodePostale(String code) {
+		return zipCodeIDao.getZipCodeByCode(code);
+	}
+
 	
 	
 }

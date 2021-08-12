@@ -59,7 +59,7 @@ public class ManagedBeanTestSamia implements Serializable{
 	ZipCodeIBusiness a;
 	
 	public ZipCode getAll() {
-		return a.extraireIncidentParId(2);
+		return a.extraireZipCodeAvecCodePostale("95348");
 	}
 	/*public Herd getAll() {
 		Herd h = new Herd();

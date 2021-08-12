@@ -7,4 +7,5 @@ public interface ZipCodeIDao extends GenericIDao<ZipCode> {
 	List<String> getAllCity();
 	String getCityByCode(String code);
 	ZipCode getZipCodeById(int id);
+	ZipCode getZipCodeByCode(String code);
 }

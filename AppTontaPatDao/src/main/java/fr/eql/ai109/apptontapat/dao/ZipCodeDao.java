@@ -48,4 +48,17 @@ public class ZipCodeDao extends GenericDao<ZipCode> implements ZipCodeIDao{
 		return zipcode;
 	}
 
+	@Override
+	public ZipCode getZipCodeByCode(String code) {
+		List<ZipCode> zipcodes = null;
+		ZipCode zipcode = null;
+		Query query = em.createQuery("SELECT u FROM ZipCode u WHERE u.code=:codeParam");
+		query.setParameter("codeParam",code);
+		zipcodes= query.getResultList();
+		if (zipcodes.size() > 0) {
+			zipcode =zipcodes.get(0);
+		}
+		return zipcode;
+	}
+
 }

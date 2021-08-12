@@ -10,4 +10,5 @@ public interface ZipCodeIBusiness {
 	List<String> getAllBuCity();
 	String extraireVilleAvecCodePostale(String code);
 	ZipCode extraireIncidentParId(int id);
+	ZipCode extraireZipCodeAvecCodePostale(String code);
 }
