@@ -1,5 +1,6 @@
 package fr.eql.ai109.apptontapat.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -35,6 +36,22 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao{
 		query.setParameter("idParam", id);
 		services = (List<Service>) query.getResultList();
 		return services;
+	}
+
+	@Override
+	public Service annotedService(Integer id, Integer rateNote, Date rateDate, String rateComment) {
+		List<Service> services = null;
+		Service service = null;
+		Query query = em.createQuery("SELECT u FROM Service u WHERE u.id=:idParam");
+		query.setParameter("idParam", id);
+		services = (List<Service>) query.getResultList();
+		if (services.size() > 0) {
+			service = services.get(0);
+		}
+		service.setRateDate(rateDate);
+		service.setRateComment(rateComment);
+		service.setRateNote(rateNote);
+		return service;
 	}
 
 }
