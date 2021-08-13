@@ -80,7 +80,7 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 
 	public List<Service> getAllByIdAccount(int id) {
 		List<Service> services = null;
-		Query query = em.createQuery("SELECT s FROM Service s WHERE s.account.id=:idParam");
+		Query query = em.createQuery("SELECT s FROM Service s WHERE s.field.account.id=:idParam");
 		query.setParameter("idParam", id);
 		services = (List<Service>) query.getResultList();
 		return services;
