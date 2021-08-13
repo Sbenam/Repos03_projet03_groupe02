@@ -93,7 +93,16 @@
 							error iste quibusdam laborum debitis laudantium ab fuga</p>
 					</div>
 					<div class="button-modifier-terrain">
-						<button class="btn btn-primary " type="submit">Modifier</button>
+						<button class="btn btn-primary" type="button">
+							<h:form>
+								<f:ajax render=":pagefooter2">
+									<h:commandLink styleClass="dropdown-item" value=""
+										action="#{PageManageBean.setPage2('updateherd')}">
+										Modifier
+									</h:commandLink>
+								</f:ajax>
+							</h:form>
+						</button>
 					</div>
 				</div>
 				<div class="col-4">
