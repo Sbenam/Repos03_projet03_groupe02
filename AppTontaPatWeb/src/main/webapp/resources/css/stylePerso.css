@@ -239,11 +239,9 @@ div.col-3:nth-child(even) {
 
 .conexion-popupModif .col-2 {
     background-color: var(--primary);
-    height: 600px;
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.7;
-
 }
 
 .popup-containerAjoutField {
@@ -252,12 +250,10 @@ div.col-3:nth-child(even) {
     left: 0;
     bottom: 0;
     right: 0;
-
     background-image: url(https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2019.2F01.2F14.2F5837f0c3-ad4c-4f67-b181-e26a2a845cae.2Ejpeg/850x478/quality/90/crop-from/center/vous-adorez-l-odeur-de-l-herbe-coupee-qu-est-ce-que-cela-signifie.jpeg);
     background-color: rgba(241, 250, 238);
     background-repeat: no-repeat;
     background-size: 800px 900px;
-
 }
 
 .popup-containerAjoutHerd {
@@ -266,12 +262,10 @@ div.col-3:nth-child(even) {
     left: 0;
     bottom: 0;
     right: 0;
-
     background-image: url(https://sf1.bibamagazine.fr/wp-content/uploads/biba/2017/08/Les-chevres-nouvelles-coqueluches-d-Instagram.jpg);
     background-color: rgba(241, 250, 238);
     background-repeat: no-repeat;
     background-size: 900px 900px;
-
 }
 
 .popup-containerModifField {
@@ -283,23 +277,18 @@ div.col-3:nth-child(even) {
     background-color: rgba(241, 250, 238);
     background-repeat: no-repeat;
     background-size: 900px 900px;
-
 }
 
 .popup-buttonAjout {
     background-color: #fff;
     color: #000;
-
     position: absolute;
     top: 10px;
     right: 10px;
 }
 
 .conexion-popupAjout .col-3 {
-
     height: 600px;
-
-
 }
 
 .conexion-popupAjout .col-9 {
@@ -308,7 +297,6 @@ div.col-3:nth-child(even) {
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-
 }
 
 .conexion-popupAjout .align-left {
@@ -327,7 +315,6 @@ div.col-3:nth-child(even) {
     right: 180px;
     border-color: var(--primary);
     border-style: solid;
-
 }
 
 ul {

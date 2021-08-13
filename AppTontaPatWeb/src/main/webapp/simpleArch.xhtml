@@ -4,11 +4,11 @@ servira pour la NAVIGATION BAR -->
 
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!--xmlns:ui="http://xmlns.jcp.org/jsf/facelets== on a rajouté cette balise; ce sont les librairies de tag jsf -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
-  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xml:lang="fr">
 <h:head>
+  <title>Hub</title>
   <ui:insert name="head"></ui:insert>
   <h:outputStylesheet library="css" name="style.css" />
   <h:outputStylesheet library="css" name="stylePerso.css" />
@@ -27,7 +27,9 @@ servira pour la NAVIGATION BAR -->
   <!-- NAVIGATION-->
   <nav class="navbar navbar-expand-lg navbar-dark text-uppercase fixed-top" id="mainNav">
     <div class="container">
-      <a href="#page-top"><img class="" style="width: 100px;" src="images/MoutonNoir.png" /></a>
+      <a href="#page-top">
+        <img alt="" style="width: 100px" src="images/MoutonNoir.png" />
+      </a>
       <button class="
             navbar-toggler
             text-uppercase
@@ -37,10 +39,11 @@ servira pour la NAVIGATION BAR -->
             rounded
           " type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
         aria-expanded="false" aria-label="Toggle navigation">
-        Menu <i class="fas fa-bars"></i>
+        <span>Menu</span>
+        <em class="fas fa-bars"></em>
       </button>
       <div class="collapse navbar-collapse justify-content-md-center" id="navbarResponsive">
-        <div class="nav navbar-nav navbar-right" style="margin-left: auto;">
+        <div class="nav navbar-nav navbar-right" style="margin-left: auto">
           <div class="dropdown">
             <button class="btn-custom backgroundBoxBlue text-white dropdown-toggle" type="button" id="  "
               data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,74 +51,15 @@ servira pour la NAVIGATION BAR -->
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
 
-
-              <li>
-                <button class="dropdown-item" type="button">
-                  <h:form>
-                    <f:ajax render=":pagefooter2">
-                      <h:commandLink styleClass="dropdown-item" value=""
-                        action="#{PageManageBean.setPage2('updatefield')}">
-                        <i class="fas fa-sign-in-alt"></i> update terrain</h:commandLink>
-                    </f:ajax>
-                  </h:form>
-                </button>
-              </li>
-
-              <li>
-                <button class="dropdown-item" type="button">
-                  <h:form>
-                    <f:ajax render=":pagefooter2">
-                      <h:commandLink styleClass="dropdown-item" value=""
-                        action="#{PageManageBean.setPage2('updateherd')}">
-                        <i class="fas fa-sign-in-alt"></i> update troupeau</h:commandLink>
-                    </f:ajax>
-                  </h:form>
-                </button>
-              </li>
-
-              <li>
-                <button class="dropdown-item" type="button">
-                  <h:form>
-                    <f:ajax render=":pagefooter2">
-                      <h:commandLink styleClass="dropdown-item" value=""
-                        action="#{PageManageBean.setPage2('updateaccount')}">
-                        <i class="fas fa-sign-in-alt"></i> update account</h:commandLink>
-                    </f:ajax>
-                  </h:form>
-                </button>
-              </li>
-
-              <li>
-                <button class="dropdown-item" type="button">
-                  <h:form>
-                    <f:ajax render=":pagefooter2">
-                      <h:commandLink styleClass="dropdown-item" value=""
-                        action="#{PageManageBean.setPage2('detailaccount')}">
-                        <i class="fas fa-sign-in-alt"></i> profil</h:commandLink>
-                    </f:ajax>
-                  </h:form>
-                </button>
-              </li>
-
-
-              <li>
-                <button class="dropdown-item" type="button">
-                  <h:form>
-                    <f:ajax render=":pagefooter2">
-                      <h:commandLink styleClass="dropdown-item" value=""
-                        action="#{PageManageBean.setPage2('research')}">
-                        <i class="fas fa-sign-in-alt"></i> recherche</h:commandLink>
-                    </f:ajax>
-                  </h:form>
-                </button>
-              </li>
+              <!-- Tout doit disparaitre !!!!-->
               <li>
                 <button class="dropdown-item" type="button">
                   <h:form>
                     <f:ajax render=":pagefooter2">
                       <h:commandLink styleClass="dropdown-item" value=""
                         action="#{PageManageBean.setPage2('suppressField')}">
-                        <i class="fas fa-sign-in-alt"></i> retrait terrain</h:commandLink>
+                        <em class="fas fa-sign-in-alt"></em> retrait
+                        terrain</h:commandLink>
                     </f:ajax>
                   </h:form>
                 </button>
@@ -127,7 +71,8 @@ servira pour la NAVIGATION BAR -->
                     <f:ajax render=":pagefooter2">
                       <h:commandLink styleClass="dropdown-item" value=""
                         action="#{PageManageBean.setPage2('suppressHerd')}">
-                        <i class="fas fa-sign-in-alt"></i> retrait troupeau</h:commandLink>
+                        <em class="fas fa-sign-in-alt"></em> retrait
+                        troupeau</h:commandLink>
                     </f:ajax>
                   </h:form>
                 </button>
@@ -139,12 +84,12 @@ servira pour la NAVIGATION BAR -->
                     <f:ajax render=":pagefooter2">
                       <h:commandLink styleClass="dropdown-item" value=""
                         action="#{PageManageBean.setPage2('suppressAccount')}">
-                        <i class="fas fa-sign-in-alt"></i> retrait compte</h:commandLink>
+                        <em class="fas fa-sign-in-alt"></em> retrait
+                        compte</h:commandLink>
                     </f:ajax>
                   </h:form>
                 </button>
               </li>
-
             </ul>
           </div>
         </div>
@@ -174,10 +119,10 @@ servira pour la NAVIGATION BAR -->
         <!-- Footer Social Icons-->
         <div class="col-lg-4 mb-5 mb-lg-0">
           <h4 class="text-uppercase mb-4">Tontàpat</h4>
-          <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#!"><em class="fab fa-fw fa-facebook-f"></em></a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#!"><em class="fab fa-fw fa-twitter"></em></a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#!"><em class="fab fa-fw fa-linkedin-in"></em></a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#!"><em class="fab fa-fw fa-dribbble"></em></a>
         </div>
         <!-- Footer About Text-->
         <div class="col-lg-4">
@@ -202,7 +147,7 @@ servira pour la NAVIGATION BAR -->
           <f:ajax render=":contentPage">
             <h:commandLink pt:data-bs-toggle="tooltip" title="Recherche" pt:data-bs-placement="left"
               styleClass="nav-link py-3 border-bottom" value="" action="#{PageManageBean.setPage('research')}">
-              <i class="fas fa-search-location"></i>
+              <em class="fas fa-search-location"></em>
             </h:commandLink>
           </f:ajax>
         </h:form>
@@ -212,7 +157,7 @@ servira pour la NAVIGATION BAR -->
           <f:ajax render=":contentPage">
             <h:commandLink pt:data-bs-toggle="tooltip" title="Mes terrains" pt:data-bs-placement="left"
               styleClass="nav-link py-3 border-bottom" value="" action="#{PageManageBean.setPage('terrain_detail')}">
-              <i class="fas fa-leaf"></i>
+              <em class="fas fa-leaf"></em>
             </h:commandLink>
           </f:ajax>
         </h:form>
@@ -222,7 +167,7 @@ servira pour la NAVIGATION BAR -->
           <f:ajax render=":contentPage">
             <h:commandLink pt:data-bs-toggle="tooltip" title="Mes troupeaux" pt:data-bs-placement="left"
               styleClass="nav-link py-3 border-bottom" value="" action="#{PageManageBean.setPage('troupeau_detail')}">
-              <i class="fas fa-paw"></i>
+              <em class="fas fa-paw"></em>
             </h:commandLink>
           </f:ajax>
         </h:form>
@@ -231,10 +176,11 @@ servira pour la NAVIGATION BAR -->
       <li>
         <a href="#" class="nav-link py-3 border-bottom" title="Prestations" data-bs-toggle="tooltip"
           data-bs-placement="right">
-          <i class="fas fa-sticky-note"></i>
+          <em class="fas fa-sticky-note"></em>
         </a>
       </li>
     </ul>
+    <!-- Profil + ajout terrain + troupeau -->
     <div class="dropdown border-top">
       <a href="#" class="
             d-flex
@@ -251,25 +197,30 @@ servira pour la NAVIGATION BAR -->
         <li>
           <h:form>
             <f:ajax render=":pagefooter2">
-              <h:commandLink styleClass="dropdown-item" value=""
-                action="#{PageManageBean.setPage2('addfield1')}">
-                <i class="fas fa-sign-in-alt"></i>Nouveau terrain</h:commandLink>
+              <h:commandLink styleClass="dropdown-item" value="" action="#{PageManageBean.setPage2('addfield1')}">
+                Nouveau terrain</h:commandLink>
             </f:ajax>
           </h:form>
         </li>
         <li>
           <h:form>
-                    <f:ajax render=":pagefooter2">
-                      <h:commandLink styleClass="dropdown-item" value=""
-                        action="#{PageManageBean.setPage2('addherd1')}">
-                        <i class="fas fa-sign-in-alt"></i>Nouveau troupeau</h:commandLink>
-                    </f:ajax>
-                  </h:form>
-                  </li>
+            <f:ajax render=":pagefooter2">
+              <h:commandLink styleClass="dropdown-item" value="" action="#{PageManageBean.setPage2('addherd1')}">Nouveau
+                troupeau</h:commandLink>
+            </f:ajax>
+          </h:form>
+        </li>
         <li>
           <hr class="dropdown-divider" />
         </li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li>
+          <h:form>
+            <f:ajax render=":pagefooter2">
+              <h:commandLink styleClass="dropdown-item" value="" action="#{PageManageBean.setPage2('detailaccount')}">
+                Profile</h:commandLink>
+            </f:ajax>
+          </h:form>
+        </li>
         <li>
           <hr class="dropdown-divider" />
         </li>
