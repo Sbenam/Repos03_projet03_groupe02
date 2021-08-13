@@ -34,4 +34,17 @@ public class RetretDao extends GenericDao<Retret> implements RetretIDao{
 		return labels;
 	}
 
+	@Override
+	public Retret getIdRetretByLabel(java.lang.String label) {
+		List<Retret> ids = null;
+		Retret id = null;
+		Query query = em.createQuery("SELECT u FROM Retret u WHERE u.label =:labelParam");
+		query.setParameter("labelParam", label);
+		ids = (List<Retret>) query.getResultList();
+		if (ids.size() > 0) {
+			id = ids.get(0);
+		}
+		return id;
+	}
+
 }

@@ -10,6 +10,7 @@ import javax.persistence.Query;
 
 import fr.eql.ai109.apptontapat.entity.Composition;
 import fr.eql.ai109.apptontapat.entity.Desactivation;
+import fr.eql.ai109.apptontapat.entity.Retret;
 import fr.eql.ai109.apptontapat.idao.DesactivationIDao;
 
 
@@ -34,6 +35,19 @@ public class DesactivationDao extends GenericDao<Desactivation> implements Desac
 		Query query = em.createQuery("SELECT u.label FROM Desactivation u ");
 		labels = (List<String>) query.getResultList();
 		return labels;
+	}
+
+	@Override
+	public Desactivation getIdDesactivationByLabel(String label) {
+		List<Desactivation> desactivations = null;
+		Desactivation desactivation = null;
+		Query query = em.createQuery("SELECT u FROM Desactivation u WHERE u.label =:labelParam");
+		query.setParameter("labelParam", label);
+		desactivations = (List<Desactivation>) query.getResultList();
+		if (desactivations.size() > 0) {
+			desactivation = desactivations.get(0);
+		}
+		return desactivation;
 	}
 
 }

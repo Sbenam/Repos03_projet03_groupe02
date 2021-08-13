@@ -11,9 +11,7 @@ import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import fr.eql.ai109.apptontapat.entity.Service;
-import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.idao.ServiceIDao;
 
 @Remote(ServiceIDao.class)

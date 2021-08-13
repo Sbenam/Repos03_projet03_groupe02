@@ -13,6 +13,7 @@ import javax.faces.bean.SessionScoped;
 
 import fr.eql.ai109.apptontapat.entity.Account;
 import fr.eql.ai109.apptontapat.entity.Datum;
+import fr.eql.ai109.apptontapat.entity.Desactivation;
 import fr.eql.ai109.apptontapat.entity.Enclosure;
 import fr.eql.ai109.apptontapat.entity.EvacuateA;
 import fr.eql.ai109.apptontapat.entity.GlassHeight;
@@ -64,12 +65,10 @@ public class ManagedBeanTestSamia implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	ServiceIBusiness a;
+	EvacuateaIBusiness a;
 	
-	public Service getAll() {
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = new Date(2021, 01, 25); 
-		return a.annoterUnePrestation(122, 5, date, "commentaire");
+	public EvacuateA getAll() {
+		return a.extraireEvacuateaAPartirDeLabel("Je ne suis pas satisfait des services de Tontapat");
 	}
 	/*public Herd getAll() {
 		Herd h = new Herd();

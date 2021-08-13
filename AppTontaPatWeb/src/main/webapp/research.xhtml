@@ -1,18 +1,27 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core"
-  xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-  <!-- appel -->
-  <!-- Attend l'id acompte -->
-  <h:outputText value="#{mbHerd.getHerdById(4)}"></h:outputText>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	
+	
+	
+	<!-- appel -->	
+<!-- Attend l'id acompte -->
+	<h:outputText value="#{mbHerd.getHerdById(4)}"></h:outputText>
+	<h:outputText value="#{mbField.getFieldById(4)}"></h:outputText>
+	
+<!-- sortie -->	
+	<!-- <h:outputText value="#{mbHerd.herd.adress}"></h:outputText> -->
+	
+	
+	
+	<section>
+		<div class="container-fluid test">
+			<div class="row">
+				<div class="col-8 mx-auto">
 
-  <!-- sortie -->
-  <!-- <h:outputText value="#{mbHerd.herd.adress}"></h:outputText> -->
-
-  <section>
-    <div class="container-fluid test">
-      <div class="row">
-        <div class="col-8 mx-auto">
-          <div>
-            <h2>Terrain des magnolia</h2>
+					<div >
+						<h2>Terrain de <h:outputText value="#{mbField.field.name}"></h:outputText></h2>
 
             <!-- caroussel -->
             <section class="border p-4 d-flex justify-content-center mb-4">
@@ -47,6 +56,138 @@
 
             <!-- Map leaflet -->
             <div id="mapid"></div>
+<div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="#" class="image">
+                                <img class="pic-1" src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/4.jpg"/>
+                                <img class="pic-2" src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/3.jpg"/>
+                            </a>
+                            <a href="" class="product-like-icon"><i class="far fa-heart"></i></a>
+                            <ul class="product-links">
+                                <li><a href="#"><i class="far fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-random"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title"><a href="#">Women's Shirt Top</a></h3>
+                            <div class="price">$66.90</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="#" class="image">
+                             <img class="pic-1" src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/4.jpg"/>
+                                <img class="pic-2" src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/3.jpg"/>
+                            </a>
+                            <a href="" class="product-like-icon"><i class="far fa-heart"></i></a>
+                            <ul class="product-links">
+                                <li><a href="#"><i class="far fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-random"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title"><a href="#">Men's Shirt</a></h3>
+                            <div class="price">$78.80</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="#" class="image">
+                              <img class="pic-1" src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/4.jpg"/>
+                                <img class="pic-2" src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/3.jpg"/>
+                            </a>
+                            <a href="" class="product-like-icon"><i class="far fa-heart"></i></a>
+                            <ul class="product-links">
+                                <li><a href="#"><i class="far fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-random"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title"><a href="#">Men's Jacket</a></h3>
+                            <div class="price">$85.99</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="#" class="image">
+                              <img class="pic-1" src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/4.jpg"/>
+                                <img class="pic-2" src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/3.jpg"/>
+                            </a>
+                            <a href="" class="product-like-icon"><i class="far fa-heart"></i></a>
+                            <ul class="product-links">
+                                <li><a href="#"><i class="far fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-random"></i></a></li>
+                                <li><a href="#"><i class="fa fa-eye"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title"><a href="#">Women's Top</a></h3>
+                            <div class="price">$69.88</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+	
+				
+	<div class="owl-carousel owl-theme">
+    <div class="item"><h4>1</h4></div>
+    <div class="item"><h4>2</h4></div>
+    <div class="item"><h4>3</h4></div>
+    <div class="item"><h4>4</h4></div>
+    <div class="item"><h4>5</h4></div>
+    <div class="item"><h4>6</h4></div>
+    <div class="item"><h4>7</h4></div>
+    <div class="item"><h4>8</h4></div>
+    <div class="item"><h4>9</h4></div>
+    <div class="item"><h4>10</h4></div>
+    <div class="item"><h4>11</h4></div>
+    <div class="item"><h4>12</h4></div>
+</div>
+	
+
+						
+						
+						
+		
+<section class="border p-4 d-flex justify-content-center mb-4">
+			<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+  <div class="carousel-inner">
+    <div class="carousel-item active" >
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/4.jpg" class="w-100" alt="Gallery image 4"/>
+    </div>
+    <div class="carousel-item" >
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/3.jpg" class="w-100" alt="Gallery image 4"/>
+    </div>
+    <div class="carousel-item"  >
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/2.jpg"  class="w-100" alt="Gallery image 4"/>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</section>
 
             <!-- carte des terrain -->
             <ui:repeat var="test" value="testt">
