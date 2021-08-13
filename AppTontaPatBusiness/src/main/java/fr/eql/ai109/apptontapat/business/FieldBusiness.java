@@ -50,4 +50,9 @@ public class FieldBusiness implements FieldIBusiness{
 		return fieldIDao.update(field);
 	}
 
+	@Override
+	public void supprimerTerrain(Field field) {
+		fieldIDao.delete(field);
+	}
+
 }

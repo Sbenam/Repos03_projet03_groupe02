@@ -28,4 +28,9 @@ public class EvacuateaBusiness implements EvacuateaIBusiness{
 		return evacuateaIDao.getAllEvacuateaLabels();
 	}
 
+	@Override
+	public EvacuateA extraireEvacuateaAPartirDeLabel(String label) {
+		return evacuateaIDao.getIdEvacuateaByLabel(label);
+	}
+
 }

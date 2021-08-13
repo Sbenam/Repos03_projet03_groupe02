@@ -36,4 +36,17 @@ public class RefusalDao extends GenericDao<Refusal> implements RefusalIDao{
 		return labels;
 	}
 
+	@Override
+	public Refusal getIdRefusalByLabel(String label) {
+		List<Refusal> ids = null;
+		Refusal id = null;
+		Query query = em.createQuery("SELECT u FROM Refusal u WHERE u.label =:labelParam");
+		query.setParameter("labelParam", label);
+		ids = (List<Refusal>) query.getResultList();
+		if (ids.size() > 0) {
+			id = ids.get(0);
+		}
+		return id;
+	}
+
 }

@@ -11,4 +11,5 @@ public interface FieldIBusiness {
 	List<Field> extraireToutLesTerrainParIdAccount(int id);
 	Field ajoutTerrain(Field field);
 	Field mettreAJourUnTerrain(Field field);
+	void supprimerTerrain(Field field);
 }

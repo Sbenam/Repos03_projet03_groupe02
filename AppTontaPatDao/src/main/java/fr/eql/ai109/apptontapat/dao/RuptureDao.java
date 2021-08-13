@@ -34,4 +34,17 @@ public class RuptureDao extends GenericDao<Rupture> implements RuptureIDao{
 		return labels;
 	}
 
+	@Override
+	public Rupture getIdRuptureByLabel(String label) {
+		List<Rupture> ids = null;
+		Rupture id = null;
+		Query query = em.createQuery("SELECT u FROM Rupture u WHERE u.label =:labelParam");
+		query.setParameter("labelParam", label);
+		ids = (List<Rupture>) query.getResultList();
+		if (ids.size() > 0) {
+			id = ids.get(0);
+		}
+		return id;
+	}
+
 }

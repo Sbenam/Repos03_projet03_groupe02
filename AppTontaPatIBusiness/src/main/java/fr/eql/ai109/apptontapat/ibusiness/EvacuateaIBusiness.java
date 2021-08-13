@@ -6,4 +6,5 @@ import fr.eql.ai109.apptontapat.entity.EvacuateA;
 public interface EvacuateaIBusiness {
 	List<EvacuateA> extraireToutesLesEvacuateA();
 	List<String> extraireToutesLesEvacuateALabels();
+	EvacuateA extraireEvacuateaAPartirDeLabel(String label);
 }

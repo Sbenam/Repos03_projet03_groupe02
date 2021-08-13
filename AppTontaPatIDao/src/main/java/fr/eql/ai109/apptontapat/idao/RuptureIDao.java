@@ -6,4 +6,5 @@ import fr.eql.ai109.apptontapat.entity.Rupture;
 public interface RuptureIDao extends GenericIDao<Rupture>{
 	public List<Rupture> getAllComposition();
 	public List<String> getAllCompositionLabels();
+	public Rupture getIdRuptureByLabel(String label);
 }
