@@ -72,10 +72,9 @@ public class AccountManagedBean implements Serializable {
 	}
 
 	public String addAccount() {
-		account = new Account();
 		String forward = null;
-		// recupere zipcode
-		// inclut zipcode dans account
+		account = new Account();
+		zipCode = zipcodeibusiness.extraireZipCodeAvecCodePostale(String.valueOf(nZipcode));
 
 		System.out.println(" surname : " + surNname);
 		System.out.println(" name : " + name);
@@ -84,6 +83,10 @@ public class AccountManagedBean implements Serializable {
 		System.out.println(" email : " + email);
 		System.out.println(" password : " + password);
 		System.out.println(" birth : " + dBirth);
+		System.out.println(" zipcode : " + zipCode);
+		System.out.println(" zipcode(int) : " + nZipcode);
+		System.out.println(" zipcode(String) : " + String.valueOf(nZipcode) );
+		System.out.println(" zipcode(request) : " + zipcodeibusiness.extraireZipCodeAvecCodePostale(String.valueOf(nZipcode)) );
 
 		account.setSurName(surNname);
 		account.setName(name);
@@ -93,6 +96,7 @@ public class AccountManagedBean implements Serializable {
 		account.setPassword(password);
 		account.setBirth(dBirth);
 		account.setRegistration(new Date());
+		account.setZipcode(zipCode);
 
 		if (account != null) {
 			forward = "/simpleArch.xhtml?faces-redirection=true";
