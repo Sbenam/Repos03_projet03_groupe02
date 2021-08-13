@@ -37,7 +37,14 @@
 							
 							<label for="nameInput" class="form-label">Code postal du terrain :</label><input
 							type="name" class="form-control w-25" id="nameInput"
-							placeholder="92300" /> 
+							placeholder="92300" value="#{mbField.field.zipcode}"/> 
+							
+							<ui:repeat var="cat" value="#{mbField.field.zipID}">
+							<br/>
+								<h:outputLabel value ="#{cat.id}" />
+								<h:outputLabel value ="#{cat.z_label}" />
+								<h:outputLabel value ="#{cat.code}" />
+							</ui:repeat>
 							
 							<input class="form-control w-50" type="text" value="#{mbField.field.zipcode.label}" aria-label="Ville" disabled="true" />
 						

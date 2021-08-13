@@ -28,8 +28,8 @@ public class PageManageBean implements Serializable {
 	}
 
 	public void setPage(String page) {
-		this.page = page;
 		System.out.println("page: "+page);
+		this.page = page;
 	}
 
 	public String getPage2() {

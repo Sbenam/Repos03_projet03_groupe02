@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	
+	
+	
+	
+	<div class="popup-containerSuppress" id="container">
+		<section class="conexion-popupSuppress">
+			<h:form>
+				<f:ajax render=":pagefooter2">
+					<h:commandLink styleClass="btn-close" value=""
+						action="#{PageManageBean.setPage2('blank')}"
+						style="position: absolute; right: 5px; top: 5px">
+					</h:commandLink>
+				</f:ajax>
+			</h:form>
+
+			<div class="container-fluid">
+				<div class="row justify-content-md-center">
+						<div class="col-1"></div>
+					<div class="col-9 py-5 my-5">
+						
+							<h3>Déclarer un incident</h3>
+							<p>Vous êtes sur le point de déclarer un incident</p>
+							<p>Cliquez
+								sur "DECLARER" pour confirmer votre action, sinon cliquez sur
+								"ANNULER"</p>
+					
+			
+						  <h:form>
+<div class="form-group col-md-10">
+    <h:outputLabel for="delete" value=""/>
+    <h:selectOneMenu id="delete" class="form-control" value="{mbService.selectedIncident}" >
+    <f:selectItem itemLabel="Type d'incident : * " itemValue="" noSelectionOption="true"></f:selectItem>
+	<f:selectItems value="#{mbService.incident}"></f:selectItems>
+      </h:selectOneMenu>
+   
+  </div>
+  </h:form>
+						
+						
+						
+						
+							<div class="d-grid gap-2">
+							<h:form><button class="btn btn-primary w-25" type="submit">Déclarer</button>
+						
+				<f:ajax render=":pagefooter2">
+						<h:commandLink styleClass="dropdown-item" value=""
+							action="#{PageManageBean.setPage2('blank')}">
+							<button class="btn btn-primary w-25" type="submit">Annuler</button>
+						</h:commandLink>
+					
+				</f:ajax>
+			</h:form>
+						
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</ui:composition>

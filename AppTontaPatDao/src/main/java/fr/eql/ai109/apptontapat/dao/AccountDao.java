@@ -14,11 +14,11 @@ import fr.eql.ai109.apptontapat.idao.AccountIDao;
 public class AccountDao extends GenericDao<Account> implements AccountIDao{
 
 	@Override
-	public Boolean exists(Account account) {
+	public Boolean exists(String email) {
 		List<Account> accounts = null;
 
-		Query query = em.createQuery("SELECT a FROM Account a WHERE a.email=:emailParam");
-		query.setParameter("emailParam", account.getEmail());
+		Query query = em.createQuery(" SELECT a FROM Account a WHERE a.email=:emailParam ");
+		query.setParameter("emailParam", email);
 		accounts = query.getResultList();
 		
 		return accounts.size() > 0;
@@ -28,8 +28,7 @@ public class AccountDao extends GenericDao<Account> implements AccountIDao{
 	public Account authenticate(String email, String password) {
 		Account account = null;
 		List<Account> accounts = null;
-			Query query = em.createQuery("SELECT a FROM Account a WHERE a.email=:emailParam"
-					+ " AND a.password=:passwordParam");
+			Query query = em.createQuery(" SELECT a FROM Account a WHERE a.email=:emailParam AND a.password=:passwordParam ");
 			query.setParameter("emailParam", email);
 			query.setParameter("passwordParam", password);
 			accounts = query.getResultList();

@@ -1,6 +1,5 @@
 package fr.eql.ai109.apptontapat.business;
 
-
 import java.util.Date;
 import java.util.List;
 
@@ -8,18 +7,33 @@ import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
-import fr.eql.ai109.apptontapat.entity.Service;
+import fr.eql.ai109.apptontapat.entity.Field;
+import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
 import fr.eql.ai109.apptontapat.idao.ServiceIDao;
-
+import fr.eql.ai109.apptontapat.entity.Service;
+import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
 
 @Remote(ServiceIBusiness.class)
 @Stateless
-public class ServiceBusiness implements ServiceIBusiness{
-	
+public class ServiceBusiness implements ServiceIBusiness {
+
 	@EJB
 	private ServiceIDao serviceIDao;
+	
 
+	@Override
+	public List<Herd> search(Field field) {		
+		return serviceIDao.search(field);
+	}
+
+
+	@Override
+	public List<Float> distanceBU(Field field) {
+		return serviceIDao.distances(field);
+	}
+		
 	@Override
 	public List<Service> extraireToutesLesPrestations() {
 		return serviceIDao.getAll();
@@ -47,7 +61,9 @@ public class ServiceBusiness implements ServiceIBusiness{
 		return service;
 	}
 
-
-
+	@Override
+	public List<Service> getAllByIdAccount(int id) {
+		return serviceIDao.getAllByIdAccount(id);
+	}
 
 }

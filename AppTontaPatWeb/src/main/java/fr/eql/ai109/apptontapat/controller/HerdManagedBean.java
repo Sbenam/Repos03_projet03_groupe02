@@ -13,6 +13,7 @@ import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.ibusiness.HerdIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.RaceIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.SpecieIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.TakeoutIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.ZipCodeIBusiness;
 
 @ManagedBean(name = "mbHerd")
@@ -30,12 +31,16 @@ public class HerdManagedBean implements Serializable {
 	private String selectedRace ;
 	private List<String> species = new ArrayList<String>();
 	private String selectedSpecie;
+	private List<String> takeouts = new ArrayList<String>();
+	private String selectedTakeout ;
 	
 	
 	@PostConstruct
 	public void init() {
 		races = getAllRaceLabels(); 
 		species = getAllSpecieLabels();
+		takeouts = getAllTakeoutLabels();
+		
 	}
 	
 	@EJB
@@ -46,6 +51,8 @@ public class HerdManagedBean implements Serializable {
 	private SpecieIBusiness specieIBusiness;
 	@EJB
 	private ZipCodeIBusiness zipCodeIBusiness;
+	@EJB
+	private TakeoutIBusiness takeoutIBusiness ;
 	
 	
 	public List<String> getAllRaceLabels() {
@@ -54,6 +61,12 @@ public class HerdManagedBean implements Serializable {
 	public List<String> getAllSpecieLabels() {
 		return specieIBusiness.extraireToutLesLabelsSpecies() ;
 	}
+	public List<String> getAllTakeoutLabels() {
+		return takeoutIBusiness.extraireToutesLesTakeoutLabels();
+	}
+	
+	
+	
 
 	public Herd getHerdByIdAccount(int id) {
 		return herdIBusiness.extraireTroupeauParIdAccount(id);
@@ -67,6 +80,7 @@ public class HerdManagedBean implements Serializable {
 	public String getCityWithZipCode(String zipCode) {
 		return zipCodeIBusiness.extraireVilleAvecCodePostale(zipCode) ;
 	}
+	
 
 	
 	
@@ -122,6 +136,18 @@ public class HerdManagedBean implements Serializable {
 
 	public void setSelectedSpecie(String selectedSpecie) {
 		this.selectedSpecie = selectedSpecie;
+	}
+	public List<String> getTakeouts() {
+		return takeouts;
+	}
+	public void setTakeouts(List<String> takeouts) {
+		this.takeouts = takeouts;
+	}
+	public String getSelectedTakeout() {
+		return selectedTakeout;
+	}
+	public void setSelectedTakeout(String selectedTakeout) {
+		this.selectedTakeout = selectedTakeout;
 	}
 
 	

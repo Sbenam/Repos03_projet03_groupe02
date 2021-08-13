@@ -13,106 +13,47 @@
 				<div class="row justify-content-md-center row-main-accueil">
 					<div class="col-2 position-relative separator-vertical">
 						<ul class="navbar-nav ms-auto navbar-prestation-left">
-							<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-									href="#portfolio">En attente</a></li>
-							<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-									href="#about">En
-									cours</a></li>
-							<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-									href="#contact">Fini</a></li>
-							<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-									href="#contact">Annuler</a></li>
+							<li class="nav-item mx-0 mx-lg-1">
+								<h:form>
+									<f:ajax render=":service">
+										<h:commandLink styleClass="nav-link py-3 px-0 px-lg-3 rounded" value=""
+											action="#{ServicePageMBean.setServiceView('attente')}">
+											En attente</h:commandLink>
+									</f:ajax>
+								</h:form>
+								</li>
+							<li class="nav-item mx-0 mx-lg-1">
+								<h:form>
+									<f:ajax render=":service">
+										<h:commandLink styleClass="nav-link py-3 px-0 px-lg-3 rounded" value=""
+											action="#{ServicePageMBean.setServiceView('enCours')}">
+											En cours</h:commandLink>
+									</f:ajax>
+								</h:form>								</li>
+							<li class="nav-item mx-0 mx-lg-1">
+								<h:form>
+									<f:ajax render=":service">
+										<h:commandLink styleClass="nav-link py-3 px-0 px-lg-3 rounded" value=""
+											action="#{ServicePageMBean.setServiceView('fini')}">
+											Fini</h:commandLink>
+									</f:ajax>
+								</h:form>
+								</li>
+							<li class="nav-item mx-0 mx-lg-1">
+								<h:form>
+									<f:ajax render=":service">
+										<h:commandLink styleClass="nav-link py-3 px-0 px-lg-3 rounded" value=""
+											action="#{ServicePageMBean.setServiceView('annuler')}">
+											Annuler</h:commandLink>
+									</f:ajax>
+								</h:form>								</li>
 						</ul>
 					</div>
 					<div class="col-9">
-						<div class="row justify-content-center text-center">
-
-							<div class="col md-5 lg-2 col-card">
-								<div class="card" style="width: 18rem;">
-									<div class="card-body align-left">
-										<h5 class="card-title">Terrain des magnolias</h5>
-										<img src="images/terrain.jpg" class="img-thumbnail" alt="..." ></img>
-										<p class="card-text"><span class="color-green-primary">Ville : </span>
-											Courbevoie
-										</p>
-										<p class="card-text"><span class="color-green-primary">Surface : </span> 2000m²
-										</p>
-										<p class="card-text"><span class="color-green-primary">Debut : </span>
-											11/12/2021
-										</p>
-										<p class="card-text"><span class="color-green-primary">Fin : </span> 31/12/2021
-										</p>
-										<a class="card-link-hover"
-											href="https://christianheilmann.com/2020/11/26/back-to-basics-creating-a-clickable-card-interface-in-plain-html-css-and-javascript/"></a>
-									</div>
-								</div>
-							</div>
-
-							<div class="col md-5 lg-2 col-card">
-								<div class="card" style="width: 18rem;">
-									<div class="card-body align-left">
-										<h5 class="card-title">Terrain des magnolias</h5>
-										<img src="images/terrain.jpg" class="img-thumbnail" alt="..."></img>
-										<p class="card-text"><span class="color-green-primary">Ville : </span>
-											Courbevoie
-										</p>
-										<p class="card-text"><span class="color-green-primary">Surface : </span> 2000m²
-										</p>
-										<p class="card-text"><span class="color-green-primary">Debut : </span>
-											11/12/2021
-										</p>
-										<p class="card-text"><span class="color-green-primary">Fin : </span> 31/12/2021
-										</p>
-										<a class="card-link-hover"
-											href="https://christianheilmann.com/2020/11/26/back-to-basics-creating-a-clickable-card-interface-in-plain-html-css-and-javascript/"></a>
-									</div>
-								</div>
-							</div>
-
-							<div class="col md-5 lg-2 col-card">
-								<div class="card" style="width: 18rem;">
-									<div class="card-body align-left">
-										<h5 class="card-title">Terrain des magnolias</h5>
-										<img src="images/terrain.jpg" class="img-thumbnail" alt="..."></img>
-										<p class="card-text"><span class="color-green-primary">Ville : </span>
-											Courbevoie
-										</p>
-										<p class="card-text"><span class="color-green-primary">Surface : </span> 2000m²
-										</p>
-										<p class="card-text"><span class="color-green-primary">Debut : </span>
-											11/12/2021
-										</p>
-										<p class="card-text"><span class="color-green-primary">Fin : </span> 31/12/2021
-										</p>
-										<a class="card-link-hover"
-											href="https://christianheilmann.com/2020/11/26/back-to-basics-creating-a-clickable-card-interface-in-plain-html-css-and-javascript/"></a>
-									</div>
-								</div>
-							</div>
-
-							<div class="col md-5 lg-2 col-card">
-								<div class="card" style="width: 18rem;">
-									<div class="card-body align-left">
-										<h5 class="card-title">Terrain des magnolias</h5>
-										<img src="images/terrain.jpg" class="img-thumbnail" alt="..."></img>
-										<p class="card-text"><span class="color-green-primary">Ville : </span>
-											Courbevoie
-										</p>
-										<p class="card-text"><span class="color-green-primary">Surface : </span> 2000m²
-										</p>
-										<p class="card-text"><span class="color-green-primary">Debut : </span>
-											11/12/2021
-										</p>
-										<p class="card-text"><span class="color-green-primary">Fin : </span> 31/12/2021
-										</p>
-										<a class="card-link-hover"
-											href="https://christianheilmann.com/2020/11/26/back-to-basics-creating-a-clickable-card-interface-in-plain-html-css-and-javascript/"></a>
-									</div>
-								</div>
-							</div>
-
-
-						</div>
+						<h:panelGroup id="service">
+							<ui:include src="#{ServicePageMBean.serviceView}.xhtml"></ui:include>
+						  </h:panelGroup>
+					
 					</div>
 				</div>
 			</div>

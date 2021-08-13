@@ -1,20 +1,27 @@
 package fr.eql.ai109.apptontapat.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
+// import java.lang.System.Logger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Pattern;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import fr.eql.ai109.apptontapat.entity.Account;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.AccountIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.EvacuateaIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.ZipCodeIBusiness;
 import fr.eql.ai109.apptontapat.web.PageManageBean;
 
@@ -37,12 +44,29 @@ public class AccountManagedBean implements Serializable {
 	private String birth;
 	private Date dBirth;
 	private int phone;
+	private List<String> evacuateas = new ArrayList<String>();
+	private String selectedEvacuatea ;
+	
+	
 
 	@EJB
 	private AccountIBusiness accountIBusiness;
 
 	@EJB
 	private ZipCodeIBusiness zipcodeibusiness;
+	@EJB
+	private EvacuateaIBusiness evacuateaIBusiness ; 
+	
+	
+	@PostConstruct
+	private void init() {
+		evacuateas = getAllEvacuateaLabels();
+	}
+	
+	
+	public List<String> getAllEvacuateaLabels() {
+		return evacuateaIBusiness.extraireToutesLesEvacuateALabels();
+	}
 
 	public void inscription(Account account) {
 		setAccount((accountIBusiness.inscription(account) != null) ? account : null);
@@ -52,7 +76,14 @@ public class AccountManagedBean implements Serializable {
 		String forward = null;
 		account = accountIBusiness.connection(email, password);
 		if (account != null) {
-			forward = "/simpleArch.xhtml?faces-redirection=true";
+			forward = "simpleArch.xhtml?faces-redirection=true";
+			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+			try {
+				ec.redirect(ec.getRequestContextPath() + "/simpleArch.xhtml");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else {
 			FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_WARN,
 					"Identifiant et/ou mot de passe incorrect(s)", "Identifiant et/ou mot de passe incorrect(s)");
@@ -63,29 +94,22 @@ public class AccountManagedBean implements Serializable {
 	}
 
 	public String addAccount() {
-		account = new Account();
 		String forward = null;
-		// recupere zipcode
-		// inclut zipcode dans account
+		account = new Account();
+		zipCode = zipcodeibusiness.extraireZipCodeAvecCodePostale(String.valueOf(nZipcode));
 
-		System.out.println(" surname : " + surNname);
-		System.out.println(" name : " + name);
-		System.out.println(" adress : " + adress);
-		System.out.println(" phone : " + phone);
-		System.out.println(" email : " + email);
-		System.out.println(" password : " + password);
-		System.out.println(" birth : " + dBirth);
-
-		account.setSurName(surNname);
-		account.setName(name);
+		account.setSurName(name);
+		account.setName(surNname);
 		account.setAdress(adress);
 		account.setPhone("0" + phone);
 		account.setEmail(email);
 		account.setPassword(password);
 		account.setBirth(dBirth);
 		account.setRegistration(new Date());
+		account.setZipcode(zipCode);
 
 		if (account != null) {
+			inscription(account);
 			forward = "/simpleArch.xhtml?faces-redirection=true";
 		} else {
 			FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_WARN,
@@ -150,7 +174,7 @@ public class AccountManagedBean implements Serializable {
 
 		try {
 			dBirth = new SimpleDateFormat("yyyy-MM-dd").parse(birth);
-			System.out.println("post format dbirth: "+dBirth);
+			System.out.println("post format dbirth: " + dBirth);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -282,5 +306,25 @@ public class AccountManagedBean implements Serializable {
 
 	public void setnZipcode(int nZipcode) {
 		this.nZipcode = nZipcode;
+	}
+
+
+	public List<String> getEvacuateas() {
+		return evacuateas;
+	}
+
+
+	public void setEvacuateas(List<String> evacuateas) {
+		this.evacuateas = evacuateas;
+	}
+
+
+	public String getSelectedEvacuatea() {
+		return selectedEvacuatea;
+	}
+
+
+	public void setSelectedEvacuatea(String selectedEvacuatea) {
+		this.selectedEvacuatea = selectedEvacuatea;
 	}
 }
