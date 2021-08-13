@@ -40,8 +40,7 @@ servira pour la NAVIGATION BAR -->
     >
       <div class="container">
         <a href="#page-top"
-          ><img class="logo" src="images/MoutonBlanc.ico"
-        /></a>
+          ><img class="" style="width: 100px;" src="images/MoutonNoir.png"/></a>
         <button
           class="
             navbar-toggler
@@ -64,35 +63,7 @@ servira pour la NAVIGATION BAR -->
           class="collapse navbar-collapse justify-content-md-center"
           id="navbarResponsive"
         >
-          <h:form>
-            <ul class="navbar-nav mx-auto">
-              <li class="nav-item mx-0 mx-lg-1">
-                <f:ajax render=":contentPage">
-                  <h:commandLink
-                    styleClass="nav-link py-3 px-0 px-lg-3 rounded"
-                    value="Recherche"
-                    action="#{PageManageBean.setPage('terrain_detail')}"
-                  ></h:commandLink>
-                </f:ajax>
-              </li>
-
-              <li class="nav-item mx-0 mx-lg-1">
-                <f:ajax render=":pagefooter2">
-                  <h:commandLink
-                    styleClass="nav-link py-3 px-0 px-lg-3 rounded"
-                    value="Services"
-                    action="#{PageManageBean.setPage2('inscription1')}"
-                  ></h:commandLink>
-                </f:ajax>
-              </li>
-              <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact"
-                  >Contact</a
-                >
-              </li>
-            </ul>
-          </h:form>
-          <div class="nav navbar-nav navbar-right">
+          <div class="nav navbar-nav navbar-right" style="margin-left: auto;">
             <div class="dropdown">
               <button
                 class="btn-custom backgroundBoxBlue text-white dropdown-toggle"
