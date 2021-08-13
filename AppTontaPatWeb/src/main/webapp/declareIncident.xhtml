@@ -5,7 +5,6 @@
 	
 	
 	
-	<h:outputText value="#{mbField.getFieldById(4)}"></h:outputText>
 	
 	<div class="popup-containerSuppress" id="container">
 		<section class="conexion-popupSuppress">
@@ -23,31 +22,29 @@
 						<div class="col-1"></div>
 					<div class="col-9 py-5 my-5">
 						
-							<h3>Supprimer un terrain</h3>
-							<p>Vous êtes sur le point de supprimer votre terrain.</p>
-						
+							<h3>Déclarer un incident</h3>
+							<p>Vous êtes sur le point de déclarer un incident</p>
+							<p>Cliquez
+								sur "DECLARER" pour confirmer votre action, sinon cliquez sur
+								"ANNULER"</p>
 					
 			
 						  <h:form>
 <div class="form-group col-md-10">
     <h:outputLabel for="delete" value=""/>
-    <h:selectOneMenu id="delete" class="form-control" value="#{mbField.selectedRetret}" >
-  <!--   <f:selectItem itemLabel="Motif de suppression : * " itemValue="" noSelectionOption="true"></f:selectItem>  -->
-	<f:selectItems value="#{mbRetret.getAllRetret()}" var="obj"  itemLabel="#{obj.label}" itemValue="#{obj.id}" ></f:selectItems>
-	<f:ajax execute="delete" event="change" render="@form"/> 
+    <h:selectOneMenu id="delete" class="form-control" value="{mbService.selectedIncident}" >
+    <f:selectItem itemLabel="Type d'incident : * " itemValue="" noSelectionOption="true"></f:selectItem>
+	<f:selectItems value="#{mbService.incident}"></f:selectItems>
       </h:selectOneMenu>
- 
    
   </div>
-
-	<ui:repeat var="cat" value="#{mbRetret.getAllRetret()}"><h:outputLabel value="#{mbRetret.retret.label}" /></ui:repeat>					
+  </h:form>
+						
 						
 						
 						
 							<div class="d-grid gap-2">
-							
-							
-							<h:commandButton class="btn btn-primary w-25" type="submit"  action="#{mbField.supprimer(mbRetret.retretsList)}" title="valider pour confirmer la suppression" value="Valider"></h:commandButton>
+							<h:form><button class="btn btn-primary w-25" type="submit">Déclarer</button>
 						
 				<f:ajax render=":pagefooter2">
 						<h:commandLink styleClass="dropdown-item" value=""
@@ -56,9 +53,10 @@
 						</h:commandLink>
 					
 				</f:ajax>
-				</div>
 			</h:form>
-					
+						
+						</div>
+						
 					</div>
 				</div>
 			</div>

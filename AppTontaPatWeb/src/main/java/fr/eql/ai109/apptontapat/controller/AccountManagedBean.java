@@ -3,9 +3,12 @@ package fr.eql.ai109.apptontapat.controller;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Pattern;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -15,6 +18,7 @@ import javax.faces.context.FacesContext;
 import fr.eql.ai109.apptontapat.entity.Account;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.AccountIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.EvacuateaIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.ZipCodeIBusiness;
 import fr.eql.ai109.apptontapat.web.PageManageBean;
 
@@ -37,12 +41,29 @@ public class AccountManagedBean implements Serializable {
 	private String birth;
 	private Date dBirth;
 	private int phone;
+	private List<String> evacuateas = new ArrayList<String>();
+	private String selectedEvacuatea ;
+	
+	
 
 	@EJB
 	private AccountIBusiness accountIBusiness;
 
 	@EJB
 	private ZipCodeIBusiness zipcodeibusiness;
+	@EJB
+	private EvacuateaIBusiness evacuateaIBusiness ; 
+	
+	
+	@PostConstruct
+	private void init() {
+		evacuateas = getAllEvacuateaLabels();
+	}
+	
+	
+	public List<String> getAllEvacuateaLabels() {
+		return evacuateaIBusiness.extraireToutesLesEvacuateALabels();
+	}
 
 	public void inscription(Account account) {
 		setAccount((accountIBusiness.inscription(account) != null) ? account : null);
@@ -282,5 +303,25 @@ public class AccountManagedBean implements Serializable {
 
 	public void setnZipcode(int nZipcode) {
 		this.nZipcode = nZipcode;
+	}
+
+
+	public List<String> getEvacuateas() {
+		return evacuateas;
+	}
+
+
+	public void setEvacuateas(List<String> evacuateas) {
+		this.evacuateas = evacuateas;
+	}
+
+
+	public String getSelectedEvacuatea() {
+		return selectedEvacuatea;
+	}
+
+
+	public void setSelectedEvacuatea(String selectedEvacuatea) {
+		this.selectedEvacuatea = selectedEvacuatea;
 	}
 }
