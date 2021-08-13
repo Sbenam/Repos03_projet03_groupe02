@@ -12,9 +12,10 @@ public interface ServiceIDao extends GenericIDao<Service> {
 
 	List<Herd> search(Field field);
 //	List<ZipCode> search(Field field);
-	List<Herd> search(Double latitude, Double longitude);
+//	List<Herd> search(Double latitude, Double longitude);
 	List<Float> distances(Field field);
 	public List<Service> getAllByIdHerd(int id);
 	public List<Service> getAllByIdField(int id);
 	public Service annotedService(Integer id, Integer rateNote, Date rateDate, String rateComment);
+	List<Service> getAllByIdAccount(int id);
 }

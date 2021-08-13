@@ -10,11 +10,12 @@ import fr.eql.ai109.apptontapat.entity.Service;
 public interface ServiceIBusiness {
 	List<Herd> search(Field field);
 //	List<ZipCode> search(Field field);
-	List<Herd> search(Double latitude, Double longitude);
+//	List<Herd> search(Double latitude, Double longitude);
 	List<Float> distanceBU(Field field);
 	List<Service> extraireToutesLesPrestations();
 	List<Service> extraireToutesLesPrestationsParIdTroupeau(int id);
 	List<Service> extraireToutesLesPrestationsParIdTerrain(int id);
 	Service ajoutPrestation(Service service);
 	Service annoterUnePrestation(Integer id, Integer rateNote, Date date, String rateComment);
+	List<Service> getAllByIdAccount(int id);
 }

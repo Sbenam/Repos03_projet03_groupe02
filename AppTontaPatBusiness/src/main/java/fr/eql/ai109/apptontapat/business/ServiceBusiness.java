@@ -29,13 +29,13 @@ public class ServiceBusiness implements ServiceIBusiness {
 
 	@Override
 	public List<Herd> search(Field field) {		
-		return search(field.getZipcode().getLatitude(), field.getZipcode().getLatitude());
+		return serviceIDao.search(field);
 	}
 
-	@Override
-	public List<Herd> search(Double latitude, Double longitude) {
-		return serviceIDao.search(latitude, longitude);
-	}
+//	@Override
+//	public List<Herd> search(Double latitude, Double longitude) {
+//		return serviceIDao.search(latitude, longitude);
+//	}
 
 	@Override
 	public List<Float> distanceBU(Field field) {
@@ -67,6 +67,11 @@ public class ServiceBusiness implements ServiceIBusiness {
 		Service service = serviceIDao.annotedService(id, rateNote, rateDate, rateComment);
 		serviceIDao.update(service);
 		return service;
+	}
+
+	@Override
+	public List<Service> getAllByIdAccount(int id) {
+		return serviceIDao.getAllByIdAccount(id);
 	}
 
 }
