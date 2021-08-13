@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
 import fr.eql.ai109.apptontapat.idao.ServiceIDao;
 import fr.eql.ai109.apptontapat.entity.Service;
@@ -21,15 +22,26 @@ public class ServiceBusiness implements ServiceIBusiness {
 	@EJB
 	private ServiceIDao serviceIDao;
 	
-	@Override
-	public List<Herd> search(Field field) {		
-		return search(field.getZipcode().getLatitude(), field.getZipcode().getLatitude());
-	}
+//	@Override
+//	public List<ZipCode> search(Field field) {		
+//		return serviceIDao.search(field.getZipcode().getLatitude(), field.getZipcode().getLatitude());
+//	}
 
 	@Override
-	public List<Herd> search(Double latitude, Double longitude) {
-		return serviceIDao.search(latitude, longitude);
+	public List<Herd> search(Field field) {		
+		return serviceIDao.search(field);
 	}
+
+//	@Override
+//	public List<Herd> search(Double latitude, Double longitude) {
+//		return serviceIDao.search(latitude, longitude);
+//	}
+
+	@Override
+	public List<Float> distanceBU(Field field) {
+		return serviceIDao.distances(field);
+	}
+		
 	@Override
 	public List<Service> extraireToutesLesPrestations() {
 		return serviceIDao.getAll();
@@ -55,6 +67,11 @@ public class ServiceBusiness implements ServiceIBusiness {
 		Service service = serviceIDao.annotedService(id, rateNote, rateDate, rateComment);
 		serviceIDao.update(service);
 		return service;
+	}
+
+	@Override
+	public List<Service> getAllByIdAccount(int id) {
+		return serviceIDao.getAllByIdAccount(id);
 	}
 
 }
