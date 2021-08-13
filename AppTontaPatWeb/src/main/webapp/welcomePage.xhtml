@@ -9,22 +9,32 @@ servira pour la NAVIGATION BAR -->
   xmlns:h="http://java.sun.com/jsf/html"
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
   xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 >
   <h:head>
-
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-	integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-	crossorigin=""/>
-    <h:outputStylesheet library="css" name="style.css" />
-    <h:outputStylesheet library="css" name="stylePerso.css" />
-
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <f:metadata>
+      <f:event
+        listener="#{mbAccount.connect()}"
+        type="preRenderView"
+      ></f:event>
+    </f:metadata>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <h:outputStylesheet library="css" name="style.css" />
+    <h:outputStylesheet library="css" name="stylePerso.css" />
 
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="images/MoutonBlanc.ico" />
@@ -36,8 +46,7 @@ servira pour la NAVIGATION BAR -->
   </h:head>
 
   <h:body>
-
-  <!-- NAVIGATION-->
+    <!-- NAVIGATION-->
     <nav
       class="navbar navbar-expand-lg navbar-dark text-uppercase fixed-top"
       id="mainNav"
@@ -145,7 +154,6 @@ servira pour la NAVIGATION BAR -->
       <ui:include src="#{PageManageBean.page2}.xhtml"></ui:include>
     </h:panelGroup>
 
-	
     <!-- SimpleArch : footer + navbar -->
     <title>Tontàpat - Bienvenue</title>
     <!-- Content main page -->
@@ -187,52 +195,19 @@ servira pour la NAVIGATION BAR -->
           <div class="divider-custom-line"></div>
         </div>
         <!-- Apres la barre d'etoile -->
-				<!-- Test -->
-		 <h4>TROUPEAU: </h4>
-		<h:form>
-	<h:outputLabel for="grass" value="Hauteur d'herbe :" />
-	<h:selectOneMenu id="grass" class="form-control"
-		value="{mbService.herd}">
-		<f:selectItem itemLabel="#{mbService.herd.name}" itemValue=""
-			noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbService.herds}"></f:selectItems>
- 	</h:selectOneMenu>
-</h:form>
 
-<h4> troupeauxxx :
- 		 <ui:repeat var ="herd" value="#{mbService.search2()}">
-	
-		 <br/>
-		 
-		 <h:outputLabel value= "nom : #{herd.name} - id : #{herd.id}" />
-		 </ui:repeat>
-	</h4>
-	<h4> distance :
- 		 <ui:repeat var ="dist" value="#{mbService.distance()}">
-	
-		 <br/>
-		 
-		 <h:outputLabel value= "-> #{dist}" />
-		 </ui:repeat>
-	</h4> 
-		<!--<h:outputText   value="#{mbService.herds}" />
- 		  <h:dataTable value="#{mbService.search2()}" var="h">
-			<h:outputText value="h.name"/>
-		</h:dataTable> -->
-		 <!-- Fin Test -->
         <!-- recherche input hidden -->
-		<ui:repeat var="h" value="#{mbHerd.getAllHerd()}" varStatus="status">
-			<h:inputHidden id="herdlong" value="#{h.zipcode.longitude}" />
-			<h:inputHidden id="herdlat" value="#{h.zipcode.latitude}" />
-			<div>
-				<h:outputText id="herdi" value="#{h.zipcode.longitude}" style="color: green;" /><span> -------- </span> 
-				<h:outputText id="herdilong" value="#{h.zipcode.latitude}" />
-			</div>
-			
-		</ui:repeat>
-		
-		<!-- Map leaflet -->
-		<div id="mapid"></div>
+        <ui:repeat var="h" value="#{mbHerd.getAllHerd()}" varStatus="status">
+          <h:inputHidden pt:class="herdlong" value="#{h.zipcode.longitude}" />
+          <h:inputHidden pt:class="herdlat" value="#{h.zipcode.latitude}" />
+        </ui:repeat>
+        <ui:repeat var="f" value="#{mbField.getAllField()}" varStatus="status">
+          <h:inputHidden pt:class="fieldlong" value="#{f.zipcode.longitude}" />
+          <h:inputHidden pt:class="fieldlat" value="#{f.zipcode.latitude}" />
+        </ui:repeat>
+
+        <!-- Map leaflet -->
+        <div id="mapid"></div>
       </div>
     </section>
 
@@ -927,25 +902,25 @@ servira pour la NAVIGATION BAR -->
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-	
+
     <!-- Footer-->
     <footer class="footer text-center">
-		<div class="container">
-			<div class="row">
-				<!-- Footer Location-->
-				<div class="col-lg-4 mb-5 mb-lg-0">
-					<h4 class="text-uppercase mb-4">Adresse</h4>
-					<p class="lead mb-0">
-						9 Bd du Général de Gaulle <br /> 92120 MONTROUGE
-					</p>
-				</div>
-				<!-- Footer Social Icons-->
-				<div class="col-lg-4 mb-5 mb-lg-0">
-					<h4 class="text-uppercase mb-4">Tontàpat</h4>
-					<a class="btn btn-outline-light btn-social mx-1" href="#!"
-					><i class="fab fa-fw fa-facebook-f"></i
-						></a>
-						<a class="btn btn-outline-light btn-social mx-1" href="#!"
+      <div class="container">
+        <div class="row">
+          <!-- Footer Location-->
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <h4 class="text-uppercase mb-4">Adresse</h4>
+            <p class="lead mb-0">
+              9 Bd du Général de Gaulle <br /> 92120 MONTROUGE
+            </p>
+          </div>
+          <!-- Footer Social Icons-->
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <h4 class="text-uppercase mb-4">Tontàpat</h4>
+            <a class="btn btn-outline-light btn-social mx-1" href="#!"
+              ><i class="fab fa-fw fa-facebook-f"></i
+            ></a>
+            <a class="btn btn-outline-light btn-social mx-1" href="#!"
               ><i class="fab fa-fw fa-twitter"></i
             ></a>
             <a class="btn btn-outline-light btn-social mx-1" href="#!"
@@ -953,28 +928,30 @@ servira pour la NAVIGATION BAR -->
             ></a>
             <a class="btn btn-outline-light btn-social mx-1" href="#!"
               ><i class="fab fa-fw fa-dribbble"></i
-				></a>
-			</div>
-			<!-- Footer About Text-->
+            ></a>
+          </div>
+          <!-- Footer About Text-->
           <div class="col-lg-4">
-			  <h4 class="text-uppercase mb-4">A PROPOS DE NOUS</h4>
-			  <p class="lead mb-0">Groupe2@eql.com</p>
-			</div>
+            <h4 class="text-uppercase mb-4">A PROPOS DE NOUS</h4>
+            <p class="lead mb-0">Groupe2@eql.com</p>
+          </div>
         </div>
       </div>
     </footer>
     <!-- Copyright Section-->
     <div class="copyright py-4 text-center text-white">
-		<div class="container">
-			<small>Copyright &copy; Tontàpat 2021</small>
+      <div class="container">
+        <small>Copyright &copy; Tontàpat 2021</small>
       </div>
     </div>
-	
-	<!-- leaflet JS -->
-	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-	integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-	crossorigin=""></script>
-	<!-- Perso JS-->
-	<script src="js/myScripts.js"></script>
-</h:body>
+
+    <!-- leaflet JS -->
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <!-- Perso JS-->
+    <script src="js/myScripts.js"></script>
+  </h:body>
 </html>

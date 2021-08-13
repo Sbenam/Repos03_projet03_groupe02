@@ -2,391 +2,187 @@
 Tout le contenu de simple arch sera affiché sur TOTUES les pages comme ce qu'on a mis dans les div
 servira pour la NAVIGATION BAR -->
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!--xmlns:ui="http://xmlns.jcp.org/jsf/facelets== on a rajouté cette balise; ce sont les librairies de tag jsf -->
-<html
-  xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:h="http://java.sun.com/jsf/html"
-  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-  xmlns:f="http://xmlns.jcp.org/jsf/core"
-  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
->
-  <h:head>
-    <ui:insert name="head"></ui:insert>
-    <h:outputStylesheet library="css" name="style.css" />
-    <h:outputStylesheet library="css" name="stylePerso.css" />  
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xml:lang="fr">
+<h:head>
+  <title>Hub</title>
+  <ui:insert name="head"></ui:insert>
+  <h:outputStylesheet library="css" name="style.css" />
+  <h:outputStylesheet library="css" name="stylePerso.css" />
 
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
 
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="images/MoutonBlanc.ico" />
-    <!-- Font Awesome icons (free version)-->
-    <script
-      src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
-      crossorigin="anonymous"
-    ></script>
-  </h:head>
-  <h:body>
-    <!-- NAVIGATION-->
-    <nav
-      class="navbar navbar-expand-lg navbar-dark text-uppercase fixed-top"
-      id="mainNav"
-    >
-      <div class="container">
-        <a href="#page-top"
-          ><img class="logo" src="images/MoutonBlanc.ico"
-        /></a>
-        <button
-          class="
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="images/MoutonBlanc.ico" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+</h:head>
+<h:body>
+  <!-- NAVIGATION-->
+  <nav class="navbar navbar-expand-lg navbar-dark text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a href="#page-top">
+        <img alt="" style="width: 100px" src="images/MoutonNoir.png" />
+      </a>
+      <button class="
             navbar-toggler
             text-uppercase
             font-weight-bold
             bg-primary
             text-white
             rounded
-          "
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          Menu <i class="fas fa-bars"></i>
-        </button>
-        <div
-          class="collapse navbar-collapse justify-content-md-center"
-          id="navbarResponsive"
-        >
-          <h:form>
-            <ul class="navbar-nav mx-auto">
-              <li class="nav-item mx-0 mx-lg-1">
-                <f:ajax render=":contentPage">
-                  <h:commandLink
-                    styleClass="nav-link py-3 px-0 px-lg-3 rounded"
-                    value="Recherche"
-                    action="#{PageManageBean.setPage('terrain_detail')}"
-                  ></h:commandLink>
-                </f:ajax>
+          " type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span>Menu</span>
+        <em class="fas fa-bars"></em>
+      </button>
+      <div class="collapse navbar-collapse justify-content-md-center" id="navbarResponsive">
+        <div class="nav navbar-nav navbar-right" style="margin-left: auto">
+          <div class="dropdown">
+            <button class="btn-custom backgroundBoxBlue text-white dropdown-toggle" type="button" id="  "
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="fa fa-user"></span> ☰
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+              <!-- Tout doit disparaitre !!!!-->
+              <li>
+                <button class="dropdown-item" type="button">
+                  <h:form>
+                    <f:ajax render=":pagefooter2">
+                      <h:commandLink styleClass="dropdown-item" value=""
+                        action="#{PageManageBean.setPage2('suppressField')}">
+                        <em class="fas fa-sign-in-alt"></em> retrait
+                        terrain</h:commandLink>
+                    </f:ajax>
+                  </h:form>
+                </button>
               </li>
 
-              <li class="nav-item mx-0 mx-lg-1">
-                <f:ajax render=":pagefooter2">
-                  <h:commandLink
-                    styleClass="nav-link py-3 px-0 px-lg-3 rounded"
-                    value="Services"
-                    action="#{PageManageBean.setPage2('inscription1')}"
-                  ></h:commandLink>
-                </f:ajax>
+              <li>
+                <button class="dropdown-item" type="button">
+                  <h:form>
+                    <f:ajax render=":pagefooter2">
+                      <h:commandLink styleClass="dropdown-item" value=""
+                        action="#{PageManageBean.setPage2('suppressHerd')}">
+                        <em class="fas fa-sign-in-alt"></em> retrait
+                        troupeau</h:commandLink>
+                    </f:ajax>
+                  </h:form>
+                </button>
               </li>
-              <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact"
-                  >Contact</a
-                >
+
+              <li>
+                <button class="dropdown-item" type="button">
+                  <h:form>
+                    <f:ajax render=":pagefooter2">
+                      <h:commandLink styleClass="dropdown-item" value=""
+                        action="#{PageManageBean.setPage2('suppressAccount')}">
+                        <em class="fas fa-sign-in-alt"></em> retrait
+                        compte</h:commandLink>
+                    </f:ajax>
+                  </h:form>
+                </button>
               </li>
             </ul>
-          </h:form>
-          <div class="nav navbar-nav navbar-right">
-            <div class="dropdown">
-              <button
-                class="btn-custom backgroundBoxBlue text-white dropdown-toggle"
-                type="button"
-                id="  "
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <span class="fa fa-user"></span> ☰
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li>
-                  <button class="dropdown-item" type="button">
-                    <h:form>
-                      <f:ajax render=":pagefooter2">
-                        <h:commandLink
-                          styleClass="dropdown-item"
-                          value=""
-                          action="#{PageManageBean.setPage2('login')}"
-                        >
-                          <i class="fas fa-user-circle"></i> Se
-                          connecter</h:commandLink
-                        >
-                      </f:ajax>
-                    </h:form>
-                  </button>
-                </li>
-
-                <li>
-                  <button class="dropdown-item" type="button">
-                    <h:form>
-                      <f:ajax render=":pagefooter2">
-                        <h:commandLink
-                          styleClass="dropdown-item"
-                          value=""
-                          action="#{PageManageBean.setPage2('inscription1')}"
-                        >
-                          <i class="fas fa-sign-in-alt"></i>
-                          S'inscrire</h:commandLink
-                        >
-                      </f:ajax>
-                    </h:form>
-                  </button>
-                </li>
-
-                
-						<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('addfield1')}">
-											<i class="fas fa-sign-in-alt"></i> ajout terrain</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-						
-						<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('addherd1')}">
-											<i class="fas fa-sign-in-alt"></i> ajout troupeau</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-						
-						<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('updatefield')}">
-											<i class="fas fa-sign-in-alt"></i> update terrain</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-						
-						<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('updateherd')}">
-											<i class="fas fa-sign-in-alt"></i> update troupeau</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-						
-						<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('updateaccount')}">
-											<i class="fas fa-sign-in-alt"></i> update account</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-						
-         		   <li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('detailaccount')}">
-											<i class="fas fa-sign-in-alt"></i> profil</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-
-
- 					<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('research')}">
-											<i class="fas fa-sign-in-alt"></i> recherche</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-							<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('suppressField')}">
-											<i class="fas fa-sign-in-alt"></i> retrait terrain</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-						
-							<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('suppressHerd')}">
-											<i class="fas fa-sign-in-alt"></i> retrait troupeau</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-						
-									<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('suppressAccount')}">
-											<i class="fas fa-sign-in-alt"></i> retrait compte</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-						
-              </ul>
-            </div>
           </div>
         </div>
-      </div>
-    </nav>
-
-    <h:panelGroup id="contentPage">
-      <ui:include src="#{PageManageBean.page}.xhtml"></ui:include>
-    </h:panelGroup>
-    <h:panelGroup id="pagefooter2">
-      <ui:include src="#{PageManageBean.page2}.xhtml"></ui:include>
-    </h:panelGroup>
-
-    <ui:insert name="content"></ui:insert>
-    <!-- Footer-->
-    <footer class="footer text-center">
-      <div class="container">
-        <div class="row">
-          <!-- Footer Location-->
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Adresse</h4>
-            <p class="lead mb-0">
-              9 Bd du Général de Gaulle <br /> 92120 MONTROUGE
-            </p>
-          </div>
-          <!-- Footer Social Icons-->
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Tontàpat</h4>
-            <a class="btn btn-outline-light btn-social mx-1" href="#!"
-              ><i class="fab fa-fw fa-facebook-f"></i
-            ></a>
-            <a class="btn btn-outline-light btn-social mx-1" href="#!"
-              ><i class="fab fa-fw fa-twitter"></i
-            ></a>
-            <a class="btn btn-outline-light btn-social mx-1" href="#!"
-              ><i class="fab fa-fw fa-linkedin-in"></i
-            ></a>
-            <a class="btn btn-outline-light btn-social mx-1" href="#!"
-              ><i class="fab fa-fw fa-dribbble"></i
-            ></a>
-          </div>
-          <!-- Footer About Text-->
-          <div class="col-lg-4">
-            <h4 class="text-uppercase mb-4">A PROPOS DE NOUS</h4>
-            <p class="lead mb-0">Groupe2@eql.com</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- Copyright Section-->
-    <div class="copyright py-4 text-center text-white">
-      <div class="container">
-        <small>Copyright &copy; Tontàpat 2021</small>
       </div>
     </div>
+  </nav>
 
-    <!-- Menu Absolute right -->
-    <div
-      class="d-flex flex-column flex-shrink-0 bg-light menu-right"
-      style="width: 4.5rem"
-    >
-      <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-        <li class="nav-item">
-          <h:form>
-            <f:ajax render=":contentPage">
-              <h:commandLink
-                pt:data-bs-toggle="tooltip"
-                title="Recherche"
-                pt:data-bs-placement="left"
-                styleClass="nav-link py-3 border-bottom"
-                value=""
-                action="#{PageManageBean.setPage('research')}"
-              >
-                <i class="fas fa-search-location"></i>
-              </h:commandLink>
-            </f:ajax>
-          </h:form>
-        </li>
-        <li>
-          <h:form>
-            <f:ajax render=":contentPage">
-              <h:commandLink
-                pt:data-bs-toggle="tooltip"
-                title="Mes terrains"
-                pt:data-bs-placement="left"
-                styleClass="nav-link py-3 border-bottom"
-                value=""
-                action="#{PageManageBean.setPage('terrain_detail')}"
-              >
-                <i class="fas fa-leaf"></i>
-              </h:commandLink>
-            </f:ajax>
-          </h:form>
-        </li>
-        <li>
-          <h:form>
-            <f:ajax render=":contentPage">
-              <h:commandLink
-                pt:data-bs-toggle="tooltip"
-                title="Mes troupeaux"
-                pt:data-bs-placement="left"
-                styleClass="nav-link py-3 border-bottom"
-                value=""
-                action="#{PageManageBean.setPage('troupeau_detail')}"
-              >
-                <i class="fas fa-paw"></i>
-              </h:commandLink>
-            </f:ajax>
-          </h:form>
-        </li>
+  <h:panelGroup id="contentPage">
+    <ui:include src="#{PageManageBean.page}.xhtml"></ui:include>
+  </h:panelGroup>
+  <h:panelGroup id="pagefooter2">
+    <ui:include src="#{PageManageBean.page2}.xhtml"></ui:include>
+  </h:panelGroup>
 
-        <li>
-          <a
-            href="#"
-            class="nav-link py-3 border-bottom"
-            title="Prestations"
-            data-bs-toggle="tooltip"
-            data-bs-placement="right"
-          >
-            <i class="fas fa-sticky-note"></i>
-          </a>
-        </li>
-      </ul>
-      <div class="dropdown border-top">
-        <a
-          href="#"
-          class="
+  <ui:insert name="content"></ui:insert>
+  <!-- Footer-->
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+        <!-- Footer Location-->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Adresse</h4>
+          <p class="lead mb-0">
+            9 Bd du Général de Gaulle <br /> 92120 MONTROUGE
+          </p>
+        </div>
+        <!-- Footer Social Icons-->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Tontàpat</h4>
+          <a class="btn btn-outline-light btn-social mx-1" href="#!"><em class="fab fa-fw fa-facebook-f"></em></a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#!"><em class="fab fa-fw fa-twitter"></em></a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#!"><em class="fab fa-fw fa-linkedin-in"></em></a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#!"><em class="fab fa-fw fa-dribbble"></em></a>
+        </div>
+        <!-- Footer About Text-->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">A PROPOS DE NOUS</h4>
+          <p class="lead mb-0">Groupe2@eql.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Copyright Section-->
+  <div class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; Tontàpat 2021</small>
+    </div>
+  </div>
+
+  <!-- Menu Absolute right -->
+  <div class="d-flex flex-column flex-shrink-0 bg-light menu-right" style="width: 4.5rem">
+    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+      <li class="nav-item">
+        <h:form>
+          <f:ajax render=":contentPage">
+            <h:commandLink pt:data-bs-toggle="tooltip" title="Recherche" pt:data-bs-placement="left"
+              styleClass="nav-link py-3 border-bottom" value="" action="#{PageManageBean.setPage('research')}">
+              <em class="fas fa-search-location"></em>
+            </h:commandLink>
+          </f:ajax>
+        </h:form>
+      </li>
+      <li>
+        <h:form>
+          <f:ajax render=":contentPage">
+            <h:commandLink pt:data-bs-toggle="tooltip" title="Mes terrains" pt:data-bs-placement="left"
+              styleClass="nav-link py-3 border-bottom" value="" action="#{PageManageBean.setPage('terrain_detail')}">
+              <em class="fas fa-leaf"></em>
+            </h:commandLink>
+          </f:ajax>
+        </h:form>
+      </li>
+      <li>
+        <h:form>
+          <f:ajax render=":contentPage">
+            <h:commandLink pt:data-bs-toggle="tooltip" title="Mes troupeaux" pt:data-bs-placement="left"
+              styleClass="nav-link py-3 border-bottom" value="" action="#{PageManageBean.setPage('troupeau_detail')}">
+              <em class="fas fa-paw"></em>
+            </h:commandLink>
+          </f:ajax>
+        </h:form>
+      </li>
+
+      <li>
+        <a href="#" class="nav-link py-3 border-bottom" title="Prestations" data-bs-toggle="tooltip"
+          data-bs-placement="right">
+          <em class="fas fa-sticky-note"></em>
+        </a>
+      </li>
+    </ul>
+    <!-- Profil + ajout terrain + troupeau -->
+    <div class="dropdown border-top">
+      <a href="#" class="
             d-flex
             align-items-center
             justify-content-center
@@ -394,37 +190,46 @@ servira pour la NAVIGATION BAR -->
             link-dark
             text-decoration-none
             dropdown-toggle
-          "
-          id="dropdownUser3"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <img
-            src="https://github.com/mdo.png"
-            alt="mdo"
-            width="24"
-            height="24"
-            class="rounded-circle"
-          />
-        </a>
-        <ul
-          class="dropdown-menu text-small shadow"
-          aria-labelledby="dropdownUser3"
-        >
-          <li><a class="dropdown-item" href="#">Nouveau terrain</a></li>
-          <li><a class="dropdown-item" href="#">Nouveau troupeau</a></li>
-          <li>
-            <hr class="dropdown-divider" />
-          </li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
-          <li>
-            <hr class="dropdown-divider" />
-          </li>
-          <li><a class="dropdown-item" href="#">Deconexion</a></li>
-        </ul>
-      </div>
+          " id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle" />
+      </a>
+      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+        <li>
+          <h:form>
+            <f:ajax render=":pagefooter2">
+              <h:commandLink styleClass="dropdown-item" value="" action="#{PageManageBean.setPage2('addfield1')}">
+                Nouveau terrain</h:commandLink>
+            </f:ajax>
+          </h:form>
+        </li>
+        <li>
+          <h:form>
+            <f:ajax render=":pagefooter2">
+              <h:commandLink styleClass="dropdown-item" value="" action="#{PageManageBean.setPage2('addherd1')}">Nouveau
+                troupeau</h:commandLink>
+            </f:ajax>
+          </h:form>
+        </li>
+        <li>
+          <hr class="dropdown-divider" />
+        </li>
+        <li>
+          <h:form>
+            <f:ajax render=":pagefooter2">
+              <h:commandLink styleClass="dropdown-item" value="" action="#{PageManageBean.setPage2('detailaccount')}">
+                Profile</h:commandLink>
+            </f:ajax>
+          </h:form>
+        </li>
+        <li>
+          <hr class="dropdown-divider" />
+        </li>
+        <li><a class="dropdown-item" href="#">Deconexion</a></li>
+      </ul>
     </div>
+  </div>
 
-    <script src="js/myScripts.js"></script>
-  </h:body>
+  <script src="js/myScripts.js"></script>
+</h:body>
+
 </html>

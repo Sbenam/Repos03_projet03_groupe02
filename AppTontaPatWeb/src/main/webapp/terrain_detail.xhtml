@@ -1,8 +1,5 @@
-
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<section>
 		<div class="container-fluid padding-container-terrain">
 			<div class="row">
@@ -10,9 +7,11 @@
 
 					<div class="header-terrain ">
 						<h2>Terrain des magnolia</h2>
-						<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
-							class="far fa-star"></i> <i class="far fa-star"></i> <i
-							class="far fa-star"></i>
+						<em class="fas fa-star"></em>
+						<em class="fas fa-star"></em>
+						<em class="far fa-star"></em>
+						<em class="far fa-star"></em>
+						<em class="far fa-star"></em>
 					</div>
 					<div class="body-terrain-container">
 
@@ -55,20 +54,20 @@
 									<span class="color-green-primary">Pente: </span> Peu de pente
 								</p>
 								<p>
-									<span class="color-green-primary">Cloture</span> <i
-										class="fas fa-check-square"></i>
+									<span class="color-green-primary">Cloture</span>
+									 <em class="fas fa-check-square"></em>
 								</p>
 								<p>
-									<span class="color-green-primary">Eau à disposition</span> <i
-										class="fas fa-check-square"></i>
+									<span class="color-green-primary">Eau à disposition</span>
+									 <em class="fas fa-check-square"></em>
 								</p>
 								<p>
-									<span class="color-green-primary">Abris</span> <i
-										class="fas fa-window-close"></i>
+									<span class="color-green-primary">Abris</span>
+									 <em class="fas fa-window-close"></em>
 								</p>
 								<p>
-									<span class="color-green-primary">Accessibilité</span> <i
-										class="fas fa-check-square"></i>
+									<span class="color-green-primary">Accessibilité</span>
+									 <em class="fas fa-check-square"></em>
 								</p>
 							</div>
 
@@ -82,7 +81,16 @@
 							error iste quibusdam laborum debitis laudantium ab fuga</p>
 					</div>
 					<div class="button-modifier-terrain">
-						<button class="btn btn-primary " type="submit">Modifier</button>
+						<button class="btn btn-primary" type="button">
+							<h:form>
+								<f:ajax render=":pagefooter2">
+									<h:commandLink styleClass="dropdown-item" value=""
+										action="#{PageManageBean.setPage2('updatefield')}">
+										Modifier
+									</h:commandLink>
+								</f:ajax>
+							</h:form>
+						</button>
 					</div>
 				</div>
 				<div class="col-4">
@@ -97,25 +105,25 @@
 							<div class="collapse" id="collapseExample">
 								<div class="">
 									<ul class="list-group list-group-flush">
-										<li class="list-group-item"><span
-											class="color-green-primary">Date de debut: </span> 11/12/1991</li>
-										<li class="list-group-item"><span
-											class="color-green-primary">Date de Fin: </span> 11/12/1991</li>
-										<li class="list-group-item"><span
-											class="color-green-primary">Adresse: </span> 4 rue du
+										<li class="list-group-item"><span class="color-green-primary">Date de debut:
+											</span> 11/12/1991</li>
+										<li class="list-group-item"><span class="color-green-primary">Date de Fin:
+											</span> 11/12/1991</li>
+										<li class="list-group-item"><span class="color-green-primary">Adresse: </span> 4
+											rue du
 											coquelicot</li>
-										<li class="list-group-item"><span
-											class="color-green-primary">Ville: </span> Courbevoie</li>
+										<li class="list-group-item"><span class="color-green-primary">Ville: </span>
+											Courbevoie</li>
 									</ul>
 								</div>
 							</div>
 							<div class="card-body">
-								<a href="#" class="card-link">Vue détaillée</a> <a href="#"
-									class="card-link">Modifier</a> <a
-									class="btn btn-primary btn-infos-terrain"
-									data-bs-toggle="collapse" href="#collapseExample" role="button"
-									aria-expanded="false" aria-controls="collapseExample"> <i
-									class="fas fa-info-circle"></i>
+								<a href="#" class="card-link">Vue détaillée</a>
+								<a href="#" class="card-link">Modifier</a>
+								<a class="btn btn-primary btn-infos-terrain" data-bs-toggle="collapse"
+									href="#collapseExample" role="button" aria-expanded="false"
+									aria-controls="collapseExample">
+									<em class="fas fa-info-circle"></em>
 								</a>
 							</div>
 						</div>
