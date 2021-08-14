@@ -48,6 +48,8 @@ public class Herd implements Serializable{
 	private Date starting;
 	@Column(name = "h_ending")
 	private Date ending;
+	@Column(name = "h_description")
+	private String description;
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "id")
 	private ZipCode zipcode;
