@@ -26,7 +26,6 @@ public class ServiceManagedBean implements Serializable{
 	private List<Herd> herds;
 	private Herd herd;
 	private List<Float> dists;
-//	private List<ZipCode> zipcodes;
 	
 	
 	@EJB
@@ -44,15 +43,15 @@ public class ServiceManagedBean implements Serializable{
 		return serviceIBusiness.search(field);
 	}
 	
-	public List<Herd> search2() {
-		System.out.println("\n>>>>>>>>>>>>>>>>>>>>>>>>"+fieldIBusiness.extraireTerrainParId(22).getZipcode().getLatitude());
-		herds = serviceIBusiness.search(fieldIBusiness.extraireTerrainParId(22));
+	public List<Herd> searchTest() {
+		System.out.println("\n>>>>>>>>>>>>>>>>>>>>>>>>"+fieldIBusiness.extraireTerrainParId(15).getZipcode().getLatitude());
+		herds = serviceIBusiness.search(fieldIBusiness.extraireTerrainParId(15));
 		return herds;
 	}
 
 	public List<Float> distance() {
-		System.out.println("\n-------------------->"+fieldIBusiness.extraireTerrainParId(22).getZipcode().getLatitude());
-		dists = serviceIBusiness.distanceBU(fieldIBusiness.extraireTerrainParId(22));
+		System.out.println("\n-------------------->"+fieldIBusiness.extraireTerrainParId(15).getZipcode().getLatitude());
+		dists = serviceIBusiness.distanceBU(fieldIBusiness.extraireTerrainParId(15));
 		return dists;
 	}
 

@@ -14,6 +14,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import fr.eql.ai109.apptontapat.entity.Account;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
@@ -71,6 +72,19 @@ public class AccountManagedBean implements Serializable {
 		}
 		return forward;
 	}
+	
+	public String disconnect() {
+		HttpSession session = (HttpSession) FacesContext
+				.getCurrentInstance()
+				.getExternalContext()
+				.getSession(true);
+		session.invalidate();
+		email = "";
+		password = "";
+		account = new Account();
+		return "/login.xhtml?faces-redirection=true";
+	}
+
 
 	public String addAccount() {
 		String forward = null;

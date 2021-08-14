@@ -9,11 +9,9 @@ import javax.ejb.Stateless;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
-import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
 import fr.eql.ai109.apptontapat.idao.ServiceIDao;
 import fr.eql.ai109.apptontapat.entity.Service;
-import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
 
 @Remote(ServiceIBusiness.class)
 @Stateless

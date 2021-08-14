@@ -26,25 +26,46 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 		// TODO vin
 		List<Herd> herds = 	null ;
 		
+//		Query query = em.createQuery(" SELECT h "
+//			+ "FROM Field f JOIN ZipCode zf ON f.zipcode = zf.id, "
+//			+ "ZipCode zh JOIN Herd h ON zh.id = h.zipcode "
+////			+ "herd hs join service s on hs.id = s.herd_id "
+//			+ "WHERE 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) < (h.area + 1000) "
+//			+ "AND h.starting < f.starting "
+//			+ "AND f.ending < h.ending "
+//			+ "AND h.seize <= (f.surface + 8) "
+//			+ "AND (f.surface * 2.7) / datediff(f.ending, f.starting) <= h.seize "
+////			+ "AND hs.service.validation is null "
+//			+ "AND f.id=:idParam "
+//			);
+
 		Query query = em.createQuery(" SELECT h "
-			+ "FROM Field f INNER JOIN ZipCode zf ON f.zipcode = zf.id, "
-			+ "ZipCode zh JOIN Herd h ON zh.id = h.zipcode "
-			+ "WHERE 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) < h.area "
-			+ "AND f.id=:idParam "
-			+ "AND f.id=:idParam ");
+				+ "FROM Herd h "
+				+ "WHERE h.services.validation IS NULL "
+				
+				
+				
+//				+ "FROM Field f JOIN ZipCode zf ON f.zipcode = zf.id, "
+//				+ "ZipCode zh JOIN Herd h ON zh.id = h.zipcode "
+////				+ "herd hs join service s on hs.id = s.herd_id "
+//				+ "WHERE 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) < (h.area + 1000) "
+//				+ "AND h.starting < f.starting "
+//				+ "AND f.ending < h.ending "
+//				+ "AND h.seize <= (f.surface + 8) "
+//				+ "AND (f.surface * 2.7) / datediff(f.ending, f.starting) <= h.seize "
+////				+ "AND hs.service.validation is null "
+//				+ "AND f.id=:idParam "
+				);
+
 		query.setParameter("idParam", field.getId());
 		
-//		Query query = em.createQuery(" SELECT h "
-//				+ "FROM Herd h "
-//				+ "WHERE 100 * SQRT(POW(h.zipcode.longitude - (:longitudeParam), 2) + POW(h.zipcode.latitude - (:latitudeParam), 2)) < (h.area + 50) ");
-//		query.setParameter("longitudeParam", field.getZipcode().getLongitude());
-//		query.setParameter("latitudeParam", field.getZipcode().getLatitude());
-
+//		Query query = em.createQuery("SELECT h FROM Herd h, Field f, ZipCode zf, ZipCode zh ");		
+		
 		herds = (List<Herd>)query.getResultList();
 		return herds;
-}
+	}
 
-	// TODO 
+	// TODO vin test
 	@Override
 	public List<Float> distances(Field field) {
 		List<Float> dstcs = null;
@@ -54,15 +75,8 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 				+ "ZipCode zh JOIN Herd h ON zh.id = h.zipcode "
 				+ "WHERE 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) < h.area "
 				+ "AND f.id=:idParam ");
-		query.setParameter("idParam", field.getId());
+		query.setParameter("idParam", field.getId());	
 
-		
-//		Query query = em.createQuery(" SELECT 100 * SQRT(POW(h.zipcode.longitude - (:longitudeParam), 2) + POW(h.zipcode.latitude - (:latitudeParam), 2)) "
-//				+ "FROM Herd h "
-//				+ "WHERE 100 * SQRT(POW(h.zipcode.longitude - (:longitudeParam), 2) + POW(h.zipcode.latitude - (:latitudeParam), 2)) < h.area ");
-//		query.setParameter("latitudeParam", field.getZipcode().getLatitude());
-//		query.setParameter("longitudeParam", field.getZipcode().getLongitude());
-		
 		dstcs = query.getResultList();
 		System.out.println("\r<<<<<<<<<<<<<<<<<<<<<<nb de distance : "+dstcs.size());
 		return dstcs;
@@ -78,7 +92,7 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 
 	public List<Service> getAllByIdAccount(int id) {
 		List<Service> services = null;
-		Query query = em.createQuery("SELECT s FROM Service s WHERE s.account.id=:idParam");
+		Query query = em.createQuery("SELECT s FROM Service s WHERE s.field.account.id=:idParam");
 		query.setParameter("idParam", id);
 		services = (List<Service>) query.getResultList();
 		return services;
