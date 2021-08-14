@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 import fr.eql.ai109.apptontapat.entity.Account;
+import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.idao.AccountIDao;
 
 @Remote(AccountIDao.class)
@@ -42,6 +43,19 @@ public class AccountDao extends GenericDao<Account> implements AccountIDao{
 	public Long getNbUsers() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Account getAccountById(int id) {
+		List<Account> accounts = null;
+		Account account = null;
+		Query query = em.createQuery("SELECT u FROM Account u WHERE u.code=:idParam");
+		query.setParameter("idParam",id);
+		accounts= (List<Account>)query.getResultList();
+		if (accounts.size() > 0) {
+			account =accounts.get(0);
+		}
+		return account;
 	}
 
 }

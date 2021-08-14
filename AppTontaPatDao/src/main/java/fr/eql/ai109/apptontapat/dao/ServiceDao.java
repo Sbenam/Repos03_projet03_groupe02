@@ -9,6 +9,8 @@ import javax.persistence.Query;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Rupture;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import fr.eql.ai109.apptontapat.entity.Service;
@@ -106,6 +108,33 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 		service.setRateDate(rateDate);
 		service.setRateComment(rateComment);
 		service.setRateNote(rateNote);
+		return service;
+	}
+
+	@Override
+	public Service closeService(Date date, Service service) {
+		service.setEnding(date);
+		return service;
+		
+	}
+
+	@Override
+	public Service closeService(Date date, int id) {
+		List<Service> services = null;
+		Service service = null;
+		Query query = em.createQuery("SELECT u FROM Service u WHERE u.id=:idParam");
+		query.setParameter("idParam", id);
+		services = (List<Service>) query.getResultList();
+		if (services.size() > 0) {
+			service = services.get(0);
+		}
+		service.setEnding(date);
+		return service;
+	}
+
+	@Override
+	public Service ruptureService(Service service, Rupture rupture) {
+		service.setRupture(rupture);
 		return service;
 	}
 }
