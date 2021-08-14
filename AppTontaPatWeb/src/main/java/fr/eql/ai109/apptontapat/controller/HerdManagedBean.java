@@ -2,6 +2,7 @@ package fr.eql.ai109.apptontapat.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,6 +11,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Retret;
+import fr.eql.ai109.apptontapat.entity.TakeOut;
 import fr.eql.ai109.apptontapat.ibusiness.HerdIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.RaceIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.SpecieIBusiness;
@@ -33,6 +36,7 @@ public class HerdManagedBean implements Serializable {
 	private String selectedSpecie;
 	private List<String> takeouts = new ArrayList<String>();
 	private String selectedTakeout ;
+	private TakeOut takeoutvalue ; 
 	
 	
 	@PostConstruct
@@ -83,6 +87,19 @@ public class HerdManagedBean implements Serializable {
 	
 
 	
+public String supprimer(List<TakeOut> takeoutsList) {
+		
+		takeoutvalue = takeoutsList.get(Integer.parseInt(selectedTakeout)-1) ;
+		System.out.println("valeur de takeoutvalue ----------------------------" + takeoutvalue);
+		
+		System.out.println("valeur de selectedTakeout ----------------------------" + selectedTakeout);
+		herd.setWithdraw(new Date());
+		herd.setTakeout(takeoutvalue);
+		herdIBusiness.mettreAJourUnTroupeau(herd);
+		return "simpleArch.xhtml"; 
+	}
+
+
 	
 	public void getHerdById(int id) {
 		System.out.println("test d'apelle de function get test et id: "+id);
@@ -149,6 +166,13 @@ public class HerdManagedBean implements Serializable {
 	public void setSelectedTakeout(String selectedTakeout) {
 		this.selectedTakeout = selectedTakeout;
 	}
+	public TakeOut getTakeoutvalue() {
+		return takeoutvalue;
+	}
+	public void setTakeoutvalue(TakeOut takeoutvalue) {
+		this.takeoutvalue = takeoutvalue;
+	}
+	
 
 	
 	

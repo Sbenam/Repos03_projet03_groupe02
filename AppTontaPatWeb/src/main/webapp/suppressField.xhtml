@@ -32,17 +32,13 @@
 <div class="form-group col-md-10">
     <h:outputLabel for="delete" value=""/>
     <h:selectOneMenu id="delete" class="form-control" value="#{mbField.selectedRetret}" >
-  <!--   <f:selectItem itemLabel="Motif de suppression : * " itemValue="" noSelectionOption="true"></f:selectItem>  -->
+  <f:selectItem itemLabel="Motif de suppression : * " itemValue="" noSelectionOption="true"></f:selectItem>  
 	<f:selectItems value="#{mbRetret.getAllRetret()}" var="obj"  itemLabel="#{obj.label}" itemValue="#{obj.id}" ></f:selectItems>
-	<f:ajax execute="delete" event="change" render="@form"/> 
+<!-- 	<f:ajax execute="delete" event="change" render="@form"/>  -->
       </h:selectOneMenu>
  
    
-  </div>
-
-	<ui:repeat var="cat" value="#{mbRetret.getAllRetret()}"><h:outputLabel value="#{mbRetret.retret.label}" /></ui:repeat>					
-						
-						
+  </div>					
 						
 							<div class="d-grid gap-2">
 							
