@@ -119,8 +119,7 @@ public class ServiceManagedBean implements Serializable {
 	}
 	
 	public List<Service> getAllByIdAccountHerd(int idAccount) {
-		List<Service> services= null;
-		return services;
+		return serviceIBusiness.getAllByIdAccountHerd(idAccount);
 	}
 
 	public List<Herd> getHerds() {
