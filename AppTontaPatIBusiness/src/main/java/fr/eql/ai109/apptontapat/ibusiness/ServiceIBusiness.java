@@ -5,6 +5,7 @@ import java.util.Date;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Rupture;
 import fr.eql.ai109.apptontapat.entity.Service;
 
 public interface ServiceIBusiness {
@@ -16,4 +17,7 @@ public interface ServiceIBusiness {
 	Service ajoutPrestation(Service service);
 	Service annoterUnePrestation(Integer id, Integer rateNote, Date date, String rateComment);
 	List<Service> getAllByIdAccount(int id);
+	Service cloturerUnePrestation(Date date, int id);
+	Service cloturerUnePrestation(Date date, Service service);
+	Service rompreUnePrestation(Service service, Rupture rupture);
 }

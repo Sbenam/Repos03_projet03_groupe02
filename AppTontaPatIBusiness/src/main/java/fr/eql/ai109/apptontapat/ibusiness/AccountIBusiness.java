@@ -12,6 +12,9 @@ public interface AccountIBusiness {
 	Account connection(String login, String password);
 	
 	Account mettreAjourUnCompte(Account account);
+	
+	Account extraireCompteAvecId(int id);
+	
 //	List<Account> findAll();
 
 }

@@ -185,26 +185,6 @@ servira pour la NAVIGATION BAR -->
           "
         >
           Recherche
-    <!-- Test -->
-	<h4>TROUPEAU:
- 		 <ui:repeat var ="herd" value="#{mbService.searchTest()}">
-		 <br/>
-		 <h:outputLabel value= "nom : #{herd.name} - id : #{herd.id}" />
-		 </ui:repeat>
-	</h4>
-	<h4> distance :
- 		 <ui:repeat var ="dist" value="#{mbService.distance()}">
-	
-		 <br/>
-		 
-		 <h:outputLabel value= "-> #{dist}" />
-		 </ui:repeat>
-	</h4>
-		<h:outputText value="#{mbService.herds}" />
-		<h:dataTable value="#{mbService.searchTest()}" var="h">
-			<h:outputText value="h.name" />
-		</h:dataTable>
-			<!-- Fin Test -->
           
         </h2>
         <!-- Icon Divider-->
@@ -923,7 +903,7 @@ servira pour la NAVIGATION BAR -->
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
+    
     <!-- Footer-->
     <footer class="footer text-center">
       <div class="container">

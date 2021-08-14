@@ -65,4 +65,10 @@ public class HerdDao extends GenericDao<Herd> implements HerdIDao{
 		return herds;
 	}
 
+	@Override
+	public Herd retirerHerd(String label, Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -2,6 +2,7 @@ package fr.eql.ai109.apptontapat.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -11,11 +12,14 @@ import javax.faces.bean.SessionScoped;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Retret;
 import fr.eql.ai109.apptontapat.entity.Slope;
+import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.CompositionIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.FieldIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.GlassHeightIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.HumidityIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.RetretIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.SlopeIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.VegetationIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.ZipCodeIBusiness;
@@ -40,6 +44,12 @@ public class FieldManagedBean implements Serializable{
 	private String selectedVeggy ;
 	private List<String> compos = new ArrayList<String>();
 	private String selectedCompo ;
+	private List<String> retrets = new ArrayList<String>();
+	private String selectedRetret ;
+	private Retret retretvalue ;
+	private ZipCode zipID ;
+	private String zipcode ;
+	
 	
 	@EJB
 	private FieldIBusiness fieldIBusiness;
@@ -55,6 +65,8 @@ public class FieldManagedBean implements Serializable{
 	private CompositionIBusiness compoIBusiness;
 	@EJB
 	private ZipCodeIBusiness zipCodeIBusiness;
+	@EJB
+	private RetretIBusiness retretIBusiness ; 
 	
 	@PostConstruct
 	public void init() {
@@ -63,8 +75,9 @@ public class FieldManagedBean implements Serializable{
 		humidities = getAllHumidityLabels() ;
 		Veggies = getAllVeggyLabels() ;
 		compos = getAllCompoLabels();
-		
-		
+		retrets = getAllRetretLabels() ;
+		zipID = getCityWithZipCodeID();
+		getCityWithZipCodeCode(zipcode);
 	}
 	
 	
@@ -86,8 +99,26 @@ public class FieldManagedBean implements Serializable{
 //	public String getCityWithZipCode(String zipCode) {
 //		return zipCodeIBusiness.extraireVilleAvecCodePostale(zipCode) ;
 //	}
+	public List<String> getAllRetretLabels() {
+		return retretIBusiness.extraireToutLesRetretLabels();
+	}
+	public ZipCode getCityWithZipCodeCode(String zipCode) {
+	return zipCodeIBusiness.extraireZipCodeAvecCodePostale(zipCode);
+    }	
+	public ZipCode getCityWithZipCodeID() {
+		return zipCodeIBusiness.extraireIncidentParId(20225);
+	}	
+
 	
 	
+	public String supprimer(List<Retret> retretsList) {
+		
+		retretvalue = retretsList.get(Integer.parseInt(selectedRetret)-1) ;
+		field.setWithdraw(new Date());
+		field.setRetret(retretvalue);
+		fieldIBusiness.mettreAJourUnTerrain(field);
+		return "simpleArch.xhtml"; 
+	}
 	
 	public Field getField() {
 		return field;
@@ -210,5 +241,55 @@ public class FieldManagedBean implements Serializable{
 
 	public void setHumidities(List<String> humidities) {
 		this.humidities = humidities;
+	}
+
+
+	public List<String> getRetrets() {
+		return retrets;
+	}
+
+
+	public void setRetrets(List<String> retrets) {
+		this.retrets = retrets;
+	}
+
+
+	public String getSelectedRetret() {
+		return selectedRetret;
+	}
+
+
+	public void setSelectedRetret(String selectedRetret) {
+		this.selectedRetret = selectedRetret;
+	}
+
+
+	public Retret getRetretvalue() {
+		return retretvalue;
+	}
+
+
+	public void setRetretvalue(Retret retretvalue) {
+		this.retretvalue = retretvalue;
+	}
+
+
+	public ZipCode getZipID() {
+		return zipID;
+	}
+
+
+	public void setZipID(ZipCode zipID) {
+		this.zipID = zipID;
+	}
+
+
+	public String getZipcode() {
+		return zipcode;
+	}
+
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
 	}
 }

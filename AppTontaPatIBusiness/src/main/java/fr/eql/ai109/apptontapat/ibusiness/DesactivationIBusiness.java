@@ -6,4 +6,5 @@ import fr.eql.ai109.apptontapat.entity.Desactivation;
 public interface DesactivationIBusiness {
 	List<Desactivation> extraireToutesLesDesactivation();
 	List<String> extraireToutesLesDesactivationLabels();
+	Desactivation extraireDesactivationAPartirDeLabel(String label);
 }

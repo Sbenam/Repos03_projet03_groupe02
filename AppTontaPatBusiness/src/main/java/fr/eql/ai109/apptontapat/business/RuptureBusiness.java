@@ -27,4 +27,10 @@ public class RuptureBusiness implements RuptureIBusiness{
 		return ruptureIDao.getAllCompositionLabels();
 	}
 
+	@Override
+	public Rupture extraireRuptureAPartirDeLabel(String label) {
+		// TODO Auto-generated method stub
+		return ruptureIDao.getIdRuptureByLabel(label);
+	}
+
 }

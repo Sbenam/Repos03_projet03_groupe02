@@ -52,4 +52,9 @@ public class HerdBusiness implements HerdIbusiness{
 		return herdIDao.update(herd);
 	}
 
+	@Override
+	public void supprimerTroupeau(Herd herd) {
+		herdIDao.delete(herd);
+	}
+
 }

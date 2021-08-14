@@ -9,6 +9,8 @@ import javax.persistence.Query;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Rupture;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import fr.eql.ai109.apptontapat.entity.Service;
@@ -26,41 +28,19 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 		// TODO vin
 		List<Herd> herds = 	null ;
 		
-//		Query query = em.createQuery(" SELECT h "
-//			+ "FROM Field f JOIN ZipCode zf ON f.zipcode = zf.id, "
-//			+ "ZipCode zh JOIN Herd h ON zh.id = h.zipcode "
-////			+ "herd hs join service s on hs.id = s.herd_id "
-//			+ "WHERE 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) < (h.area + 1000) "
-//			+ "AND h.starting < f.starting "
-//			+ "AND f.ending < h.ending "
-//			+ "AND h.seize <= (f.surface + 8) "
-//			+ "AND (f.surface * 2.7) / datediff(f.ending, f.starting) <= h.seize "
-////			+ "AND hs.service.validation is null "
-//			+ "AND f.id=:idParam "
-//			);
-
 		Query query = em.createQuery(" SELECT h "
-				+ "FROM Herd h "
-				+ "WHERE h.services.validation IS NULL "
-				
-				
-				
-//				+ "FROM Field f JOIN ZipCode zf ON f.zipcode = zf.id, "
-//				+ "ZipCode zh JOIN Herd h ON zh.id = h.zipcode "
-////				+ "herd hs join service s on hs.id = s.herd_id "
-//				+ "WHERE 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) < (h.area + 1000) "
-//				+ "AND h.starting < f.starting "
-//				+ "AND f.ending < h.ending "
-//				+ "AND h.seize <= (f.surface + 8) "
-//				+ "AND (f.surface * 2.7) / datediff(f.ending, f.starting) <= h.seize "
-////				+ "AND hs.service.validation is null "
-//				+ "AND f.id=:idParam "
-				);
+			+ "FROM Field f JOIN ZipCode zf ON f.zipcode = zf.id, "
+			+ "ZipCode zh JOIN Herd h ON zh.id = h.zipcode "
+//			+ "herd hs join service s on hs.id = s.herd_id "
+			+ "WHERE 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) < (h.area + 1000) "
+			+ "AND h.starting < f.starting "
+			+ "AND f.ending < h.ending "
+			+ "AND h.seize <= (f.surface + 8) "
+			+ "AND (f.surface * 2.7) / datediff(f.ending, f.starting) <= h.seize "
+//			+ "AND hs.service.validation is null "
+			+ "AND f.id=:idParam "
+			);
 
-		query.setParameter("idParam", field.getId());
-		
-//		Query query = em.createQuery("SELECT h FROM Herd h, Field f, ZipCode zf, ZipCode zh ");		
-		
 		herds = (List<Herd>)query.getResultList();
 		return herds;
 	}
@@ -120,6 +100,33 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 		service.setRateDate(rateDate);
 		service.setRateComment(rateComment);
 		service.setRateNote(rateNote);
+		return service;
+	}
+
+	@Override
+	public Service closeService(Date date, Service service) {
+		service.setEnding(date);
+		return service;
+		
+	}
+
+	@Override
+	public Service closeService(Date date, int id) {
+		List<Service> services = null;
+		Service service = null;
+		Query query = em.createQuery("SELECT u FROM Service u WHERE u.id=:idParam");
+		query.setParameter("idParam", id);
+		services = (List<Service>) query.getResultList();
+		if (services.size() > 0) {
+			service = services.get(0);
+		}
+		service.setEnding(date);
+		return service;
+	}
+
+	@Override
+	public Service ruptureService(Service service, Rupture rupture) {
+		service.setRupture(rupture);
 		return service;
 	}
 }

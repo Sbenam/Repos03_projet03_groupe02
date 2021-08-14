@@ -27,4 +27,9 @@ public class RefusalBusiness implements RefusalIBusiness{
 		return refusalIDao.getAllRefusalLabels();
 	}
 
+	@Override
+	public Refusal extrairRefusalAPartirDeLabel(String label) {
+		return refusalIDao.getIdRefusalByLabel(label);
+	}
+
 }

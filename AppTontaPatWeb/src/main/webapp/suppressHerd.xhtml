@@ -4,8 +4,8 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	
 	
+		<h:outputText value="#{mbHerd.getHerdById(4)}"></h:outputText>
 	
-	<h:outputText value="#{mbField.getFieldById(4)}"></h:outputText>
 	
 	<div class="popup-containerSuppress" id="container">
 		<section class="conexion-popupSuppress">
@@ -23,39 +23,34 @@
 						<div class="col-1"></div>
 					<div class="col-9 py-5 my-5">
 						
-							<h3>Supprimer un terrain</h3>
-							<p>Vous êtes sur le point de supprimer votre terrain.</p>
-						
-					
+							<h3>Supprimer un troupeau</h3>
+							<p>Vous êtes sur le point de supprimer votre troupeau.</p>
+							
 			
 						  <h:form>
 <div class="form-group col-md-10">
-    <h:outputLabel for="delete" value=""/>
-    <h:selectOneMenu id="delete" class="form-control" value="#{mbField.selectedRetret}" >
+
+  <h:outputLabel for="delete" value=""/>
+    <h:selectOneMenu id="delete" class="form-control" value="#{mbHerd.selectedTakeout}" >
   <f:selectItem itemLabel="Motif de suppression : * " itemValue="" noSelectionOption="true"></f:selectItem>  
-	<f:selectItems value="#{mbRetret.getAllRetret()}" var="obj"  itemLabel="#{obj.label}" itemValue="#{obj.id}" ></f:selectItems>
+	<f:selectItems value="#{mbRetret.getAllTakeout()}" var="obj"  itemLabel="#{obj.label}" itemValue="#{obj.id}" ></f:selectItems>
 <!-- 	<f:ajax execute="delete" event="change" render="@form"/>  -->
       </h:selectOneMenu>
- 
    
-  </div>					
-						
 							<div class="d-grid gap-2">
-							
-							
-							<h:commandButton class="btn btn-primary w-25" type="submit"  action="#{mbField.supprimer(mbRetret.retretsList)}" title="valider pour confirmer la suppression" value="Valider"></h:commandButton>
+							<h:commandButton class="btn btn-primary w-25" type="submit"  action="#{mbHerd.supprimer(mbRetret.takeoutsList)}"  title="valider pour confirmer la suppression" value="Valider"></h:commandButton>
 						
 				<f:ajax render=":pagefooter2">
 						<h:commandLink styleClass="dropdown-item" value=""
 							action="#{PageManageBean.setPage2('blank')}">
-							<button class="btn btn-primary w-25" type="submit">Annuler</button>
+							<button class="btn btn-primary w-25" type="submit" title="abandonner la suppression">Annuler</button>
 						</h:commandLink>
 					
 				</f:ajax>
 				</div>
+				</div>
 			</h:form>
-					
-					</div>
+				 </div>		
 				</div>
 			</div>
 		</section>

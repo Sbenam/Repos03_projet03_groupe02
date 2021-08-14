@@ -28,4 +28,9 @@ public class TakeoutBusiness implements TakeoutIBusiness{
 		return takeoutIDao.getAllTakeOutLabels();
 	}
 
+	@Override
+	public TakeOut extraireTakeoutAPartirDeLabel(String label) {
+		return takeoutIDao.getIdTakeoutByLabel(label);
+	}
+
 }

@@ -36,4 +36,17 @@ public class TakeoutDao extends GenericDao<TakeOut> implements TakeoutIDao{
 		return labels;
 	}
 
+	@Override
+	public TakeOut getIdTakeoutByLabel(String label) {
+		List<TakeOut> ids = null;
+		TakeOut id = null;
+		Query query = em.createQuery("SELECT u FROM TakeOut u WHERE u.label =:labelParam");
+		query.setParameter("labelParam", label);
+		ids = (List<TakeOut>) query.getResultList();
+		if (ids.size() > 0) {
+			id = ids.get(0);
+		}
+		return id;
+	}
+
 }

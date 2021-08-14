@@ -38,4 +38,9 @@ public class AccountBusiness implements AccountIBusiness {
 	public Account mettreAjourUnCompte(Account account) {
 		return aidao.update(account);
 	}
+
+	@Override
+	public Account extraireCompteAvecId(int id) {
+		return aidao.getAccountById(id);
+	}
 }

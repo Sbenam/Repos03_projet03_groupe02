@@ -8,10 +8,11 @@ servira pour la NAVIGATION BAR -->
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
   xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xml:lang="fr">
 <h:head>
-  <title>Hub</title>
+  <title>Hub-Accueil</title>
   <ui:insert name="head"></ui:insert>
   <h:outputStylesheet library="css" name="style.css" />
   <h:outputStylesheet library="css" name="stylePerso.css" />
+
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -27,9 +28,14 @@ servira pour la NAVIGATION BAR -->
   <!-- NAVIGATION-->
   <nav class="navbar navbar-expand-lg navbar-dark text-uppercase fixed-top" id="mainNav">
     <div class="container">
-      <a href="#page-top">
+       <h:form>
+                    <f:ajax render=":contentPage">
+                      <h:commandLink styleClass="" value=""
+                        action="#{mbAccount.connect()}">
         <img alt="" style="width: 100px" src="images/MoutonNoir.png" />
-      </a>
+                        </h:commandLink>
+                    </f:ajax>
+                  </h:form>
       <button class="
             navbar-toggler
             text-uppercase
@@ -231,5 +237,4 @@ servira pour la NAVIGATION BAR -->
 
   <script src="js/myScripts.js"></script>
 </h:body>
-
 </html>

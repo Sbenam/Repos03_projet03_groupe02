@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Rupture;
 import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
 import fr.eql.ai109.apptontapat.idao.ServiceIDao;
 import fr.eql.ai109.apptontapat.entity.Service;
@@ -62,6 +63,24 @@ public class ServiceBusiness implements ServiceIBusiness {
 	@Override
 	public List<Service> getAllByIdAccount(int id) {
 		return serviceIDao.getAllByIdAccount(id);
+	}
+
+
+	@Override
+	public Service cloturerUnePrestation(Date date, int id) {
+		return serviceIDao.closeService(date, id);
+	}
+
+
+	@Override
+	public Service cloturerUnePrestation(Date date, Service service) {
+		return serviceIDao.closeService(date, service);
+	}
+
+
+	@Override
+	public Service rompreUnePrestation(Service service, Rupture rupture) {
+		return serviceIDao.ruptureService(service, rupture);
 	}
 
 }

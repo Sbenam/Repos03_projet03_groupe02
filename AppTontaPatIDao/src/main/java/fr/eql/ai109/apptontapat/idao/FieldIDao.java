@@ -12,4 +12,5 @@ public interface FieldIDao extends GenericIDao<Field>{
 	public Field removeFieldByIdAccount(int id);
 	public List<Field> getAll();
 	public List<Field> getAllByIdAccount(int id);
+	public Field retirerField(String label, Integer id);
 }

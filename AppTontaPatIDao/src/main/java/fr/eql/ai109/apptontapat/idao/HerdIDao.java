@@ -10,4 +10,5 @@ public interface HerdIDao extends GenericIDao<Herd> {
 	public Herd getHerdByIdAccount(int id);
 	public List<Herd> getAllHerd();
 	public List<Herd> getAllHerdByIdAccount(int id);
+	public Herd retirerHerd(String label, Integer id);
 }

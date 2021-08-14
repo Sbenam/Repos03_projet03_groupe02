@@ -5,6 +5,7 @@ import java.util.Date;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Rupture;
 import fr.eql.ai109.apptontapat.entity.Service;
 
 public interface ServiceIDao extends GenericIDao<Service> {
@@ -15,4 +16,7 @@ public interface ServiceIDao extends GenericIDao<Service> {
 	public List<Service> getAllByIdField(int id);
 	public Service annotedService(Integer id, Integer rateNote, Date rateDate, String rateComment);
 	List<Service> getAllByIdAccount(int id);
+	Service closeService(Date date, Service service);
+	Service closeService(Date date, int id);
+	Service ruptureService(Service service, Rupture rupture);
 }
