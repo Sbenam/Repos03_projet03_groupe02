@@ -3,7 +3,7 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-	<h:inputHidden	value="#{mbService.getAllByIdAccount(18)}"></h:inputHidden>
+	<h:inputHidden	value="#{mbService.getAllByIdAccount(mbAccount.account.id)}"></h:inputHidden>
 
 	<!-- ui repeat liste des services -->
 	<h4>

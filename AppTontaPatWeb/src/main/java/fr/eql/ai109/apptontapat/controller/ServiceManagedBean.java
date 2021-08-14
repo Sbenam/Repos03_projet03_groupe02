@@ -52,7 +52,7 @@ public class ServiceManagedBean implements Serializable {
 		if (servicelist != null) {
 			serviceClean();
 		}
-		servicelist = serviceIBusiness.getAllByIdAccount(18);
+		servicelist = serviceIBusiness.getAllByIdAccount(id);
 
 		// repartition des listes
 		for (Service service : servicelist) {
