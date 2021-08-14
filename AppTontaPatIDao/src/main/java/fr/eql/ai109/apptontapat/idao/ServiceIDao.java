@@ -15,8 +15,11 @@ public interface ServiceIDao extends GenericIDao<Service> {
 	public List<Service> getAllByIdHerd(int id);
 	public List<Service> getAllByIdField(int id);
 	public Service annotedService(Integer id, Integer rateNote, Date rateDate, String rateComment);
-	List<Service> getAllByIdAccount(int id);
+	List<Service> getAllByIdAccountField(int id);
+	List<Service> getAllByIdAccountHerd(int id);
 	Service closeService(Date date, Service service);
 	Service closeService(Date date, int id);
 	Service ruptureService(Service service, Rupture rupture);
+	List<Service> getAllByAccountId(int idAccount);
+
 }

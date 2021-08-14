@@ -50,7 +50,7 @@ public class ServiceManagedBean implements Serializable {
 		if (servicelist != null) {
 			serviceClean();
 		}
-		servicelist = serviceIBusiness.getAllByIdAccount(id);
+		servicelist = serviceIBusiness.getAllByIdAccountField(id);
 
 		// repartition des listes
 		for (Service service : servicelist) {
@@ -116,6 +116,11 @@ public class ServiceManagedBean implements Serializable {
 		System.out.println("\n-------------------->"+fieldIBusiness.extraireTerrainParId(15).getZipcode().getLatitude());
 		dists = serviceIBusiness.distanceBU(fieldIBusiness.extraireTerrainParId(15));
 		return dists;
+	}
+	
+	public List<Service> getAllByIdAccountHerd(int idAccount) {
+		List<Service> services= null;
+		return services;
 	}
 
 	public List<Herd> getHerds() {

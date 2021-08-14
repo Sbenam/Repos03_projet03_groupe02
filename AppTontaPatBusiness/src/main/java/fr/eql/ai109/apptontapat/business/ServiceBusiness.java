@@ -61,8 +61,13 @@ public class ServiceBusiness implements ServiceIBusiness {
 	}
 
 	@Override
-	public List<Service> getAllByIdAccount(int id) {
-		return serviceIDao.getAllByIdAccount(id);
+	public List<Service> getAllByIdAccountField(int id) {
+		return serviceIDao.getAllByIdAccountField(id);
+	}
+
+	@Override
+	public List<Service> getAllByIdAccountHerd(int id) {
+		return serviceIDao.getAllByIdAccountHerd(id);
 	}
 
 

@@ -16,7 +16,8 @@ public interface ServiceIBusiness {
 	List<Service> extraireToutesLesPrestationsParIdTerrain(int id);
 	Service ajoutPrestation(Service service);
 	Service annoterUnePrestation(Integer id, Integer rateNote, Date date, String rateComment);
-	List<Service> getAllByIdAccount(int id);
+	List<Service> getAllByIdAccountField(int id);
+	List<Service> getAllByIdAccountHerd(int id);
 	Service cloturerUnePrestation(Date date, int id);
 	Service cloturerUnePrestation(Date date, Service service);
 	Service rompreUnePrestation(Service service, Rupture rupture);

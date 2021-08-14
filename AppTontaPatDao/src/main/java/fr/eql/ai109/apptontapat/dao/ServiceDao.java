@@ -70,9 +70,17 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 		return services;
 	}
 
-	public List<Service> getAllByIdAccount(int id) {
+	public List<Service> getAllByIdAccountField(int id) {
 		List<Service> services = null;
 		Query query = em.createQuery("SELECT s FROM Service s WHERE s.field.account.id=:idParam");
+		query.setParameter("idParam", id);
+		services = (List<Service>) query.getResultList();
+		return services;
+	}
+
+	public List<Service> getAllByIdAccountHerd(int id) {
+		List<Service> services = null;
+		Query query = em.createQuery("SELECT s FROM Service s WHERE s.herd.account.id=:idParam");
 		query.setParameter("idParam", id);
 		services = (List<Service>) query.getResultList();
 		return services;
@@ -128,5 +136,11 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 	public Service ruptureService(Service service, Rupture rupture) {
 		service.setRupture(rupture);
 		return service;
+	}
+
+	@Override
+	public List<Service> getAllByAccountId(int idAccount) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
