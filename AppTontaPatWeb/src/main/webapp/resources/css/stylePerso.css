@@ -969,3 +969,7 @@ main {
     .product-grid{ margin: 0 0 30px; }
 }
 
+.label-carousel{
+	color: white; color: var(--white); backdrop-filter: grayscale(1); font-size: 28px; background-color: var(--primary); border-radius: 2px; padding: 10px;
+}
+
