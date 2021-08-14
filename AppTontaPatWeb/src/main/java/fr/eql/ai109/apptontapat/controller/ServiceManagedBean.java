@@ -39,13 +39,13 @@ public class ServiceManagedBean implements Serializable {
 	@EJB
 	private FieldIBusiness fieldIBusiness;
 
-	
+
 
 	public void getServiceDetail(PageManageBean p,Service s) {
 		serviceSelect = s;
 		p.setPage("service_detail");
 	}
-	
+
 	public List<Service> getAllByIdAccount(int id) {
 		if (servicelist != null) {
 			serviceClean();
@@ -55,31 +55,31 @@ public class ServiceManagedBean implements Serializable {
 		// repartition des listes
 		for (Service service : servicelist) {
 
-			// Si validation = null && refus null === en attente
-			if (service.getValidation() != null & service.getRefusal() != null) {
-				System.out.println("en attente");
-				serviceEnAttente.add(service);
-			}
-			// Si validation != null && finished == null && rupture == null ==> En cours
-			else if (service.getValidation() != null & service.getFinished() == null & service.getRupture() == null) {
-				System.out.println("en cour");
-				serviceEnCour.add(service);
-			}
-			// si finished != null ==> Fini
-			else if (service.getFinished() != null & service.getRefusal() == null) {
+			// si finished != null  et refus == null ==> Fini
+			if (service.getFinished() != null && service.getRefusal() == null) {
 				System.out.println(service.getFinished());
 				System.out.println("fini");
 				serviceTerminer.add(service);
 			}
+			// Si validation != null && finished == null && rupture == null ==> En cours
+			else if (service.getValidation() != null && service.getFinished() == null && service.getRupture() == null) {
+				System.out.println("en cour");
+				serviceEnCour.add(service);
+			}
 			// si refus != null ==> annuler (Refuser)
-			else if (service.getRefusal() != null) {
+			else if (service.getValidation() != null && service.getRefusal() != null) {
 				System.out.println("refuser");
 				serviceRefuser.add(service);
+			}
+			// Si validation = null && refus null === en attente
+			else if (service.getValidation() != null & service.getRefusal() == null) {
+				System.out.println("en attente");
+				serviceEnAttente.add(service);
 			} else {
-
 				System.out.println("Id du sans statut" + service.getId());
 				System.out.println("Pas de statut sur cette prestation");
 			}
+
 		}
 
 		System.err.println("taille de la liste de service : " + servicelist.size());
@@ -104,7 +104,7 @@ public class ServiceManagedBean implements Serializable {
 	public List<Herd> search(Field field) {
 		return serviceIBusiness.search(field);
 	}
-	
+
 	// TODO vin test
 	public List<Herd> searchTest() {
 		System.out.println("\n>>>>>>>>>>>>>>>>>>>>>>>>"+fieldIBusiness.extraireTerrainParId(15).getZipcode().getLatitude());
@@ -117,7 +117,7 @@ public class ServiceManagedBean implements Serializable {
 		dists = serviceIBusiness.distanceBU(fieldIBusiness.extraireTerrainParId(15));
 		return dists;
 	}
-	
+
 	public List<Service> getAllByIdAccountHerd(int idAccount) {
 		return serviceIBusiness.getAllByIdAccountHerd(idAccount);
 	}
