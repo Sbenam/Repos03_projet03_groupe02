@@ -3,7 +3,8 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-	<h:inputHidden	value="#{mbService.getAllByIdAccount(mbAccount.account.id)}"></h:inputHidden>
+	<h:inputHidden
+		value="#{mbService.getAllByIdAccount(mbAccount.account.id)}"></h:inputHidden>
 
 	<!-- ui repeat liste des services -->
 	<h4>
@@ -37,8 +38,16 @@
 							<span class="color-green-primary">Fin : </span>
 							<h:outputText value="#{s.field.ending}"></h:outputText>
 						</p>
-						<a class="card-link-hover"
-							href="https://christianheilmann.com/2020/11/26/back-to-basics-creating-a-clickable-card-interface-in-plain-html-css-and-javascript/"></a>
+
+						<h:form>
+							<f:ajax render=":contentPage">
+								<h:commandLink 
+									styleClass="card-link-hover" value=""
+									action="#{mbService.getServiceDetail(PageManageBean,s)}">
+									
+								</h:commandLink>
+							</f:ajax>
+						</h:form>
 					</div>
 				</div>
 			</ui:repeat>

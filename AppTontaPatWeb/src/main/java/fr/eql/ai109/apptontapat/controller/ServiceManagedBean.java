@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -12,9 +11,9 @@ import javax.faces.bean.SessionScoped;
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.entity.Service;
-import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.FieldIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
+import fr.eql.ai109.apptontapat.web.PageManageBean;
 
 @ManagedBean(name = "mbService")
 @SessionScoped
@@ -26,21 +25,12 @@ public class ServiceManagedBean implements Serializable {
 	private List<Herd> herds;
 	private Herd herd;
 	private List<Float> dists;
-	List<Service> servicelist;
-	List<Service> serviceEnAttente = new ArrayList<Service>();
-	List<Service> serviceEnCour = new ArrayList<Service>();
-	List<Service> serviceTerminer = new ArrayList<Service>();
-	List<Service> serviceRefuser = new ArrayList<Service>();
-
-	private List<ZipCode> zipcodes;
-
-	public List<Service> getServicelist() {
-		return servicelist;
-	}
-
-	public void setServicelist(List<Service> servicelist) {
-		this.servicelist = servicelist;
-	}
+	private List<Service> servicelist;
+	private List<Service> serviceEnAttente = new ArrayList<Service>();
+	private List<Service> serviceEnCour = new ArrayList<Service>();
+	private List<Service> serviceTerminer = new ArrayList<Service>();
+	private List<Service> serviceRefuser = new ArrayList<Service>();
+	private Service serviceSelect = new Service();
 
 	@EJB
 	private ServiceIBusiness serviceIBusiness;
@@ -48,6 +38,13 @@ public class ServiceManagedBean implements Serializable {
 	@EJB
 	private FieldIBusiness fieldIBusiness;
 
+	
+	
+	public void getServiceDetail(PageManageBean p,Service s) {
+		serviceSelect = s;
+		p.setPage("service_detail");
+	}
+	
 	public List<Service> getAllByIdAccount(int id) {
 		if (servicelist != null) {
 			serviceClean();
@@ -78,8 +75,8 @@ public class ServiceManagedBean implements Serializable {
 				System.out.println("refuser");
 				serviceRefuser.add(service);
 			} else {
-				
-				System.out.println("Id du sans statut"+ service.getId());
+
+				System.out.println("Id du sans statut" + service.getId());
 				System.out.println("Pas de statut sur cette prestation");
 			}
 		}
@@ -152,7 +149,7 @@ public class ServiceManagedBean implements Serializable {
 	public void setDists(List<Float> dists) {
 		this.dists = dists;
 	}
-	
+
 	public List<Service> getServiceEnAttente() {
 		return serviceEnAttente;
 	}
@@ -183,6 +180,22 @@ public class ServiceManagedBean implements Serializable {
 
 	public void setServiceRefuser(List<Service> serviceRefuser) {
 		this.serviceRefuser = serviceRefuser;
+	}
+
+	public Service getServiceSelect() {
+		return serviceSelect;
+	}
+
+	public void setServiceSelect(Service serviceSelect) {
+		this.serviceSelect = serviceSelect;
+	}
+
+	public List<Service> getServicelist() {
+		return servicelist;
+	}
+
+	public void setServicelist(List<Service> servicelist) {
+		this.servicelist = servicelist;
 	}
 
 }
