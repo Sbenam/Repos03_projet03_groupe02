@@ -4,191 +4,212 @@ servira pour la NAVIGATION BAR -->
 
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-  xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
-  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xml:lang="fr">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xml:lang="fr">
 <h:head>
-  <title>Hub-Accueil</title>
-  <ui:insert name="head"></ui:insert>
-  <h:outputStylesheet library="css" name="style.css" />
-  <h:outputStylesheet library="css" name="stylePerso.css" />
+	<title>Hub-Accueil</title>
+	<ui:insert name="head"></ui:insert>
+	  <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="stylePerso.css" />
 
 
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
 
-  <!-- Favicon-->
-  <link rel="icon" type="image/x-icon" href="images/MoutonBlanc.ico" />
-  <!-- Font Awesome icons (free version)-->
-  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="images/MoutonBlanc.ico" />
+	<!-- Font Awesome icons (free version)-->
+	<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
+		crossorigin="anonymous"></script>
 </h:head>
 <h:body>
-  <!-- NAVIGATION-->
-  <nav class="navbar navbar-expand-lg navbar-dark text-uppercase fixed-top" id="mainNav">
-    <div class="container">
-       <h:form>
-                    <f:ajax render=":contentPage">
-                      <h:commandLink styleClass="" value=""
-                        action="#{mbAccount.connect()}">
-        <img alt="" style="width: 100px" src="images/MoutonNoir.png" />
-                        </h:commandLink>
-                    </f:ajax>
-                  </h:form>
-      <button class="
+	<!-- NAVIGATION-->
+	<nav
+		class="navbar navbar-expand-lg navbar-dark text-uppercase fixed-top"
+		id="mainNav">
+	<div class="container">
+		<h:form>
+			<f:ajax render=":contentPage">
+				<h:commandLink styleClass="" value=""
+					action="#{mbAccount.connect()}">
+					<img alt="" style="width: 100px" src="images/MoutonNoir.png" />
+				</h:commandLink>
+			</f:ajax>
+		</h:form>
+		<button
+			class="
             navbar-toggler
             text-uppercase
             font-weight-bold
             bg-primary
             text-white
             rounded
-          " type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span>Menu</span>
-        <em class="fas fa-bars"></em>
-      </button>
-      <div class="collapse navbar-collapse justify-content-md-center" id="navbarResponsive">
-        <div class="nav navbar-nav navbar-right" style="margin-left: auto">
-          <div class="dropdown">
-            <button class="btn-custom backgroundBoxBlue text-white dropdown-toggle" type="button" id="  "
-              data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="fa fa-user"></span> ☰
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          "
+			type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span>Menu</span> <em class="fas fa-bars"></em>
+		</button>
+		<div class="collapse navbar-collapse justify-content-md-center"
+			id="navbarResponsive">
+			<div class="nav navbar-nav navbar-right" style="margin-left: auto">
+				<div class="dropdown">
+					<button
+						class="btn-custom backgroundBoxBlue text-white dropdown-toggle"
+						type="button" id="  " data-bs-toggle="dropdown"
+						aria-expanded="false">
+						<span class="fa fa-user"></span> ☰
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
 
-              <!-- Tout doit disparaitre !!!!-->
-              <li>
-                <button class="dropdown-item" type="button">
-                  <h:form>
-                    <f:ajax render=":pagefooter2">
-                      <h:commandLink styleClass="dropdown-item" value=""
-                        action="#{PageManageBean.setPage2('suppressField')}">
-                        <em class="fas fa-sign-in-alt"></em> retrait
+						<!-- Tout doit disparaitre !!!!-->
+						<li>
+							<button class="dropdown-item" type="button">
+								<h:form>
+									<f:ajax render=":pagefooter2">
+										<h:commandLink styleClass="dropdown-item" value=""
+											action="#{PageManageBean.setPage2('suppressField')}">
+											<em class="fas fa-sign-in-alt"></em> retrait
                         terrain</h:commandLink>
-                    </f:ajax>
-                  </h:form>
-                </button>
-              </li>
+									</f:ajax>
+								</h:form>
+							</button>
+						</li>
 
-              <li>
-                <button class="dropdown-item" type="button">
-                  <h:form>
-                    <f:ajax render=":pagefooter2">
-                      <h:commandLink styleClass="dropdown-item" value=""
-                        action="#{PageManageBean.setPage2('suppressHerd')}">
-                        <em class="fas fa-sign-in-alt"></em> retrait
+						<li>
+							<button class="dropdown-item" type="button">
+								<h:form>
+									<f:ajax render=":pagefooter2">
+										<h:commandLink styleClass="dropdown-item" value=""
+											action="#{PageManageBean.setPage2('suppressHerd')}">
+											<em class="fas fa-sign-in-alt"></em> retrait
                         troupeau</h:commandLink>
-                    </f:ajax>
-                  </h:form>
-                </button>
-              </li>
+									</f:ajax>
+								</h:form>
+							</button>
+						</li>
 
-              <li>
-                <button class="dropdown-item" type="button">
-                  <h:form>
-                    <f:ajax render=":pagefooter2">
-                      <h:commandLink styleClass="dropdown-item" value=""
-                        action="#{PageManageBean.setPage2('suppressAccount')}">
-                        <em class="fas fa-sign-in-alt"></em> retrait
+						<li>
+							<button class="dropdown-item" type="button">
+								<h:form>
+									<f:ajax render=":pagefooter2">
+										<h:commandLink styleClass="dropdown-item" value=""
+											action="#{PageManageBean.setPage2('suppressAccount')}">
+											<em class="fas fa-sign-in-alt"></em> retrait
                         compte</h:commandLink>
-                    </f:ajax>
-                  </h:form>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+									</f:ajax>
+								</h:form>
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	</nav>
 
-  <h:panelGroup id="contentPage">
-    <ui:include src="#{PageManageBean.page}.xhtml"></ui:include>
-  </h:panelGroup>
-  <h:panelGroup id="pagefooter2">
-    <ui:include src="#{PageManageBean.page2}.xhtml"></ui:include>
-  </h:panelGroup>
+	<h:panelGroup id="contentPage">
+		<ui:include src="#{PageManageBean.page}.xhtml"></ui:include>
+	</h:panelGroup>
+	<h:panelGroup id="pagefooter2">
+		<ui:include src="#{PageManageBean.page2}.xhtml"></ui:include>
+	</h:panelGroup>
 
-  <ui:insert name="content"></ui:insert>
-  <!-- Footer-->
-  <footer class="footer text-center">
-    <div class="container">
-      <div class="row">
-        <!-- Footer Location-->
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <h4 class="text-uppercase mb-4">Adresse</h4>
-          <p class="lead mb-0">
-            9 Bd du Général de Gaulle <br /> 92120 MONTROUGE
-          </p>
-        </div>
-        <!-- Footer Social Icons-->
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <h4 class="text-uppercase mb-4">Tontàpat</h4>
-          <a class="btn btn-outline-light btn-social mx-1" href="#!"><em class="fab fa-fw fa-facebook-f"></em></a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#!"><em class="fab fa-fw fa-twitter"></em></a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#!"><em class="fab fa-fw fa-linkedin-in"></em></a>
-          <a class="btn btn-outline-light btn-social mx-1" href="#!"><em class="fab fa-fw fa-dribbble"></em></a>
-        </div>
-        <!-- Footer About Text-->
-        <div class="col-lg-4">
-          <h4 class="text-uppercase mb-4">A PROPOS DE NOUS</h4>
-          <p class="lead mb-0">Groupe2@eql.com</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- Copyright Section-->
-  <div class="copyright py-4 text-center text-white">
-    <div class="container">
-      <small>Copyright &copy; Tontàpat 2021</small>
-    </div>
-  </div>
+	<ui:insert name="content"></ui:insert>
+	<!-- Footer-->
+	<footer class="footer text-center">
+	<div class="container">
+		<div class="row">
+			<!-- Footer Location-->
+			<div class="col-lg-4 mb-5 mb-lg-0">
+				<h4 class="text-uppercase mb-4">Adresse</h4>
+				<p class="lead mb-0">
+					9 Bd du Général de Gaulle <br /> 92120 MONTROUGE
+				</p>
+			</div>
+			<!-- Footer Social Icons-->
+			<div class="col-lg-4 mb-5 mb-lg-0">
+				<h4 class="text-uppercase mb-4">Tontàpat</h4>
+				<a class="btn btn-outline-light btn-social mx-1" href="#!"><em
+					class="fab fa-fw fa-facebook-f"></em></a> <a
+					class="btn btn-outline-light btn-social mx-1" href="#!"><em
+					class="fab fa-fw fa-twitter"></em></a> <a
+					class="btn btn-outline-light btn-social mx-1" href="#!"><em
+					class="fab fa-fw fa-linkedin-in"></em></a> <a
+					class="btn btn-outline-light btn-social mx-1" href="#!"><em
+					class="fab fa-fw fa-dribbble"></em></a>
+			</div>
+			<!-- Footer About Text-->
+			<div class="col-lg-4">
+				<h4 class="text-uppercase mb-4">A PROPOS DE NOUS</h4>
+				<p class="lead mb-0">Groupe2@eql.com</p>
+			</div>
+		</div>
+	</div>
+	</footer>
+	<!-- Copyright Section-->
+	<div class="copyright py-4 text-center text-white">
+		<div class="container">
+			<small>Copyright &copy; Tontàpat 2021</small>
+		</div>
+	</div>
 
-  <!-- Menu Absolute right -->
-  <div class="d-flex flex-column flex-shrink-0 bg-light menu-right" style="width: 4.5rem">
-    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-      <li class="nav-item">
-        <h:form>
-          <f:ajax render=":contentPage">
-            <h:commandLink pt:data-bs-toggle="tooltip" title="Recherche" pt:data-bs-placement="left"
-              styleClass="nav-link py-3 border-bottom" value="" action="#{PageManageBean.setPage('research')}">
-              <em class="fas fa-search-location"></em>
-            </h:commandLink>
-          </f:ajax>
-        </h:form>
-      </li>
-      <li>
-        <h:form>
-          <f:ajax render=":contentPage">
-            <h:commandLink pt:data-bs-toggle="tooltip" title="Mes terrains" pt:data-bs-placement="left"
-              styleClass="nav-link py-3 border-bottom" value="" action="#{PageManageBean.setPage('terrain_detail')}">
-              <em class="fas fa-leaf"></em>
-            </h:commandLink>
-          </f:ajax>
-        </h:form>
-      </li>
-      <li>
-        <h:form>
-          <f:ajax render=":contentPage">
-            <h:commandLink pt:data-bs-toggle="tooltip" title="Mes troupeaux" pt:data-bs-placement="left"
-              styleClass="nav-link py-3 border-bottom" value="" action="#{PageManageBean.setPage('troupeau_detail')}">
-              <em class="fas fa-paw"></em>
-            </h:commandLink>
-          </f:ajax>
-        </h:form>
-      </li>
+	<!-- Menu Absolute right -->
+	<div class="d-flex flex-column flex-shrink-0 bg-light menu-right"
+		style="width: 4.5rem">
+		<ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+			<li class="nav-item"><h:form>
+					<f:ajax render=":contentPage">
+						<h:commandLink pt:data-bs-toggle="tooltip" title="Recherche"
+							pt:data-bs-placement="left"
+							styleClass="nav-link py-3 border-bottom" value=""
+							action="#{PageManageBean.setPage('research')}">
+							<em class="fas fa-search-location"></em>
+						</h:commandLink>
+					</f:ajax>
+				</h:form></li>
+			<li><h:form>
+					<f:ajax render=":contentPage">
+						<h:commandLink pt:data-bs-toggle="tooltip" title="Mes terrains"
+							pt:data-bs-placement="left"
+							styleClass="nav-link py-3 border-bottom" value=""
+							action="#{PageManageBean.setPage('terrain_detail')}">
+							<em class="fas fa-leaf"></em>
+						</h:commandLink>
+					</f:ajax>
+				</h:form></li>
+			<li><h:form>
+					<f:ajax render=":contentPage">
+						<h:commandLink pt:data-bs-toggle="tooltip" title="Mes troupeaux"
+							pt:data-bs-placement="left"
+							styleClass="nav-link py-3 border-bottom" value=""
+							action="#{PageManageBean.setPage('troupeau_detail')}">
+							<em class="fas fa-paw"></em>
+						</h:commandLink>
+					</f:ajax>
+				</h:form></li>
 
-      <li>
-        <a href="#" class="nav-link py-3 border-bottom" title="Prestations" data-bs-toggle="tooltip"
-          data-bs-placement="right">
-          <em class="fas fa-sticky-note"></em>
-        </a>
-      </li>
-    </ul>
-    <!-- Profil + ajout terrain + troupeau -->
-    <div class="dropdown border-top">
-      <a href="#" class="
+			<li><a href="#" class="nav-link py-3 border-bottom"
+				title="Prestations" data-bs-toggle="tooltip"
+				data-bs-placement="right"> <em class="fas fa-sticky-note"></em>
+			</a></li>
+		</ul>
+		<!-- Profil + ajout terrain + troupeau -->
+		<div class="dropdown border-top">
+			<a href="#"
+				class="
             d-flex
             align-items-center
             justify-content-center
@@ -196,45 +217,51 @@ servira pour la NAVIGATION BAR -->
             link-dark
             text-decoration-none
             dropdown-toggle
-          " id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle" />
-      </a>
-      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-        <li>
-          <h:form>
-            <f:ajax render=":pagefooter2">
-              <h:commandLink styleClass="dropdown-item" value="" action="#{PageManageBean.setPage2('addfield1')}">
+          "
+				id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+				<img src="https://github.com/mdo.png" alt="mdo" width="24"
+				height="24" class="rounded-circle" />
+			</a>
+			<ul class="dropdown-menu text-small shadow"
+				aria-labelledby="dropdownUser3">
+				<li><h:form>
+						<f:ajax render=":pagefooter2">
+							<h:commandLink styleClass="dropdown-item" value=""
+								action="#{PageManageBean.setPage2('addfield1')}">
                 Nouveau terrain</h:commandLink>
-            </f:ajax>
-          </h:form>
-        </li>
-        <li>
-          <h:form>
-            <f:ajax render=":pagefooter2">
-              <h:commandLink styleClass="dropdown-item" value="" action="#{PageManageBean.setPage2('addherd1')}">Nouveau
+						</f:ajax>
+					</h:form></li>
+				<li><h:form>
+						<f:ajax render=":pagefooter2">
+							<h:commandLink styleClass="dropdown-item" value=""
+								action="#{PageManageBean.setPage2('addherd1')}">Nouveau
                 troupeau</h:commandLink>
-            </f:ajax>
-          </h:form>
-        </li>
-        <li>
-          <hr class="dropdown-divider" />
-        </li>
-        <li>
-          <h:form>
-            <f:ajax render=":pagefooter2">
-              <h:commandLink styleClass="dropdown-item" value="" action="#{PageManageBean.setPage2('detailaccount')}">
+						</f:ajax>
+					</h:form></li>
+				<li>
+					<hr class="dropdown-divider" />
+				</li>
+				<li><h:form>
+						<f:ajax render=":contentPage">
+							<h:commandLink styleClass="dropdown-item" value=""
+								action="#{PageManageBean.setPage('detailaccount')}">
                 Profile</h:commandLink>
-            </f:ajax>
-          </h:form>
-        </li>
-        <li>
-          <hr class="dropdown-divider" />
-        </li>
-        <li><a class="dropdown-item" href="#">Deconexion</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <script src="js/myScripts.js"></script>
+						</f:ajax>
+					</h:form></li>
+				<li>
+					<hr class="dropdown-divider" />
+				</li>
+				<li><a class="dropdown-item" href="#">Deconexion</a></li>
+			</ul>
+		</div>
+	</div>
+	    <!-- leaflet JS -->
+	     <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+       <script src="js/mapShearch.js"></script>
 </h:body>
+
 </html>
