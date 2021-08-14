@@ -117,8 +117,6 @@ public class FieldManagedBean implements Serializable{
 		field.setWithdraw(new Date());
 		field.setRetret(retretvalue);
 		fieldIBusiness.mettreAJourUnTerrain(field);
-		System.out.println("selectedRetret :         " + selectedRetret);
-		System.out.println("fieldIDtvalue :         " + field.getId());
 		return "simpleArch.xhtml"; 
 	}
 	
@@ -267,13 +265,11 @@ public class FieldManagedBean implements Serializable{
 
 
 	public Retret getRetretvalue() {
-		System.out.println("retretvalue getter"+ retretvalue);
 		return retretvalue;
 	}
 
 
 	public void setRetretvalue(Retret retretvalue) {
-		System.out.println("retretvalue setter"+ retretvalue);
 		this.retretvalue = retretvalue;
 	}
 

@@ -4,6 +4,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	
 	
+		<h:outputText value="#{mbHerd.getHerdById(4)}"></h:outputText>
 	
 	
 	<div class="popup-containerSuppress" id="container">
@@ -28,19 +29,16 @@
 			
 						  <h:form>
 <div class="form-group col-md-10">
-    <h:outputLabel for="delete" value=""/>
-    <h:selectOneMenu id="delete" class="form-control" value="{mbHerd.selectedTakeout}" >
-    <f:selectItem itemLabel="Motif de suppression : *" itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbHerd.takeouts}"></f:selectItems>
+
+  <h:outputLabel for="delete" value=""/>
+    <h:selectOneMenu id="delete" class="form-control" value="#{mbHerd.selectedTakeout}" >
+  <f:selectItem itemLabel="Motif de suppression : * " itemValue="" noSelectionOption="true"></f:selectItem>  
+	<f:selectItems value="#{mbRetret.getAllTakeout()}" var="obj"  itemLabel="#{obj.label}" itemValue="#{obj.id}" ></f:selectItems>
+<!-- 	<f:ajax execute="delete" event="change" render="@form"/>  -->
       </h:selectOneMenu>
    
-  </div>
-  </h:form>
-						
-						
-						
 							<div class="d-grid gap-2">
-							<h:form><button class="btn btn-primary w-25" type="submit" title="valider pour confirmer la suppression">Valider</button>
+							<h:commandButton class="btn btn-primary w-25" type="submit"  action="#{mbHerd.supprimer(mbRetret.takeoutsList)}"  title="valider pour confirmer la suppression" value="Valider"></h:commandButton>
 						
 				<f:ajax render=":pagefooter2">
 						<h:commandLink styleClass="dropdown-item" value=""
@@ -49,10 +47,10 @@
 						</h:commandLink>
 					
 				</f:ajax>
+				</div>
+				</div>
 			</h:form>
-						
-					</div>	
-					</div>
+				 </div>		
 				</div>
 			</div>
 		</section>
