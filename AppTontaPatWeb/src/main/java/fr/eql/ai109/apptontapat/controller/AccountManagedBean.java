@@ -205,11 +205,6 @@ public class AccountManagedBean implements Serializable {
 			}
 		}
 
-		System.out.println("surname : " + surNname);
-		System.out.println("name : " + name);
-		System.out.println("birth : " + birth);
-		System.out.println("phone : " + phone);
-
 	}
 
 	public String getName() {

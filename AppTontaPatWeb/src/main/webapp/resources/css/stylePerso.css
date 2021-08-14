@@ -95,7 +95,8 @@ div.col-3:nth-child(even) {
 .card {
     position: relative;
     display: flex;
-    flex-direction: column;
+    width: 18rem;
+    margin-right: 2em;
     min-width: 0;
     word-wrap: break-word;
     background-color: #F1FAEE;
@@ -709,6 +710,8 @@ ul {
 
 .col-card {
     margin-top: 1em;
+        display: flex;
+    flex-flow: wrap;
 }
 
 fd-body {
