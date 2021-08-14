@@ -12,18 +12,18 @@
 						Prestation n°
 						<h:outputText value="#{mbService.serviceSelect.nbService}"></h:outputText>
 					</h2>
-					<div style="display: flex; justify-content: space-evenly;">
+					<div style="display: flex; justify-content: space-evenly; font-size: 20px;">
 						<p>
-							<span class="color-green-primary">Prix: </span>
+							<span class="color-green-primary" style="font-size: 20px;">Prix: </span>
 							<h:outputText value="#{mbService.serviceSelect.cost}" />
 							€
 						</p>
 						<p>
-							<span class="color-green-primary">Date de debut: </span>
+							<span class="color-green-primary" style="font-size: 20px;">Date de debut: </span>
 							<h:outputText value="#{mbService.serviceSelect.starting}" />
 						</p>
 						<p>
-							<span class="color-green-primary">Date de fin: </span>
+							<span class="color-green-primary" style="font-size: 20px;">Date de fin: </span>
 							<h:outputText value="#{mbService.serviceSelect.ending}" />
 						</p>
 					</div>
@@ -46,7 +46,7 @@
 										class="far fa-star"></em> <em class="far fa-star"></em> <em
 										class="far fa-star"></em>
 									<h:outputText styleClass="image-terrain"
-										style="background-image:url(#{mbService.serviceSelect.field.photo})!important; display:block; width:100%; height:170px;"></h:outputText>
+										style="background-image:url(#{mbService.serviceSelect.field.photo})!important; display:block; width:100%; height:230px;background-position:bottom;"></h:outputText>
 
 
 									<div class="body-terrain-container">
@@ -134,7 +134,7 @@
 										class="far fa-star"></em> <em class="far fa-star"></em> <em
 										class="far fa-star"></em>
 									<h:outputText styleClass="image-terrain"
-										style="background-image:url(#{mbService.serviceSelect.herd.photo})!important; display:block; width:100%; height:170px;"></h:outputText>
+										style="background-image:url(#{mbService.serviceSelect.herd.photo})!important; display:block; width:100%; height:230px;background-position:bottom;"></h:outputText>
 
 									<div class="body-terrain-container">
 
