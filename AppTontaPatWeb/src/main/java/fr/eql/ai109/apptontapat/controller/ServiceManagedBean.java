@@ -66,7 +66,7 @@ public class ServiceManagedBean implements Serializable {
 				serviceEnCour.add(service);
 			}
 			// si finished != null ==> Fini
-			else if (service.getFinished() != null) {
+			else if (service.getFinished() != null & service.getRefusal() == null) {
 				System.out.println(service.getFinished());
 				System.out.println("fini");
 				serviceTerminer.add(service);
