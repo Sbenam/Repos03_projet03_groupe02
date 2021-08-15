@@ -3,7 +3,12 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	>
-<div class="popup-containerModifField" id="container">
+	
+	
+	<h:outputText value="#{mbAccount.getAccountById(4)}"></h:outputText>
+	
+	
+<div class="popup-containerModif" id="container">
 	<section class="conexion-popupModif">
 		<div class="container-fluid">
 			<div class="row justify-content-md-center">
@@ -15,60 +20,60 @@
 					<h5>Pour profiter des services d'écopâturages près de chez vous</h5>
 					<div class="mb-3 align-left">
 					
-					<div class="photo"></div>
+					<div ><img class="photo" src="#{mbAccount.account.photo}"/></div>
 						<label for="nameInput" class="form-label">Adresse Email :</label><input
 							type="name" class="form-control w-50" id="nameInput"
-							placeholder="Entrez une adresse email" /> <label for="adresseInput"
+							placeholder="Entrez une adresse email" value="#{mbAccount.account.email}"/> <label for="adresseInput"
 							class="form-label ">Mot de passe :</label><input
 							type="adresse" class="form-control w-50" id="adresseInput" placeholder="Veuillez saisir votre mot de passe" />
 							
 							<label for="nameInput" class="form-label">Nom :</label><input
 							type="name" class="form-control w-25" id="nameInput"
-							placeholder="Michel" /> 
+							placeholder="Michel"  value="#{mbAccount.account.name}"/> 
 							
 							<label for="nameInput" class="form-label">Prénom :</label><input
 							type="name" class="form-control w-25" id="nameInput"
-							placeholder="Michel" /> 
+							placeholder="Michel"  value="#{mbAccount.account.surname}"/> 
 							
 							<label for="nameInput" class="form-label">Numéro de téléphone :</label><input
 							type="name" class="form-control w-25" id="nameInput"
-							placeholder="0557451245" /> 
+							placeholder="0557451245"  value="#{mbAccount.account.phone}"/> 
 							
 							<label
 							for="birth-date-input" class="form-label ">Date de
 							naissance</label><input type="date" class="form-control w-25"
-							id="birth-date-input" rows="3"></input>
+							id="birth-date-input" rows="3" ></input>
 							
 							<label for="adresseInput"
 							class="form-label ">Adresse :</label><input
-							type="adresse" class="form-control" id="adresseInput" placeholder="1 rue du coquelicot" />
+							type="adresse" class="form-control" id="adresseInput" placeholder="1 rue du coquelicot" value="#{mbAccount.account.adress}" />
 							
 							
 							<label for="nameInput" class="form-label">Code postal :</label><input
 							type="name" class="form-control w-25" id="nameInput"
 							placeholder="78546" /> 
-							<input class="form-control w-50" type="text" value="Ville" aria-label="Ville" disabled="true" />
+							<input class="form-control w-50" type="text" aria-label="Ville" disabled="true"  value="#{mbAccount.account.zipcode.label}"/>
 						
 
 <hr/>
-<form>
+<h:form>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Description :</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" value="#{mbAccount.account.description}"></textarea>
   </div>
   
-</form>
+</h:form>
 						<div class="d-grid gap-2">
 							<button class="btn btn-primary w-25" type="submit">Enregistrer</button>
-						<h:form>
+						<button class="btn btn-primary w-25" type="submit">
 				<f:ajax render=":pagefooter2">
-						<h:commandLink styleClass="dropdown-item" value=""
+						<h:commandLink styleClass="dropdown-item btn btn-primary text-white" value="Annuler"
 							action="#{PageManageBean.setPage2('blank')}">
-							<button class="btn btn-primary w-25" type="submit">Annuler</button>
+							
 						</h:commandLink>
 					
-				</f:ajax>
-			</h:form>
+				</f:ajax></button>
+		
 						
 						</div>
 

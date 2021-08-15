@@ -49,7 +49,7 @@ public class AccountDao extends GenericDao<Account> implements AccountIDao{
 	public Account getAccountById(int id) {
 		List<Account> accounts = null;
 		Account account = null;
-		Query query = em.createQuery("SELECT u FROM Account u WHERE u.code=:idParam");
+		Query query = em.createQuery("SELECT u FROM Account u WHERE u.id=:idParam");
 		query.setParameter("idParam",id);
 		accounts= (List<Account>)query.getResultList();
 		if (accounts.size() > 0) {

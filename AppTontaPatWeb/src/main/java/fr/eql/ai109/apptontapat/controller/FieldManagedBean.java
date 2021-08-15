@@ -12,6 +12,7 @@ import javax.faces.bean.SessionScoped;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Race;
 import fr.eql.ai109.apptontapat.entity.Retret;
 import fr.eql.ai109.apptontapat.entity.Slope;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
@@ -36,6 +37,7 @@ public class FieldManagedBean implements Serializable{
 	private Field field = new Field();
 	private List<String> slopes = new ArrayList<String>();
 	private String selectedSlope ;
+	private Slope slopevalue;
 	private List<String> grasses = new ArrayList<String>();
 	private String selectedGrass ;
 	private List<String> humidities = new ArrayList<String>();
@@ -70,46 +72,49 @@ public class FieldManagedBean implements Serializable{
 	
 	@PostConstruct
 	public void init() {
-		slopes = getAllSlopeLabels() ;
-		grasses = getAllGrassLabels();
-		humidities = getAllHumidityLabels() ;
-		Veggies = getAllVeggyLabels() ;
-		compos = getAllCompoLabels();
-		retrets = getAllRetretLabels() ;
+		slopes = slopeIBusiness.extraireToutLesSlopesLabels();
+		grasses =  grassIBusiness.extraireToutLesGlassHeightLabels();
+		humidities = humidityIBusiness.extraireToutLesHumidityLabels() ;
+		Veggies = veggyIBusiness.extraireToutesLesVegetationLabels();
+		compos = compoIBusiness.extraireToutesLesCompositionLabels();
+		retrets = retretIBusiness.extraireToutLesRetretLabels();
 		zipID = getCityWithZipCodeID();
 		getCityWithZipCodeCode(zipcode);
 	}
 	
 	
-	public List<String> getAllSlopeLabels() {
-		return slopeIBusiness.extraireToutLesSlopesLabels();
-	}
-	public List<String> getAllGrassLabels() {
-		return grassIBusiness.extraireToutLesGlassHeightLabels();
-	}
-	public List<String> getAllHumidityLabels() {
-		return humidityIBusiness.extraireToutLesHumidityLabels() ;
-	}
-	public List<String> getAllVeggyLabels() {
-		return veggyIBusiness.extraireToutesLesVegetationLabels();
-	}
-	public List<String> getAllCompoLabels() {
-		return compoIBusiness.extraireToutesLesCompositionLabels();
-	}
 //	public String getCityWithZipCode(String zipCode) {
 //		return zipCodeIBusiness.extraireVilleAvecCodePostale(zipCode) ;
 //	}
-	public List<String> getAllRetretLabels() {
-		return retretIBusiness.extraireToutLesRetretLabels();
-	}
 	public ZipCode getCityWithZipCodeCode(String zipCode) {
-	return zipCodeIBusiness.extraireZipCodeAvecCodePostale(zipCode);
+		return zipCodeIBusiness.extraireZipCodeAvecCodePostale(zipCode);
     }	
 	public ZipCode getCityWithZipCodeID() {
 		return zipCodeIBusiness.extraireIncidentParId(20225);
 	}	
 
-	
+	public String maj(List<Slope> slopesList) {
+		
+		slopevalue = slopesList.get(Integer.parseInt(selectedSlope)-1) ;
+		System.out.println("valeur de slopevalue ----------------------------" + slopevalue);
+		System.out.println("valeur de selectedSlope ----------------------------" + selectedSlope);
+		field.setSlope(slopevalue);
+//		field.setGlassheight();
+//		field.setHumidity();
+//		field.setVegetation();
+//		field.setComposition();
+//		field.setEnclosure();
+//		field.setShelter();
+//		field.setName();
+//		field.setAdress();
+//		field.setZipcode();
+//		field.setSurface();
+//		field.setDescription();
+//		field.setStarting();
+//		field.setEnding();
+		fieldIBusiness.mettreAJourUnTerrain(field);
+		return "simpleArch.xhtml"; 
+	}
 	
 	public String supprimer(List<Retret> retretsList) {
 		
