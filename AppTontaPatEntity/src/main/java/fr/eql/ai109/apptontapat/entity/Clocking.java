@@ -53,6 +53,14 @@ public class Clocking implements Serializable{
 		this.done = done;
 		this.service = service;
 	}
+	
+
+	public Clocking(Date done, Service service) {
+		super();
+		this.done = done;
+		this.service = service;
+	}
+
 
 	/******************************************************************************************/
 	/*                             Getters and setters                                        */

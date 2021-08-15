@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Refusal;
 import fr.eql.ai109.apptontapat.entity.Rupture;
 import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
 import fr.eql.ai109.apptontapat.idao.ServiceIDao;
@@ -88,4 +89,22 @@ public class ServiceBusiness implements ServiceIBusiness {
 		return serviceIDao.ruptureService(service, rupture);
 	}
 
+	@Override
+	public Service refusalService(Service service, Refusal refusal) {
+		service.setRefusal(refusal);
+		return service;
+	}
+
+	@Override
+	public Service validationService(Service service, Date date) {
+		service.setValidation(date);
+		return service;
+	}
+
+
+	@Override
+	public Service startService(Service service, Date date) {
+		service.setPayment(date);
+		return service;
+	}
 }
