@@ -34,6 +34,7 @@ public class FieldManagedBean implements Serializable {
 
 	private List<Field> allField = new ArrayList<Field>();
 	private Field selectField = new Field();
+	private int selectIdField;
 	private Field field = new Field();
 	private List<String> slopes = new ArrayList<String>();
 	private String selectedSlope;
@@ -80,6 +81,12 @@ public class FieldManagedBean implements Serializable {
 		getCityWithZipCodeCode(zipcode);
 	}
 
+	public void shearchForField(PageManageBean pageManageBean) {
+		pageManageBean.setPage2("blank");
+		pageManageBean.setPage("research");
+		selectField = fieldIBusiness.extraireTerrainParId(selectIdField);
+	}
+
 	public void updateField(PageManageBean pageManagedBean, Field field) {
 		selectField = field;
 		pageManagedBean.setPage("updatefield");
@@ -94,9 +101,10 @@ public class FieldManagedBean implements Serializable {
 
 	public List<Field> getAllByIdAccount(int id) {
 		allField = getAllFieldByIdAccount(id);
-
+//		selectField = new Field();
 		if (selectField.getAccount() == null & allField != null) {
 			selectField = allField.get(0);
+			System.out.println("------------selecfield reprend la valeur du terrain 0----------------");
 		}
 		return allField;
 	}
@@ -287,6 +295,7 @@ public class FieldManagedBean implements Serializable {
 	}
 
 	public Field getSelectField() {
+		System.out.println("Valeur tu terrain selectioner mis a jour a  : " + selectIdField);
 		return selectField;
 	}
 
@@ -296,5 +305,13 @@ public class FieldManagedBean implements Serializable {
 
 	public void setAllField(List<Field> allField) {
 		this.allField = allField;
+	}
+
+	public int getSelectIdField() {
+		return selectIdField;
+	}
+
+	public void setSelectIdField(int selectIdField) {
+		this.selectIdField = selectIdField;
 	}
 }

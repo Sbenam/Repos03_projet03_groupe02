@@ -65,10 +65,7 @@ public class HerdManagedBean implements Serializable {
 	
 	public List<Herd> getAllHerdById(int id) {
 		allHerd = herdIBusiness.extraireToutLesTroupeauxParIdAccount(id);
-		System.out.println("Tout les troupeau: "+allHerd);
-		System.out.println("Nombre de troupeau: "+allHerd.size());
 		if(selectHerd.getAccount() == null) {
-			System.out.println("remplie le selectHerdCourant");
 			selectHerd = allHerd.get(0);
 		}
 		return allHerd;
@@ -87,9 +84,7 @@ public class HerdManagedBean implements Serializable {
 	public String supprimer(List<TakeOut> takeoutsList) {
 
 		takeoutvalue = takeoutsList.get(Integer.parseInt(selectedTakeout) - 1);
-		System.out.println("valeur de takeoutvalue ----------------------------" + takeoutvalue);
 
-		System.out.println("valeur de selectedTakeout ----------------------------" + selectedTakeout);
 		herd.setWithdraw(new Date());
 		herd.setTakeout(takeoutvalue);
 		herdIBusiness.mettreAJourUnTroupeau(herd);
@@ -97,7 +92,6 @@ public class HerdManagedBean implements Serializable {
 	}
 
 	public void getHerdById(int id) {
-		System.out.println("test d'apelle de function get test et id: " + id);
 		herd = herdIBusiness.extraireTroupeauParId(id);
 		
 
@@ -112,7 +106,6 @@ public class HerdManagedBean implements Serializable {
 	}
 
 	public String getTest(int id) {
-		System.out.println("test d'apelle de function get test et id: " + id);
 		return test;
 	}
 

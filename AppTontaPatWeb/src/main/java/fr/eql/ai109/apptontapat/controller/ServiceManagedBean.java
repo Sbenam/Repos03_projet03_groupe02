@@ -40,7 +40,6 @@ public class ServiceManagedBean implements Serializable {
 	private FieldIBusiness fieldIBusiness;
 
 
-
 	public void getServiceDetail(PageManageBean p,Service s) {
 		serviceSelect = s;
 		p.setPage("service_detail");
@@ -107,13 +106,11 @@ public class ServiceManagedBean implements Serializable {
 
 	// TODO vin test
 	public List<Herd> searchTest() {
-		System.out.println("\n>>>>>>>>>>>>>>>>>>>>>>>>"+fieldIBusiness.extraireTerrainParId(15).getZipcode().getLatitude());
 		herds = serviceIBusiness.search(fieldIBusiness.extraireTerrainParId(15));
 		return herds;
 	}
 	// TODO vin test
 	public List<Float> distance() {
-		System.out.println("\n-------------------->"+fieldIBusiness.extraireTerrainParId(15).getZipcode().getLatitude());
 		dists = serviceIBusiness.distanceBU(fieldIBusiness.extraireTerrainParId(15));
 		return dists;
 	}
