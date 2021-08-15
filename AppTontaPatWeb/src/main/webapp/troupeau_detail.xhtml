@@ -1,135 +1,162 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
-	<!-- apelle -->
 	<!-- Attend l'id acompte -->
-	<h:outputText value="#{mbHerd.getHerdById(4)}"></h:outputText>
-
-	<!-- sortie -->
-	<!-- <h:outputText value="#{mbHerd.herd.adress}"></h:outputText> -->
+	<h:inputHidden value="#{mbHerd.getAllHerdById(mbAccount.account.id)}"></h:inputHidden>
 
 	<section>
-		<div class="container-fluid padding-container-terrain">
+		<div class="container-fluid padding-container-terrain" id="top">
 			<div class="row">
 				<div class="col-8 mx-auto">
 					<div class="header-terrain ">
-						<h2>Toupeau de l'elevage des magnolia</h2>
-						<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i> <i
-							class="far fa-star"></i> <i class="far fa-star"></i>
+						<h2>
+							<h:outputText value="#{mbHerd.selectHerd.name}"></h:outputText>
+						</h2>
+						<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+							class="far fa-star"></i> <i class="far fa-star"></i> <i
+							class="far fa-star"></i>
 					</div>
+					<!--  Separator -->
+					<span class="placeholder col-12 bg-secondary" style="height: 1px;"></span>
+					
 					<div class="body-terrain-container">
 
 						<div class="description-terrain ">
 							<div class="adresse-terrain">
 								<p>
 									<span class="color-green-primary">Adresse: </span>
-									<h:outputText value="#{mbHerd.herd.adress}"></h:outputText>
+									<h:outputText value="#{mbHerd.selectHerd.adress}"></h:outputText>
 
 								</p>
 								<p>
-									<span class="color-green-primary">Ville: </span> Courbevoie
+									<span class="color-green-primary">Ville: </span>
+									<h:outputText value="#{mbHerd.selectHerd.zipcode.label}"></h:outputText>
 								</p>
 								<p>
 									<span class="color-green-primary">Date de debut: </span>
-									<h:outputText value="#{mbHerd.herd.starting}"></h:outputText>
+									<h:outputText value="#{mbHerd.selectHerd.starting}"></h:outputText>
 								</p>
 								<p>
 									<span class="color-green-primary">Date de fin: </span>
-									<h:outputText value="#{mbHerd.herd.ending}"></h:outputText>
+									<h:outputText value="#{mbHerd.selectHerd.ending}"></h:outputText>
 								</p>
 							</div>
 							<div class="composition-terrain ">
 								<p>
-									<span class="color-green-primary">Taille de troupeau: </span> 1200
+									<span class="color-green-primary">Taille de troupeau: </span>
+									<h:outputText value="#{mbHerd.selectHerd.seize}"></h:outputText>
 								</p>
 								<p>
-									<span class="color-green-primary">Type: </span> Rocheux
+									<span class="color-green-primary">Race: </span>
+									<h:outputText value="#{mbHerd.selectHerd.race.label}"></h:outputText>
 								</p>
 								<p>
-									<span class="color-green-primary">Race: </span> Sec
+									<span class="color-green-primary">Distance maximal: </span>
+									<h:outputText value="#{mbHerd.selectHerd.area}"></h:outputText>
+									km
 								</p>
 								<p>
-									<span class="color-green-primary">Hauteur herbe: </span>
-									Important
-								</p>
-								<p>
-									<span class="color-green-primary">Vegetation: </span> Herbe
-								</p>
-								<p>
-									<span class="color-green-primary">Pente: </span> Peu de pente
-								</p>
-								<p>
-									<span class="color-green-primary">Cloture</span> <i class="fas fa-check-square"></i>
-								</p>
-								<p>
-									<span class="color-green-primary">Eau à disposition</span> <i
-										class="fas fa-check-square"></i>
-								</p>
-								<p>
-									<span class="color-green-primary">Abris</span> <i class="fas fa-window-close"></i>
-								</p>
-								<p>
-									<span class="color-green-primary">Accessibilité</span> <i
-										class="fas fa-check-square"></i>
+									<span class="color-green-primary">Propriétaire: </span>
+									<h:outputText value="#{mbHerd.selectHerd.account.name}"></h:outputText>
 								</p>
 							</div>
-
 						</div>
 
 					</div>
-					<h:outputText styleClass="image-terrain"
-						style="background-image:url(#{mbHerd.herd.photo})!important; "></h:outputText>
-					<div class="description-user-terrain">
-						<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-							In autem beatae, animi facere illo, expedita quisquam optio enim
-							error iste quibusdam laborum debitis laudantium ab fuga</p>
-					</div>
-					<div class="button-modifier-terrain">
-						<button class="btn btn-primary" type="button">
-							<h:form>
-								<f:ajax render=":pagefooter2">
-									<h:commandLink styleClass="dropdown-item" value=""
-										action="#{PageManageBean.setPage2('updateherd')}">
+					<div class="description-user-terrain"
+						style="display: flex; justify-content: center; align-items: center;">
+
+						<h:outputText styleClass="image-terrain"
+							style="background-image:url(#{mbHerd.selectHerd.photo})!important; "></h:outputText>
+						<div
+							style="display: flex; flex-direction: column; margin-left: 1em; max-width: 40%;">
+							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+								In autem beatae, animi facere illo, expedita quisquam optio enim
+								error iste quibusdam laborum debitis laudantium ab fuga</p>
+
+							<div class="button-modifier-terrain" style="place-self: center;">
+								<button class="btn btn-primary" type="button">
+									<h:form>
+										<f:ajax render=":pagefooter2">
+											<h:commandLink styleClass="dropdown-item" value=""
+												style="color:white;"
+												action="#{PageManageBean.setPage2('updateherd')}">
 										Modifier
 									</h:commandLink>
-								</f:ajax>
-							</h:form>
-						</button>
-					</div>
-				</div>
-				<div class="col-4">
-					<div class="card-terrain">
-						<div class="card" style="width: 18rem;">
-							<h:graphicImage styleClass="card-img-top" value="#{mbHerd.herd.photo}"></h:graphicImage>
-							<div class="card-body">
-								<h5 class="card-title">Terrain des amandier</h5>
-								<p class="card-text">Some quick example text to build on the
-									card title and make up the bulk of the card's content.</p>
-							</div>
-							<div class="collapse" id="collapseExample">
-								<div class="">
-									<ul class="list-group list-group-flush">
-										<li class="list-group-item"><span class="color-green-primary">Date de debut:
-											</span> 11/12/1991</li>
-										<li class="list-group-item"><span class="color-green-primary">Date de Fin:
-											</span> 11/12/1991</li>
-										<li class="list-group-item"><span class="color-green-primary">Adresse: </span> 4
-											rue du
-											coquelicot</li>
-										<li class="list-group-item"><span class="color-green-primary">Ville: </span>
-											Courbevoie</li>
-									</ul>
-								</div>
-							</div>
-							<div class="card-body">
-								<a href="#" class="card-link">Vue détaillée</a> <a href="#"
-									class="card-link">Modifier</a> <a class="btn btn-primary btn-infos-terrain"
-									data-bs-toggle="collapse" href="#collapseExample" role="button"
-									aria-expanded="false" aria-controls="collapseExample"> <i
-										class="fas fa-info-circle"></i>
-								</a>
+										</f:ajax>
+									</h:form>
+								</button>
 							</div>
 						</div>
+					</div>
+
+				</div>
+				<div class="col-4 scrollTrue"
+					style="max-height: 85vh; padding-bottom: 2em;">
+					<h2>Mes terrains</h2>
+					<div class="card-terrain">
+
+						<ui:repeat var="h"
+							value="#{mbHerd.getAllHerdById(mbAccount.account.id)}">
+							<div class="card" style="width: 18rem;">
+								<h:graphicImage styleClass="card-img-top" value="#{h.photo}"></h:graphicImage>
+								<div class="card-body">
+									<h5 class="card-title">
+										<h:outputText value="#{h.name}"></h:outputText>
+									</h5>
+									<p class="card-text">Some quick example text to build on
+										the card title and make up the bulk of the card's content.</p>
+								</div>
+								<div class="collapse" id="collapseExample">
+									<div class="">
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item"><span
+												class="color-green-primary">Date de debut: </span> <h:outputText
+													value="#{h.starting}"></h:outputText></li>
+											<li class="list-group-item"><span
+												class="color-green-primary">Date de Fin: </span> <h:outputText
+													value="#{h.ending}"></h:outputText></li>
+											<li class="list-group-item"><span
+												class="color-green-primary">Adresse: </span> <h:outputText
+													value="#{h.adress}"></h:outputText></li>
+											<li class="list-group-item"><span
+												class="color-green-primary">Ville: </span> <h:outputText
+													value="#{h.zipcode.label}"></h:outputText></li>
+										</ul>
+									</div>
+								</div>
+								<div class="card-body">
+
+									<h:form>
+										<f:ajax render=":contentPage">
+											<h:commandLink styleClass="card-link" value="" pt:href="#top"
+												action="#{mbHerd.getHerdDetail(PageManageBean,h)}">
+												Vue détaillée
+											</h:commandLink>
+										</f:ajax>
+									</h:form>
+									<h:form>
+										<f:ajax render=":contentPage">
+											<h:commandLink styleClass="card-link" value=""
+												action="#{mbHerd.updateHerd(PageManageBean,h)}">
+												Modifiée
+											</h:commandLink>
+										</f:ajax>
+									</h:form>
+
+									<a class="btn btn-primary btn-infos-terrain"
+										data-bs-toggle="collapse" href="#collapseExample"
+										role="button" aria-expanded="false"
+										aria-controls="collapseExample"> <i
+										class="fas fa-info-circle"></i>
+									</a>
+								</div>
+							</div>
+						</ui:repeat>
+
 					</div>
 				</div>
 			</div>
