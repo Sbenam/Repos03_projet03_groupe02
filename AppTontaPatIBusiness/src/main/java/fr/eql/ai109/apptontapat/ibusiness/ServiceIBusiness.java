@@ -5,6 +5,7 @@ import java.util.Date;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Refusal;
 import fr.eql.ai109.apptontapat.entity.Rupture;
 import fr.eql.ai109.apptontapat.entity.Service;
 
@@ -21,4 +22,7 @@ public interface ServiceIBusiness {
 	Service cloturerUnePrestation(Date date, int id);
 	Service cloturerUnePrestation(Date date, Service service);
 	Service rompreUnePrestation(Service service, Rupture rupture);
+	Service refusalService(Service service, Refusal refusal);
+	Service validationService(Service service, Date date);
+	Service startService(Service service, Date date);
 }

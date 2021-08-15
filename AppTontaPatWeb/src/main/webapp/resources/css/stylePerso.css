@@ -79,7 +79,7 @@ li.nav-item a.nav-link:hover {
 }
 
 .padding-container-accueil {
-    padding-top: 8em;
+    padding-top: 10em;
     margin-bottom: 2em;
     min-height: 98vh;
 }
@@ -518,7 +518,7 @@ ul {
 }
 
 .padding-container-terrain {
-    margin-top: 8em;
+    margin-top: 10em;
     margin-bottom: 2em;
     min-height: 85vh;
 }

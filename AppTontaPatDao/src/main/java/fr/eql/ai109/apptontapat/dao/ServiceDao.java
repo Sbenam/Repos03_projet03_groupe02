@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Refusal;
 import fr.eql.ai109.apptontapat.entity.Rupture;
 
 import javax.persistence.EntityManager;

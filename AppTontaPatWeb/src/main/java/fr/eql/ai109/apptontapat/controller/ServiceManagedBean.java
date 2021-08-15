@@ -40,7 +40,6 @@ public class ServiceManagedBean implements Serializable {
 	private FieldIBusiness fieldIBusiness;
 
 
-
 	public void getServiceDetail(PageManageBean p,Service s) {
 		serviceSelect = s;
 		p.setPage("service_detail");

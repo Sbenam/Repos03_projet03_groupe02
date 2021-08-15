@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<div class="popup-container" id="container" style="z-index: 2001;">
+		<section class="conexion-popup"
+			style="width: 36%; height: 297px; ">
+
+			<!-- Bouton close -->
+			<h:form>
+				<f:ajax render=":pagefooter2">
+					<h:commandLink styleClass="btn-close" value=""
+						action="#{PageManageBean.setPage2('blank')}"
+						style="position: absolute; right: 5px; top: 5px">
+					</h:commandLink>
+				</f:ajax>
+			</h:form>
+
+			<!-- Container / Body-->
+			<div class="container-fluid">
+				<div class="row justify-content-md-center">
+
+					<div class="col-9 py-5 my-5"
+						style="height: auto; padding-top: 0 !important; padding-bottom: 0 !important;">
+						<h2>Choisissez votre terrain</h2>
+
+						<h:form>
+							<div class="mb-3">
+								<h:outputLabel for="selectedTerrain" styleClass="form-label"
+									value="" />
+								<h:selectOneMenu id="selectedTerrain" class="form-select"
+									value="#{mbField.selectIdField}">
+									<f:selectItem itemLabel="Choisissez votre terrain : "
+										itemValue="" noSelectionOption="true"></f:selectItem>
+									<f:selectItems
+										value="#{mbField.getAllByIdAccount(mbAccount.account.id)}"
+										itemValue="#{f.id}" itemLabel="#{f.name}" var="f"></f:selectItems>
+								</h:selectOneMenu>
+
+
+								<!-- renvoie vers la page de reshearche avec le f choisie et le manageBean repasse a blank la vue 2 -->
+
+								<h:commandLink styleClass="btn btn-primary w-25"
+									value="Confirmé"
+									action="#{mbField.shearchForField(PageManageBean)}"
+									style="margin-top:25px;">
+								</h:commandLink>
+
+
+
+
+							</div>
+						</h:form>
+
+
+
+
+					</div>
+
+
+
+				</div>
+			</div>
+		</section>
+	</div>
+</ui:composition>

@@ -18,6 +18,7 @@ import fr.eql.ai109.apptontapat.ibusiness.RaceIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.SpecieIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.TakeoutIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.ZipCodeIBusiness;
+import fr.eql.ai109.apptontapat.web.PageManageBean;
 
 @ManagedBean(name = "mbHerd")
 @SessionScoped
@@ -28,6 +29,7 @@ public class HerdManagedBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private List<Herd> allHerd = new ArrayList<Herd>();
 	private Herd herd = new Herd();
 	private String test;
 	private List<String> races = new ArrayList<String>();
@@ -37,7 +39,7 @@ public class HerdManagedBean implements Serializable {
 	private List<String> takeouts = new ArrayList<String>();
 	private String selectedTakeout;
 	private TakeOut takeoutvalue;
-	private Herd SelectHerd = new Herd();
+	private Herd selectHerd = new Herd();
 
 	@PostConstruct
 	public void init() {
@@ -59,12 +61,30 @@ public class HerdManagedBean implements Serializable {
 	@EJB
 	private TakeoutIBusiness takeoutIBusiness;
 
+	
+	
+	public List<Herd> getAllHerdById(int id) {
+		allHerd = herdIBusiness.extraireToutLesTroupeauxParIdAccount(id);
+		if(selectHerd.getAccount() == null) {
+			selectHerd = allHerd.get(0);
+		}
+		return allHerd;
+	}
+	
+	public void updateHerd(PageManageBean pageManageBean, Herd herd) {
+		selectHerd = herd;
+		pageManageBean.setPage("updateherd");
+	}
+	public void getHerdDetail(PageManageBean pageManageBean, Herd herd) {
+		selectHerd = herd;
+		pageManageBean.setPage("troupeau_detail");
+	}
+	
+	
 	public String supprimer(List<TakeOut> takeoutsList) {
 
 		takeoutvalue = takeoutsList.get(Integer.parseInt(selectedTakeout) - 1);
-		System.out.println("valeur de takeoutvalue ----------------------------" + takeoutvalue);
 
-		System.out.println("valeur de selectedTakeout ----------------------------" + selectedTakeout);
 		herd.setWithdraw(new Date());
 		herd.setTakeout(takeoutvalue);
 		herdIBusiness.mettreAJourUnTroupeau(herd);
@@ -72,8 +92,8 @@ public class HerdManagedBean implements Serializable {
 	}
 
 	public void getHerdById(int id) {
-		System.out.println("test d'apelle de function get test et id: " + id);
 		herd = herdIBusiness.extraireTroupeauParId(id);
+		
 
 	}
 
@@ -86,7 +106,6 @@ public class HerdManagedBean implements Serializable {
 	}
 
 	public String getTest(int id) {
-		System.out.println("test d'apelle de function get test et id: " + id);
 		return test;
 	}
 
@@ -147,11 +166,11 @@ public class HerdManagedBean implements Serializable {
 	}
 
 	public Herd getSelectHerd() {
-		return SelectHerd;
+		return selectHerd;
 	}
 
-	public void setSelectHerd(Herd selectHerd) {
-		SelectHerd = selectHerd;
+	public void setSelectHerd(Herd herd) {
+		selectHerd = herd;
 	}
 
 	public List<String> getAllRaceLabels() {
@@ -180,6 +199,11 @@ public class HerdManagedBean implements Serializable {
 
 	public String getCityWithZipCode(String zipCode) {
 		return zipCodeIBusiness.extraireVilleAvecCodePostale(zipCode);
+	}
+
+
+	public void setAllHerd(List<Herd> allHerd) {
+		this.allHerd = allHerd;
 	}
 
 }
