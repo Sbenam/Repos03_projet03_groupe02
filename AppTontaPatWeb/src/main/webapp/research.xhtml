@@ -6,22 +6,17 @@
 	<!-- appel -->
 	<!-- Attend l'id acompte -->
 	<h:outputText value="#{mbHerd.getHerdById(4)}"></h:outputText>
-	<h:outputText value="#{mbField.getFieldById(4)}"></h:outputText>
-
-	<!-- sortie -->
-	<!-- <h:outputText value="#{mbHerd.herd.adress}"></h:outputText> -->
-
-
 
 	<section>
 		<div class="container-fluid "
-			style="margin-top: 10em; margin-bottom: 3em">
+			style="margin-top: 10em; margin-bottom: 3em; margin-left: 10em;">
 			<div class="row">
 				<div class="col-3 mx-auto">
 					<div>
-						<h3>
+						<h3
+							style="margin-bottom: 39px; border-bottom: solid 1px orange; width: fit-content;">
 							Terrain selectioner
-							<h:outputText value="#{mbField.field.name}"></h:outputText>
+							<h:outputText value="#{mbField.selectField.name}"></h:outputText>
 						</h3>
 
 						<!-- caroussel -->
@@ -34,8 +29,7 @@
 										style="background-image: url(https://cdn.pixabay.com/photo/2017/05/07/15/41/sheep-2292802__340.jpg); min-height: 200px; display: block; background-size: cover; background-position: center;">
 									</span>
 									<div style="position: absolute; top: 40%; left: 30px;">
-										<h2 class="label-carousel">Liste des troupeau
-											disponible</h2>
+										<h2 class="label-carousel">Liste des troupeau disponible</h2>
 									</div>
 								</div>
 								<ui:repeat var="h" value="#{mbHerd.getAllHerd()}">
@@ -44,7 +38,7 @@
 											style="background-image: url(#{h.photo}); min-height: 200px; display: block; background-size: cover; background-position: center;"></h:outputText>
 
 										<div style="position: absolute; top: 10%; left: 30px;">
-											<h2 class="label-carousel" >
+											<h2 class="label-carousel">
 												<h:outputText value="#{h.name}"></h:outputText>
 											</h2>
 										</div>
@@ -66,13 +60,15 @@
 						</div>
 
 						<!-- liste des troupeau -->
-						<h3 style="padding-top: 1em;">Liste des troupeaux disponible</h3>
+						<h3
+							style="padding-top: 50px; border-bottom: solid 1px orange; width: fit-content;">Liste
+							des troupeaux disponible</h3>
 						<ui:repeat var="h" value="#{mbHerd.getAllHerd()}">
 							<!-- construit les données gps -->
 							<h:inputHidden pt:class="herdlong" value="#{h.zipcode.longitude}" />
 							<h:inputHidden pt:class="herdlat" value="#{h.zipcode.latitude}" />
 							<div class="card mb-3"
-								style="max-width: 540px; width: 100% !important;">
+								style="max-width: 540px; width: 100% !important; margin-top: 3em;">
 								<div class="row g-0">
 									<div class="col-md-4 " style="display: flex;">
 										<img src="#{h.photo}" class="img-fluid rounded-start"
@@ -106,8 +102,10 @@
 
 				<!-- carte -->
 				<div class="col-7 mx-auto " style="position: relative;">
-					<div style="position: fixed; width: 800px; height: 800px;">
-						<div id="mapid" class="" style="width: 56vw;"></div>
+					<div
+						style="position: fixed; width: 800px; height: 800px; top: -8%; left: 39%; z-index: 2000;">
+						<div id="mapid" class=""
+							style="width: 1041px;height:52vh; position: relative; border: solid var(--primary) 1px; border-radius: 23px;"></div>
 					</div>
 
 				</div>
@@ -117,9 +115,9 @@
 
 	<!-- Perso JS-->
 	<!-- apelle du remplissage de la carte -->
+	<script src="js/mapShearch.js"></script>
 	<script>
 		test();
 	</script>
-	<script src="js/mapShearch.js"></script>
 
 </ui:composition>
