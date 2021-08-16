@@ -5,11 +5,10 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 	<!-- appel -->
 	<!-- Attend l'id acompte -->
-	<h:outputText value="#{mbHerd.getHerdById(4)}"></h:outputText>
 
 	<section>
 		<div class="container-fluid "
-			style="margin-top: 10em; margin-bottom: 3em; margin-left: 10em;">
+			style="margin-top: 10em; margin-bottom: 31em; margin-left: 10em;">
 			<div class="row">
 				<div class="col-3 mx-auto">
 					<div>
@@ -32,7 +31,8 @@
 										<h2 class="label-carousel">Liste des troupeau disponible</h2>
 									</div>
 								</div>
-								<ui:repeat var="h" value="#{mbHerd.getAllHerd()}">
+								<ui:repeat var="h"
+									value="#{mbService.search(mbField.selectField)}">
 									<div class="carousel-item ">
 										<h:outputText styleClass="w-100"
 											style="background-image: url(#{h.photo}); min-height: 200px; display: block; background-size: cover; background-position: center;"></h:outputText>
@@ -63,7 +63,8 @@
 						<h3
 							style="padding-top: 50px; border-bottom: solid 1px orange; width: fit-content;">Liste
 							des troupeaux disponible</h3>
-						<ui:repeat var="h" value="#{mbHerd.getAllHerd()}">
+						<ui:repeat var="h"
+							value="#{mbService.search(mbField.selectField)}">
 							<!-- construit les données gps -->
 							<h:inputHidden pt:class="herdlong" value="#{h.zipcode.longitude}" />
 							<h:inputHidden pt:class="herdlat" value="#{h.zipcode.latitude}" />
@@ -91,6 +92,14 @@
 												<small class="text-muted">Ajouter le <h:outputText
 														value="#{h.adding}" /></small>
 											</p>
+											<h:form>
+												<f:ajax render=":contentPage">
+													<h:commandLink styleClass="card-link-hover" value=""
+														action="#{mbHerd.setSelectHerd(h)}">
+
+													</h:commandLink>
+												</f:ajax>
+											</h:form>
 										</div>
 									</div>
 								</div>
@@ -105,7 +114,84 @@
 					<div
 						style="position: fixed; width: 800px; height: 800px; top: -8%; left: 39%; z-index: 2000;">
 						<div id="mapid" class=""
-							style="width: 1041px;height:52vh; position: relative; border: solid var(--primary) 1px; border-radius: 23px;"></div>
+							style="width: 1041px; height: 52vh; position: relative; border: solid var(- -primary) 1px; border-radius: 23px;"></div>
+					</div>
+					<div
+						style="position: fixed; width: 873px; height: 800px; top: 49%; left: 44%; z-index: 2000;">
+
+						<h2 class="label-carousel" style="background-color: #457B9D;">Résumer
+							de la préstation</h2>
+
+						<!-- recap des choix -->
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th scope="col">Propriétaire</th>
+									<th scope="col">Terrain</th>
+									<th scope="col">Ville</th>
+									<th scope="col">Taille</th>
+									<th scope="col">Date de debut</th>
+									<th scope="col">Date de Fin</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">#{mbHerd.selectHerd.account.name}</th>
+									<td>#{mbHerd.selectHerd.name}</td>
+									<td>#{mbHerd.selectHerd.zipcode.label}</td>
+									<td>#{mbHerd.selectHerd.seize}
+										#{mbHerd.selectHerd.race.specie.label}</td>
+									<td>#{mbHerd.selectHerd.starting}</td>
+									<td>#{mbHerd.selectHerd.ending}</td>
+								</tr>
+								<tr>
+									<th scope="row">#{mbField.selectField.account.name}</th>
+									<td>#{mbField.selectField.name}</td>
+									<td>#{mbField.selectField.zipcode.label}</td>
+									<td>#{mbField.selectField.surface} m²</td>
+									<td>#{mbField.selectField.starting}</td>
+									<td>#{mbField.selectField.ending}</td>
+								</tr>
+							</tbody>
+						</table>
+						<div>
+							<h:form>
+
+								<div class="container-fluid" style="padding-top: 15px;">
+
+									<div class="row">
+										<div class="input-group mb-3 w-50"
+											style="max-height: 20px; display: flex; align-self: center;">
+											<div class="input-group-prepend">
+												<span class="input-group-text">€</span>
+											</div>
+											<h:inputText pt:aria-label="Amount (to the nearest dollar)"
+												styleClass="form-control" id="coutParMouton" pt:min="7"
+												pt:type="number" style="max-height:39px;" value="#{mbService.serviceCost}"></h:inputText>
+											<h:commandLink styleClass="btn btn-primary w-25"
+												value="Confirmé"
+												action="#{mbService.addService(mbHerd.selectHerd, mbField.selectField, PageManageBean)}"
+												style="">
+											</h:commandLink>
+										</div>
+										<div class="input-group mb-3 w-50">
+
+											<h3>Coût de la prestation</h3>
+											<p>Tontàpat fixe un prix minimum sur les prestations mais
+												il vous est possible d'ajuster le prix pour encourager nos
+												éleveurs.</p>
+										</div>
+									</div>
+								</div>
+
+
+
+							</h:form>
+						</div>
+
+
+
 					</div>
 
 				</div>
