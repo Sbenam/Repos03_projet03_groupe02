@@ -1,11 +1,14 @@
 package fr.eql.ai109.apptontapat.business;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
+import fr.eql.ai109.apptontapat.entity.Account;
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.ibusiness.FieldIBusiness;
 import fr.eql.ai109.apptontapat.idao.FieldIDao;
@@ -54,5 +57,6 @@ public class FieldBusiness implements FieldIBusiness{
 	public void supprimerTerrain(Field field) {
 		fieldIDao.delete(field);
 	}
+
 
 }

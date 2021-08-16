@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Race;
 import fr.eql.ai109.apptontapat.entity.Retret;
 import fr.eql.ai109.apptontapat.entity.TakeOut;
 import fr.eql.ai109.apptontapat.ibusiness.HerdIbusiness;
@@ -31,10 +32,12 @@ public class HerdManagedBean implements Serializable {
 
 	private List<Herd> allHerd = new ArrayList<Herd>();
 	private Herd herd = new Herd();
+	private String name;
 	private String test;
 	private List<String> races = new ArrayList<String>();
 	private String selectedRace;
 	private List<String> species = new ArrayList<String>();
+	private Race racevalue ;
 	private String selectedSpecie;
 	private List<String> takeouts = new ArrayList<String>();
 	private String selectedTakeout;
@@ -43,10 +46,10 @@ public class HerdManagedBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		races = getAllRaceLabels();
-		species = getAllSpecieLabels();
-		takeouts = getAllTakeoutLabels();
-		
+
+		races = raceIBusiness.extraireTouteLesracesLabels();
+		species = specieIBusiness.extraireToutLesLabelsSpecies() ;
+		takeouts = takeoutIBusiness.extraireToutesLesTakeoutLabels();
 
 	}
 
@@ -59,8 +62,19 @@ public class HerdManagedBean implements Serializable {
 	@EJB
 	private ZipCodeIBusiness zipCodeIBusiness;
 	@EJB
-	private TakeoutIBusiness takeoutIBusiness;
+	private TakeoutIBusiness takeoutIBusiness ;
 
+	
+
+	public Herd getHerdByIdAccount(int id) {
+		return herdIBusiness.extraireTroupeauParIdAccount(id);
+	}
+	public List<Herd> getAllHerd() {
+		return herdIBusiness.extraireToutLesTroupeaux();
+	}
+	public List<Herd> getAllHerdByIdAccount(int id) {
+		return herdIBusiness.extraireToutLesTroupeauxParIdAccount(id);
+	}
 	
 	
 	public List<Herd> getAllHerdById(int id) {
@@ -81,15 +95,41 @@ public class HerdManagedBean implements Serializable {
 	}
 	
 	
-	public String supprimer(List<TakeOut> takeoutsList) {
-
-		takeoutvalue = takeoutsList.get(Integer.parseInt(selectedTakeout) - 1);
-
-		herd.setWithdraw(new Date());
-		herd.setTakeout(takeoutvalue);
-		herdIBusiness.mettreAJourUnTroupeau(herd);
-		return "simpleArch.xhtml";
+	public String getCityWithZipCode(String zipCode) {
+		return zipCodeIBusiness.extraireVilleAvecCodePostale(zipCode) ;
 	}
+
+	
+public String maj(List<Race> racesList) {
+	
+	racevalue = racesList.get(Integer.parseInt(selectedRace)-1) ;
+	System.out.println("valeur de racevalue ----------------------------" + racevalue);
+	System.out.println("valeur de selectedTakeout ----------------------------" + selectedTakeout);
+	herd.setRace(racevalue);
+	herd.setName(name);
+	System.out.println("valeur de name ----------------------------" + name);
+//	herd.setAdress();
+//	herd.setZipcode();
+//	herd.setSeize();
+//	herd.setDescription();
+//	herd.setStarting();
+//	herd.setEnding();
+	herdIBusiness.mettreAJourUnTroupeau(herd);
+	return "simpleArch.xhtml"; 
+}
+
+
+//methode pour supprimer
+public String supprimer(List<TakeOut> takeoutsList) {
+	
+	takeoutvalue = takeoutsList.get(Integer.parseInt(selectedTakeout)-1) ;
+	herd.setWithdraw(new Date());
+	herd.setTakeout(takeoutvalue);
+	herdIBusiness.mettreAJourUnTroupeau(herd);
+	return "simpleArch.xhtml"; 
+}
+
+
 
 	public void getHerdById(int id) {
 		herd = herdIBusiness.extraireTroupeauParId(id);
@@ -185,21 +225,7 @@ public class HerdManagedBean implements Serializable {
 		return takeoutIBusiness.extraireToutesLesTakeoutLabels();
 	}
 
-	public Herd getHerdByIdAccount(int id) {
-		return herdIBusiness.extraireTroupeauParIdAccount(id);
-	}
-
-	public List<Herd> getAllHerd() {
-		return herdIBusiness.extraireToutLesTroupeaux();
-	}
-
-	public List<Herd> getAllHerdByIdAccount(int id) {
-		return herdIBusiness.extraireToutLesTroupeauxParIdAccount(id);
-	}
-
-	public String getCityWithZipCode(String zipCode) {
-		return zipCodeIBusiness.extraireVilleAvecCodePostale(zipCode);
-	}
+	
 
 
 	public void setAllHerd(List<Herd> allHerd) {

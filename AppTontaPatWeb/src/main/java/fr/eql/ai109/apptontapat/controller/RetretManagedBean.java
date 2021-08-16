@@ -7,8 +7,10 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import fr.eql.ai109.apptontapat.entity.EvacuateA;
 import fr.eql.ai109.apptontapat.entity.Retret;
 import fr.eql.ai109.apptontapat.entity.TakeOut;
+import fr.eql.ai109.apptontapat.ibusiness.EvacuateaIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.RetretIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.TakeoutIBusiness;
 
@@ -26,12 +28,15 @@ public class RetretManagedBean implements Serializable {
 	private List<Retret> retretsList ;
 	private TakeOut takeout ;
 	private List<TakeOut> takeoutsList ;
+	private EvacuateA evacuatea ;
+	private List<EvacuateA> evacuateasList ;
 	
 	@EJB
 	private RetretIBusiness retretIBusiness ;
 	@EJB
 	private TakeoutIBusiness takeoutIBusiness ; 
-	
+	@EJB
+	private EvacuateaIBusiness evacuateaIBusiness ; 
 	
 	
 	
@@ -43,6 +48,12 @@ public class RetretManagedBean implements Serializable {
 	public List<TakeOut> getAllTakeout() {
 		takeoutsList = takeoutIBusiness.extraireToutesLesTakeout();
 		return takeoutsList ; 
+	}
+	public List<EvacuateA> getAllEvacuatea() {
+		evacuateasList = evacuateaIBusiness.extraireToutesLesEvacuateA() ;
+		System.out.println("evacuatea------------" + evacuateasList);
+		return evacuateasList ; 
+	
 	}
 	
 
@@ -76,6 +87,22 @@ public class RetretManagedBean implements Serializable {
 
 	public void setTakeoutsList(List<TakeOut> takeoutsList) {
 		this.takeoutsList = takeoutsList;
+	}
+
+	public EvacuateA getEvacuatea() {
+		return evacuatea;
+	}
+
+	public void setEvacuatea(EvacuateA evacuatea) {
+		this.evacuatea = evacuatea;
+	}
+
+	public List<EvacuateA> getEvacuateasList() {
+		return evacuateasList;
+	}
+
+	public void setEvacuateasList(List<EvacuateA> evacuateasList) {
+		this.evacuateasList = evacuateasList;
 	} 
 
 	

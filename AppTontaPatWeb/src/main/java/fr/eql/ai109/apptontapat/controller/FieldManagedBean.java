@@ -11,15 +11,22 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import fr.eql.ai109.apptontapat.entity.Field;
+import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Race;
+
 import fr.eql.ai109.apptontapat.entity.Retret;
+import fr.eql.ai109.apptontapat.entity.Slope;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.CompositionIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.EnclosureIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.FieldIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.GlassHeightIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.HumidityIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.RetretIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.ShelterIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.SlopeIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.VegetationIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.WaterIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.ZipCodeIBusiness;
 import fr.eql.ai109.apptontapat.web.PageManageBean;
 
@@ -37,7 +44,8 @@ public class FieldManagedBean implements Serializable {
 	private int selectIdField;
 	private Field field = new Field();
 	private List<String> slopes = new ArrayList<String>();
-	private String selectedSlope;
+	private String selectedSlope ;
+	private Slope slopevalue;
 	private List<String> grasses = new ArrayList<String>();
 	private String selectedGrass;
 	private List<String> humidities = new ArrayList<String>();
@@ -46,6 +54,12 @@ public class FieldManagedBean implements Serializable {
 	private String selectedVeggy;
 	private List<String> compos = new ArrayList<String>();
 	private String selectedCompo;
+	private List<String> enclosures = new ArrayList<String>();
+	private String selectedEnclosure;
+	private List<String> waters = new ArrayList<String>();
+	private String selectedWater;
+	private List<String> shelters = new ArrayList<String>();
+	private String selectedShelter;
 	private List<String> retrets = new ArrayList<String>();
 	private String selectedRetret;
 	private Retret retretvalue;
@@ -65,18 +79,28 @@ public class FieldManagedBean implements Serializable {
 	@EJB
 	private CompositionIBusiness compoIBusiness;
 	@EJB
+	private ShelterIBusiness shelterIBusiness;
+	@EJB
+	private EnclosureIbusiness enclosureIBusiness ;
+	@EJB
+	private WaterIBusiness waterIBusiness;
+	@EJB
 	private ZipCodeIBusiness zipCodeIBusiness;
 	@EJB
 	private RetretIBusiness retretIBusiness;
 
+
 	@PostConstruct
 	public void init() {
-		slopes = getAllSlopeLabels();
-		grasses = getAllGrassLabels();
-		humidities = getAllHumidityLabels();
-		Veggies = getAllVeggyLabels();
-		compos = getAllCompoLabels();
-		retrets = getAllRetretLabels();
+		slopes = slopeIBusiness.extraireToutLesSlopesLabels();
+		grasses =  grassIBusiness.extraireToutLesGlassHeightLabels();
+		humidities = humidityIBusiness.extraireToutLesHumidityLabels() ;
+		Veggies = veggyIBusiness.extraireToutesLesVegetationLabels();
+		compos = compoIBusiness.extraireToutesLesCompositionLabels();
+		enclosures = enclosureIBusiness.extraireToutesLesEnclosuresLabels();
+		waters = waterIBusiness.extraireToutLesWaterLabels();
+		shelters = shelterIBusiness.extraireToutLesSheltersLabels();
+		retrets = retretIBusiness.extraireToutLesRetretLabels();
 		zipID = getCityWithZipCodeID();
 		getCityWithZipCodeCode(zipcode);
 	}
@@ -86,6 +110,7 @@ public class FieldManagedBean implements Serializable {
 		pageManageBean.setPage("research");
 		selectField = fieldIBusiness.extraireTerrainParId(selectIdField);
 	}
+
 
 	public void updateField(PageManageBean pageManagedBean, Field field) {
 		selectField = field;
@@ -108,39 +133,41 @@ public class FieldManagedBean implements Serializable {
 		}
 		return allField;
 	}
-
-	public List<String> getAllSlopeLabels() {
-		return slopeIBusiness.extraireToutLesSlopesLabels();
-	}
-
-	public List<String> getAllGrassLabels() {
-		return grassIBusiness.extraireToutLesGlassHeightLabels();
-	}
-
-	public List<String> getAllHumidityLabels() {
-		return humidityIBusiness.extraireToutLesHumidityLabels();
-	}
-
-	public List<String> getAllVeggyLabels() {
-		return veggyIBusiness.extraireToutesLesVegetationLabels();
-	}
-
-	public List<String> getAllCompoLabels() {
-		return compoIBusiness.extraireToutesLesCompositionLabels();
-	}
-
-	public List<String> getAllRetretLabels() {
-		return retretIBusiness.extraireToutLesRetretLabels();
-	}
-
+	
+//	public String getCityWithZipCode(String zipCode) {
+//		return zipCodeIBusiness.extraireVilleAvecCodePostale(zipCode) ;
+//	}
 	public ZipCode getCityWithZipCodeCode(String zipCode) {
 		return zipCodeIBusiness.extraireZipCodeAvecCodePostale(zipCode);
-	}
+    }	
 
 	public ZipCode getCityWithZipCodeID() {
 		return zipCodeIBusiness.extraireIncidentParId(20225);
 	}
 
+	public String maj(List<Slope> slopesList) {
+		
+		slopevalue = slopesList.get(Integer.parseInt(selectedSlope)-1) ;
+		System.out.println("valeur de slopevalue ----------------------------" + slopevalue);
+		System.out.println("valeur de selectedSlope ----------------------------" + selectedSlope);
+		field.setSlope(slopevalue);
+//		field.setGlassheight();
+//		field.setHumidity();
+//		field.setVegetation();
+//		field.setComposition();
+//		field.setEnclosure();
+//		field.setShelter();
+//		field.setName();
+//		field.setAdress();
+//		field.setZipcode();
+//		field.setSurface();
+//		field.setDescription();
+//		field.setStarting();
+//		field.setEnding();
+		fieldIBusiness.mettreAJourUnTerrain(field);
+		return "simpleArch.xhtml"; 
+	}
+	
 	public String supprimer(List<Retret> retretsList) {
 
 		retretvalue = retretsList.get(Integer.parseInt(selectedRetret) - 1);
@@ -313,5 +340,53 @@ public class FieldManagedBean implements Serializable {
 
 	public void setSelectIdField(int selectIdField) {
 		this.selectIdField = selectIdField;
+	}
+
+	public List<String> getEnclosures() {
+		return enclosures;
+	}
+
+	public void setEnclosures(List<String> enclosures) {
+		this.enclosures = enclosures;
+	}
+
+	public String getSelectedEnclosure() {
+		return selectedEnclosure;
+	}
+
+	public void setSelectedEnclosure(String selectedEnclosure) {
+		this.selectedEnclosure = selectedEnclosure;
+	}
+
+	public List<String> getWaters() {
+		return waters;
+	}
+
+	public void setWaters(List<String> waters) {
+		this.waters = waters;
+	}
+
+	public String getSelectedWater() {
+		return selectedWater;
+	}
+
+	public void setSelectedWater(String selectedWater) {
+		this.selectedWater = selectedWater;
+	}
+
+	public List<String> getShelters() {
+		return shelters;
+	}
+
+	public void setShelters(List<String> shelters) {
+		this.shelters = shelters;
+	}
+
+	public String getSelectedShelter() {
+		return selectedShelter;
+	}
+
+	public void setSelectedShelter(String selectedShelter) {
+		this.selectedShelter = selectedShelter;
 	}
 }

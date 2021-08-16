@@ -107,4 +107,75 @@ public class ServiceBusiness implements ServiceIBusiness {
 		service.setPayment(date);
 		return service;
 	}
+
+
+	@Override
+	public Service reserveService(Service service, int nbService, Date booking, Herd herd, Date starting, Date ending,
+			int cost) {
+		service.setBooking(booking);
+		service.setCost(cost);
+		service.setEnding(ending);
+		service.setHerd(herd);
+		service.setNbService(nbService);
+		service.setStarting(starting);
+		return service;
+	}
+
+
+	@Override
+	public int extraireNombrePrestationAvecUneNote(int note) {
+		return serviceIDao.getNbrPrestationWithNote(note);
+	}
+
+
+	@Override
+	public int numberServiceInProgress() {
+		List<Service> services = serviceIDao.getAll();
+		int nb=0;
+		for (Service service : services) {
+			if((service.getValidation()!=null)&&(service.getFinished()==null)) {
+				nb++;
+			}
+		}
+		return nb;
+	}
+
+
+	@Override
+	public int numberServicerefusal() {
+		List<Service> services = serviceIDao.getAll();
+		int nb=0;
+		for (Service service : services) {
+			if(service.getRefusal()!=null) {
+				nb++;
+			}
+		}
+		return nb;
+	}
+
+
+	@Override
+	public int numberServiceRupture() {
+		List<Service> services = serviceIDao.getAll();
+		int nb=0;
+		for (Service service : services) {
+			if(service.getRupture()!=null) {
+				nb++;
+			}
+		}
+		return nb;
+	}
+
+
+	@Override
+	public int numberServiceFinished() {
+		List<Service> services = serviceIDao.getAll();
+		int nb=0;
+		for (Service service : services) {
+			if(service.getFinished()!=null) {
+				nb++;
+			}
+		}
+		return nb;
+	}
 }

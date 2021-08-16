@@ -221,7 +221,7 @@ div.col-3:nth-child(even) {
     background-color: var(--bs-light);
 
     top: 2em;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 3px;
@@ -233,21 +233,18 @@ div.col-3:nth-child(even) {
 
 
 
-.conexion-popupModif {
-    position: fixed;
-    width: 60%;
-    top: 100px;
-    left: 20%;
-
+ .conexion-popupModif {
+    max-height: 80vh;
+min-height: 100vh;
 }
+ 
 
-
-.conexion-popupModif .col-2 {
+/* .conexion-popupModif .col-2 {
     background-color: var(--primary);
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.7;
-}
+} */
 
 
 
@@ -289,6 +286,83 @@ div.col-3:nth-child(even) {
 
 }
 
+.popup-containerIncident {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+   
+    backdrop-filter: grayscale(1);
+}
+/*  
+		 * Rating styles
+		 */
+		.rating {
+			width: 226px;
+			margin: 0 auto 1em;
+			font-size: 45px;
+			overflow:hidden;
+		}
+.rating input {
+  float: right;
+  opacity: 0;
+  position: absolute;
+}
+		.rating a,
+    .rating label {
+			float:right;
+			color: #aaa;
+			text-decoration: none;
+			-webkit-transition: color .4s;
+			-moz-transition: color .4s;
+			-o-transition: color .4s;
+			transition: color .4s;
+		}
+.rating label:hover ~ label,
+.rating input:focus ~ label,
+.rating label:hover,
+		.rating a:hover,
+		.rating a:hover ~ a,
+		.rating a:focus,
+		.rating a:focus ~ a		{
+			color: orange;
+			cursor: pointer;
+		}
+		.rating2 {
+			direction: rtl;
+		}
+		.rating2 a {
+			float:none
+		}
+
+.conexion-popupIncident {
+    position: fixed;
+    width: 35%;
+    height: 500px;
+    background-color: var(--bs-light);
+
+    top: 2em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+    box-shadow: 10px 10px 5px 0px var(--primary-dark);
+    -webkit-box-shadow: 5px 5px 15px 0px var(--primary-dark);
+    -moz-box-shadow: 10px 10px 5px 0px var(--primary-dark);
+}
+
+.conexion-popupIncident .col-1 {
+    height: 600px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.7;
+
+}
+
 .popup-containerAjoutField {
     position: fixed;
     top: 100px;
@@ -313,15 +387,12 @@ div.col-3:nth-child(even) {
     background-size: 900px 900px;
 }
 
-.popup-containerModifField {
-    position: fixed;
+.popup-containerModif {
+   position: absolute;
     top: 100px;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    left: 0px;
+    WIDTH: 100%;
     background-color: rgba(241, 250, 238);
-    background-repeat: no-repeat;
-    background-size: 900px 900px;
 }
 
 .popup-buttonAjout {
@@ -352,7 +423,7 @@ div.col-3:nth-child(even) {
 }
 
 .photo {
-    background-image: url(https://cdn.icon-icons.com/icons2/1286/PNG/512/97_85237.png);
+    /* background-image: url(https://cdn.icon-icons.com/icons2/1286/PNG/512/97_85237.png); */
     background-size: contain;
     width: 150px;
     height: 150px;

@@ -1,52 +1,69 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-	<div class="popup-containerModifField" id="container" style="max-height: 74vh">
-		<section class="conexion-popupModif scrollTrue" style="max-height: 70vh">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+
+
+	<div class="popup-containerModif" id="container">
+		<section class="conexion-popupModif scrollTrue" style="">
 			<div class="container-fluid">
 				<div class="row justify-content-md-center">
 					<div class="col-2"></div>
 
 					<div class="col-9">
 						<h3 class="mt-5">Informations sur votre profil</h3>
-						<h5>Pour profiter des services d'écopâturages près de chez vous</h5>
+						<h5>Pour profiter des services d'écopâturages près de chez
+							vous</h5>
 						<div class="mb-3 align-left">
-							<div class="photo"></div>
-							<label for="nameInput" class="form-label fw-bold">Adresse Email :</label>
-							<p>michel1234@gmail.com</p>
+							<div>
+								<img class="photo" src="#{mbAccount.account.photo}" />
+							</div>
+							<label for="nameInput" class="form-label fw-bold">Adresse
+								Email :</label>
+							<p>#{mbAccount.account.email}</p>
 
-							<label for="adresseInput" class="form-label fw-bold">Mot de passe :</label>
+							<label for="adresseInput" class="form-label fw-bold">Mot
+								de passe :</label>
 							<p>************</p>
 
 							<label for="nameInput" class="form-label fw-bold">Nom :</label>
-							<p>Michel</p>
+							<p>#{mbAccount.account.name}</p>
 
-							<label for="nameInput" class="form-label fw-bold">Prénom :</label>
-							<p>Mimi</p>
+							<label for="nameInput" class="form-label fw-bold">Prénom
+								:</label>
+							<p>#{mbAccount.account.surName}</p>
 
-							<label for="nameInput" class="form-label fw-bold">Numéro de téléphone :</label>
-							<p>0554585658</p>
+							<label for="nameInput" class="form-label fw-bold">Numéro
+								de téléphone :</label>
+							<p>#{mbAccount.account.phone}</p>
 
-							<label for="birth-date-input" class="form-label fw-bold">Date de naissance</label>
-							<p>25/05/1992</p>
+							<label for="birth-date-input" class="form-label fw-bold">Date
+								de naissance</label>
+							<p>#{mbAccount.account.birth}</p>
 
-							<label for="adresseInput" class="form-label fw-bold">Adresse :</label>
-							<p>1 rue du coquelicot</p>
+							<label for="adresseInput" class="form-label fw-bold w-75">Adresse
+								:</label>
+							<p>#{mbAccount.account.adress}</p>
 
-							<label for="nameInput" class="form-label fw-bold">Code postal :</label>
-							<p>78000 Saint-Joseph</p>
+							<label for="nameInput" class="form-label fw-bold">Code
+								postal :</label>
+							<p>#{mbAccount.account.zipcode.code}
+								#{mbAccount.account.zipcode.label}</p>
 
 							<hr />
-							<form>
-								<div class="form-group fw-bold">
+							<h:form>
+								<div class="form-group fw-bold w-75">
 									<label for="exampleFormControlTextarea1">Description :</label>
-									<p>ceci est une description</p>
+									<p>#{mbAccount.account.description}</p>
 								</div>
-							</form>
+							</h:form>
 							<div class="d-grid gap-2">
 								<h:form>
-									<f:ajax render=":pagefooter2">
+									<f:ajax render=":contentPage">
 										<h:commandLink styleClass="btn btn-primary w-25" value=""
-											action="#{PageManageBean.setPage2('updateaccount')}">
+											action="#{PageManageBean.setPage('updateaccount')}">
 											Modifier
 										</h:commandLink>
 									</f:ajax>

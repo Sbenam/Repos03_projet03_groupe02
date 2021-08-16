@@ -22,5 +22,6 @@ public interface ServiceIDao extends GenericIDao<Service> {
 	Service closeService(Date date, int id);
 	Service ruptureService(Service service, Rupture rupture);
 	List<Service> getAllByAccountId(int idAccount);
+	int getNbrPrestationWithNote(int note);
 
 }

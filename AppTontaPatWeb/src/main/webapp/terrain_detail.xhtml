@@ -103,13 +103,15 @@
 								quisquam optio enim error iste quibusdam laborum debitis
 								laudantium ab fuga</p>
 
+
 							<div class="button-modifier-terrain" style="place-self: center;">
 								<button class="btn btn-primary" type="button">
 									<h:form>
-										<f:ajax render=":pagefooter2">
+										<f:ajax render=":contentPage">
 											<h:commandLink styleClass="dropdown-item" value=""
 												style="color:white;"
-												action="#{PageManageBean.setPage2('updatefield')}">
+												action="#{mbField.updateField(PageManageBean,mbField.selectField)}">
+
 										Modifier
 									</h:commandLink>
 										</f:ajax>

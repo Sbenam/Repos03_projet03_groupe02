@@ -38,6 +38,7 @@ import fr.eql.ai109.apptontapat.ibusiness.DatumIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.DesactivationIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.EnclosureIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.EvacuateaIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.FieldIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.GlassHeightIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.HerdIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.HumidityIBusiness;
@@ -65,10 +66,10 @@ public class ManagedBeanTestSamia implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	EvacuateaIBusiness a;
+	ServiceIBusiness a;
 	
-	public EvacuateA getAll() {
-		return a.extraireEvacuateaAPartirDeLabel("Je ne suis pas satisfait des services de Tontapat");
+	public int getAll() {
+		return a.extraireNombrePrestationAvecUneNote(4);
 	}
 	/*public Herd getAll() {
 		Herd h = new Herd();

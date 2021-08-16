@@ -138,4 +138,13 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int getNbrPrestationWithNote(int note) {
+		List<Service> services = null;
+		Query query = em.createQuery("SELECT u FROM Service u WHERE u.rateNote=:idParam");
+		query.setParameter("idParam", note);
+		services = (List<Service>) query.getResultList();
+		return services.size();
+	}
 }

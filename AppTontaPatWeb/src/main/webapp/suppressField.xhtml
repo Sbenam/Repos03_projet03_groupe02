@@ -5,8 +5,6 @@
 
 
 
-	<h:outputText value="#{mbField.getFieldById(4)}"></h:outputText>
-
 	<div class="popup-containerSuppress" id="container">
 		<section class="conexion-popupSuppress">
 			<h:form>
@@ -46,19 +44,23 @@
 							<div class="d-grid gap-2">
 
 
+
 								<h:commandButton class="btn btn-primary w-25" type="submit"
 									action="#{mbField.supprimer(mbRetret.retretsList)}"
 									title="valider pour confirmer la suppression" value="Valider"></h:commandButton>
+								<button class="btn btn-primary w-25" type="submit">
+									<f:ajax render=":pagefooter2">
+										<h:commandLink
+											styleClass="dropdown-item btn btn-primary text-white"
+											value="Annuler" action="#{PageManageBean.setPage2('blank')}">
 
-								<f:ajax render=":pagefooter2">
-									<h:commandLink styleClass="dropdown-item" value=""
-										action="#{PageManageBean.setPage2('blank')}">
-										<button class="btn btn-primary w-25" type="submit">Annuler</button>
-									</h:commandLink>
+										</h:commandLink>
 
-								</f:ajax>
+									</f:ajax>
+								</button>
 							</div>
 						</h:form>
+
 
 					</div>
 				</div>
