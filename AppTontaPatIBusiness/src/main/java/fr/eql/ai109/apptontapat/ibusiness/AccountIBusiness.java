@@ -14,6 +14,7 @@ public interface AccountIBusiness {
 	Account mettreAjourUnCompte(Account account);
 	
 	Account extraireCompteAvecId(int id);
+
 	
 //	List<Account> findAll();
 
