@@ -20,6 +20,9 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import fr.eql.ai109.apptontapat.entity.Account;
+import fr.eql.ai109.apptontapat.entity.EvacuateA;
+import fr.eql.ai109.apptontapat.entity.Retret;
+import fr.eql.ai109.apptontapat.entity.Slope;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.AccountIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.EvacuateaIBusiness;
@@ -39,6 +42,7 @@ public class AccountManagedBean implements Serializable {
 	private String email;
 	private String password;
 	private String passwordVerif;
+	private String description;
 	private int nZipcode;
 	private ZipCode zipCode;
 	private Account account;
@@ -47,12 +51,13 @@ public class AccountManagedBean implements Serializable {
 	private int phone;
 	private List<String> evacuateas = new ArrayList<String>();
 	private String selectedEvacuatea ;
+	private EvacuateA evacuateavalue ;
+	private String selectedZipcode;
 	
 	
 
 	@EJB
 	private AccountIBusiness accountIBusiness;
-
 	@EJB
 	private ZipCodeIBusiness zipcodeibusiness;
 	@EJB
@@ -220,6 +225,52 @@ public class AccountManagedBean implements Serializable {
 		}
 
 	}
+	
+
+	public String maj(List<ZipCode> zipcodesList) {
+		account = new Account();
+		zipCode = zipcodesList.get(Integer.parseInt(selectedZipcode)-1) ;
+		System.out.println("valeur de zipCode ----------------------------" + zipCode);
+		System.out.println("valeur de selectedZipcode ----------------------------" + selectedZipcode);
+		account.setZipcode(zipCode);
+		account.setName(name);
+		account.setName(surNname);
+		account.setPhone("0" + phone);
+		account.setBirth(dBirth);
+		account.setEmail(email);
+		account.setPassword(password);
+		account.setAdress(adress);
+    	account.setDescription(description);
+    	System.out.println("mon name account----------------" + name);
+    	System.out.println("mon surNname account----------------" + surNname);
+    	System.out.println("mon phone account----------------" + phone);
+    	System.out.println("mon dBirth account----------------" + dBirth);
+    	System.out.println("mon email account----------------" + email);
+    	System.out.println("mon password account----------------" + password);
+    	System.out.println("mon adress account----------------" + adress);
+    	System.out.println("mon description account----------------" + description);
+		accountIBusiness.mettreAjourUnCompte(account) ;
+		return "simpleArch.xhtml"; 
+	}
+	
+	
+	
+	public String supprimer(List<EvacuateA> evacuateasList) {
+		account = new Account();
+		evacuateavalue = evacuateasList.get(Integer.parseInt(selectedEvacuatea)-1) ;
+		account.setWithdraw(new Date());
+		account.setEvacuateA(evacuateavalue);
+		accountIBusiness.mettreAjourUnCompte(account) ;
+		return "simpleArch.xhtml"; 
+	}
+	
+	
+	public void getAccountById(int id) {
+		account = new Account();
+		account = accountIBusiness.extraireCompteAvecId(id);
+		System.out.println("mon id account----------------" + id);
+		System.out.println("mon accountname----------------" + account.getName());
+	}
 
 	public String getName() {
 		return name;
@@ -336,4 +387,6 @@ public class AccountManagedBean implements Serializable {
 	public void setSelectedEvacuatea(String selectedEvacuatea) {
 		this.selectedEvacuatea = selectedEvacuatea;
 	}
+
+
 }

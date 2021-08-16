@@ -100,9 +100,11 @@
 					<div class="button-modifier-terrain">
 						<button class="btn btn-primary" type="button">
 							<h:form>
-								<f:ajax render=":pagefooter2">
+
+								<f:ajax render=":contentPage">
 									<h:commandLink styleClass="dropdown-item" value="" style="color:white;"
-										action="#{PageManageBean.setPage2('updatefield')}">
+										action="#{PageManageBean.setPage('updatefield')}">
+
 										Modifier
 									</h:commandLink>
 								</f:ajax>

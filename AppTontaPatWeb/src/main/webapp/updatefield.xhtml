@@ -15,7 +15,7 @@
 	
 	
 	
-<div class="popup-containerModifField" id="container">
+<div class="popup-containerModif" id="container">
 	<section class="conexion-popupModif">
 		<div class="container-fluid">
 			<div class="row justify-content-md-center">
@@ -27,13 +27,13 @@
 					<div class="mb-3 align-left">
 					
 						<label for="nameInput" class="form-label">Nom du terrain :</label><input
-							type="name" class="form-control" id="nameInput"
+							type="name" class="form-control w-50" id="nameInput"
 							placeholder="Jardin de mamie"  value="#{mbField.field.name}"/> 
 							
 							
 							<label for="adresseInput"
 							class="form-label ">Adresse du terrain :</label><input
-							type="adresse" class="form-control" id="adresseInput" placeholder="9 bd du Générale de Gaulle"  value="#{mbField.field.adress}"/>
+							type="adresse" class="form-control w-50" id="adresseInput" placeholder="9 bd du Générale de Gaulle"  value="#{mbField.field.adress}"/>
 							
 							<label for="nameInput" class="form-label">Code postal du terrain :</label><input
 							type="name" class="form-control w-25" id="nameInput"
@@ -130,19 +130,14 @@
 </div>
 </div>
 
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-  <label class="form-check-label" for="flexSwitchCheckDefault"
-    >Accessibilité</label
-  ><p>Si l'accessibilité est difficile, veuillez le préciser dans la description à la prochaine étape</p>
-</div>
+
 <hr/>
-<form>
+<h:form>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Description :</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea class="form-control w-50" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
- </form> 
+ </h:form> 
 	<label for="dispoinput" class="form-label ">Début de
 										disponibilité</label><input type="date" class="form-control w-25"
 										id="dispoinput" rows="3"></input> 
@@ -157,15 +152,15 @@
 
 						<div class="d-grid gap-2">
 							<button class="btn btn-primary w-25" type="submit">Enregistrer</button>
-						<h:form>
+						<button class="btn btn-primary w-25" type="submit">
 				<f:ajax render=":pagefooter2">
-						<h:commandLink styleClass="dropdown-item" value=""
+						<h:commandLink styleClass="dropdown-item btn btn-primary text-white" value="Annuler"
 							action="#{PageManageBean.setPage2('blank')}">
-							<button class="btn btn-primary w-25" type="submit">Annuler</button>
+							
 						</h:commandLink>
 					
-				</f:ajax>
-			</h:form>
+				</f:ajax></button>
+			
 						
 						</div>
 

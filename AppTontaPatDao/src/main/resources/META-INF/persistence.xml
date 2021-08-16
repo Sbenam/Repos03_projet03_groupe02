@@ -33,9 +33,9 @@
 		<class>fr.eql.ai109.apptontapat.entity.Humidity</class>
 		<properties>
 
-		 	<!-- <property
+		  <property
 				name="javax.persistence.schema-generation.database.action"
-				value="drop-and-create" /> -->
+				value="drop-and-create" /> 
 
 			<property name="hibernate.show_sql" value="true" /> 
 			<property name="hibernate.dialect"
