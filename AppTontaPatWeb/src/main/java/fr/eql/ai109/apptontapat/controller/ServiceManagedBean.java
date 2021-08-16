@@ -1,8 +1,13 @@
 package fr.eql.ai109.apptontapat.controller;
 
 import java.io.Serializable;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -31,7 +36,7 @@ public class ServiceManagedBean implements Serializable {
 	private List<Service> serviceTerminer = new ArrayList<Service>();
 	private List<Service> serviceRefuser = new ArrayList<Service>();
 	private Service serviceSelect = new Service();
-
+	private int serviceCost;
 
 	@EJB
 	private ServiceIBusiness serviceIBusiness;
@@ -39,8 +44,31 @@ public class ServiceManagedBean implements Serializable {
 	@EJB
 	private FieldIBusiness fieldIBusiness;
 
+	public void addService(Herd herd, Field field, PageManageBean p) {
+		Service service = new Service();
+		Random r = new Random();
+		service.setNbService(r.nextInt());
+		
+		//nombre de jour * nombre de mouton * prix (serciceCost)
+		LocalDateTime fieldstartDateTime= LocalDateTime.ofInstant(field.getStarting().toInstant(),
+                ZoneId.systemDefault());
+		LocalDateTime fieldEndDateTime= LocalDateTime.ofInstant(field.getEnding().toInstant(),
+				ZoneId.systemDefault());
+	
+		long nmbJour = Duration.between(fieldstartDateTime, fieldEndDateTime).toDays();
+		service.setCost((int) (serviceCost * nmbJour *herd.getSeize()));
+		service.setStarting(field.getStarting());
+		service.setBooking(new Date());
+		service.setEnding(field.getEnding());
+		service.setHerd(herd);
+		service.setField(field);
+		
+		serviceIBusiness.ajoutPrestation(service);
+		getServiceDetail(p, service);
+		
+	}
 
-	public void getServiceDetail(PageManageBean p,Service s) {
+	public void getServiceDetail(PageManageBean p, Service s) {
 		serviceSelect = s;
 		p.setPage("service_detail");
 	}
@@ -54,7 +82,7 @@ public class ServiceManagedBean implements Serializable {
 		// repartition des listes
 		for (Service service : servicelist) {
 
-			// si finished != null  et refus == null ==> Fini
+			// si finished != null et refus == null ==> Fini
 			if (service.getFinished() != null && service.getRefusal() == null) {
 				System.out.println(service.getFinished());
 				System.out.println("fini");
@@ -104,12 +132,11 @@ public class ServiceManagedBean implements Serializable {
 		return serviceIBusiness.search(field);
 	}
 
-	// TODO vin test
 	public List<Herd> searchTest() {
 		herds = serviceIBusiness.search(fieldIBusiness.extraireTerrainParId(15));
 		return herds;
 	}
-	// TODO vin test
+
 	public List<Float> distance() {
 		dists = serviceIBusiness.distanceBU(fieldIBusiness.extraireTerrainParId(15));
 		return dists;
@@ -199,4 +226,11 @@ public class ServiceManagedBean implements Serializable {
 		this.servicelist = servicelist;
 	}
 
+	public int getServiceCost() {
+		return serviceCost;
+	}
+
+	public void setServiceCost(int serviceCost) {
+		this.serviceCost = serviceCost;
+	}
 }

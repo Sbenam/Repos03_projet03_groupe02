@@ -12,12 +12,10 @@ servira pour la NAVIGATION BAR -->
 <h:head>
 	<title>Hub-Accueil</title>
 	<ui:insert name="head"></ui:insert>
-	  <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-      crossorigin=""
-    />
+	<link rel="stylesheet"
+		href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+		integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+		crossorigin="" />
 	<h:outputStylesheet library="css" name="style.css" />
 	<h:outputStylesheet library="css" name="stylePerso.css" />
 
@@ -168,8 +166,7 @@ servira pour la NAVIGATION BAR -->
 
 	<!-- Menu Absolute right -->
 	<div class="d-flex flex-column flex-shrink-0 bg-light menu-right"
-		style="width: 4.5rem; -webkit-box-shadow: 0px 10px 13px -7px #000000, 9px 17px 21px -10px #EE8F2F; 
-box-shadow: 0px 10px 13px -7px #000000, 9px 17px 21px -10px #EE8F2F;">
+		style="width: 4.5rem; -webkit-box-shadow: 0px 10px 13px -7px #000000, 9px 17px 21px -10px #EE8F2F; box-shadow: 0px 10px 13px -7px #000000, 9px 17px 21px -10px #EE8F2F;">
 		<ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
 			<li class="nav-item"><h:form>
 					<f:ajax render=":pagefooter2">
@@ -202,22 +199,19 @@ box-shadow: 0px 10px 13px -7px #000000, 9px 17px 21px -10px #EE8F2F;">
 					</f:ajax>
 				</h:form></li>
 
-			<li>
-				<h:form>
-			<f:ajax render=":contentPage">
-				<h:commandLink styleClass="nav-link py-3 border-bottom" value=""
-					action="#{mbAccount.connect()}" pt:title="Prestations" pt:data-bs-toggle="tooltip"
-				pt:data-bs-placement="right">
-<em class="fas fa-sticky-note"></em>				</h:commandLink>
-			</f:ajax>
-		</h:form>
-		
-		<!-- 	<a href="#" class="nav-link py-3 border-bottom"
+			<li><h:form>
+					<f:ajax render=":contentPage">
+						<h:commandLink styleClass="nav-link py-3 border-bottom" value=""
+							action="#{mbAccount.connect()}" pt:title="Prestations"
+							pt:data-bs-toggle="tooltip" pt:data-bs-placement="right">
+							<em class="fas fa-sticky-note"></em>
+						</h:commandLink>
+					</f:ajax>
+				</h:form> <!-- 	<a href="#" class="nav-link py-3 border-bottom"
 				title="Prestations" data-bs-toggle="tooltip"
 				data-bs-placement="right"> <em class="fas fa-sticky-note"></em>
 			</a>
-		 -->	
-			</li>
+		 --></li>
 		</ul>
 		<!-- Profil + ajout terrain + troupeau -->
 		<div class="dropdown border-top">
@@ -268,13 +262,11 @@ box-shadow: 0px 10px 13px -7px #000000, 9px 17px 21px -10px #EE8F2F;">
 			</ul>
 		</div>
 	</div>
-	    <!-- leaflet JS -->
-	     <script
-      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-      crossorigin=""
-    ></script>
-       <script src="js/mapShearch.js"></script>
+	<!-- leaflet JS -->
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+		crossorigin=""></script>
+	<script src="js/mapShearch.js"></script>
 </h:body>
 
 </html>
