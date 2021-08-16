@@ -12,6 +12,28 @@
 						Prestation n°
 						<h:outputText value="#{mbService.serviceSelect.nbService}"></h:outputText>
 					</h2>
+					<button class="btn btn-primary w-25" type="submit">
+								<f:ajax render=":pagefooter2">
+									<h:commandLink
+										styleClass="dropdown-item btn btn-primary text-white"
+										value="Déclarer un incident" action="#{PageManageBean.setPage2('blank')}">
+
+									</h:commandLink>
+
+								</f:ajax>
+							</button>
+					<button class="btn btn-primary w-25" type="submit">
+								<f:ajax render=":pagefooter2">
+									<h:commandLink
+										styleClass="dropdown-item btn btn-primary text-white"
+										value="Evaluer la prestation" action="#{PageManageBean.setPage2('blank')}">
+
+									</h:commandLink>
+
+								</f:ajax>
+					</button>
+							
+							
 					<div style="display: flex; justify-content: space-evenly; font-size: 20px;">
 						<p>
 							<span class="color-green-primary" style="font-size: 20px;">Prix: </span>

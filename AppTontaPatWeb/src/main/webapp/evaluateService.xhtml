@@ -1,7 +1,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 
 
@@ -22,35 +23,42 @@
 					<div class="col-1"></div>
 					<div class="col-9 py-4 my-4">
 
-						<h3>Déclarer un incident</h3>
-						<p>Vous êtes sur le point de déclarer un incident.</p>
+						<h3>Evaluer une prestation</h3>
+						<p>Comment évaluez-vous la prestation ?</p>
 
 
 
 						<h:form>
+							<label for="customRange1" class="form-label"></label>
+
+
+
+							<div class="rating rating2 pb-3">
+								<a href="#5" title="Give 5 stars"
+									style="position: absolute; left: 570px;">★</a> <a href="#4"
+									title="Give 4 stars" style="position: absolute; left: 450px;">★</a>
+								<a href="#3" title="Give 3 stars"
+									style="position: absolute; left: 330px;">★</a> <a href="#2"
+									title="Give 2 stars" style="position: absolute; left: 220px;">★</a>
+								<a href="#1" title="Give 1 star"
+									style="position: absolute; left: 110px;">★</a>
+							</div>
+
+
+
+
+
+
+							<input type="range" class="form-range" id="customRange1" min="0"
+								max="4" />
+
 							<div class="form-group col-md-12">
-								<h:outputLabel for="delete" value="" />
-								<h:selectOneMenu id="delete" class="form-control"
-									value="{mbService.selectedIncident}">
-									<f:selectItem itemLabel="Type d'incident : * " itemValue=""
-										noSelectionOption="true"></f:selectItem>
-									<f:selectItems value="#{mbService.getAllDatum()}"></f:selectItems>
-								</h:selectOneMenu>
-
-								<label for="dispoinput" class="form-label ">Début de
-									l'incident</label> <input type="date" class="form-control w-50"
-									id="dispoinput" rows="3"></input> <label for="dispo_end_input"
-									class="form-label ">Fin de l'incident</label><input type="date"
-									class="form-control w-50" id="dispo_end_input" rows="3"></input>
-
-
 
 								<div class="form-group">
 									<label for="exampleFormControlTextarea1">Description :</label>
 									<textarea class="form-control" id="exampleFormControlTextarea1"
 										rows="3" value="#{mbAccount.account.description}"></textarea>
 								</div>
-
 
 							</div>
 						</h:form>
