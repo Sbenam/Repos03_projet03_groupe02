@@ -50,37 +50,61 @@ public class ServiceManagedBean implements Serializable {
 			serviceClean();
 		}
 		servicelist = serviceIBusiness.getAllByIdAccountField(id);
-
+		int i =0;
 		// repartition des listes
 		for (Service service : servicelist) {
-
+			
 			// si finished != null  et refus == null ==> Fini
-			if (service.getFinished() != null && service.getRefusal() == null) {
+			if (service.getFinished() != null && service.getRefusal() == null && service.getRupture() == null && service.getValidation() != null) {
 				System.out.println(service.getFinished());
 				System.out.println("fini");
+				System.out.println("----->"+service.getRefusal());
 				serviceTerminer.add(service);
+				System.out.println(i++);
+				System.out.println(service.getRefusal() == null);
+				System.out.println("ID : " + service.getId());
+				System.out.println("nb SERVICE : " + service.getNbService());
+				
 			}
 			// Si validation != null && finished == null && rupture == null ==> En cours
-			else if (service.getValidation() != null && service.getFinished() == null && service.getRupture() == null) {
+			else if (service.getFinished() == null && service.getRefusal() == null && service.getRupture() == null && service.getValidation() != null) {
 				System.out.println("en cour");
 				serviceEnCour.add(service);
+				System.out.println(i++);
+				System.out.println(service.getRefusal() == null);
+				System.out.println("ID : " + service.getId());
+				System.out.println("nb SERVICE : " + service.getNbService());
 			}
 			// si refus != null ==> annuler (Refuser)
-			else if (service.getValidation() != null && service.getRefusal() != null) {
+			else if (service.getFinished() == null && service.getRefusal() != null && service.getRupture() == null && service.getValidation() != null) {
 				System.out.println("refuser");
+				System.out.println("=====>"+service.getRefusal());
 				serviceRefuser.add(service);
+				System.out.println(i++);
+				System.out.println(service.getRefusal() == null);
+				System.out.println("ID : " + service.getId());
+				System.out.println("nb SERVICE : " + service.getNbService());
 			}
 			// Si validation = null && refus null === en attente
-			else if (service.getValidation() != null & service.getRefusal() == null) {
+			else if (service.getValidation() == null && service.getRefusal() == null && service.getRupture() == null && service.getValidation() == null) {
 				System.out.println("en attente");
 				serviceEnAttente.add(service);
+				System.out.println(i++);
+				System.out.println(service.getRefusal() == null);
+				System.out.println("ID : " + service.getId());
+				System.out.println("nb SERVICE : " + service.getNbService());
 			} else {
 				System.out.println("Id du sans statut" + service.getId());
 				System.out.println("Pas de statut sur cette prestation");
+				System.out.println(i++);
+				System.out.println(service.getRefusal() == null);
+				System.out.println("ID : " + service.getId());
+				System.out.println("nb SERVICE : " + service.getNbService());
 			}
-
+			System.out.println("=============================");
+			service = null;
 		}
-
+		System.out.println(i);
 		System.err.println("taille de la liste de service : " + servicelist.size());
 		return servicelist;
 	}
