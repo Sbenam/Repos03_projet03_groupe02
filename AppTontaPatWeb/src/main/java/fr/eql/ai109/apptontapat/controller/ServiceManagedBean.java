@@ -39,6 +39,8 @@ public class ServiceManagedBean implements Serializable {
 	private Incident incident;
 	private List<Incident> incidentsList ;
 	private List<String> datums  = new ArrayList<String>();
+	private Integer rating ;
+
 
 	@EJB
 	private ServiceIBusiness serviceIBusiness;
@@ -50,6 +52,9 @@ public class ServiceManagedBean implements Serializable {
 	private IncidentIBusiness incidentIBusiness ; 
 	@EJB
 	private DatumIBusiness datumIBusiness ;
+	
+	
+	
 	
 	public List<Incident> getAllIncident() {
 		incidentsList = incidentIBusiness.extraireToutLesIncident();
@@ -240,5 +245,12 @@ public class ServiceManagedBean implements Serializable {
 	public void setDatums(List<String> datums) {
 		this.datums = datums;
 	}
+	public Integer getRating() {
+		return rating;
+	}
+	public void setRating(Integer rating) {
+		this.rating = rating;
+	}
+
 
 }

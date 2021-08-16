@@ -52,7 +52,7 @@
 									value="#{mbAccount.account.adress}" />
 								<label for="nameInput" class="form-label">Code postal :</label>
 								<input type="name" class="form-control w-25" id="nameInput"
-									placeholder="78546" />
+									placeholder="78546" value="#{mbAccount.account.zipcode.code}" />
 								<input class="form-control w-50" type="text" aria-label="Ville"
 									disabled="true" value="#{mbAccount.account.zipcode.label}" />
 
@@ -68,8 +68,7 @@
 
 								<div class="d-grid gap-2">
 									<h:commandButton styleClass="btn btn-primary w-25"
-										type="submit" action="#{mbAccount.maj()}"
-										value="Enregister"></h:commandButton>
+										type="submit" action="#{mbAccount.maj()}" value="Enregister"></h:commandButton>
 
 									<button class="btn btn-primary w-25" type="submit">
 										<f:ajax render=":pagefooter2">
@@ -82,6 +81,17 @@
 										</f:ajax>
 									</button>
 
+									<button class="btn btn-primary w-25" type="submit">
+										<f:ajax render=":pagefooter2">
+											<h:commandLink
+												styleClass="dropdown-item btn btn-primary text-white"
+												value="Supprimer le compte"
+												action="#{PageManageBean.setPage2('blank')}">
+
+											</h:commandLink>
+
+										</f:ajax>
+									</button>
 
 								</div>
 							</h:form>
