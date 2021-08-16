@@ -7,6 +7,7 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 import fr.eql.ai109.apptontapat.entity.Account;
+import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.ibusiness.AccountIBusiness;
 import fr.eql.ai109.apptontapat.idao.AccountIDao;
 
@@ -44,5 +45,30 @@ public class AccountBusiness implements AccountIBusiness {
 	@Override
 	public Account extraireCompteAvecId(int id) {
 		return aidao.getAccountById(id);
+	}
+
+	@Override
+	public List<Herd> getHerdWaiting(int id) {
+		return aidao.getHerdWaiting(id);
+	}
+
+	@Override
+	public List<Herd> getHerdRefuse(int id) {
+		return aidao.getHerdRefuse(id);
+	}
+
+	@Override
+	public List<Herd> getHerdEnCour(int id) {
+		return aidao.getHerdEnCour(id);
+	}
+
+	@Override
+	public List<Herd> getHerdBreak(int id) {
+		return aidao.getHerdBreak(id);
+	}
+
+	@Override
+	public List<Herd> getHerdFinish(int id) {
+		return aidao.getHerdFinish(id);
 	}
 }

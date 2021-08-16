@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 
 import fr.eql.ai109.apptontapat.entity.Account;
 import fr.eql.ai109.apptontapat.entity.EvacuateA;
+import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.entity.Retret;
 import fr.eql.ai109.apptontapat.entity.Slope;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
@@ -53,6 +54,7 @@ public class AccountManagedBean implements Serializable {
 	private String selectedEvacuatea ;
 	private EvacuateA evacuateavalue ;
 	private String selectedZipcode;
+	private List<Herd> herds = new ArrayList<Herd>();
 	
 	
 
@@ -264,6 +266,29 @@ public class AccountManagedBean implements Serializable {
 		System.out.println("mon accountname----------------" + account.getName());
 	}
 
+	public List<Herd> getHerdWaiting(int id) {
+		herds = accountIBusiness.getHerdWaiting(id);
+		return herds;
+	}
+	public List<Herd> getHerdRefuse(int id) {
+		herds = accountIBusiness.getHerdRefuse(id);
+		return herds;
+	}
+	public List<Herd> getHerdEnCour(int id) {
+		herds = accountIBusiness.getHerdEnCour(id);
+		return herds;
+	}
+
+	public List<Herd> getHerdBreak(int id) {
+		herds = accountIBusiness.getHerdBreak(id);
+		return herds;
+	}
+
+	public List<Herd> getHerdFinish(int id) {
+		herds = accountIBusiness.getHerdFinish(id);
+		return herds;
+	}
+	
 	public String getName() {
 		return name;
 	}

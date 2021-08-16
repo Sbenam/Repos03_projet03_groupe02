@@ -1,6 +1,9 @@
 package fr.eql.ai109.apptontapat.ibusiness;
 
+import java.util.List;
+
 import fr.eql.ai109.apptontapat.entity.Account;
+import fr.eql.ai109.apptontapat.entity.Herd;
 
 public interface AccountIBusiness {
 
@@ -15,7 +18,16 @@ public interface AccountIBusiness {
 	
 	Account extraireCompteAvecId(int id);
 
+	List <Herd> getHerdWaiting(int id);
 	
+	List <Herd> getHerdRefuse(int id);
+	
+	List <Herd> getHerdEnCour(int id);
+	
+	List <Herd> getHerdBreak(int id);
+	
+	List <Herd> getHerdFinish(int id);
+
 //	List<Account> findAll();
 
 }
