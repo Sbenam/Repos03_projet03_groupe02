@@ -56,6 +56,7 @@ public class AccountManagedBean implements Serializable {
 	private EvacuateA evacuateavalue ;
 	private String selectedZipcode;
 	private List<Field> fields = new ArrayList<Field>();
+	private List<Herd> herds = new ArrayList<Herd>();
 	
 	
 	@EJB
@@ -247,8 +248,6 @@ public class AccountManagedBean implements Serializable {
 		return "simpleArch.xhtml"; 
 	}
 	
-	
-	
 	public String supprimer(List<EvacuateA> evacuateasList) {
 	
 		evacuateavalue = evacuateasList.get(Integer.parseInt(selectedEvacuatea)-1) ;
@@ -257,7 +256,6 @@ public class AccountManagedBean implements Serializable {
 		accountIBusiness.mettreAjourUnCompte(account) ;
 		return "simpleArch.xhtml"; 
 	}
-	
 	
 	public void getAccountById(int id) {
 		account = new Account();
@@ -270,10 +268,12 @@ public class AccountManagedBean implements Serializable {
 		fields = accountIBusiness.getFieldWaiting(id);
 		return fields;
 	}
+
 	public List<Field> getFieldRefuse(int id) {
 		fields = accountIBusiness.getFieldRefuse(id);
 		return fields;
 	}
+
 	public List<Field> getFieldEnCour(int id) {
 		fields = accountIBusiness.getFieldEnCour(id);
 		return fields;
@@ -289,6 +289,36 @@ public class AccountManagedBean implements Serializable {
 		return fields;
 	}
 	
+	public List<Herd> getHerdWaiting(int id) {
+		herds = accountIBusiness.getHerdWaiting(id);
+		return herds;
+	}
+
+	public List<Herd> getHerdRefuse(int id) {
+		herds = accountIBusiness.getHerdRefuse(id);
+		return herds;
+	}
+
+	public List<Herd> getHerdEnCour(int id) {
+		herds = accountIBusiness.getHerdEnCour(id);
+		return herds;
+	}
+
+	public List<Herd> getHerdBreak(int id) {
+		herds = accountIBusiness.getHerdBreak(id);
+		return herds;
+	}
+
+	public List<Herd> getHerdFinish(int id) {
+		herds = accountIBusiness.getHerdFinish(id);
+		return herds;
+	}
+
+//	public List<Herd> getTest() {
+//		herds = accountIBusiness.getHerdWaiting(3);
+//		return herds;
+//	}
+
 	public String getName() {
 		return name;
 	}
@@ -385,25 +415,20 @@ public class AccountManagedBean implements Serializable {
 		this.nZipcode = nZipcode;
 	}
 
-
 	public List<String> getEvacuateas() {
 		return evacuateas;
 	}
-
 
 	public void setEvacuateas(List<String> evacuateas) {
 		this.evacuateas = evacuateas;
 	}
 
-
 	public String getSelectedEvacuatea() {
 		return selectedEvacuatea;
 	}
-
-
+	
 	public void setSelectedEvacuatea(String selectedEvacuatea) {
 		this.selectedEvacuatea = selectedEvacuatea;
 	}
-
 
 }

@@ -29,6 +29,16 @@ public interface AccountIBusiness {
 	
 	List<Field> getFieldFinish(int id);
 
-//	List<Account> findAll();
+	List<Herd> getHerdWaiting(int id);
+
+	List<Herd> getHerdRefuse(int id);
+
+	List<Herd> getHerdEnCour(int id);
+	
+	List<Herd> getHerdBreak(int id);
+	
+	List<Herd> getHerdFinish(int id);
+
+	//	List<Account> findAll();
 
 }

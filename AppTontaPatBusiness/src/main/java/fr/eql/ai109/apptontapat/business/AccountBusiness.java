@@ -29,7 +29,6 @@ public class AccountBusiness implements AccountIBusiness {
 	public Account inscription(Account account) {
 		// return (aidao.exists(account)?null:aidao.add(account));
 		return aidao.add(account);
-
 	}
 
 	@Override
@@ -72,4 +71,30 @@ public class AccountBusiness implements AccountIBusiness {
 	public List<Field> getFieldFinish(int id) {
 		return aidao.getFieldFinish(id);
 	}
+
+	@Override
+	public List<Herd> getHerdWaiting(int id) {
+		return aidao.getHerdWaiting(id);
+	}
+
+	@Override
+	public List<Herd> getHerdRefuse(int id) {
+		return aidao.getHerdRefuse(id);
+	}
+
+	@Override
+	public List<Herd> getHerdEnCour(int id) {
+		return aidao.getHerdEnCour(id);
+	}
+
+	@Override
+	public List<Herd> getHerdBreak(int id) {
+		return aidao.getHerdBreak(id);
+	}
+
+	@Override
+	public List<Herd> getHerdFinish(int id) {
+		return aidao.getHerdFinish(id);
+	}
+
 }

@@ -18,5 +18,10 @@ public interface AccountIDao extends GenericIDao<Account>{
 	List<Field> getFieldEnCour(int id);
 	List<Field> getFieldBreak(int id);
 	List<Field> getFieldFinish(int id);
+	List<Herd> getHerdWaiting(int id);
+	List<Herd> getHerdRefuse(int id);
+	List<Herd> getHerdEnCour(int id);
+	List<Herd> getHerdBreak(int id);
+	List<Herd> getHerdFinish(int id);
 	
 }

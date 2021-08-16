@@ -135,4 +135,74 @@ public class AccountDao extends GenericDao<Account> implements AccountIDao{
 		return (List<Field>)query.getResultList();		
 	}
 
+	@Override
+	public List<Herd> getHerdWaiting(int id) {
+		Query query = em.createQuery("SELECT DISTINCT h "
+				+ "FROM Herd h JOIN Service s ON h.id = s.herd.id "
+				+ "WHERE h.withdraw is null "
+				+ "AND s.validation is null "
+				+ "AND s.refusal is null "
+				+ "AND s.rupture is null "
+				+ "AND s.finished is null "
+				+ "AND h.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Herd>)query.getResultList();
+	}
+
+	@Override
+	public List<Herd> getHerdRefuse(int id) {
+		Query query = em.createQuery("SELECT DISTINCT h "
+				+ "FROM Herd h JOIN Service s ON h.id = s.herd.id "
+				+ "WHERE h.withdraw is null "
+				+ "AND s.validation is null "
+				+ "AND s.refusal is not null "
+				+ "AND s.rupture is null "
+				+ "AND s.finished is null "
+				+ "AND h.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Herd>)query.getResultList();
+	}
+
+	@Override
+	public List<Herd> getHerdEnCour(int id) {
+		Query query = em.createQuery("SELECT DISTINCT h "
+				+ "FROM Herd h JOIN Service s ON h.id = s.herd.id "
+				+ "WHERE h.withdraw is null "
+				+ "AND s.validation is not null "
+				+ "AND s.refusal is null "
+				+ "AND s.rupture is null "
+				+ "AND s.finished is null "
+				+ "AND h.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Herd>)query.getResultList();
+	}
+
+	@Override
+	public List<Herd> getHerdBreak(int id) {
+		Query query = em.createQuery("SELECT DISTINCT h "
+				+ "FROM Herd h JOIN Service s ON h.id = s.herd.id "
+				+ "WHERE h.withdraw is null "
+				+ "AND s.validation is not null "
+				+ "AND s.refusal is null "
+				+ "AND s.rupture is not null "
+				+ "AND s.finished is null "
+				+ "AND h.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Herd>)query.getResultList();
+	}
+
+	@Override
+	public List<Herd> getHerdFinish(int id) {
+		Query query = em.createQuery("SELECT DISTINCT h "
+				+ "FROM Herd h JOIN Service s ON h.id = s.herd.id "
+				+ "WHERE h.withdraw is null "
+				+ "AND s.validation is not null "
+				+ "AND s.refusal is null "
+				+ "AND s.rupture is null "
+				+ "AND s.finished is not null "
+				+ "AND h.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Herd>)query.getResultList();
+	}
+
 }
