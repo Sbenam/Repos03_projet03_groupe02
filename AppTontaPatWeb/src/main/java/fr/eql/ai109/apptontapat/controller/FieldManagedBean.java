@@ -18,12 +18,15 @@ import fr.eql.ai109.apptontapat.entity.Retret;
 import fr.eql.ai109.apptontapat.entity.Slope;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.CompositionIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.EnclosureIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.FieldIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.GlassHeightIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.HumidityIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.RetretIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.ShelterIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.SlopeIbusiness;
 import fr.eql.ai109.apptontapat.ibusiness.VegetationIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.WaterIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.ZipCodeIBusiness;
 import fr.eql.ai109.apptontapat.web.PageManageBean;
 
@@ -51,6 +54,12 @@ public class FieldManagedBean implements Serializable {
 	private String selectedVeggy;
 	private List<String> compos = new ArrayList<String>();
 	private String selectedCompo;
+	private List<String> enclosures = new ArrayList<String>();
+	private String selectedEnclosure;
+	private List<String> waters = new ArrayList<String>();
+	private String selectedWater;
+	private List<String> shelters = new ArrayList<String>();
+	private String selectedShelter;
 	private List<String> retrets = new ArrayList<String>();
 	private String selectedRetret;
 	private Retret retretvalue;
@@ -70,6 +79,12 @@ public class FieldManagedBean implements Serializable {
 	@EJB
 	private CompositionIBusiness compoIBusiness;
 	@EJB
+	private ShelterIBusiness shelterIBusiness;
+	@EJB
+	private EnclosureIbusiness enclosureIBusiness ;
+	@EJB
+	private WaterIBusiness waterIBusiness;
+	@EJB
 	private ZipCodeIBusiness zipCodeIBusiness;
 	@EJB
 	private RetretIBusiness retretIBusiness;
@@ -82,6 +97,9 @@ public class FieldManagedBean implements Serializable {
 		humidities = humidityIBusiness.extraireToutLesHumidityLabels() ;
 		Veggies = veggyIBusiness.extraireToutesLesVegetationLabels();
 		compos = compoIBusiness.extraireToutesLesCompositionLabels();
+		enclosures = enclosureIBusiness.extraireToutesLesEnclosuresLabels();
+		waters = waterIBusiness.extraireToutLesWaterLabels();
+		shelters = shelterIBusiness.extraireToutLesSheltersLabels();
 		retrets = retretIBusiness.extraireToutLesRetretLabels();
 		zipID = getCityWithZipCodeID();
 		getCityWithZipCodeCode(zipcode);
@@ -322,5 +340,53 @@ public class FieldManagedBean implements Serializable {
 
 	public void setSelectIdField(int selectIdField) {
 		this.selectIdField = selectIdField;
+	}
+
+	public List<String> getEnclosures() {
+		return enclosures;
+	}
+
+	public void setEnclosures(List<String> enclosures) {
+		this.enclosures = enclosures;
+	}
+
+	public String getSelectedEnclosure() {
+		return selectedEnclosure;
+	}
+
+	public void setSelectedEnclosure(String selectedEnclosure) {
+		this.selectedEnclosure = selectedEnclosure;
+	}
+
+	public List<String> getWaters() {
+		return waters;
+	}
+
+	public void setWaters(List<String> waters) {
+		this.waters = waters;
+	}
+
+	public String getSelectedWater() {
+		return selectedWater;
+	}
+
+	public void setSelectedWater(String selectedWater) {
+		this.selectedWater = selectedWater;
+	}
+
+	public List<String> getShelters() {
+		return shelters;
+	}
+
+	public void setShelters(List<String> shelters) {
+		this.shelters = shelters;
+	}
+
+	public String getSelectedShelter() {
+		return selectedShelter;
+	}
+
+	public void setSelectedShelter(String selectedShelter) {
+		this.selectedShelter = selectedShelter;
 	}
 }

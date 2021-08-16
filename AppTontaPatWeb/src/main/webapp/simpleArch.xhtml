@@ -113,6 +113,18 @@ servira pour la NAVIGATION BAR -->
 								</h:form>
 							</button>
 						</li>
+						
+						<li>
+							<button class="dropdown-item" type="button">
+								<h:form>
+									<f:ajax render=":pagefooter2">
+										<h:commandLink styleClass="dropdown-item" value=""
+											action="#{PageManageBean.setPage2('declareIncident')}">
+											<em class="fas fa-sign-in-alt"></em> declarer incident</h:commandLink>
+									</f:ajax>
+								</h:form>
+							</button>
+						</li>
 					</ul>
 				</div>
 			</div>
