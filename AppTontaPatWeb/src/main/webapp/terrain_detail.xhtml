@@ -20,7 +20,8 @@
 							class="far fa-star"></em> <em class="far fa-star"></em> <em
 							class="far fa-star"></em>
 					</div>
-					<span class="placeholder col-12 bg-secondary" style="height: 1px;"></span>
+					<span class="placeholder col-12 bg-secondary" style="height: 1px;    margin-top: 1em;
+    margin-bottom: 1em; "></span>
 					<div class="body-terrain-container">
 
 						<div class="description-terrain ">
@@ -89,40 +90,49 @@
 
 					</div>
 					<div class="description-user-terrain"
-						style="display: flex; justify-content: center; align-items: center;">
-						<div class="image-terrain" style="background-image:url(#{mbField.selectField.photo});"></div>
-						<p style="margin-left: 1em; max-width: 40%;">Lorem ipsum dolor
-							sit amet consectetur, adipisicing elit. In autem beatae, animi
-							facere illo, expedita quisquam optio enim error iste quibusdam
-							laborum debitis laudantium ab fuga</p>
-					</div>
+						style="display: flex; justify-content: center; align-items: center; 
+    margin-left: 10em;
+						">
+						<div class="image-terrain"
+							style="background-image:url(#{mbField.selectField.photo});"></div>
+						<div
+							style="display: flex; flex-direction: column; margin-left: 1em; max-width: 40%;">
 
-					<div class="button-modifier-terrain">
-						<button class="btn btn-primary" type="button">
-							<h:form>
+							<p style="">Lorem ipsum dolor sit amet consectetur,
+								adipisicing elit. In autem beatae, animi facere illo, expedita
+								quisquam optio enim error iste quibusdam laborum debitis
+								laudantium ab fuga</p>
 
-								<f:ajax render=":contentPage">
-									<h:commandLink styleClass="dropdown-item" value="" style="color:white;"
-										action="#{PageManageBean.setPage('updatefield')}">
+
+							<div class="button-modifier-terrain" style="place-self: center;">
+								<button class="btn btn-primary" type="button">
+									<h:form>
+										<f:ajax render=":contentPage">
+											<h:commandLink styleClass="dropdown-item" value=""
+												style="color:white;"
+												action="#{PageManageBean.setPage('updatefield')}">
 
 										Modifier
 									</h:commandLink>
-								</f:ajax>
-							</h:form>
-						</button>
+										</f:ajax>
+									</h:form>
+								</button>
+							</div>
+						</div>
 					</div>
 				</div>
 
 				<!-- autre terrain apartenant a l'utilisateur -->
-				<div class="col-4 scrollTrue" style="max-height: 85vh; padding-bottom: 2em;">
+				<div class="col-4 scrollTrue"
+					style="max-height: 85vh; padding-bottom: 2em;">
 					<div class="card-terrain">
 
 						<ui:repeat var="f"
 							value="#{mbField.getAllByIdAccount(mbAccount.account.id)}">
 							<div class="card" style="width: 18rem;">
-					
+
 								<img src="#{f.photo}" class="card-img-top" alt="..." />
-							
+
 								<div class="card-body">
 									<h5 class="card-title">
 										<h:outputText value="#{f.name}"></h:outputText>
@@ -166,8 +176,7 @@
 											</h:commandLink>
 										</f:ajax>
 									</h:form>
-									<a
-										class="btn btn-primary btn-infos-terrain"
+									<a class="btn btn-primary btn-infos-terrain"
 										data-bs-toggle="collapse" href="#collapseExample"
 										role="button" aria-expanded="false"
 										aria-controls="collapseExample"> <em

@@ -26,22 +26,19 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 
 	@Override
 	public List<Herd> search(Field field) {
-		// TODO vin
 		List<Herd> herds = 	null ;
-		
-		Query query = em.createQuery(" SELECT h "
-			+ "FROM Field f JOIN ZipCode zf ON f.zipcode = zf.id, "
-			+ "ZipCode zh JOIN Herd h ON zh.id = h.zipcode "
-//			+ "herd hs join service s on hs.id = s.herd_id "
-			+ "WHERE 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) < (h.area + 1000) "
+		Query query = em.createQuery(" SELECT DISTINCT h "
+			+ "FROM Field f JOIN ZipCode zf ON f.zipcode.id = zf.id, "
+			+ "ZipCode zh JOIN Herd h ON zh.id = h.zipcode, "
+			+ "Service s LEFT JOIN Herd hs  on s.herd = hs.id "
+			+ "WHERE 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) < (h.area + 100) "
 			+ "AND h.starting < f.starting "
 			+ "AND f.ending < h.ending "
 			+ "AND h.seize <= (f.surface + 8) "
 			+ "AND (f.surface * 2.7) / datediff(f.ending, f.starting) <= h.seize "
-//			+ "AND hs.service.validation is null "
-			+ "AND f.id=:idParam "
-			);
-
+			+ "AND s.validation is null "
+			+ "AND f.id=:idParam ");
+		query.setParameter("idParam", field.getId());	
 		herds = (List<Herd>)query.getResultList();
 		return herds;
 	}
@@ -50,16 +47,13 @@ public class ServiceDao extends GenericDao<Service> implements ServiceIDao {
 	@Override
 	public List<Float> distances(Field field) {
 		List<Float> dstcs = null;
-		
 		Query query = em.createQuery(" SELECT 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) "
 				+ "FROM Field f INNER JOIN ZipCode zf ON f.zipcode = zf.id, "
 				+ "ZipCode zh JOIN Herd h ON zh.id = h.zipcode "
 				+ "WHERE 100 * SQRT(POW(zf.latitude - zh.latitude, 2) + POW(zf.longitude - zh.longitude, 2)) < h.area "
 				+ "AND f.id=:idParam ");
 		query.setParameter("idParam", field.getId());	
-
 		dstcs = query.getResultList();
-		System.out.println("\r<<<<<<<<<<<<<<<<<<<<<<nb de distance : "+dstcs.size());
 		return dstcs;
 	}
 

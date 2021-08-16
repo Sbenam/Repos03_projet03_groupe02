@@ -2,11 +2,11 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-	
-	
-	
+
+
+
 	<h:outputText value="#{mbField.getFieldById(4)}"></h:outputText>
-	
+
 	<div class="popup-containerSuppress" id="container">
 		<section class="conexion-popupSuppress">
 			<h:form>
@@ -20,41 +20,50 @@
 
 			<div class="container-fluid">
 				<div class="row justify-content-md-center">
-						<div class="col-1"></div>
+					<div class="col-1"></div>
 					<div class="col-9 py-5 my-5">
-						
-							<h3>Supprimer un terrain</h3>
-							<p>Vous êtes sur le point de supprimer votre terrain.</p>
-						
-					
-			
-						  <h:form>
-<div class="form-group col-md-10">
-    <h:outputLabel for="delete" value=""/>
-    <h:selectOneMenu id="delete" class="form-control" value="#{mbField.selectedRetret}" >
-  <f:selectItem itemLabel="Motif de suppression : * " itemValue="" noSelectionOption="true"></f:selectItem>  
-	<f:selectItems value="#{mbRetret.getAllRetret()}" var="obj"  itemLabel="#{obj.label}" itemValue="#{obj.id}" ></f:selectItems>
-<!-- 	<f:ajax execute="delete" event="change" render="@form"/>  -->
-      </h:selectOneMenu>
- 
-   
-  </div>					
-						
+
+						<h3>Supprimer un terrain</h3>
+						<p>Vous êtes sur le point de supprimer votre terrain.</p>
+
+
+
+						<h:form>
+							<div class="form-group col-md-10">
+								<h:outputLabel for="delete" value="" />
+								<h:selectOneMenu id="delete" class="form-control"
+									value="#{mbField.selectedRetret}">
+									<f:selectItem itemLabel="Motif de suppression : * "
+										itemValue="" noSelectionOption="true"></f:selectItem>
+									<f:selectItems value="#{mbRetret.getAllRetret()}" var="obj"
+										itemLabel="#{obj.label}" itemValue="#{obj.id}"></f:selectItems>
+									<!-- 	<f:ajax execute="delete" event="change" render="@form"/>  -->
+								</h:selectOneMenu>
+
+
+							</div>
+
 							<div class="d-grid gap-2">
-							
-							
-							<h:commandButton class="btn btn-primary w-25" type="submit"  action="#{mbField.supprimer(mbRetret.retretsList)}" title="valider pour confirmer la suppression" value="Valider"></h:commandButton>
-						<button class="btn btn-primary w-25" type="submit">
-				<f:ajax render=":pagefooter2">
-						<h:commandLink styleClass="dropdown-item btn btn-primary text-white" value="Annuler"
-							action="#{PageManageBean.setPage2('blank')}">
-						
-						</h:commandLink>
-						
-				</f:ajax></button>
-				</div>
-			</h:form>
-					
+
+
+
+								<h:commandButton class="btn btn-primary w-25" type="submit"
+									action="#{mbField.supprimer(mbRetret.retretsList)}"
+									title="valider pour confirmer la suppression" value="Valider"></h:commandButton>
+								<button class="btn btn-primary w-25" type="submit">
+									<f:ajax render=":pagefooter2">
+										<h:commandLink
+											styleClass="dropdown-item btn btn-primary text-white"
+											value="Annuler" action="#{PageManageBean.setPage2('blank')}">
+
+										</h:commandLink>
+
+									</f:ajax>
+								</button>
+							</div>
+						</h:form>
+
+
 					</div>
 				</div>
 			</div>

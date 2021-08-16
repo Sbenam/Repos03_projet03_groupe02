@@ -19,6 +19,7 @@ import fr.eql.ai109.apptontapat.ibusiness.RaceIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.SpecieIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.TakeoutIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.ZipCodeIBusiness;
+import fr.eql.ai109.apptontapat.web.PageManageBean;
 
 @ManagedBean(name = "mbHerd")
 @SessionScoped
@@ -29,6 +30,7 @@ public class HerdManagedBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private List<Herd> allHerd = new ArrayList<Herd>();
 	private Herd herd = new Herd();
 	private String name;
 	private String test;
@@ -40,7 +42,7 @@ public class HerdManagedBean implements Serializable {
 	private List<String> takeouts = new ArrayList<String>();
 	private String selectedTakeout;
 	private TakeOut takeoutvalue;
-	private Herd SelectHerd = new Herd();
+	private Herd selectHerd = new Herd();
 
 	@PostConstruct
 	public void init() {
@@ -73,6 +75,26 @@ public class HerdManagedBean implements Serializable {
 	public List<Herd> getAllHerdByIdAccount(int id) {
 		return herdIBusiness.extraireToutLesTroupeauxParIdAccount(id);
 	}
+	
+	
+	public List<Herd> getAllHerdById(int id) {
+		allHerd = herdIBusiness.extraireToutLesTroupeauxParIdAccount(id);
+		if(selectHerd.getAccount() == null) {
+			selectHerd = allHerd.get(0);
+		}
+		return allHerd;
+	}
+	
+	public void updateHerd(PageManageBean pageManageBean, Herd herd) {
+		selectHerd = herd;
+		pageManageBean.setPage("updateherd");
+	}
+	public void getHerdDetail(PageManageBean pageManageBean, Herd herd) {
+		selectHerd = herd;
+		pageManageBean.setPage("troupeau_detail");
+	}
+	
+	
 	public String getCityWithZipCode(String zipCode) {
 		return zipCodeIBusiness.extraireVilleAvecCodePostale(zipCode) ;
 	}
@@ -110,8 +132,8 @@ public String supprimer(List<TakeOut> takeoutsList) {
 
 
 	public void getHerdById(int id) {
-		System.out.println("test d'apelle de function get test et id: " + id);
 		herd = herdIBusiness.extraireTroupeauParId(id);
+		
 
 	}
 
@@ -124,7 +146,6 @@ public String supprimer(List<TakeOut> takeoutsList) {
 	}
 
 	public String getTest(int id) {
-		System.out.println("test d'apelle de function get test et id: " + id);
 		return test;
 	}
 
@@ -185,11 +206,11 @@ public String supprimer(List<TakeOut> takeoutsList) {
 	}
 
 	public Herd getSelectHerd() {
-		return SelectHerd;
+		return selectHerd;
 	}
 
-	public void setSelectHerd(Herd selectHerd) {
-		SelectHerd = selectHerd;
+	public void setSelectHerd(Herd herd) {
+		selectHerd = herd;
 	}
 
 	public List<String> getAllRaceLabels() {
@@ -205,5 +226,10 @@ public String supprimer(List<TakeOut> takeoutsList) {
 	}
 
 	
+
+
+	public void setAllHerd(List<Herd> allHerd) {
+		this.allHerd = allHerd;
+	}
 
 }
