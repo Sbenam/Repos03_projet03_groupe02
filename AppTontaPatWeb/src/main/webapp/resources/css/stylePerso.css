@@ -221,7 +221,7 @@ div.col-3:nth-child(even) {
     background-color: var(--bs-light);
 
     top: 2em;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 3px;
