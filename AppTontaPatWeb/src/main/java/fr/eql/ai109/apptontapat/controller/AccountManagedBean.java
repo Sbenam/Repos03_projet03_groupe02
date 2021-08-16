@@ -227,20 +227,12 @@ public class AccountManagedBean implements Serializable {
 	}
 	
 
-	public String maj(List<ZipCode> zipcodesList) {
-		account = new Account();
+	public String maj() {
+		List<ZipCode> zipcodesList = zipcodeibusiness.getAllBu();
 		zipCode = zipcodesList.get(Integer.parseInt(selectedZipcode)-1) ;
 		System.out.println("valeur de zipCode ----------------------------" + zipCode);
 		System.out.println("valeur de selectedZipcode ----------------------------" + selectedZipcode);
 		account.setZipcode(zipCode);
-		account.setName(name);
-		account.setName(surNname);
-		account.setPhone("0" + phone);
-		account.setBirth(dBirth);
-		account.setEmail(email);
-		account.setPassword(password);
-		account.setAdress(adress);
-    	account.setDescription(description);
     	System.out.println("mon name account----------------" + name);
     	System.out.println("mon surNname account----------------" + surNname);
     	System.out.println("mon phone account----------------" + phone);
@@ -256,7 +248,7 @@ public class AccountManagedBean implements Serializable {
 	
 	
 	public String supprimer(List<EvacuateA> evacuateasList) {
-		account = new Account();
+	
 		evacuateavalue = evacuateasList.get(Integer.parseInt(selectedEvacuatea)-1) ;
 		account.setWithdraw(new Date());
 		account.setEvacuateA(evacuateavalue);

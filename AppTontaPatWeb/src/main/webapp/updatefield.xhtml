@@ -5,14 +5,7 @@
 	>
 	
 	
-	
-		<!-- appel -->	
-<!-- Attend l'id acompte -->
-	<h:outputText value="#{mbField.getFieldById(4)}"></h:outputText>
-	
-<!-- sortie -->	
-	<!-- <h:outputText value="#{mbField.field.adress}"></h:outputText> -->
-	
+
 	
 	
 <div class="popup-containerModif" id="container">
@@ -28,29 +21,23 @@
 					
 						<label for="nameInput" class="form-label">Nom du terrain :</label><input
 							type="name" class="form-control w-50" id="nameInput"
-							placeholder="Jardin de mamie"  value="#{mbField.field.name}"/> 
+							placeholder="Jardin de mamie"  value="#{mbField.selectField.name}"/> 
 							
 							
 							<label for="adresseInput"
 							class="form-label ">Adresse du terrain :</label><input
-							type="adresse" class="form-control w-50" id="adresseInput" placeholder="9 bd du Générale de Gaulle"  value="#{mbField.field.adress}"/>
+							type="adresse" class="form-control w-50" id="adresseInput" placeholder="9 bd du Générale de Gaulle"  value="#{mbField.selectField.adress}"/>
 							
-							<label for="nameInput" class="form-label">Code postal du terrain :</label><input
+							<label for="nameInput" class="form-label">Code postal du terrain :</label>
+							<input
 							type="name" class="form-control w-25" id="nameInput"
-							placeholder="92300" value="#{mbField.field.zipcode}"/> 
-							<ui:repeat value="#{mbField.field.zipcode}" var="obj">
-    							<h:inputText value="#{obj.id}" class="form-control w-25"/>
-   								 <h:inputText value="#{obj.label}"  class="form-control w-50" disabled="true" />
-							</ui:repeat>
+							placeholder="92300" value="#{mbField.selectField.zipcode.code}"/> 					
 							
-							<h:inputText class="form-control w-25" value="#{mbField.field.zipcode}"  var="obj"  itemLabel="#{obj.label}" itemValue="#{obj.id}" ></h:inputText>
-							
-							<input class="form-control w-50" type="text" value="#{mbField.field.zipcode.label}" aria-label="Ville" disabled="true" />
-						
+							<h:outputText class="form-control w-25" value="#{mbField.selectField.zipcode.label}"  var="obj"  itemLabel="#{obj.label}" itemValue="#{obj.id}" ></h:outputText>
 
 							<label for="nameInput" class="form-label ">Surface du terrain : </label>
 <div class="input-group w-25">
-<input type="text" class="form-control" placeholder="1000"  value="#{mbField.field.surface}"/>
+<input type="text" class="form-control" placeholder="1000"  value="#{mbField.selectField.surface}"/>
   <div class="input-group-append">
     <span class="input-group-text" id="">m²</span>
   </div>
@@ -62,7 +49,7 @@
 <div class="form-group col-md-4">
     <h:outputLabel for="grass" value="Hauteur d'herbe :"/>
     <h:selectOneMenu id="grass" class="form-control" value="{mbField.selectedGrass}" >
-    <f:selectItem itemLabel="#{mbField.field.glassheight.label}" itemValue="" noSelectionOption="true"></f:selectItem>
+    <f:selectItem itemLabel="#{mbField.selectField.glassheight.label}" itemValue="" noSelectionOption="true"></f:selectItem>
 	<f:selectItems value="#{mbField.grasses}"></f:selectItems>
       </h:selectOneMenu>
    
@@ -72,7 +59,7 @@
    <div class="form-group col-md-4">
     <h:outputLabel for="slope" value="Pente :"/>
     <h:selectOneMenu id="slope" class="form-control" value="{mbField.selectedSlope}" >
-    <f:selectItem itemLabel="#{mbField.field.slope.label}" itemValue="" noSelectionOption="true"></f:selectItem>
+    <f:selectItem itemLabel="#{mbField.selectField.slope.label}" itemValue="" noSelectionOption="true"></f:selectItem>
 	<f:selectItems value="#{mbField.slopes}"></f:selectItems>
       </h:selectOneMenu>
    
@@ -81,7 +68,7 @@
   <div class="form-group col-md-4">
     <h:outputLabel for="humidity" value="Humidité :"/>
     <h:selectOneMenu id="humidity" class="form-control" value="{mbField.selectedHumidity}" >
-    <f:selectItem itemLabel="#{mbField.field.humidity.label}" itemValue="" noSelectionOption="true"></f:selectItem>
+    <f:selectItem itemLabel="#{mbField.selectField.humidity.label}" itemValue="" noSelectionOption="true"></f:selectItem>
 	<f:selectItems value="#{mbField.humidities}"></f:selectItems>
       </h:selectOneMenu>
    
@@ -90,7 +77,7 @@
  <div class="form-group col-md-4">
     <h:outputLabel for="veggie" value="Végétation :"/>
     <h:selectOneMenu id="veggie" class="form-control" value="{mbField.selectedVeggy}" >
-    <f:selectItem itemLabel="#{mbField.field.vegetation.label}" itemValue="" noSelectionOption="true"></f:selectItem>
+    <f:selectItem itemLabel="#{mbField.selectField.vegetation.label}" itemValue="" noSelectionOption="true"></f:selectItem>
 	<f:selectItems value="#{mbField.veggies}"></f:selectItems>
       </h:selectOneMenu>
    
@@ -99,35 +86,42 @@
   <div class="form-group col-md-4">
     <h:outputLabel for="composition" value="Composition :"/>
     <h:selectOneMenu id="composition" class="form-control" value="{mbField.selectedCompo}" >
-    <f:selectItem itemLabel="#{mbField.field.composition.label}" itemValue="" noSelectionOption="true"></f:selectItem>
+    <f:selectItem itemLabel="#{mbField.selectField.composition.label}" itemValue="" noSelectionOption="true"></f:selectItem>
 	<f:selectItems value="#{mbField.compos}"></f:selectItems>
       </h:selectOneMenu>
    
   </div>
+
+    <div class="form-group col-md-4">
+    <h:outputLabel for="cloture" value="Clôture :"/>
+    <h:selectOneMenu id="cloture" class="form-control" value="{mbField.selectedEnclosure}" >
+    <f:selectItem itemLabel="#{mbField.selectField.enclosure.label}" itemValue="" noSelectionOption="true"></f:selectItem>
+	<f:selectItems value="#{mbField.enclosures}"></f:selectItems>
+      </h:selectOneMenu>
+   
+  </div>
+  
+    <div class="form-group col-md-4">
+    <h:outputLabel for="eau" value="Eau à disposition :"/>
+    <h:selectOneMenu id="eau" class="form-control" value="{mbField.selectedWater}" >
+    <f:selectItem itemLabel="#{mbField.selectField.water.label}" itemValue="" noSelectionOption="true"></f:selectItem>
+	<f:selectItems value="#{mbField.waters}"></f:selectItems>
+      </h:selectOneMenu>
+   
+  </div>
+  
+    <div class="form-group col-md-4">
+    <h:outputLabel for="abri" value="Présence d'abri :"/>
+    <h:selectOneMenu id="abri" class="form-control" value="{mbField.selectedShelter}" >
+    <f:selectItem itemLabel="#{mbField.selectField.shelter.label}" itemValue="" noSelectionOption="true"></f:selectItem>
+	<f:selectItems value="#{mbField.shelters}"></f:selectItems>
+      </h:selectOneMenu>
+   
+  </div>
+  
   			
   </h:form>
-  
-  <div style="display:inline-block;">				
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-  <label class="form-check-label" for="flexSwitchCheckDefault"
-    >Clôture</label
-  >
-</div>
 
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-  <label class="form-check-label" for="flexSwitchCheckDefault"
-    >Eau à disposition</label
-  >
-</div>
-
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-  <label class="form-check-label" for="flexSwitchCheckDefault"
-    >Présence d'abri</label
-  >
-</div>
 </div>
 
 
@@ -167,8 +161,7 @@
 
 
 
-					</div>
-				</div>
+				</div>	
 			</div>
 		</div>
 
