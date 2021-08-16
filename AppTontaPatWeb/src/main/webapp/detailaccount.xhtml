@@ -1,8 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	
-	
-	<h:outputText value="#{mbAccount.getAccountById(4)}"></h:outputText>
+
 	
 	
 	<div class="popup-containerModif" id="container">
@@ -26,7 +25,7 @@
 							<p>#{mbAccount.account.name}</p>
 
 							<label for="nameInput" class="form-label fw-bold">Prénom :</label>
-							<p>#{mbAccount.account.surname}</p>
+						 	<p>#{mbAccount.account.surName}</p> 
 
 							<label for="nameInput" class="form-label fw-bold">Numéro de téléphone :</label>
 							<p>#{mbAccount.account.phone}</p>
@@ -49,9 +48,9 @@
 							</form>
 							<div class="d-grid gap-2">
 								<h:form>
-									<f:ajax render=":pagefooter2">
+									<f:ajax render=":contentPage">
 										<h:commandLink styleClass="btn btn-primary w-25" value=""
-											action="#{PageManageBean.setPage2('updateaccount')}">
+											action="#{PageManageBean.setPage('updateaccount')}">
 											Modifier
 										</h:commandLink>
 									</f:ajax>

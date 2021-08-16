@@ -8,10 +8,15 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import fr.eql.ai109.apptontapat.entity.EvacuateA;
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Incident;
+import fr.eql.ai109.apptontapat.entity.Retret;
 import fr.eql.ai109.apptontapat.entity.Service;
+import fr.eql.ai109.apptontapat.ibusiness.DatumIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.FieldIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.IncidentIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
 import fr.eql.ai109.apptontapat.web.PageManageBean;
 
@@ -31,7 +36,9 @@ public class ServiceManagedBean implements Serializable {
 	private List<Service> serviceTerminer = new ArrayList<Service>();
 	private List<Service> serviceRefuser = new ArrayList<Service>();
 	private Service serviceSelect = new Service();
-
+	private Incident incident;
+	private List<Incident> incidentsList ;
+	private List<String> datums  = new ArrayList<String>();
 
 	@EJB
 	private ServiceIBusiness serviceIBusiness;
@@ -39,7 +46,20 @@ public class ServiceManagedBean implements Serializable {
 	@EJB
 	private FieldIBusiness fieldIBusiness;
 
-
+	@EJB
+	private IncidentIBusiness incidentIBusiness ; 
+	@EJB
+	private DatumIBusiness datumIBusiness ;
+	
+	public List<Incident> getAllIncident() {
+		incidentsList = incidentIBusiness.extraireToutLesIncident();
+		return incidentsList ; 
+	}
+	public List<String> getAllDatum() {
+		datums = datumIBusiness.extraireToutesLesDatumLabels() ;
+		return datums ; 
+	}
+	
 	public void getServiceDetail(PageManageBean p,Service s) {
 		serviceSelect = s;
 		p.setPage("service_detail");
@@ -197,6 +217,28 @@ public class ServiceManagedBean implements Serializable {
 
 	public void setServicelist(List<Service> servicelist) {
 		this.servicelist = servicelist;
+	}
+
+	public Incident getIncident() {
+		return incident;
+	}
+
+	public void setIncident(Incident incident) {
+		this.incident = incident;
+	}
+
+	public List<Incident> getIncidentsList() {
+		return incidentsList;
+	}
+
+	public void setIncidentsList(List<Incident> incidentsList) {
+		this.incidentsList = incidentsList;
+	}
+	public List<String> getDatums() {
+		return datums;
+	}
+	public void setDatums(List<String> datums) {
+		this.datums = datums;
 	}
 
 }

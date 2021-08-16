@@ -6,8 +6,8 @@
 	
 	
 	
-	<div class="popup-containerSuppress" id="container">
-		<section class="conexion-popupSuppress">
+	<div class="popup-containerIncident" id="container">
+		<section class="conexion-popupIncident">
 			<h:form>
 				<f:ajax render=":pagefooter2">
 					<h:commandLink styleClass="btn-close" value=""
@@ -20,39 +20,52 @@
 			<div class="container-fluid">
 				<div class="row justify-content-md-center">
 						<div class="col-1"></div>
-					<div class="col-9 py-5 my-5">
+					<div class="col-9 py-4 my-4">
 						
 							<h3>Déclarer un incident</h3>
-							<p>Vous êtes sur le point de déclarer un incident</p>
-							<p>Cliquez
-								sur "DECLARER" pour confirmer votre action, sinon cliquez sur
-								"ANNULER"</p>
+							<p>Vous êtes sur le point de déclarer un incident.</p>
+							
 					
 			
 						  <h:form>
-<div class="form-group col-md-10">
+<div class="form-group col-md-12">
     <h:outputLabel for="delete" value=""/>
     <h:selectOneMenu id="delete" class="form-control" value="{mbService.selectedIncident}" >
     <f:selectItem itemLabel="Type d'incident : * " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbService.incident}"></f:selectItems>
+	<f:selectItems value="#{mbService.getAllDatum()}" ></f:selectItems>
       </h:selectOneMenu>
+      
+      <label for="dispoinput" class="form-label ">Début de l'incident</label>
+      <input type="date" class="form-control w-50"	id="dispoinput" rows="3"></input> 
+										
+										<label for="dispo_end_input"
+										class="form-label ">Fin de l'incident</label><input
+										type="date" class="form-control w-50" id="dispo_end_input"
+										rows="3"></input>
+										
+										
+										
+ <div class="form-group">
+									<label for="exampleFormControlTextarea1">Description :</label>
+									<textarea class="form-control" id="exampleFormControlTextarea1"
+										rows="3" value="#{mbAccount.account.description}"></textarea>
+								</div>
+   
    
   </div>
   </h:form>
-						
-						
-						
+			
 						
 							<div class="d-grid gap-2">
-							<h:form><button class="btn btn-primary w-25" type="submit">Déclarer</button>
-						
+							<h:form><h:commandButton class="btn btn-primary w-25" type="submit" title="valider pour confirmer la déclaration" value="Déclarer"></h:commandButton>
+						<button class="btn btn-primary w-25" type="submit" >
 				<f:ajax render=":pagefooter2">
-						<h:commandLink styleClass="dropdown-item" value=""
+						<h:commandLink styleClass="dropdown-item btn btn-primary text-white" value="Annuler"
 							action="#{PageManageBean.setPage2('blank')}">
-							<button class="btn btn-primary w-25" type="submit">Annuler</button>
+							
 						</h:commandLink>
 					
-				</f:ajax>
+				</f:ajax></button>
 			</h:form>
 						
 						</div>
