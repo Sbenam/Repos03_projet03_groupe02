@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 import fr.eql.ai109.apptontapat.entity.Account;
+import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.idao.AccountIDao;
@@ -61,7 +62,7 @@ public class AccountDao extends GenericDao<Account> implements AccountIDao{
 
 
 	@Override
-	public List<Herd> getHerdWaiting(int id) {
+	public List<Field> getFieldWaiting(int id) {
 		Query query = em.createQuery("SELECT DISTINCT f "
 				+ "FROM Field f JOIN Service s ON f.id = s.field.id "
 				+ "WHERE f.retret is null "
@@ -71,12 +72,12 @@ public class AccountDao extends GenericDao<Account> implements AccountIDao{
 				+ "AND s.finished is null "
 				+ "AND f.account.id = :idParam ");
 		query.setParameter("idParam",id);
-		return (List<Herd>)query.getResultList();		
+		return (List<Field>)query.getResultList();		
 	}
 	
 
 	@Override
-	public List<Herd> getHerdRefuse(int id) {
+	public List<Field> getFieldRefuse(int id) {
 		Query query = em.createQuery("SELECT DISTINCT f "
 				+ "FROM Field f JOIN Service s ON f.id = s.field.id "
 				+ "WHERE f.retret is null "
@@ -86,12 +87,12 @@ public class AccountDao extends GenericDao<Account> implements AccountIDao{
 				+ "AND s.finished is null "
 				+ "AND f.account.id = :idParam ");
 		query.setParameter("idParam",id);
-		return (List<Herd>)query.getResultList();		
+		return (List<Field>)query.getResultList();		
 	}
 	
 
 	@Override
-	public List<Herd> getHerdEnCour(int id) {
+	public List<Field> getFieldEnCour(int id) {
 		Query query = em.createQuery("SELECT DISTINCT f "
 				+ "FROM Field f JOIN Service s ON f.id = s.field.id "
 				+ "WHERE f.retret is null "
@@ -101,12 +102,12 @@ public class AccountDao extends GenericDao<Account> implements AccountIDao{
 				+ "AND s.finished is null "
 				+ "AND f.account.id = :idParam ");
 		query.setParameter("idParam",id);
-		return (List<Herd>)query.getResultList();		
+		return (List<Field>)query.getResultList();		
 	}
 	
 
 	@Override
-	public List<Herd> getHerdBreak(int id) {
+	public List<Field> getFieldBreak(int id) {
 		Query query = em.createQuery("SELECT DISTINCT f "
 				+ "FROM Field f JOIN Service s ON f.id = s.field.id "
 				+ "WHERE f.retret is null "
@@ -116,12 +117,12 @@ public class AccountDao extends GenericDao<Account> implements AccountIDao{
 				+ "AND s.finished is null "
 				+ "AND f.account.id = :idParam ");
 		query.setParameter("idParam",id);
-		return (List<Herd>)query.getResultList();		
+		return (List<Field>)query.getResultList();		
 	}
 	
 
 	@Override
-	public List<Herd> getHerdFinish(int id) {
+	public List<Field> getFieldFinish(int id) {
 		Query query = em.createQuery("SELECT DISTINCT f "
 				+ "FROM Field f JOIN Service s ON f.id = s.field.id "
 				+ "WHERE f.retret is null "
@@ -131,7 +132,7 @@ public class AccountDao extends GenericDao<Account> implements AccountIDao{
 				+ "AND s.finished is not null "
 				+ "AND f.account.id = :idParam ");
 		query.setParameter("idParam",id);
-		return (List<Herd>)query.getResultList();		
+		return (List<Field>)query.getResultList();		
 	}
 
 }

@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 
 import fr.eql.ai109.apptontapat.entity.Account;
 import fr.eql.ai109.apptontapat.entity.EvacuateA;
+import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.entity.Retret;
 import fr.eql.ai109.apptontapat.entity.Slope;
@@ -54,10 +55,9 @@ public class AccountManagedBean implements Serializable {
 	private String selectedEvacuatea ;
 	private EvacuateA evacuateavalue ;
 	private String selectedZipcode;
-	private List<Herd> herds = new ArrayList<Herd>();
+	private List<Field> fields = new ArrayList<Field>();
 	
 	
-
 	@EJB
 	private AccountIBusiness accountIBusiness;
 	@EJB
@@ -266,27 +266,27 @@ public class AccountManagedBean implements Serializable {
 		System.out.println("mon accountname----------------" + account.getName());
 	}
 
-	public List<Herd> getHerdWaiting(int id) {
-		herds = accountIBusiness.getHerdWaiting(id);
-		return herds;
+	public List<Field> getFieldWaiting(int id) {
+		fields = accountIBusiness.getFieldWaiting(id);
+		return fields;
 	}
-	public List<Herd> getHerdRefuse(int id) {
-		herds = accountIBusiness.getHerdRefuse(id);
-		return herds;
+	public List<Field> getFieldRefuse(int id) {
+		fields = accountIBusiness.getFieldRefuse(id);
+		return fields;
 	}
-	public List<Herd> getHerdEnCour(int id) {
-		herds = accountIBusiness.getHerdEnCour(id);
-		return herds;
-	}
-
-	public List<Herd> getHerdBreak(int id) {
-		herds = accountIBusiness.getHerdBreak(id);
-		return herds;
+	public List<Field> getFieldEnCour(int id) {
+		fields = accountIBusiness.getFieldEnCour(id);
+		return fields;
 	}
 
-	public List<Herd> getHerdFinish(int id) {
-		herds = accountIBusiness.getHerdFinish(id);
-		return herds;
+	public List<Field> getFieldBreak(int id) {
+		fields = accountIBusiness.getFieldBreak(id);
+		return fields;
+	}
+
+	public List<Field> getFieldFinish(int id) {
+		fields = accountIBusiness.getFieldFinish(id);
+		return fields;
 	}
 	
 	public String getName() {

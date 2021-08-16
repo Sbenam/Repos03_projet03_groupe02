@@ -7,6 +7,7 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 import fr.eql.ai109.apptontapat.entity.Account;
+import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.ibusiness.AccountIBusiness;
 import fr.eql.ai109.apptontapat.idao.AccountIDao;
@@ -48,27 +49,27 @@ public class AccountBusiness implements AccountIBusiness {
 	}
 
 	@Override
-	public List<Herd> getHerdWaiting(int id) {
-		return aidao.getHerdWaiting(id);
+	public List<Field> getFieldWaiting(int id) {
+		return aidao.getFieldWaiting(id);
 	}
 
 	@Override
-	public List<Herd> getHerdRefuse(int id) {
-		return aidao.getHerdRefuse(id);
+	public List<Field> getFieldRefuse(int id) {
+		return aidao.getFieldRefuse(id);
 	}
 
 	@Override
-	public List<Herd> getHerdEnCour(int id) {
-		return aidao.getHerdEnCour(id);
+	public List<Field> getFieldEnCour(int id) {
+		return aidao.getFieldEnCour(id);
 	}
 
 	@Override
-	public List<Herd> getHerdBreak(int id) {
-		return aidao.getHerdBreak(id);
+	public List<Field> getFieldBreak(int id) {
+		return aidao.getFieldBreak(id);
 	}
 
 	@Override
-	public List<Herd> getHerdFinish(int id) {
-		return aidao.getHerdFinish(id);
+	public List<Field> getFieldFinish(int id) {
+		return aidao.getFieldFinish(id);
 	}
 }
