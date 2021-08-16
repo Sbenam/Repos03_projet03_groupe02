@@ -25,4 +25,5 @@ public interface ServiceIBusiness {
 	Service refusalService(Service service, Refusal refusal);
 	Service validationService(Service service, Date date);
 	Service startService(Service service, Date date);
+	Service reserveService(Service service, int nbService, Date booking,Herd herd, Date starting, Date ending, int cost);
 }

@@ -107,4 +107,17 @@ public class ServiceBusiness implements ServiceIBusiness {
 		service.setPayment(date);
 		return service;
 	}
+
+
+	@Override
+	public Service reserveService(Service service, int nbService, Date booking, Herd herd, Date starting, Date ending,
+			int cost) {
+		service.setBooking(booking);
+		service.setCost(cost);
+		service.setEnding(ending);
+		service.setHerd(herd);
+		service.setNbService(nbService);
+		service.setStarting(starting);
+		return service;
+	}
 }
