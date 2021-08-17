@@ -24,6 +24,7 @@ import fr.eql.ai109.apptontapat.entity.EvacuateA;
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.entity.Retret;
+import fr.eql.ai109.apptontapat.entity.Service;
 import fr.eql.ai109.apptontapat.entity.Slope;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.AccountIBusiness;
@@ -56,6 +57,16 @@ public class AccountManagedBean implements Serializable {
 	private EvacuateA evacuateavalue ;
 	private String selectedZipcode;
 	private List<Field> fields = new ArrayList<Field>();
+	private List<Service> waitserviceFields = new ArrayList<Service>();
+	private List<Service> encourServiceFields = new ArrayList<Service>();
+	private List<Service> finishServiceFields = new ArrayList<Service>();
+	private List<Service> refuseServiceFields = new ArrayList<Service>();
+	private List<Service> ruptureServiceFields = new ArrayList<Service>();
+	private List<Service> waitserviceHerds = new ArrayList<Service>();
+	private List<Service> encourServiceHerds = new ArrayList<Service>();
+	private List<Service> finishServiceHerds = new ArrayList<Service>();
+	private List<Service> refuseServiceHerds = new ArrayList<Service>();
+	private List<Service> ruptureServiceHerds = new ArrayList<Service>();
 	private List<Herd> herds = new ArrayList<Herd>();
 	
 	
@@ -263,61 +274,58 @@ public class AccountManagedBean implements Serializable {
 		System.out.println("mon id account----------------" + id);
 		System.out.println("mon accountname----------------" + account.getName());
 	}
+	
 
-	public List<Field> getFieldWaiting(int id) {
-		fields = accountIBusiness.getFieldWaiting(id);
-		return fields;
+	public List<Service> getFieldWaiting(int id) {
+		waitserviceFields = accountIBusiness.getFieldWaiting(id);
+		return waitserviceFields;
 	}
 
-	public List<Field> getFieldRefuse(int id) {
-		fields = accountIBusiness.getFieldRefuse(id);
-		return fields;
+	public List<Service> getFieldRefuse(int id) {
+		refuseServiceFields = accountIBusiness.getFieldRefuse(id);
+		return refuseServiceFields;
 	}
 
-	public List<Field> getFieldEnCour(int id) {
-		fields = accountIBusiness.getFieldEnCour(id);
-		return fields;
+	public List<Service> getFieldEnCour(int id) {
+		encourServiceFields = accountIBusiness.getFieldEnCour(id);
+		return encourServiceFields;
 	}
 
-	public List<Field> getFieldBreak(int id) {
-		fields = accountIBusiness.getFieldBreak(id);
-		return fields;
+	public List<Service> getFieldBreak(int id) {
+		ruptureServiceFields = accountIBusiness.getFieldBreak(id);
+		return ruptureServiceFields;
 	}
 
-	public List<Field> getFieldFinish(int id) {
-		fields = accountIBusiness.getFieldFinish(id);
-		return fields;
+	public List<Service> getFieldFinish(int id) {
+		finishServiceFields = accountIBusiness.getFieldFinish(id);
+		return finishServiceFields;
 	}
 	
-	public List<Herd> getHerdWaiting(int id) {
-		herds = accountIBusiness.getHerdWaiting(id);
-		return herds;
+	public List<Service> getHerdWaiting(int id) {
+		waitserviceHerds = accountIBusiness.getHerdWaiting(id);
+		return waitserviceHerds;
 	}
 
-	public List<Herd> getHerdRefuse(int id) {
-		herds = accountIBusiness.getHerdRefuse(id);
-		return herds;
+	public List<Service> getHerdRefuse(int id) {
+		refuseServiceHerds = accountIBusiness.getHerdRefuse(id);
+		return refuseServiceHerds;
 	}
 
-	public List<Herd> getHerdEnCour(int id) {
-		herds = accountIBusiness.getHerdEnCour(id);
-		return herds;
+	public List<Service> getHerdEnCour(int id) {
+		encourServiceHerds = accountIBusiness.getHerdEnCour(id);
+		return encourServiceHerds;
 	}
 
-	public List<Herd> getHerdBreak(int id) {
-		herds = accountIBusiness.getHerdBreak(id);
-		return herds;
+	public List<Service> getHerdBreak(int id) {
+		ruptureServiceHerds = accountIBusiness.getHerdBreak(id);
+		return ruptureServiceHerds;
 	}
 
-	public List<Herd> getHerdFinish(int id) {
-		herds = accountIBusiness.getHerdFinish(id);
-		return herds;
+	public List<Service> getHerdFinish(int id) {
+		finishServiceHerds = accountIBusiness.getHerdFinish(id);
+		return finishServiceHerds;
 	}
 
-//	public List<Herd> getTest() {
-//		herds = accountIBusiness.getHerdWaiting(3);
-//		return herds;
-//	}
 
 	public String getName() {
 		return name;
@@ -429,6 +437,16 @@ public class AccountManagedBean implements Serializable {
 	
 	public void setSelectedEvacuatea(String selectedEvacuatea) {
 		this.selectedEvacuatea = selectedEvacuatea;
+	}
+
+
+	public List<Service> getServiceFields() {
+		return waitserviceFields;
+	}
+
+
+	public void setServiceFields(List<Service> serviceFields) {
+		this.waitserviceFields = serviceFields;
 	}
 
 }

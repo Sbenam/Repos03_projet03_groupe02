@@ -5,6 +5,7 @@ import java.util.List;
 import fr.eql.ai109.apptontapat.entity.Account;
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Service;
 
 public interface AccountIBusiness {
 
@@ -19,25 +20,25 @@ public interface AccountIBusiness {
 	
 	Account extraireCompteAvecId(int id);
 
-	List<Field> getFieldWaiting(int id);
+	List<Service> getFieldWaiting(int id);
 
-	List<Field> getFieldRefuse(int id);
+	List<Service> getFieldRefuse(int id);
 	
-	List<Field> getFieldEnCour(int id);
+	List<Service> getFieldEnCour(int id);
 	
-	List<Field> getFieldBreak(int id);
+	List<Service> getFieldBreak(int id);
 	
-	List<Field> getFieldFinish(int id);
+	List<Service> getFieldFinish(int id);
 
-	List<Herd> getHerdWaiting(int id);
+	List<Service> getHerdWaiting(int id);
 
-	List<Herd> getHerdRefuse(int id);
+	List<Service> getHerdRefuse(int id);
 
-	List<Herd> getHerdEnCour(int id);
+	List<Service> getHerdEnCour(int id);
 	
-	List<Herd> getHerdBreak(int id);
+	List<Service> getHerdBreak(int id);
 	
-	List<Herd> getHerdFinish(int id);
+	List<Service> getHerdFinish(int id);
 
 	//	List<Account> findAll();
 
