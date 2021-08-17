@@ -52,7 +52,7 @@ public class FieldManagedBean implements Serializable {
 	private int selectIdField;
 	private Field field = new Field();
 	private List<String> slopes = new ArrayList<String>();
-	private String selectedSlope ;
+	private String selectedSlope;
 	private Slope slopevalue;
 	private int intSelectedSlope;
 	private List<String> grasses = new ArrayList<String>();
@@ -103,7 +103,7 @@ public class FieldManagedBean implements Serializable {
 	@EJB
 	private CompositionIBusiness compoIBusiness;
 	@EJB
-	private EnclosureIbusiness enclosureIBusiness ;
+	private EnclosureIbusiness enclosureIBusiness;
 	@EJB
 	private ZipCodeIBusiness zipCodeIBusiness;
 	@EJB
@@ -115,12 +115,11 @@ public class FieldManagedBean implements Serializable {
 	@EJB
 	private ShelterIBusiness shelterIBusiness;
 
-
 	@PostConstruct
 	public void init() {
 		slopes = slopeIBusiness.extraireToutLesSlopesLabels();
-		grasses =  grassIBusiness.extraireToutLesGlassHeightLabels();
-		humidities = humidityIBusiness.extraireToutLesHumidityLabels() ;
+		grasses = grassIBusiness.extraireToutLesGlassHeightLabels();
+		humidities = humidityIBusiness.extraireToutLesHumidityLabels();
 		Veggies = veggyIBusiness.extraireToutesLesVegetationLabels();
 		compos = compoIBusiness.extraireToutesLesCompositionLabels();
 		enclosures = enclosureIBusiness.extraireToutesLesEnclosuresLabels();
@@ -129,6 +128,38 @@ public class FieldManagedBean implements Serializable {
 		retrets = retretIBusiness.extraireToutLesRetretLabels();
 		zipID = getCityWithZipCodeID();
 		getCityWithZipCodeCode(zipcode);
+	}
+
+	public void mapField() {
+		zipcode = selectField.getZipcode().getCode();
+	}
+
+	public String maj() {
+
+		selectField.setShelter(getListShelter().get(intSelectedShelter));
+		selectField.setWater(getListWater().get(intselectWater));
+		selectField.setEnclosure(getListEnclosure().get(selectEnclosure));
+		selectField.setComposition(getListComposition().get(intSelectedCompo));
+		selectField.setVegetation(getListVegetation().get(intSelectedVeggy));
+		selectField.setHumidity(getListHumidity().get(intSelectedHumidity));
+		selectField.setSlope(getListSlope().get(intSelectedSlope));
+		selectField.setGlassheight(getListGrass().get(intSelectedGrass));
+
+		try {
+			dstarting = new SimpleDateFormat("yyyy-MM-dd").parse(selectedStarting);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			dending = new SimpleDateFormat("yyyy-MM-dd").parse(selectedEnding);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		selectField.setStarting(dstarting);
+		selectField.setEnding(dending);
+
+		fieldIBusiness.mettreAJourUnTerrain(selectField);
+		return "simpleArch.xhtml";
 	}
 
 	public List<Shelter> getListShelter() {
@@ -225,7 +256,6 @@ public class FieldManagedBean implements Serializable {
 		selectField = fieldIBusiness.extraireTerrainParId(selectIdField);
 	}
 
-
 	public void updateField(PageManageBean pageManagedBean, Field field) {
 		selectField = field;
 		pageManagedBean.setPage("updatefield");
@@ -249,41 +279,18 @@ public class FieldManagedBean implements Serializable {
 		}
 		return allField;
 	}
-	
+
 //	public String getCityWithZipCode(String zipCode) {
 //		return zipCodeIBusiness.extraireVilleAvecCodePostale(zipCode) ;
 //	}
 	public ZipCode getCityWithZipCodeCode(String zipCode) {
 		return zipCodeIBusiness.extraireZipCodeAvecCodePostale(zipCode);
-    }	
+	}
 
 	public ZipCode getCityWithZipCodeID() {
 		return zipCodeIBusiness.extraireIncidentParId(20225);
 	}
 
-	public String maj(List<Slope> slopesList) {
-		
-		slopevalue = slopesList.get(Integer.parseInt(selectedSlope)-1) ;
-		System.out.println("valeur de slopevalue ----------------------------" + slopevalue);
-		System.out.println("valeur de selectedSlope ----------------------------" + selectedSlope);
-		field.setSlope(slopevalue);
-//		field.setGlassheight();
-//		field.setHumidity();
-//		field.setVegetation();
-//		field.setComposition();
-//		field.setEnclosure();
-//		field.setShelter();
-//		field.setName();
-//		field.setAdress();
-//		field.setZipcode();
-//		field.setSurface();
-//		field.setDescription();
-//		field.setStarting();
-//		field.setEnding();
-		fieldIBusiness.mettreAJourUnTerrain(field);
-		return "simpleArch.xhtml"; 
-	}
-	
 	public String supprimer(List<Retret> retretsList) {
 
 		retretvalue = retretsList.get(Integer.parseInt(selectedRetret) - 1);
