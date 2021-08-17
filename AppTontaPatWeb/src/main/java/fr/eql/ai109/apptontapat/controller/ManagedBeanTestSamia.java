@@ -16,6 +16,7 @@ import fr.eql.ai109.apptontapat.entity.Datum;
 import fr.eql.ai109.apptontapat.entity.Desactivation;
 import fr.eql.ai109.apptontapat.entity.Enclosure;
 import fr.eql.ai109.apptontapat.entity.EvacuateA;
+import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.GlassHeight;
 import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.entity.Humidity;
@@ -66,10 +67,11 @@ public class ManagedBeanTestSamia implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	ServiceIBusiness a;
+	FieldIBusiness a;
 	
-	public int getAll() {
-		return a.extraireNombrePrestationAvecUneNote(4);
+	public List<Integer> getAll() {
+		List<Field> herds = a.extraireToutLesTerrain();
+		return a.extraireDierrenteSuperficiesTroupeaux(herds);
 	}
 	/*public Herd getAll() {
 		Herd h = new Herd();

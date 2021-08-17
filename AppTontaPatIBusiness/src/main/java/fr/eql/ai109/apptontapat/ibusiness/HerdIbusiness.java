@@ -12,4 +12,5 @@ public interface HerdIbusiness {
 	Herd ajoutTroupeau(Herd herd);
 	Herd mettreAJourUnTroupeau(Herd herd);
 	void supprimerTroupeau(Herd herd);
+	List<Integer> extraireDifferentesTailleTroupeaux(List<Herd> herds);
 }

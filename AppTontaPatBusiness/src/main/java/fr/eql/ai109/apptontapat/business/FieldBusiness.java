@@ -1,5 +1,6 @@
 package fr.eql.ai109.apptontapat.business;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -56,6 +57,15 @@ public class FieldBusiness implements FieldIBusiness{
 	@Override
 	public void supprimerTerrain(Field field) {
 		fieldIDao.delete(field);
+	}
+
+	@Override
+	public List<Integer> extraireDierrenteSuperficiesTroupeaux(List<Field> fields) {
+		List<Integer> superfices = new ArrayList<>();
+		for (Field field : fields) {
+			superfices.add(field.getSurface());
+		}
+		return superfices;
 	}
 
 

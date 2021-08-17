@@ -1,5 +1,6 @@
 package fr.eql.ai109.apptontapat.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -55,6 +56,15 @@ public class HerdBusiness implements HerdIbusiness{
 	@Override
 	public void supprimerTroupeau(Herd herd) {
 		herdIDao.delete(herd);
+	}
+
+	@Override
+	public List<Integer> extraireDifferentesTailleTroupeaux(List<Herd> herds) {
+		List<Integer> tailleTroupeau = new ArrayList<>();
+		for (Herd herd : herds) {
+			tailleTroupeau.add(herd.getSeize());
+		}
+		return tailleTroupeau;
 	}
 
 }

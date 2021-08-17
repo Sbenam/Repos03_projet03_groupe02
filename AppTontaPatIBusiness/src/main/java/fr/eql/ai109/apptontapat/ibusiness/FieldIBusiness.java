@@ -12,4 +12,5 @@ public interface FieldIBusiness {
 	Field ajoutTerrain(Field field);
 	Field mettreAJourUnTerrain(Field field);
 	void supprimerTerrain(Field field);
+	List<Integer> extraireDierrenteSuperficiesTroupeaux(List<Field> fields);
 }
