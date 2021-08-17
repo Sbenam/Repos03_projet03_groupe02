@@ -2,59 +2,55 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	>
-<div class="popup-containerAjoutHerd" id="container">
-	<section class="conexion-popupAjout">
-		<div class="container-fluid">
-			<div class="row justify-content-md-center">
-				<div class="col-1"></div>
-				<h:form>
-				<f:ajax render=":pagefooter2">
-					<button id="close" class="btn-close" style="position: absolute; right: 5px; top: 5px">
-						<h:commandLink styleClass="dropdown-item" value=""
-							action="#{PageManageBean.setPage2('blank')}">
-						</h:commandLink>
-					</button>
-				</f:ajax>
-			</h:form>
-				
-				<div class="col-9">
-					
-					<h3 class="mt-5">Ajouter un troupeau</h3>
-					<H5>Pour profiter des services d'écopâturages près de chez vous</H5>
-					<div class="mb-3 align-left">
-					
-					
-					
-					
-						<label for="nameInput" class="form-label">Nom du troupeau :</label><input
-							type="name" class="form-control" id="nameInput"
-							placeholder="Troupeau de momo" /> <label for="adresseInput"
-							class="form-label ">Adresse du troupeau :</label><input
-							type="adresse" class="form-control" id="adresseInput" placeholder="9 bd du Générale de Gaulle" />
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	<div class="popup-containerAjoutHerd" id="container">
+		<section class="conexion-popupAjout">
+			<div class="container-fluid">
+				<div class="row justify-content-md-center">
+					<div class="col-1"></div>
+					<h:form>
+						<f:ajax render=":pagefooter2">
+							<button id="close" class="btn-close"
+								style="position: absolute; right: 5px; top: 5px">
+								<h:commandLink styleClass="dropdown-item" value=""
+									action="#{PageManageBean.setPage2('blank')}">
+								</h:commandLink>
+							</button>
+						</f:ajax>
+					</h:form>
 
-							<label for="nameInput" class="form-label">Code postal du terrain :</label><input
-							type="name" class="form-control w-25" id="nameInput"
-							placeholder="92300" /> 
-							
-							
-							<input class="form-control w-50" type="text" value="Ville" aria-label="Ville" disabled="true" />
+					<div class="col-9">
+						<h3 class="mt-5">Ajouter un troupeau</h3>
+						<H5>Pour profiter des services d'écopâturages près de chez
+							vous</H5>
+						<f:ajax render=":pagefooter2">
+							<h:form>
+								<div class="mb-3 align-left">
 
-<hr/>
-					</div>
-					<div class="d-grid gap-2">
-						<button class="btn btn-primary " type="submit">
-							<f:ajax render=":pagefooter2">
-								<h:commandLink styleClass="" value="Etape 1/2"
-									action="#{PageManageBean.setPage2('addherd2')}"></h:commandLink>
-							</f:ajax>
-						</button>
+									<label for="nameInput" class="form-label">Nom du
+										troupeau :</label>
+									<h:inputText pt:type="text" style="form-control"
+										pt:id="nameInput" placeholder="Troupeau de momo"
+										value="#{mbHerd.name}" />
+									<label for="adresseInput" class="form-label ">Adresse
+										du troupeau :</label>
+									<h:inputText  styleClass="form-control"
+										pt:id="adresseInput" placeholder="9 bd du Générale de Gaulle"
+										value="#{mbHerd.adresse}" />
+									<label for="zipcode" class="form-label">Code postal
+										du terrain :</label>
+									<h:inputText pt:type="number" class="form-control w-25"
+										pt:id="zipcode" placeholder="92300" value="#{mbHerd.zipcode}"/>
+								</div>
+								<div class="d-grid gap-2">
+									<h:commandLink styleClass="btn btn-primary " value="Etape 1/2"
+										action="#{mbHerd.addHerd1(PageManageBean)}"></h:commandLink>
+								</div>
+							</h:form>
+						</f:ajax>
 					</div>
 				</div>
 			</div>
-		</div>
-
-	</section>
-</div>
-
+		</section>
+	</div>
 </ui:composition>
