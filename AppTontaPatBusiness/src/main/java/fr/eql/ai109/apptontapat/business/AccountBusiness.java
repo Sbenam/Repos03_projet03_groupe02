@@ -1,5 +1,6 @@
 package fr.eql.ai109.apptontapat.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -96,6 +97,104 @@ public class AccountBusiness implements AccountIBusiness {
 	@Override
 	public List<Service> getHerdFinish(int id) {
 		return aidao.getHerdFinish(id);
+	}
+
+
+	@Override
+	public List<Service> listHerdServiceInProgress(int id) {
+		List<Service> services = aidao.getAllServiceHerd(id);
+		List<Service> servicesR = new ArrayList<Service>();
+		for (Service service : services) {
+			if((service.getValidation()!=null)&&(service.getRefusal()==null)&&(service.getRupture()==null)&&(service.getFinished()==null)) {
+				servicesR.add(service);
+			}
+		}
+		return servicesR;
+	}
+
+	@Override
+	public List<Service> listHerdServiceRefusal(int id) {
+		List<Service> services = aidao.getAllServiceHerd(id);
+		List<Service> servicesR = new ArrayList<Service>();
+		for (Service service : services) {
+			if((service.getValidation()==null)&&(service.getRefusal()!=null)&&(service.getRupture()==null)&&(service.getFinished()==null)) {
+				servicesR.add(service);
+			}
+		}
+		return servicesR;
+	}
+
+
+	@Override
+	public List<Service> listHerdServiceWaiting(int id) {
+		List<Service> services = aidao.getAllServiceHerd(id);
+		List<Service> servicesR = new ArrayList<Service>();
+		for (Service service : services) {
+			if((service.getValidation()==null)&&(service.getRefusal()==null)&&(service.getRupture()==null)&&(service.getFinished()==null)) {
+				servicesR.add(service);
+			}
+		}
+		return servicesR;
+	}
+
+	@Override
+	public List<Service> listHerdServiceFinish(int id) {
+		List<Service> services = aidao.getAllServiceHerd(id);
+		List<Service> servicesR = new ArrayList<Service>();
+		for (Service service : services) {
+			if((service.getValidation()!=null)&&(service.getRefusal()==null)&&(service.getFinished()!=null)) {
+				servicesR.add(service);
+			}
+		}
+		return servicesR;
+	}
+
+	@Override
+	public List<Service> listFieldServiceWaiting(int id) {
+		List<Service> services = aidao.getAllServiceField(id);
+		List<Service> servicesR = new ArrayList<Service>();
+		for (Service service : services) {
+			if((service.getValidation()==null)&&(service.getRefusal()==null)&&(service.getRupture()==null)&&(service.getFinished()==null)) {
+				servicesR.add(service);
+			}
+		}
+		return servicesR;
+	}
+
+	@Override
+	public List<Service> listFieldServiceRefusal(int id) {
+		List<Service> services = aidao.getAllServiceField(id);
+		List<Service> servicesR = new ArrayList<Service>();
+		for (Service service : services) {
+			if((service.getValidation()==null)&&(service.getRefusal()!=null)&&(service.getRupture()==null)&&(service.getFinished()==null)) {
+				servicesR.add(service);
+			}
+		}
+		return servicesR;
+	}
+
+	@Override
+	public List<Service> listFieldServiceInProgress(int id) {
+		List<Service> services = aidao.getAllServiceField(id);
+		List<Service> servicesR = new ArrayList<Service>();
+		for (Service service : services) {
+			if((service.getValidation()!=null)&&(service.getRefusal()==null)&&(service.getRupture()==null)&&(service.getFinished()==null)) {
+				servicesR.add(service);
+			}
+		}
+		return servicesR;
+	}
+
+	@Override
+	public List<Service> listFieldServiceFinish(int id) {
+		List<Service> services = aidao.getAllServiceField(id);
+		List<Service> servicesR = new ArrayList<Service>();
+		for (Service service : services) {
+			if((service.getValidation()!=null)&&(service.getRefusal()==null)&&(service.getFinished()!=null)) {
+				servicesR.add(service);
+			}
+		}
+		return servicesR;
 	}
 
 }

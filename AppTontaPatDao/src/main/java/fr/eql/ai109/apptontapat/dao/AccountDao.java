@@ -204,4 +204,22 @@ public class AccountDao extends GenericDao<Account> implements AccountIDao{
 		return (List<Service>)query.getResultList();
 	}
 
+	@Override
+	public List<Service> getAllServiceHerd(int id) {
+		Query query = em.createQuery("SELECT DISTINCT s "
+				+ "FROM Herd h JOIN Service s ON h.id = s.herd.id "
+				+ "WHERE h.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Service>)query.getResultList();
+	}
+
+	@Override
+	public List<Service> getAllServiceField(int id) {
+		Query query = em.createQuery("SELECT DISTINCT s "
+				+ "FROM Field f JOIN Service s ON f.id = s.field.id "
+				+ "WHERE f.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Service>)query.getResultList();
+	}
+
 }
