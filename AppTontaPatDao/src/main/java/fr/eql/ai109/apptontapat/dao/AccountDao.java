@@ -7,6 +7,9 @@ import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 import fr.eql.ai109.apptontapat.entity.Account;
+import fr.eql.ai109.apptontapat.entity.Field;
+import fr.eql.ai109.apptontapat.entity.Herd;
+import fr.eql.ai109.apptontapat.entity.Service;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.idao.AccountIDao;
 
@@ -56,6 +59,151 @@ public class AccountDao extends GenericDao<Account> implements AccountIDao{
 			account =accounts.get(0);
 		}
 		return account;
+	}
+
+
+	@Override
+	public List<Service> getFieldWaiting(int id) {
+		Query query = em.createQuery("SELECT DISTINCT s "
+				+ "FROM Field f JOIN Service s ON f.id = s.field.id "
+				+ "WHERE f.retret is null "
+				+ "AND s.validation is null "
+				+ "AND s.refusal is null "
+				+ "AND s.rupture is null "
+				+ "AND s.finished is null "
+				+ "AND f.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Service>)query.getResultList();		
+	}
+	
+
+	@Override
+	public List<Service> getFieldRefuse(int id) {
+		Query query = em.createQuery("SELECT DISTINCT s "
+				+ "FROM Field f JOIN Service s ON f.id = s.field.id "
+				+ "WHERE f.retret is null "
+				+ "AND s.validation is null "
+				+ "AND s.refusal is not null "
+				+ "AND s.rupture is null "
+				+ "AND s.finished is null "
+				+ "AND f.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Service>)query.getResultList();		
+	}
+	
+
+	@Override
+	public List<Service> getFieldEnCour(int id) {
+		Query query = em.createQuery("SELECT DISTINCT s "
+				+ "FROM Field f JOIN Service s ON f.id = s.field.id "
+				+ "WHERE f.retret is null "
+				+ "AND s.validation is not null "
+				+ "AND s.refusal is null "
+				+ "AND s.rupture is null "
+				+ "AND s.finished is null "
+				+ "AND f.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Service>)query.getResultList();		
+	}
+	
+
+	@Override
+	public List<Service> getFieldBreak(int id) {
+		Query query = em.createQuery("SELECT DISTINCT s "
+				+ "FROM Field f JOIN Service s ON f.id = s.field.id "
+				+ "WHERE f.retret is null "
+				+ "AND s.validation is not null "
+				+ "AND s.refusal is null "
+				+ "AND s.rupture is not null "
+				+ "AND s.finished is null "
+				+ "AND f.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Service>)query.getResultList();		
+	}
+	
+
+	@Override
+	public List<Service> getFieldFinish(int id) {
+		Query query = em.createQuery("SELECT DISTINCT s "
+				+ "FROM Field f JOIN Service s ON f.id = s.field.id "
+				+ "WHERE f.retret is null "
+				+ "AND s.validation is not null "
+				+ "AND s.refusal is null "
+				+ "AND s.rupture is null "
+				+ "AND s.finished is not null "
+				+ "AND f.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Service>)query.getResultList();		
+	}
+
+	@Override
+	public List<Service> getHerdWaiting(int id) {
+		Query query = em.createQuery("SELECT DISTINCT s "
+				+ "FROM Herd h JOIN Service s ON h.id = s.herd.id "
+				+ "WHERE h.withdraw is null "
+				+ "AND s.validation is null "
+				+ "AND s.refusal is null "
+				+ "AND s.rupture is null "
+				+ "AND s.finished is null "
+				+ "AND h.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Service>)query.getResultList();
+	}
+
+	@Override
+	public List<Service> getHerdRefuse(int id) {
+		Query query = em.createQuery("SELECT DISTINCT s "
+				+ "FROM Herd h JOIN Service s ON h.id = s.herd.id "
+				+ "WHERE h.withdraw is null "
+				+ "AND s.validation is null "
+				+ "AND s.refusal is not null "
+				+ "AND s.rupture is null "
+				+ "AND s.finished is null "
+				+ "AND h.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Service>)query.getResultList();
+	}
+
+	@Override
+	public List<Service> getHerdEnCour(int id) {
+		Query query = em.createQuery("SELECT DISTINCT s "
+				+ "FROM Herd h JOIN Service s ON h.id = s.herd.id "
+				+ "WHERE h.withdraw is null "
+				+ "AND s.validation is not null "
+				+ "AND s.refusal is null "
+				+ "AND s.rupture is null "
+				+ "AND s.finished is null "
+				+ "AND h.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Service>)query.getResultList();
+	}
+
+	@Override
+	public List<Service> getHerdBreak(int id) {
+		Query query = em.createQuery("SELECT DISTINCT s "
+				+ "FROM Herd h JOIN Service s ON h.id = s.herd.id "
+				+ "WHERE h.withdraw is null "
+				+ "AND s.validation is not null "
+				+ "AND s.refusal is null "
+				+ "AND s.rupture is not null "
+				+ "AND s.finished is null "
+				+ "AND h.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Service>)query.getResultList();
+	}
+
+	@Override
+	public List<Service> getHerdFinish(int id) {
+		Query query = em.createQuery("SELECT DISTINCT s "
+				+ "FROM Herd h JOIN Service s ON h.id = s.herd.id "
+				+ "WHERE h.withdraw is null "
+				+ "AND s.validation is not null "
+				+ "AND s.refusal is null "
+				+ "AND s.rupture is null "
+				+ "AND s.finished is not null "
+				+ "AND h.account.id = :idParam ");
+		query.setParameter("idParam",id);
+		return (List<Service>)query.getResultList();
 	}
 
 }

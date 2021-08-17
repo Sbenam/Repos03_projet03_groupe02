@@ -21,7 +21,10 @@ import javax.servlet.http.HttpSession;
 
 import fr.eql.ai109.apptontapat.entity.Account;
 import fr.eql.ai109.apptontapat.entity.EvacuateA;
+import fr.eql.ai109.apptontapat.entity.Field;
+import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.entity.Retret;
+import fr.eql.ai109.apptontapat.entity.Service;
 import fr.eql.ai109.apptontapat.entity.Slope;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.AccountIBusiness;
@@ -53,9 +56,20 @@ public class AccountManagedBean implements Serializable {
 	private String selectedEvacuatea ;
 	private EvacuateA evacuateavalue ;
 	private String selectedZipcode;
+	private List<Field> fields = new ArrayList<Field>();
+	private List<Service> waitserviceFields = new ArrayList<Service>();
+	private List<Service> encourServiceFields = new ArrayList<Service>();
+	private List<Service> finishServiceFields = new ArrayList<Service>();
+	private List<Service> refuseServiceFields = new ArrayList<Service>();
+	private List<Service> ruptureServiceFields = new ArrayList<Service>();
+	private List<Service> waitserviceHerds = new ArrayList<Service>();
+	private List<Service> encourServiceHerds = new ArrayList<Service>();
+	private List<Service> finishServiceHerds = new ArrayList<Service>();
+	private List<Service> refuseServiceHerds = new ArrayList<Service>();
+	private List<Service> ruptureServiceHerds = new ArrayList<Service>();
+	private List<Herd> herds = new ArrayList<Herd>();
 	
 	
-
 	@EJB
 	private AccountIBusiness accountIBusiness;
 	@EJB
@@ -245,8 +259,6 @@ public class AccountManagedBean implements Serializable {
 		return "simpleArch.xhtml"; 
 	}
 	
-	
-	
 	public String supprimer(List<EvacuateA> evacuateasList) {
 	
 		evacuateavalue = evacuateasList.get(Integer.parseInt(selectedEvacuatea)-1) ;
@@ -256,13 +268,64 @@ public class AccountManagedBean implements Serializable {
 		return "simpleArch.xhtml"; 
 	}
 	
-	
 	public void getAccountById(int id) {
 		account = new Account();
 		account = accountIBusiness.extraireCompteAvecId(id);
 		System.out.println("mon id account----------------" + id);
 		System.out.println("mon accountname----------------" + account.getName());
 	}
+	
+
+	public List<Service> getFieldWaiting(int id) {
+		waitserviceFields = accountIBusiness.getFieldWaiting(id);
+		return waitserviceFields;
+	}
+
+	public List<Service> getFieldRefuse(int id) {
+		refuseServiceFields = accountIBusiness.getFieldRefuse(id);
+		return refuseServiceFields;
+	}
+
+	public List<Service> getFieldEnCour(int id) {
+		encourServiceFields = accountIBusiness.getFieldEnCour(id);
+		return encourServiceFields;
+	}
+
+	public List<Service> getFieldBreak(int id) {
+		ruptureServiceFields = accountIBusiness.getFieldBreak(id);
+		return ruptureServiceFields;
+	}
+
+	public List<Service> getFieldFinish(int id) {
+		finishServiceFields = accountIBusiness.getFieldFinish(id);
+		return finishServiceFields;
+	}
+	
+	public List<Service> getHerdWaiting(int id) {
+		waitserviceHerds = accountIBusiness.getHerdWaiting(id);
+		return waitserviceHerds;
+	}
+
+	public List<Service> getHerdRefuse(int id) {
+		refuseServiceHerds = accountIBusiness.getHerdRefuse(id);
+		return refuseServiceHerds;
+	}
+
+	public List<Service> getHerdEnCour(int id) {
+		encourServiceHerds = accountIBusiness.getHerdEnCour(id);
+		return encourServiceHerds;
+	}
+
+	public List<Service> getHerdBreak(int id) {
+		ruptureServiceHerds = accountIBusiness.getHerdBreak(id);
+		return ruptureServiceHerds;
+	}
+
+	public List<Service> getHerdFinish(int id) {
+		finishServiceHerds = accountIBusiness.getHerdFinish(id);
+		return finishServiceHerds;
+	}
+
 
 	public String getName() {
 		return name;
@@ -360,25 +423,30 @@ public class AccountManagedBean implements Serializable {
 		this.nZipcode = nZipcode;
 	}
 
-
 	public List<String> getEvacuateas() {
 		return evacuateas;
 	}
-
 
 	public void setEvacuateas(List<String> evacuateas) {
 		this.evacuateas = evacuateas;
 	}
 
-
 	public String getSelectedEvacuatea() {
 		return selectedEvacuatea;
 	}
-
-
+	
 	public void setSelectedEvacuatea(String selectedEvacuatea) {
 		this.selectedEvacuatea = selectedEvacuatea;
 	}
 
+
+	public List<Service> getServiceFields() {
+		return waitserviceFields;
+	}
+
+
+	public void setServiceFields(List<Service> serviceFields) {
+		this.waitserviceFields = serviceFields;
+	}
 
 }

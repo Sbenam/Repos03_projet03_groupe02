@@ -1,8 +1,13 @@
 package fr.eql.ai109.apptontapat.controller;
 
 import java.io.Serializable;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -39,6 +44,8 @@ public class ServiceManagedBean implements Serializable {
 	private Incident incident;
 	private List<Incident> incidentsList ;
 	private List<String> datums  = new ArrayList<String>();
+	private Integer rating ;
+	private int serviceCost;
 
 	@EJB
 	private ServiceIBusiness serviceIBusiness;
@@ -51,6 +58,7 @@ public class ServiceManagedBean implements Serializable {
 	@EJB
 	private DatumIBusiness datumIBusiness ;
 	
+	
 	public List<Incident> getAllIncident() {
 		incidentsList = incidentIBusiness.extraireToutLesIncident();
 		return incidentsList ; 
@@ -60,7 +68,32 @@ public class ServiceManagedBean implements Serializable {
 		return datums ; 
 	}
 	
-	public void getServiceDetail(PageManageBean p,Service s) {
+	public void addService(Herd herd, Field field, PageManageBean p) {
+		Service service = new Service();
+		Random r = new Random();
+		service.setNbService(r.nextInt());
+
+		//nombre de jour * nombre de mouton * prix (serciceCost)
+		LocalDateTime fieldstartDateTime= LocalDateTime.ofInstant(field.getStarting().toInstant(),
+                ZoneId.systemDefault());
+		LocalDateTime fieldEndDateTime= LocalDateTime.ofInstant(field.getEnding().toInstant(),
+				ZoneId.systemDefault());
+
+		long nmbJour = Duration.between(fieldstartDateTime, fieldEndDateTime).toDays();
+		service.setCost((int) (serviceCost * nmbJour *herd.getSeize()));
+		service.setStarting(field.getStarting());
+		service.setBooking(new Date());
+		service.setEnding(field.getEnding());
+		service.setHerd(herd);
+		service.setField(field);
+
+		serviceIBusiness.ajoutPrestation(service);
+		getServiceDetail(p, service);
+
+	}
+
+	public void getServiceDetail(PageManageBean p, Service s) {
+
 		serviceSelect = s;
 		p.setPage("service_detail");
 	}
@@ -70,37 +103,61 @@ public class ServiceManagedBean implements Serializable {
 			serviceClean();
 		}
 		servicelist = serviceIBusiness.getAllByIdAccountField(id);
-
+		int i =0;
 		// repartition des listes
 		for (Service service : servicelist) {
-
+			
 			// si finished != null  et refus == null ==> Fini
-			if (service.getFinished() != null && service.getRefusal() == null) {
+			if (service.getFinished() != null && service.getRefusal() == null && service.getRupture() == null && service.getValidation() != null) {
 				System.out.println(service.getFinished());
 				System.out.println("fini");
+				System.out.println("----->"+service.getRefusal());
 				serviceTerminer.add(service);
+				System.out.println(i++);
+				System.out.println(service.getRefusal() == null);
+				System.out.println("ID : " + service.getId());
+				System.out.println("nb SERVICE : " + service.getNbService());
+				
 			}
 			// Si validation != null && finished == null && rupture == null ==> En cours
-			else if (service.getValidation() != null && service.getFinished() == null && service.getRupture() == null) {
+			else if (service.getFinished() == null && service.getRefusal() == null && service.getRupture() == null && service.getValidation() != null) {
 				System.out.println("en cour");
 				serviceEnCour.add(service);
+				System.out.println(i++);
+				System.out.println(service.getRefusal() == null);
+				System.out.println("ID : " + service.getId());
+				System.out.println("nb SERVICE : " + service.getNbService());
 			}
 			// si refus != null ==> annuler (Refuser)
-			else if (service.getValidation() != null && service.getRefusal() != null) {
+			else if (service.getFinished() == null && service.getRefusal() != null && service.getRupture() == null && service.getValidation() != null) {
 				System.out.println("refuser");
+				System.out.println("=====>"+service.getRefusal());
 				serviceRefuser.add(service);
+				System.out.println(i++);
+				System.out.println(service.getRefusal() == null);
+				System.out.println("ID : " + service.getId());
+				System.out.println("nb SERVICE : " + service.getNbService());
 			}
 			// Si validation = null && refus null === en attente
-			else if (service.getValidation() != null & service.getRefusal() == null) {
+			else if (service.getValidation() == null && service.getRefusal() == null && service.getRupture() == null && service.getValidation() == null) {
 				System.out.println("en attente");
 				serviceEnAttente.add(service);
+				System.out.println(i++);
+				System.out.println(service.getRefusal() == null);
+				System.out.println("ID : " + service.getId());
+				System.out.println("nb SERVICE : " + service.getNbService());
 			} else {
 				System.out.println("Id du sans statut" + service.getId());
 				System.out.println("Pas de statut sur cette prestation");
+				System.out.println(i++);
+				System.out.println(service.getRefusal() == null);
+				System.out.println("ID : " + service.getId());
+				System.out.println("nb SERVICE : " + service.getNbService());
 			}
-
+			System.out.println("=============================");
+			service = null;
 		}
-
+		System.out.println(i);
 		System.err.println("taille de la liste de service : " + servicelist.size());
 		return servicelist;
 	}
@@ -124,12 +181,11 @@ public class ServiceManagedBean implements Serializable {
 		return serviceIBusiness.search(field);
 	}
 
-	// TODO vin test
 	public List<Herd> searchTest() {
 		herds = serviceIBusiness.search(fieldIBusiness.extraireTerrainParId(15));
 		return herds;
 	}
-	// TODO vin test
+
 	public List<Float> distance() {
 		dists = serviceIBusiness.distanceBU(fieldIBusiness.extraireTerrainParId(15));
 		return dists;
@@ -219,6 +275,7 @@ public class ServiceManagedBean implements Serializable {
 		this.servicelist = servicelist;
 	}
 
+
 	public Incident getIncident() {
 		return incident;
 	}
@@ -239,6 +296,21 @@ public class ServiceManagedBean implements Serializable {
 	}
 	public void setDatums(List<String> datums) {
 		this.datums = datums;
+	}
+	public Integer getRating() {
+		return rating;
+	}
+	public void setRating(Integer rating) {
+		this.rating = rating;
+	}
+
+
+	public int getServiceCost() {
+		return serviceCost;
+	}
+
+	public void setServiceCost(int serviceCost) {
+		this.serviceCost = serviceCost;
 	}
 
 }

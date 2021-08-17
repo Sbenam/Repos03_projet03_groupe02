@@ -1,6 +1,8 @@
 package fr.eql.ai109.apptontapat.controller;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,12 +12,18 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import fr.eql.ai109.apptontapat.entity.Composition;
+import fr.eql.ai109.apptontapat.entity.Enclosure;
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.entity.Race;
-
+import fr.eql.ai109.apptontapat.entity.GlassHeight;
+import fr.eql.ai109.apptontapat.entity.Humidity;
 import fr.eql.ai109.apptontapat.entity.Retret;
+import fr.eql.ai109.apptontapat.entity.Shelter;
 import fr.eql.ai109.apptontapat.entity.Slope;
+import fr.eql.ai109.apptontapat.entity.Vegetation;
+import fr.eql.ai109.apptontapat.entity.Water;
 import fr.eql.ai109.apptontapat.entity.ZipCode;
 import fr.eql.ai109.apptontapat.ibusiness.CompositionIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.EnclosureIbusiness;
@@ -46,12 +54,16 @@ public class FieldManagedBean implements Serializable {
 	private List<String> slopes = new ArrayList<String>();
 	private String selectedSlope ;
 	private Slope slopevalue;
+	private int intSelectedSlope;
 	private List<String> grasses = new ArrayList<String>();
 	private String selectedGrass;
+	private int intSelectedGrass;
 	private List<String> humidities = new ArrayList<String>();
 	private String selectedHumidity;
+	private int intSelectedHumidity;
 	private List<String> Veggies = new ArrayList<String>();
 	private String selectedVeggy;
+	private int intSelectedVeggy;
 	private List<String> compos = new ArrayList<String>();
 	private String selectedCompo;
 	private List<String> enclosures = new ArrayList<String>();
@@ -59,12 +71,24 @@ public class FieldManagedBean implements Serializable {
 	private List<String> waters = new ArrayList<String>();
 	private String selectedWater;
 	private List<String> shelters = new ArrayList<String>();
-	private String selectedShelter;
+	private int intSelectedCompo;
 	private List<String> retrets = new ArrayList<String>();
-	private String selectedRetret;
 	private Retret retretvalue;
+	private int selectEnclosure;
+	private String selectWater;
+	private int intselectWater;
 	private ZipCode zipID;
 	private String zipcode;
+	private String selectedRetret;
+	private String selectedShelter;
+	private int intSelectedShelter;
+	private String selectedStarting;
+	private String selectedEnding;
+	Date dstarting;
+	Date dending;
+	private String selectedName;
+	private String selectedAdress;
+	private int selectedSurface;
 
 	@EJB
 	private FieldIBusiness fieldIBusiness;
@@ -79,15 +103,17 @@ public class FieldManagedBean implements Serializable {
 	@EJB
 	private CompositionIBusiness compoIBusiness;
 	@EJB
-	private ShelterIBusiness shelterIBusiness;
-	@EJB
 	private EnclosureIbusiness enclosureIBusiness ;
-	@EJB
-	private WaterIBusiness waterIBusiness;
 	@EJB
 	private ZipCodeIBusiness zipCodeIBusiness;
 	@EJB
 	private RetretIBusiness retretIBusiness;
+	@EJB
+	private EnclosureIbusiness enclosureIbusiness;
+	@EJB
+	private WaterIBusiness waterIBusiness;
+	@EJB
+	private ShelterIBusiness shelterIBusiness;
 
 
 	@PostConstruct
@@ -103,6 +129,94 @@ public class FieldManagedBean implements Serializable {
 		retrets = retretIBusiness.extraireToutLesRetretLabels();
 		zipID = getCityWithZipCodeID();
 		getCityWithZipCodeCode(zipcode);
+	}
+
+	public List<Shelter> getListShelter() {
+		return shelterIBusiness.extraireToutLesShelters();
+	}
+
+	public List<Water> getListWater() {
+		return waterIBusiness.extraireToutLesWater();
+	}
+
+	public List<Enclosure> getListEnclosure() {
+		return enclosureIbusiness.extraireToutesLesEnclosures();
+	}
+
+	public List<Composition> getListComposition() {
+		return compoIBusiness.extraireToutesLesComposition();
+	}
+
+	public List<Vegetation> getListVegetation() {
+		return veggyIBusiness.extraireToutesLesVegetation();
+	}
+
+	public List<Humidity> getListHumidity() {
+		return humidityIBusiness.extraireToutLesHumidity();
+	}
+
+	public List<Slope> getListSlope() {
+		return slopeIBusiness.extraireToutLesSlopes();
+	}
+
+	public List<GlassHeight> getListGrass() {
+		return grassIBusiness.extraireToutLesGlassHeight();
+	}
+
+	public List<Shelter> getShelter() {
+		return shelterIBusiness.extraireToutLesShelters();
+	}
+
+	public List<Water> getWater() {
+		return waterIBusiness.extraireToutLesWater();
+	}
+
+	public List<Enclosure> getEnclosure() {
+		return enclosureIbusiness.extraireToutesLesEnclosures();
+	}
+
+	public void addFieldP3(PageManageBean p, AccountManagedBean mbaccount) {
+		field.setAccount(mbaccount.getAccount());
+		field.setAdding(new Date());
+
+		try {
+			dstarting = new SimpleDateFormat("yyyy-MM-dd").parse(selectedStarting);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			dending = new SimpleDateFormat("yyyy-MM-dd").parse(selectedEnding);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		field.setStarting(dstarting);
+		field.setEnding(dending);
+		fieldIBusiness.ajoutTerrain(field);
+		selectField = field;
+		p.setPage2("blank");
+		p.setPage("terrain_detail");
+	}
+
+	public void addFieldP2(PageManageBean p) {
+		field.setShelter(getListShelter().get(intSelectedShelter));
+		field.setWater(getListWater().get(intselectWater));
+		field.setEnclosure(getListEnclosure().get(selectEnclosure));
+		field.setComposition(getListComposition().get(intSelectedCompo));
+		field.setVegetation(getListVegetation().get(intSelectedVeggy));
+		field.setHumidity(getListHumidity().get(intSelectedHumidity));
+		field.setSlope(getListSlope().get(intSelectedSlope));
+		field.setGlassheight(getListGrass().get(intSelectedGrass));
+		p.setPage2("addfield3");
+	}
+
+	public void addFieldP1(PageManageBean p) {
+		System.out.println("zipcode : " + zipcode);
+		field.setAdress(selectedAdress);
+		field.setName(selectedName);
+		field.setZipcode(getCityWithZipCodeCode(zipcode));
+		field.setSurface(selectedSurface);
+		field.setPhoto("https://cdn.pixabay.com/photo/2021/07/11/10/39/fantasy-6403406_960_720.jpg");
+		p.setPage2("addfield2");
 	}
 
 	public void shearchForField(PageManageBean pageManageBean) {
@@ -124,12 +238,14 @@ public class FieldManagedBean implements Serializable {
 
 	}
 
+	public void cleanField() {
+		field = new Field();
+	}
+
 	public List<Field> getAllByIdAccount(int id) {
 		allField = getAllFieldByIdAccount(id);
-//		selectField = new Field();
 		if (selectField.getAccount() == null & allField != null) {
 			selectField = allField.get(0);
-			System.out.println("------------selecfield reprend la valeur du terrain 0----------------");
 		}
 		return allField;
 	}
@@ -322,7 +438,6 @@ public class FieldManagedBean implements Serializable {
 	}
 
 	public Field getSelectField() {
-		System.out.println("Valeur tu terrain selectioner mis a jour a  : " + selectIdField);
 		return selectField;
 	}
 
@@ -382,11 +497,123 @@ public class FieldManagedBean implements Serializable {
 		this.shelters = shelters;
 	}
 
+	public int getSelectEnclosure() {
+		return selectEnclosure;
+	}
+
+	public void setSelectEnclosure(int selectEnclosure) {
+		this.selectEnclosure = selectEnclosure;
+	}
+
+	public String getSelectWater() {
+		return selectWater;
+	}
+
+	public void setSelectWater(String selectWater) {
+		this.selectWater = selectWater;
+	}
+
 	public String getSelectedShelter() {
 		return selectedShelter;
 	}
 
 	public void setSelectedShelter(String selectedShelter) {
 		this.selectedShelter = selectedShelter;
+	}
+
+	public String getSelectedStarting() {
+		return selectedStarting;
+	}
+
+	public void setSelectedStarting(String selectedStarting) {
+		this.selectedStarting = selectedStarting;
+	}
+
+	public String getSelectedEnding() {
+		return selectedEnding;
+	}
+
+	public void setSelectedEnding(String selectedEnding) {
+		this.selectedEnding = selectedEnding;
+	}
+
+	public int getIntSelectedGrass() {
+		return intSelectedGrass;
+	}
+
+	public void setIntSelectedGrass(int intSelectedGrass) {
+		this.intSelectedGrass = intSelectedGrass;
+	}
+
+	public int getIntSelectedSlope() {
+		return intSelectedSlope;
+	}
+
+	public void setIntSelectedSlope(int intSelectedSlope) {
+		this.intSelectedSlope = intSelectedSlope;
+	}
+
+	public int getIntselectWater() {
+		return intselectWater;
+	}
+
+	public void setIntselectWater(int intselectWater) {
+		this.intselectWater = intselectWater;
+	}
+
+	public int getIntSelectedVeggy() {
+		return intSelectedVeggy;
+	}
+
+	public void setIntSelectedVeggy(int intSelectedVeggy) {
+		this.intSelectedVeggy = intSelectedVeggy;
+	}
+
+	public int getIntSelectedHumidity() {
+		return intSelectedHumidity;
+	}
+
+	public void setIntSelectedHumidity(int intSelectedHumidity) {
+		this.intSelectedHumidity = intSelectedHumidity;
+	}
+
+	public int getIntSelectedCompo() {
+		return intSelectedCompo;
+	}
+
+	public void setIntSelectedCompo(int intSelectedCompo) {
+		this.intSelectedCompo = intSelectedCompo;
+	}
+
+	public int getIntSelectedShelter() {
+		return intSelectedShelter;
+	}
+
+	public void setIntSelectedShelter(int intSelectedShelter) {
+		this.intSelectedShelter = intSelectedShelter;
+	}
+
+	public String getSelectedName() {
+		return selectedName;
+	}
+
+	public void setSelectedName(String selectedName) {
+		this.selectedName = selectedName;
+	}
+
+	public String getSelectedAdress() {
+		return selectedAdress;
+	}
+
+	public void setSelectedAdress(String selectedAdress) {
+		this.selectedAdress = selectedAdress;
+	}
+
+	public int getSelectedSurface() {
+		return selectedSurface;
+	}
+
+	public void setSelectedSurface(int selectedSurface) {
+		this.selectedSurface = selectedSurface;
 	}
 }

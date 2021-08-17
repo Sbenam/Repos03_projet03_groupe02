@@ -28,6 +28,11 @@ h2 {
     font-family: 'PT Sans', sans-serif;
 }
 
+.footer{
+	padding-top: 1em;
+	padding-bottom: 2em;
+}
+
 .navbar {
     background-color: var(--white);
 }
@@ -221,7 +226,7 @@ div.col-3:nth-child(even) {
     background-color: var(--bs-light);
 
     top: 2em;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 3px;
@@ -298,7 +303,46 @@ min-height: 100vh;
    
     backdrop-filter: grayscale(1);
 }
-
+/*  
+		 * Rating styles
+		 */
+		.rating {
+			width: 226px;
+			margin: 0 auto 1em;
+			font-size: 45px;
+			overflow:hidden;
+		}
+.rating input {
+  float: right;
+  opacity: 0;
+  position: absolute;
+}
+		.rating a,
+    .rating label {
+			float:right;
+			color: #aaa;
+			text-decoration: none;
+			-webkit-transition: color .4s;
+			-moz-transition: color .4s;
+			-o-transition: color .4s;
+			transition: color .4s;
+		}
+.rating label:hover ~ label,
+.rating input:focus ~ label,
+.rating label:hover,
+		.rating a:hover,
+		.rating a:hover ~ a,
+		.rating a:focus,
+		.rating a:focus ~ a		{
+			color: orange;
+			cursor: pointer;
+		}
+		.rating2 {
+			direction: rtl;
+		}
+		.rating2 a {
+			float:none
+		}
 
 .conexion-popupIncident {
     position: fixed;

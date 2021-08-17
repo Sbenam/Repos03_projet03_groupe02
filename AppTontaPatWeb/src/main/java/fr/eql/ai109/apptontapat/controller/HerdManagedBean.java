@@ -133,8 +133,6 @@ public String supprimer(List<TakeOut> takeoutsList) {
 
 	public void getHerdById(int id) {
 		herd = herdIBusiness.extraireTroupeauParId(id);
-		
-
 	}
 
 	public Herd getHerd() {
