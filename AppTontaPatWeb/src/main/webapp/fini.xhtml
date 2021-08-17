@@ -83,44 +83,6 @@
 					</div>
 				</div>
 			</ui:repeat>
-			<ui:repeat var="b" value="#{mbAccount.getHerdBreak(mbAccount.account.id)}"
-				varStatus="status">
-				<div class="card" style="width: 18rem">
-					<div class="card-body align-left">
-						<h5 class="card-title">
-							<h:outputText value="#{b.field.name}"></h:outputText>
-						</h5>
-						<h:graphicImage styleClass="img-thumbnail"
-							value="#{b.field.photo}"></h:graphicImage>
-						<p class="card-text">
-							<span class="color-green-primary">Ville : </span>
-							<h:outputText value="#{b.field.zipcode.label}"></h:outputText>
-						</p>
-						<p class="card-text">
-							<span class="color-green-primary">Surface : </span>
-							<h:outputText value="#{b.field.surface}"></h:outputText>
-						</p>
-						<p class="card-text">
-							<span class="color-green-primary">Debut : </span>
-							<h:outputText value="#{b.field.starting}"></h:outputText>
-						</p>
-						<p class="card-text">
-							<span class="color-green-primary">Fin : </span>
-							<h:outputText value="#{b.field.ending}"></h:outputText>
-						</p>
-												<h:form>
-							<f:ajax render=":contentPage">
-								<h:commandLink styleClass="card-link-hover" value=""
-									action="#{mbService.getServiceDetail(PageManageBean,s)}">
-
-								</h:commandLink>
-							</f:ajax>
-						</h:form>
-					</div>
-				</div>
-			</ui:repeat>
-			
-			
 			
 		</div>
 	</div>
