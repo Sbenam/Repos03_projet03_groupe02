@@ -15,7 +15,7 @@
 					<div>
 						<h3
 							style="margin-bottom: 39px; border-bottom: solid 1px orange; width: fit-content;">
-							Terrain selectioner
+							Terrain sélectionné : 
 							<h:outputText value="#{mbField.selectField.name}"></h:outputText>
 						</h3>
 
@@ -29,7 +29,7 @@
 										style="background-image: url(https://cdn.pixabay.com/photo/2017/05/07/15/41/sheep-2292802__340.jpg); min-height: 200px; display: block; background-size: cover; background-position: center;">
 									</span>
 									<div style="position: absolute; top: 40%; left: 30px;">
-										<h2 class="label-carousel">Liste des troupeau disponible</h2>
+										<h2 class="label-carousel">Liste des troupeaux disponibles</h2>
 									</div>
 								</div>
 								<ui:repeat var="h" value="#{mbHerd.getAllHerd()}">
@@ -62,7 +62,7 @@
 						<!-- liste des troupeau -->
 						<h3
 							style="padding-top: 50px; border-bottom: solid 1px orange; width: fit-content;">Liste
-							des troupeaux disponible</h3>
+							des troupeaux disponibles</h3>
 						<ui:repeat var="h" value="#{mbHerd.getAllHerd()}">
 							<!-- construit les données gps -->
 							<h:inputHidden pt:class="herdlong" value="#{h.zipcode.longitude}" />
@@ -88,7 +88,7 @@
 												<h:outputText value="#{h.seize}" />
 											</p>
 											<p class="card-text">
-												<small class="text-muted">Ajouter le <h:outputText
+												<small class="text-muted">Ajouté le <h:outputText
 														value="#{h.adding}" /></small>
 											</p>
 										</div>
