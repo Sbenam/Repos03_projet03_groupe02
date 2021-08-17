@@ -2,72 +2,65 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	>
-<div class="popup-containerAjoutField" id="container">
-	<section class="conexion-popupAjout">
-		<div class="container-fluid">
-			<div class="row justify-content-md-center">
-				<div class="col-1"></div>
-				<h:form>
-				<f:ajax render=":pagefooter2">
-					<button id="close" class="popup-buttonAjout">
-						<h:commandLink styleClass="dropdown-item" value=""
-							action="#{PageManageBean.setPage2('blank')}">
-							<i class="far fa-window-close"></i>
-						</h:commandLink>
-					</button>
-				</f:ajax>
-			</h:form>
-				
-				<div class="col-9">
-					
-					<h3 class="mt-5">Ajouter un terrain</h3>
-					<H5>Pour profiter des services d'écopâturages près de chez vous</H5>
-					<div class="mb-3 align-left">
-					
-					
-					
-					
-						<label for="nameInput" class="form-label">Nom du terrain :</label><input
-							type="name" class="form-control" id="nameInput"
-							placeholder="Jardin de mamie" /> <label for="adresseInput"
-							class="form-label ">Adresse du terrain :</label><input
-							type="adresse" class="form-control" id="adresseInput" placeholder="9 bd du Générale de Gaulle" />
-							
-							
-							<label for="nameInput" class="form-label">Code postal du terrain :</label><input
-							type="name" class="form-control w-25" id="nameInput"
-							placeholder="92300" /> 
-							
-							
-							<input class="form-control w-50" type="text" value="Ville" aria-label="Ville" disabled="true" />
-						
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	<div class="popup-containerAjoutField" id="container"
+		style="background-image: none; filter: opacity(0.8);">
+		<section class="conexion-popupAjout">
+			<div class="container-fluid">
+				<div class="row justify-content-md-center">
+					<div class="col-1"></div>
+					<!-- bouton de fermeture -->
+					<h:form>
+						<f:ajax render=":pagefooter2">
+							<button id="close" class="popup-buttonAjout">
+								<h:commandLink styleClass="dropdown-item" value=""
+									action="#{PageManageBean.setPage2('blank')}">
+									<i class="far fa-window-close"></i>
+								</h:commandLink>
+							</button>
+						</f:ajax>
+					</h:form>
 
-							<label for="nameInput" class="form-label ">Surface du terrain : </label>
-<div class="input-group w-25">
-<input type="text" class="form-control w-25" placeholder="1000" />
-  <div class="input-group-append">
-    <span class="input-group-text" id="">m²</span>
-  </div>
-  
 
-</div>
-
-<hr/>
-					</div>
-					<div class="d-grid gap-2">
-						<button class="btn btn-primary " type="submit">
+					<!-- field = new field() -->
+					<h:inputHidden value="#{mbField.cleanField()}"></h:inputHidden>
+					<div class="col-9">
+						<h3 class="mt-5">Ajouter un terrain</h3>
+						<H5>Pour profiter des services d'écopâturages près de chez
+							vous</H5>
+						<div class="mb-3 align-left">
+								<h:form id="addfield2">
 							<f:ajax render=":pagefooter2">
-								<h:commandLink styleClass="" value="Etape 2/3"
-									action="#{PageManageBean.setPage2('addfield2')}"></h:commandLink>
+									<label for="nameInput" class="form-label">Nom du
+										terrain :</label>
+									<h:inputText styleClass="form-control" id="nameInput"
+										value="#{mbField.selectedName}" placeholder="Jardin de mamie"></h:inputText>
+									<label for="adresseInput" class="form-label ">Adresse
+										du terrain :</label>
+									<h:inputText styleClass="form-control" id="adresseInput"
+										value="#{mbField.selectedAdress}"
+										placeholder="9 bd du Générale de Gaulle"></h:inputText>
+									<label for="nameInput" class="form-label">Code postal
+										du terrain :</label>
+									<!-- 	attention a la recuperation du zipcode -->
+									<h:inputText styleClass="form-control" id="zipcodeInputfield"
+										value="#{mbField.zipcode}" placeholder="92300"></h:inputText>
+
+									<label for="nameInput" class="form-label ">Surface du
+										terrain : </label>
+									<h:inputText styleClass="form-control" id="zipcodeInput"
+										value="#{mbField.selectedSurface}" pt:type="number" placeholder="1000"></h:inputText>
+
+									<div class="d-grid gap-2">
+										<h:commandLink styleClass="btn btn-primary " value="Etape 1/3"
+											action="#{mbField.addFieldP1(PageManageBean)}"></h:commandLink>
+									</div>
 							</f:ajax>
-						</button>
+								</h:form>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-
-	</section>
-</div>
-
+		</section>
+	</div>
 </ui:composition>

@@ -3,124 +3,136 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<div class="popup-containerAjoutField" id="container">
-	<section class="conexion-popupAjout">
-		<div class="container-fluid">
-			<div class="row justify-content-md-center">
-				<div class="col-1"></div>
-				<h:form>
-				<f:ajax render=":pagefooter2">
-					<button id="close" class="popup-buttonAjout">
-						<h:commandLink styleClass="dropdown-item" value=""
-							action="#{PageManageBean.setPage2('blank')}">
-							<i class="far fa-window-close"></i>
-						</h:commandLink>
-					</button>
-				</f:ajax>
-			</h:form>
-				
-				<div class="col-9">
-					
-					<h3 class="mt-5">Ajouter un terrain</h3>
-					<div class="mb-3 align-left">
-						
-		
-							
-		  <h:form>
-<div class="form-group col-md-4">
-    <h:outputLabel for="grass" value="Hauteur d'herbe :"/>
-    <h:selectOneMenu id="grass" class="form-control" value="{mbField.selectedGrass}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbField.grasses}"></f:selectItems>
-      </h:selectOneMenu>
-   
-  </div>
-  
-  
-   <div class="form-group col-md-4">
-    <h:outputLabel for="slope" value="Pente :"/>
-    <h:selectOneMenu id="slope" class="form-control" value="{mbField.selectedSlope}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbField.slopes}"></f:selectItems>
-      </h:selectOneMenu>
-   
-  </div> 
-  
-  <div class="form-group col-md-4">
-    <h:outputLabel for="humidity" value="Humidité :"/>
-    <h:selectOneMenu id="humidity" class="form-control" value="{mbField.selectedHumidity}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbField.humidities}"></f:selectItems>
-      </h:selectOneMenu>
-   
-  </div>
-  
- <div class="form-group col-md-4">
-    <h:outputLabel for="veggie" value="Végétation :"/>
-    <h:selectOneMenu id="veggie" class="form-control" value="{mbField.selectedVeggy}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbField.veggies}"></f:selectItems>
-      </h:selectOneMenu>
-   
-  </div>
-  
-  <div class="form-group col-md-4">
-    <h:outputLabel for="composition" value="Composition :"/>
-    <h:selectOneMenu id="composition" class="form-control" value="{mbField.selectedCompo}" >
-    <f:selectItem itemLabel="Selectionnez : " itemValue="" noSelectionOption="true"></f:selectItem>
-	<f:selectItems value="#{mbField.compos}"></f:selectItems>
-      </h:selectOneMenu>
-   
-  </div>
-  			
-  </h:form>
-		
-		<div style="display:inline-block;">				
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-  <label class="form-check-label" for="flexSwitchCheckDefault"
-    >Clôture</label
-  >
-</div>
-
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-  <label class="form-check-label" for="flexSwitchCheckDefault"
-    >Eau à disposition</label
-  >
-</div>
-
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-  <label class="form-check-label" for="flexSwitchCheckDefault"
-    >Présence d'abri</label
-  >
-</div>
-</div>
-
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-  <label class="form-check-label" for="flexSwitchCheckDefault"
-    >Accessibilité</label
-  ><p>Si l'accessibilité est difficile, veuillez le préciser dans la description à la prochaine étape</p>
-</div>
-							
-							
-				<hr/>			
-							
-						<div class="d-grid gap-2">
-							<button class="btn btn-primary " type="submit">
-								<f:ajax render=":pagefooter2">
-									<h:commandLink styleClass="" value="Etape 3/3"
-										action="#{PageManageBean.setPage2('addfield3')}"></h:commandLink>
-								</f:ajax>
+	<div class="popup-containerAjoutField" id="container"
+		style="background-image: none; filter: opacity(0.8);">
+		<section class="conexion-popupAjout">
+			<div class="container-fluid">
+				<div class="row justify-content-md-center">
+					<div class="col-1"></div>
+					<h:form>
+						<f:ajax render=":pagefooter2">
+							<button id="close" class="popup-buttonAjout">
+								<h:commandLink styleClass="dropdown-item" value=""
+									action="#{PageManageBean.setPage2('blank')}">
+									<i class="far fa-window-close"></i>
+								</h:commandLink>
 							</button>
+						</f:ajax>
+					</h:form>
+
+					<div class="col-9">
+
+						<h3 class="mt-5">Ajouter un terrain</h3>
+						<div class="mb-3 align-left">
+
+							<f:ajax render=":pagefooter2">
+								<h:form>
+									<div class="form-group col-md-4">
+										<h:outputLabel for="grass" value="Hauteur d'herbe :" />
+										<h:selectOneMenu id="grass" class="form-control"
+											value="{mbField.intSelectedGrass}">
+											<f:selectItem itemLabel="Selectionnez : " itemValue=""
+												noSelectionOption="true"></f:selectItem>
+											<f:selectItems value="#{mbField.getListGrass()}" var="g"
+												itemValue="#{g.id}" itemLabel="#{g.label}"></f:selectItems>
+										</h:selectOneMenu>
+									</div>
+
+
+									<div class="form-group col-md-4">
+										<h:outputLabel for="slope" value="Pente :" />
+										<h:selectOneMenu id="slope" class="form-control"
+											value="{mbField.intSelectedSlope}">
+											<f:selectItem itemLabel="Selectionnez : " itemValue=""
+												noSelectionOption="true"></f:selectItem>
+											<f:selectItems value="#{mbField.getListSlope()}" var="s"
+												itemValue="#{s.id}" itemLabel="#{s.label}"></f:selectItems>
+										</h:selectOneMenu>
+
+									</div>
+
+									<div class="form-group col-md-4">
+										<h:outputLabel for="humidity" value="Humidité :" />
+										<h:selectOneMenu id="humidity" class="form-control"
+											value="{mbField.intSelectedHumidity}">
+											<f:selectItem itemLabel="Selectionnez : " itemValue=""
+												noSelectionOption="true"></f:selectItem>
+											<f:selectItems value="#{mbField.getListHumidity()}" var="h"
+												itemValue="#{h.id}" itemLabel="#{h.label}"></f:selectItems>
+										</h:selectOneMenu>
+
+									</div>
+
+									<div class="form-group col-md-4">
+										<h:outputLabel for="veggie" value="Végétation :" />
+										<h:selectOneMenu id="veggie" class="form-control"
+											value="{mbField.intSelectedVeggy}">
+											<f:selectItem itemLabel="Selectionnez : " itemValue=""
+												noSelectionOption="true"></f:selectItem>
+											<f:selectItems value="#{mbField.getListVegetation()}" var="v"
+												itemValue="#{v.id}" itemLabel="#{v.label}"></f:selectItems>
+										</h:selectOneMenu>
+
+									</div>
+
+									<div class="form-group col-md-4">
+										<h:outputLabel for="composition" value="Composition :" />
+										<h:selectOneMenu id="composition" class="form-control"
+											value="{mbField.intSelectedCompo}">
+											<f:selectItem itemLabel="Selectionnez : " itemValue=""
+												noSelectionOption="true"></f:selectItem>
+											<f:selectItems value="#{mbField.getListComposition()}"
+												var="c" itemValue="#{c.id}" itemLabel="#{c.label}"></f:selectItems>
+										</h:selectOneMenu>
+
+									</div>
+
+									<div class="form-group col-md-4">
+										<h:outputLabel for="enclos" value="Enclos :" />
+										<h:selectOneMenu id="enclos" class="form-control"
+											value="{mbField.selectEnclosure}">
+											<f:selectItem itemLabel="Selectionnez : " itemValue=""
+												noSelectionOption="true"></f:selectItem>
+											<f:selectItems value="#{mbField.getListEnclosure()}"
+												var="enc" itemValue="#{enc.id}" itemLabel="#{enc.label}"></f:selectItems>
+										</h:selectOneMenu>
+
+									</div>
+
+									<div class="form-group col-md-4">
+										<h:outputLabel for="water" value="Accès à l'eau :" />
+										<h:selectOneMenu id="water" class="form-control"
+											value="{mbField.intselectWater}">
+											<f:selectItem itemLabel="Selectionnez : " itemValue=""
+												noSelectionOption="true"></f:selectItem>
+											<f:selectItems value="#{mbField.getListWater()}" var="wat"
+												itemValue="#{wat.id}" itemLabel="#{wat.label}"></f:selectItems>
+										</h:selectOneMenu>
+									</div>
+
+									<div class="form-group col-md-4">
+										<h:outputLabel for="shelter" value="Abris :" />
+										<h:selectOneMenu id="shelter" class="form-control"
+											value="{mbField.intSelectedShelter}">
+											<f:selectItem itemLabel="Selectionnez : " itemValue=""
+												noSelectionOption="true"></f:selectItem>
+											<f:selectItems value="#{mbField.getListShelter()}" var="sh"
+												itemValue="#{sh.id}" itemLabel="#{sh.label}"></f:selectItems>
+										</h:selectOneMenu>
+									</div>
+
+
+									<div class="d-grid gap-2">
+										<h:commandLink styleClass="btn btn-primary " value="Etape 2/3"
+											action="#{mbField.addFieldP2(PageManageBean)}"></h:commandLink>
+									</div>
+								</h:form>
+							</f:ajax>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-</div>
+		</section>
+	</div>
 
 </ui:composition>
