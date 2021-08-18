@@ -37,30 +37,27 @@
 								style="position: absolute; left: 110px;">★</a>
 						</div>
 						<!-- Formulaire -->
-						<h:form>
-							<h:inputText pt:type="range" styleClass="form-range"
-								pt:id="customRange1" pt:min="0" pt:max="4"
-								value="#{mbService.selectEvaluation}" />
-
-							<div class="form-group col-md-12">
-
-								<div class="form-group">
-									<label for="exampleFormControlTextarea1">Description :</label>
-									<h:inputTextarea styleClass="form-control"
-										pt:id="exampleFormControlTextarea1" rows="3"
-										value="#{mbService.desccriptionevaluate}"></h:inputTextarea>
+						<f:ajax render=":contentPage">
+							<h:form>
+								<h:inputText pt:type="range" styleClass="form-range"
+									pt:id="customRange1" pt:min="0" pt:max="4"
+									value="#{mbService.selectEvaluation}" />
+								<div class="form-group col-md-12">
+									<div class="form-group">
+										<label for="exampleFormControlTextarea1">Description :</label>
+										<h:inputTextarea styleClass="form-control"
+											pt:id="exampleFormControlTextarea1" rows="3"
+											value="#{mbService.desccriptionevaluate}"></h:inputTextarea>
+									</div>
 								</div>
-							</div>
-
-							<div class="d-grid gap-2">
-
-								<button class="btn btn-primary w-25" type="submit">
+								<div class="d-grid gap-2">
 									<h:commandLink
 										styleClass="dropdown-item btn btn-primary text-white"
-										value="Annuler" action="#{mbService.finish(ServicePageMBean)}">
+										value="Annuler" action="#{mbService.ratingService(ServicePageMBean)}">
 									</h:commandLink>
-							</div>
-						</h:form>
+								</div>
+							</h:form>
+						</f:ajax>
 					</div>
 				</div>
 			</div>
