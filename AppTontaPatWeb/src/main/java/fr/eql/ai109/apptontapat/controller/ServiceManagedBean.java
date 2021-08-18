@@ -121,10 +121,8 @@ public class ServiceManagedBean implements Serializable {
 	}
 
 	public List<Clocking> getAllClocking() {
-//		List<Clocking> clockingService = clockingIBusiness.extraireTouteLesraces();
 		List<Clocking> clockingService = new ArrayList<Clocking>();
-		clockingService = clockingIBusiness.extraireTouteLesraces();
-
+		clockingService = clockingIBusiness.extraireTouteLesClockingViaIdService(serviceSelect.getId());
 		return clockingService;
 	}
 
