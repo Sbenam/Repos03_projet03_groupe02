@@ -122,7 +122,8 @@ public class ServiceManagedBean implements Serializable {
 		System.out.println("test de la valeur: " + selectRefusal);
 		System.out.println("Service selected id: " + serviceSelect.getId());
 		serviceSelect.setRefusal(getAllRefusal().get(Integer.parseInt(selectRefusal)));
-		//manque update
+		serviceSelect.setPayment(new Date());
+		serviceIBusiness.mettreAJourUnePrestation(serviceSelect);
 		p.setServiceViewPopup("blank");
 		p.setServiceView("annuler");
 	}
