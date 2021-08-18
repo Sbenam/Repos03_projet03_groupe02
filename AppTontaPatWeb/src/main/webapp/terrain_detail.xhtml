@@ -80,10 +80,7 @@
 									<span class="color-green-primary">Abri</span> <em
 										class="fas fa-window-close"></em>
 								</p>
-								<p>
-									<span class="color-green-primary">Accessibilité</span> <em
-										class="fas fa-check-square"></em>
-								</p>
+								
 							</div>
 
 						</div>
@@ -98,10 +95,7 @@
 						<div
 							style="display: flex; flex-direction: column; margin-left: 1em; max-width: 40%;">
 
-							<p style="">Lorem ipsum dolor sit amet consectetur,
-								adipisicing elit. In autem beatae, animi facere illo, expedita
-								quisquam optio enim error iste quibusdam laborum debitis
-								laudantium ab fuga</p>
+							<p style="">#{mbField.selectField.description}</p>
 
 
 							<div class="button-modifier-terrain" style="place-self: center;">
@@ -137,14 +131,13 @@
 									<h5 class="card-title">
 										<h:outputText value="#{f.name}"></h:outputText>
 									</h5>
-									<p class="card-text">Some quick example text to build on
-										the card title and make up the bulk of the card's content.</p>
+									<p class="card-text">#{f.description}</p>
 								</div>
 								<div class="collapse" id="collapseExample">
 									<div class="">
 										<ul class="list-group list-group-flush">
 											<li class="list-group-item"><span
-												class="color-green-primary">Date de debut: </span> <h:outputText
+												class="color-green-primary">Date de début: </span> <h:outputText
 													value="#{f.starting}"></h:outputText></li>
 											<li class="list-group-item"><span
 												class="color-green-primary">Date de Fin: </span> <h:outputText
