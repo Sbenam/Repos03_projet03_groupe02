@@ -130,15 +130,7 @@
 
 								<!-- colonne troupeau -->
 								<div class="col-6 mx-auto">
-									<f:ajax render=":contentPage">
-										<h:form>
-											<h:commandLink
-												styleClass=" btn btn-warning text-white #{mbService.classClient}"
-												value=""
-												action="#{ServicePageMBean.setServiceViewPopup('evaluateService')}">
-												<em class="fas fa-sign-in-alt"></em>Terminer</h:commandLink>
-										</h:form>
-									</f:ajax>
+
 									<h2>Troupeau</h2>
 									<h3 style="text-align: center;">
 										<h:outputText value="#{mbService.serviceSelect.herd.name}"
@@ -201,6 +193,22 @@
 
 				<!-- carte autres prestation right -->
 				<div class="col-4">
+					<f:ajax render=":contentPage">
+
+						<h4 style="padding-bottom: 1em; padding-top: 1em;">
+							Note :
+							<h:outputText value="#{mbService.serviceSelect.rateNote}"></h:outputText>
+							/5
+						</h4>
+						<h:form>
+							<h:commandLink
+								styleClass=" btn btn-primary text-white #{mbService.classClient} "
+								value="" style="padding-top:1em; padding-bottom:1em"
+								action="#{ServicePageMBean.setServiceViewPopup('evaluateService')}">
+								Noter la prestation</h:commandLink>
+						</h:form>
+
+					</f:ajax>
 					<h3>Pointage</h3>
 					<table class="table">
 						<thead>

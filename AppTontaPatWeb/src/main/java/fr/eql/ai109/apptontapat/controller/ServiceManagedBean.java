@@ -75,8 +75,10 @@ public class ServiceManagedBean implements Serializable {
 	private ClockingIBusiness clockingIBusiness;
 
 	public void ratingService(PrestationManageBean bean) {
-		// desccriptionevaluate;
-		// selectEvaluation;
+		serviceSelect.setRateComment(desccriptionevaluate) ;
+		serviceSelect.setRateNote(Integer.parseInt(selectEvaluation));
+		serviceIBusiness.mettreAJourUnePrestation(serviceSelect);
+		bean.setServiceViewPopup("blank");
 	}
 
 	public void finish(PrestationManageBean bean) {
