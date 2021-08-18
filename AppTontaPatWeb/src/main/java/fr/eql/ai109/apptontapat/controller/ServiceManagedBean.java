@@ -160,7 +160,10 @@ public class ServiceManagedBean implements Serializable {
 	}
 
 	public void validateService(PrestationManageBean p) {
+		System.out.println("serviceSelect: " + serviceSelect.getId());
+		serviceSelect.setValidation(new Date());
 		serviceIBusiness.validationService(serviceSelect, new Date());
+		serviceIBusiness.mettreAJourUnePrestation(serviceSelect);
 		p.setServiceView("enCours");
 	}
 
