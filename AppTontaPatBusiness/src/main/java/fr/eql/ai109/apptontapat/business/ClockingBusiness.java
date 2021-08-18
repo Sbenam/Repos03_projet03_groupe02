@@ -29,4 +29,9 @@ public class ClockingBusiness implements ClockingIBusiness{
 		return clockingIDao.add(clocking);
 	}
 
+	@Override
+	public List<Clocking> extraireTouteLesClockingViaIdService(int id) {
+		return clockingIDao.getClockingByIdService(id);
+	}
+
 }
