@@ -205,7 +205,7 @@
 									<h:commandLink
 										styleClass=" btn btn-warning text-white #{mbService.classEleveur}"
 										style="margin-bottom:1em; width:100%"
-										value="Refuser" action="#{PageManageBean.setPage2('blank')}">
+										value="Refuser" action="#{mbService.refusalView(ServicePageMBean)}">
 									</h:commandLink>
 								</f:ajax>
 								
@@ -213,7 +213,7 @@
 									<h:commandLink
 										styleClass=" btn btn-warning text-white #{mbService.classClient}"
 										style="margin-bottom:1em; width:100%"
-										value="Annuler" action="#{PageManageBean.setPage2('blank')}">
+										value="Annuler" action="#{mbService.refusalView(ServicePageMBean)}">
 									</h:commandLink>
 
 								</f:ajax>

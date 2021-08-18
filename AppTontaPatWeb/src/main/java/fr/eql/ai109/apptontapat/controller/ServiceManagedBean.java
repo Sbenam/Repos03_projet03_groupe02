@@ -17,11 +17,13 @@ import fr.eql.ai109.apptontapat.entity.EvacuateA;
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
 import fr.eql.ai109.apptontapat.entity.Incident;
+import fr.eql.ai109.apptontapat.entity.Refusal;
 import fr.eql.ai109.apptontapat.entity.Retret;
 import fr.eql.ai109.apptontapat.entity.Service;
 import fr.eql.ai109.apptontapat.ibusiness.DatumIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.FieldIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.IncidentIBusiness;
+import fr.eql.ai109.apptontapat.ibusiness.RefusalIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
 import fr.eql.ai109.apptontapat.web.PageManageBean;
 import fr.eql.ai109.apptontapat.web.PrestationManageBean;
@@ -43,19 +45,22 @@ public class ServiceManagedBean implements Serializable {
 	private List<Service> serviceRefuser = new ArrayList<Service>();
 	private Service serviceSelect = new Service();
 	private Incident incident;
-	private List<Incident> incidentsList ;
-	private List<String> datums  = new ArrayList<String>();
-	private Integer rating ;
+	private List<Incident> incidentsList;
+	private List<String> datums = new ArrayList<String>();
+	private Integer rating;
 	private int serviceCost;
 	private String classEleveur;
 	private String classClient;
+	private String selectRefusal;
 
 	public String getClassClient() {
 		return classClient;
 	}
+
 	public void setClassClient(String classClient) {
 		this.classClient = classClient;
 	}
+
 	@EJB
 	private ServiceIBusiness serviceIBusiness;
 
@@ -63,33 +68,34 @@ public class ServiceManagedBean implements Serializable {
 	private FieldIBusiness fieldIBusiness;
 
 	@EJB
-	private IncidentIBusiness incidentIBusiness ; 
+	private IncidentIBusiness incidentIBusiness;
 	@EJB
-	private DatumIBusiness datumIBusiness ;
-	
-	
+	private DatumIBusiness datumIBusiness;
+	@EJB
+	private RefusalIBusiness RefusalIBusiness;
+
 	public List<Incident> getAllIncident() {
 		incidentsList = incidentIBusiness.extraireToutLesIncident();
-		return incidentsList ; 
+		return incidentsList;
 	}
+
 	public List<String> getAllDatum() {
-		datums = datumIBusiness.extraireToutesLesDatumLabels() ;
-		return datums ; 
+		datums = datumIBusiness.extraireToutesLesDatumLabels();
+		return datums;
 	}
-	
+
 	public void addService(Herd herd, Field field, PrestationManageBean p, PageManageBean bean) {
 		Service service = new Service();
 		Random r = new Random();
 		service.setNbService(r.nextInt());
 
-		//nombre de jour * nombre de mouton * prix (serciceCost)
-		LocalDateTime fieldstartDateTime= LocalDateTime.ofInstant(field.getStarting().toInstant(),
-                ZoneId.systemDefault());
-		LocalDateTime fieldEndDateTime= LocalDateTime.ofInstant(field.getEnding().toInstant(),
+		// nombre de jour * nombre de mouton * prix (serciceCost)
+		LocalDateTime fieldstartDateTime = LocalDateTime.ofInstant(field.getStarting().toInstant(),
 				ZoneId.systemDefault());
+		LocalDateTime fieldEndDateTime = LocalDateTime.ofInstant(field.getEnding().toInstant(), ZoneId.systemDefault());
 
 		long nmbJour = Duration.between(fieldstartDateTime, fieldEndDateTime).toDays();
-		service.setCost((int) (serviceCost * nmbJour *herd.getSeize()));
+		service.setCost((int) (serviceCost * nmbJour * herd.getSeize()));
 		service.setStarting(field.getStarting());
 		service.setBooking(new Date());
 		service.setEnding(field.getEnding());
@@ -106,19 +112,31 @@ public class ServiceManagedBean implements Serializable {
 		serviceIBusiness.validationService(serviceSelect, new Date());
 		p.setServiceView("enCours");
 	}
-	
-	public void getServiceDetail(PrestationManageBean p, Service s, String page, Boolean eleveur) {
 
-//		si eleveur true string class eleveur display && string class client hiden
-		
-		if(eleveur) {
+	public void refusalView(PrestationManageBean p) {
+		p.setServiceViewPopup("refusal_service_choice");
+	}
+
+	public void refusalService(PrestationManageBean p) {
+		// refus a modifier pour prendre le refus choisis
+		System.out.println("test de la valeur: " + selectRefusal);
+		System.out.println("Service selected id: " + serviceSelect.getId());
+		serviceSelect.setRefusal(getAllRefusal().get(Integer.parseInt(selectRefusal)));
+		//manque update
+		p.setServiceViewPopup("blank");
+		p.setServiceView("annuler");
+	}
+
+	public void getServiceDetail(PrestationManageBean p, Service s, String page, Boolean eleveur) {
+		// si eleveur true string class eleveur display && string class client hiden
+		if (eleveur) {
 			classEleveur = "displayblock";
 			classClient = "displaynone";
-		}else {
+		} else {
 			classEleveur = "displaynone";
 			classClient = "displayblock";
 		}
-		
+
 		serviceSelect = s;
 		p.setServiceView(page);
 	}
@@ -128,24 +146,26 @@ public class ServiceManagedBean implements Serializable {
 			serviceClean();
 		}
 		servicelist = serviceIBusiness.getAllByIdAccountField(id);
-		int i =0;
+		int i = 0;
 		// repartition des listes
 		for (Service service : servicelist) {
-			
-			// si finished != null  et refus == null ==> Fini
-			if (service.getFinished() != null && service.getRefusal() == null && service.getRupture() == null && service.getValidation() != null) {
+
+			// si finished != null et refus == null ==> Fini
+			if (service.getFinished() != null && service.getRefusal() == null && service.getRupture() == null
+					&& service.getValidation() != null) {
 				System.out.println(service.getFinished());
 				System.out.println("fini");
-				System.out.println("----->"+service.getRefusal());
+				System.out.println("----->" + service.getRefusal());
 				serviceTerminer.add(service);
 				System.out.println(i++);
 				System.out.println(service.getRefusal() == null);
 				System.out.println("ID : " + service.getId());
 				System.out.println("nb SERVICE : " + service.getNbService());
-				
+
 			}
 			// Si validation != null && finished == null && rupture == null ==> En cours
-			else if (service.getFinished() == null && service.getRefusal() == null && service.getRupture() == null && service.getValidation() != null) {
+			else if (service.getFinished() == null && service.getRefusal() == null && service.getRupture() == null
+					&& service.getValidation() != null) {
 				System.out.println("en cour");
 				serviceEnCour.add(service);
 				System.out.println(i++);
@@ -154,9 +174,10 @@ public class ServiceManagedBean implements Serializable {
 				System.out.println("nb SERVICE : " + service.getNbService());
 			}
 			// si refus != null ==> annuler (Refuser)
-			else if (service.getFinished() == null && service.getRefusal() != null && service.getRupture() == null && service.getValidation() != null) {
+			else if (service.getFinished() == null && service.getRefusal() != null && service.getRupture() == null
+					&& service.getValidation() != null) {
 				System.out.println("refuser");
-				System.out.println("=====>"+service.getRefusal());
+				System.out.println("=====>" + service.getRefusal());
 				serviceRefuser.add(service);
 				System.out.println(i++);
 				System.out.println(service.getRefusal() == null);
@@ -164,7 +185,8 @@ public class ServiceManagedBean implements Serializable {
 				System.out.println("nb SERVICE : " + service.getNbService());
 			}
 			// Si validation = null && refus null === en attente
-			else if (service.getValidation() == null && service.getRefusal() == null && service.getRupture() == null && service.getValidation() == null) {
+			else if (service.getValidation() == null && service.getRefusal() == null && service.getRupture() == null
+					&& service.getValidation() == null) {
 				System.out.println("en attente");
 				serviceEnAttente.add(service);
 				System.out.println(i++);
@@ -200,6 +222,10 @@ public class ServiceManagedBean implements Serializable {
 		if (serviceRefuser != null) {
 			serviceRefuser.clear();
 		}
+	}
+
+	public List<Refusal> getAllRefusal() {
+		return RefusalIBusiness.extraireToutesLesRefusal();
 	}
 
 	public List<Herd> search(Field field) {
@@ -300,7 +326,6 @@ public class ServiceManagedBean implements Serializable {
 		this.servicelist = servicelist;
 	}
 
-
 	public Incident getIncident() {
 		return incident;
 	}
@@ -316,19 +341,22 @@ public class ServiceManagedBean implements Serializable {
 	public void setIncidentsList(List<Incident> incidentsList) {
 		this.incidentsList = incidentsList;
 	}
+
 	public List<String> getDatums() {
 		return datums;
 	}
+
 	public void setDatums(List<String> datums) {
 		this.datums = datums;
 	}
+
 	public Integer getRating() {
 		return rating;
 	}
+
 	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
-
 
 	public int getServiceCost() {
 		return serviceCost;
@@ -337,11 +365,21 @@ public class ServiceManagedBean implements Serializable {
 	public void setServiceCost(int serviceCost) {
 		this.serviceCost = serviceCost;
 	}
+
 	public String getClassEleveur() {
 		return classEleveur;
 	}
+
 	public void setClassEleveur(String classEleveur) {
 		this.classEleveur = classEleveur;
+	}
+
+	public String getSelectRefusal() {
+		return selectRefusal;
+	}
+
+	public void setSelectRefusal(String selectRefusal) {
+		this.selectRefusal = selectRefusal;
 	}
 
 }
