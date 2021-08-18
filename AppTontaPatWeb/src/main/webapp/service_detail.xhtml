@@ -3,49 +3,34 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<section>
-		<div class="container-fluid "
-			style="padding-top: 10em; padding-bottom: 3em;">
+		<div class="container-fluid " style="">
 			<div class="row">
 				<!-- Description service -->
-				<div class="col-12" style="padding: 48px;">
+				<div class="col-12" style="">
 					<h2>
 						Prestation n°
 						<h:outputText value="#{mbService.serviceSelect.nbService}"></h:outputText>
 					</h2>
-					<button class="btn btn-primary w-25" type="submit">
-								<f:ajax render=":contentPage">
-									<h:commandLink
-										styleClass="dropdown-item btn btn-primary text-white"
-										value="Déclarer un incident" action="#{PageManageBean.setPage2('blank')}">
-
-									</h:commandLink>
-
-								</f:ajax>
-							</button>
-					<button class="btn btn-primary w-25" type="submit">
-								<f:ajax render=":contentPage">
-									<h:commandLink
-										styleClass="dropdown-item btn btn-primary text-white"
-										value="Evaluer la prestation" action="#{PageManageBean.setPage2('blank')}">
-
-									</h:commandLink>
-
-								</f:ajax>
-					</button>
-							
-							
-					<div style="display: flex; justify-content: space-evenly; font-size: 20px;">
+					<div>
+						<h3 style="text-align: center;">Recapitulatif de la
+							prestation</h3>
+					</div>
+					<div
+						style="display: flex; justify-content: space-evenly; font-size: 20px; padding-bottom: 1em; margin-bottom: 1em; border-bottom: solid #457B9D 1px;">
 						<p>
-							<span class="color-green-primary" style="font-size: 20px;">Prix: </span>
+							<span class="color-green-primary" style="font-size: 20px;">Prix:
+							</span>
 							<h:outputText value="#{mbService.serviceSelect.cost}" />
 							€
 						</p>
 						<p>
-							<span class="color-green-primary" style="font-size: 20px;">Date de debut: </span>
+							<span class="color-green-primary" style="font-size: 20px;">Date
+								de debut: </span>
 							<h:outputText value="#{mbService.serviceSelect.starting}" />
 						</p>
 						<p>
-							<span class="color-green-primary" style="font-size: 20px;">Date de fin: </span>
+							<span class="color-green-primary" style="font-size: 20px;">Date
+								de fin: </span>
 							<h:outputText value="#{mbService.serviceSelect.ending}" />
 						</p>
 					</div>
@@ -147,7 +132,7 @@
 
 								<!-- colonne troupeau -->
 								<div class="col-6 mx-auto">
-									<h2>Troupeau</h2>
+									<h2>pointage</h2>
 									<h3 style="text-align: center;">
 										<h:outputText value="#{mbService.serviceSelect.herd.name}"
 											style="text-transform:capitalize;" />
@@ -209,40 +194,83 @@
 
 				<!-- carte autres prestation right -->
 				<div class="col-4">
-					<div class="card-terrain">
-						<div class="card" style="width: 18rem;">
-							<img src="images/terrain.jpg" class="card-img-top" alt="..." />
-							<div class="card-body">
-								<h5 class="card-title">Terrain des amandier</h5>
-								<p class="card-text">Some quick example text to build on the
-									card title and make up the bulk of the card's content.</p>
-							</div>
-							<div class="collapse" id="collapseExample">
-								<div class="">
-									<ul class="list-group list-group-flush">
-										<li class="list-group-item"><span
-											class="color-green-primary">Date de debut: </span> 11/12/1991</li>
-										<li class="list-group-item"><span
-											class="color-green-primary">Date de Fin: </span> 11/12/1991</li>
-										<li class="list-group-item"><span
-											class="color-green-primary">Adresse: </span> 4 rue du
-											coquelicot</li>
-										<li class="list-group-item"><span
-											class="color-green-primary">Ville: </span> Courbevoie</li>
-									</ul>
-								</div>
-							</div>
-							<div class="card-body">
-								<a href="#" class="card-link">Vue détaillée</a> <a href="#"
-									class="card-link">Modifier</a> <a
-									class="btn btn-primary btn-infos-terrain"
-									data-bs-toggle="collapse" href="#collapseExample" role="button"
-									aria-expanded="false" aria-controls="collapseExample"> <em
-									class="fas fa-info-circle"></em>
-								</a>
-							</div>
-						</div>
-					</div>
+					<h3>Pointage</h3>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							<ui:repeat var="c" value="#{mbService.getAllClocking()}"
+								varStatus="status">
+								<tr>
+									<th scope="row">#{c.id}</th>
+									<td>#{c.done}</td>
+								</tr>
+							</ui:repeat>
+
+						</tbody>
+					</table>
+
+					<f:ajax render=":contentPage">
+						<h:commandLink
+							styleClass=" btn btn-warning text-white #{mbService.classEleveur}"
+							style="margin-top:1em; width:100%" value="Déclarer"
+							action="#{mbService.addClocking(ServicePageMBean)}">
+						</h:commandLink>
+
+					</f:ajax>
+					<f:ajax render=":contentPage">
+						<h:commandLink styleClass=" btn btn-warning text-white "
+							style="margin-top:1em; margin-bottom:1em; width:100%"
+							value="Incident"
+							action="#{ServicePageMBean.setServiceViewPopup('declareIncident')}">
+						</h:commandLink>
+
+					</f:ajax>
+
+
+					<!-- remplire liste des incident -->
+					<h3>Incident</h3>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Date</th>
+								<th scope="col">Statut</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<ui:repeat var="i" value="#{mbService.getAllIncident()}"
+								varStatus="status">
+								<tr>
+									<th scope="row">#{i.id}</th>
+									<td>#{i.starting}</td>
+									<td>#{i.description}</td>
+									<td><f:ajax render=":contentPage">
+											<h:form>
+												<h:commandLink styleClass=" btn btn-warning text-white "
+													value="Cloture"
+													action="#{mbService.closeIncident(ServicePageMBean, i)}">
+												</h:commandLink>
+											</h:form>
+										</f:ajax></td>
+								</tr>
+							</ui:repeat>
+							<ui:repeat var="s" value="#{mbService.getAllIncidentClose()}"
+								varStatus="status">
+								<tr>
+									<th scope="row">#{ic.id}</th>
+									<td>#{ic.starting}</td>
+									<td>#{ic.description}</td>
+									<td>Fini</td>
+								</tr>
+							</ui:repeat>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

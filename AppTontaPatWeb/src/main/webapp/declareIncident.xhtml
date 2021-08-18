@@ -2,20 +2,16 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-
-
-
-
 	<div class="popup-containerIncident" id="container">
 		<section class="conexion-popupIncident">
-			<h:form>
-				<f:ajax render=":pagefooter2">
+			<f:ajax render=":contentPage">
+				<h:form>
 					<h:commandLink styleClass="btn-close" value=""
-						action="#{PageManageBean.setPage2('blank')}"
+						action="#{ServicePageMBean.setServiceViewPopup('blank')}"
 						style="position: absolute; right: 5px; top: 5px">
 					</h:commandLink>
-				</f:ajax>
-			</h:form>
+				</h:form>
+			</f:ajax>
 
 			<div class="container-fluid">
 				<div class="row justify-content-md-center">
@@ -25,55 +21,33 @@
 						<h3>Déclarer un incident</h3>
 						<p>Vous êtes sur le point de déclarer un incident.</p>
 
-
-
-						<h:form>
-							<div class="form-group col-md-12">
-								<h:outputLabel for="delete" value="" />
-								<h:selectOneMenu id="delete" class="form-control"
-									value="{mbService.selectedIncident}">
-									<f:selectItem itemLabel="Type d'incident : * " itemValue=""
-										noSelectionOption="true"></f:selectItem>
-									<f:selectItems value="#{mbService.getAllDatum()}"></f:selectItems>
-								</h:selectOneMenu>
-
-								<label for="dispoinput" class="form-label ">Début de
-									l'incident</label> <input type="date" class="form-control w-50"
-									id="dispoinput" rows="3"></input> <label for="dispo_end_input"
-									class="form-label ">Fin de l'incident</label><input type="date"
-									class="form-control w-50" id="dispo_end_input" rows="3"></input>
-
-
-
-								<div class="form-group">
-									<label for="exampleFormControlTextarea1">Description :</label>
-									<textarea class="form-control" id="exampleFormControlTextarea1"
-										rows="3" value="#{mbAccount.account.description}"></textarea>
+						<f:ajax render=":contentPage">
+							<h:form>
+								<div class="form-group col-md-12">
+									<h:outputLabel for="incidentprestation" styleClass="form-label"
+										value="Cause de l'annulation:" />
+									<h:selectOneMenu id="incidentprestation" class="form-select"
+										value="#{mbService.selectIncident}">
+										<f:selectItem itemLabel="Raison : " itemValue=""
+											noSelectionOption="true"></f:selectItem>
+										<f:selectItems value="#{mbService.getAllDatum()}"
+											itemValue="#{f.id}" itemLabel="#{f.label}" var="f"></f:selectItems>
+									</h:selectOneMenu>
+									<div class="form-group">
+										<label for="exampleFormControlTextarea1">Description :</label>
+										<h:inputTextarea styleClass="form-control"
+											id="exampleFormControlTextarea1" rows="3"
+											value="#{mbService.descriptionIncident}"></h:inputTextarea>
+									</div>
 								</div>
 
-
-							</div>
-						</h:form>
-
-
-						<div class="d-grid gap-2">
-							<h:form>
-								<h:commandButton class="btn btn-primary w-25" type="submit"
-									title="valider pour confirmer la déclaration" value="Déclarer"></h:commandButton>
-								<button class="btn btn-primary w-25" type="submit">
-									<f:ajax render=":pagefooter2">
-										<h:commandLink
-											styleClass="dropdown-item btn btn-primary text-white"
-											value="Annuler" action="#{PageManageBean.setPage2('blank')}">
-
-										</h:commandLink>
-
-									</f:ajax>
-								</button>
+								<h:commandLink
+									styleClass="dropdown-item btn btn-primary text-white"
+									value="Annuler"
+									action="#{mbService.addIncident(ServicePageMBean)}">
+								</h:commandLink>
 							</h:form>
-
-						</div>
-
+						</f:ajax>
 					</div>
 				</div>
 			</div>

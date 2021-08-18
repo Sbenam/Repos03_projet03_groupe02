@@ -8,11 +8,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import fr.eql.ai109.apptontapat.entity.Clocking;
+import fr.eql.ai109.apptontapat.entity.Datum;
 import fr.eql.ai109.apptontapat.entity.EvacuateA;
 import fr.eql.ai109.apptontapat.entity.Field;
 import fr.eql.ai109.apptontapat.entity.Herd;
@@ -20,6 +23,7 @@ import fr.eql.ai109.apptontapat.entity.Incident;
 import fr.eql.ai109.apptontapat.entity.Refusal;
 import fr.eql.ai109.apptontapat.entity.Retret;
 import fr.eql.ai109.apptontapat.entity.Service;
+import fr.eql.ai109.apptontapat.ibusiness.ClockingIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.DatumIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.FieldIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.IncidentIBusiness;
@@ -45,43 +49,92 @@ public class ServiceManagedBean implements Serializable {
 	private List<Service> serviceRefuser = new ArrayList<Service>();
 	private Service serviceSelect = new Service();
 	private Incident incident;
-	private List<Incident> incidentsList;
-	private List<String> datums = new ArrayList<String>();
+	private List<Incident> incidentsList = new ArrayList<Incident>();
+	private List<Datum> datums = new ArrayList<Datum>();
 	private Integer rating;
 	private int serviceCost;
 	private String classEleveur;
 	private String classClient;
 	private String selectRefusal;
-
-	public String getClassClient() {
-		return classClient;
-	}
-
-	public void setClassClient(String classClient) {
-		this.classClient = classClient;
-	}
+	private String selectIncident;
+	private String descriptionIncident;
 
 	@EJB
 	private ServiceIBusiness serviceIBusiness;
-
 	@EJB
 	private FieldIBusiness fieldIBusiness;
-
 	@EJB
 	private IncidentIBusiness incidentIBusiness;
 	@EJB
 	private DatumIBusiness datumIBusiness;
 	@EJB
 	private RefusalIBusiness RefusalIBusiness;
+	@EJB
+	private ClockingIBusiness clockingIBusiness;
 
-	public List<Incident> getAllIncident() {
-		incidentsList = incidentIBusiness.extraireToutLesIncident();
-		return incidentsList;
+	public void closeIncident(PrestationManageBean bean, Incident incident) {
+		incident.setDecision(new Date());
+		incident.setEnding(new Date());
+		incidentIBusiness.mettreAJourUnIncident(incident);
+		bean.setServiceView("service_detail");
 	}
 
-	public List<String> getAllDatum() {
-		datums = datumIBusiness.extraireToutesLesDatumLabels();
+	public void addIncident(PrestationManageBean bean) {
+
+		Datum selectDatum = getAllDatum().get(Integer.parseInt(selectIncident));
+		Incident incident = new Incident();
+		incident.setDatum(selectDatum);
+		incident.setDescription(descriptionIncident);
+		incident.setService(serviceSelect);
+		incident.setStarting(new Date());
+		incidentIBusiness.ajoutIncident(incident);
+
+		bean.setServiceViewPopup("blank");
+		bean.setServiceView("service_detail");
+	}
+
+	public List<Incident> getAllIncident() {
+		incidentsList = incidentIBusiness.extraireToutLesIncidentParIdAccount(serviceSelect.getId());
+		List<Incident> selectedIncidentService = new ArrayList<Incident>();
+		for (Incident incident : incidentsList) {
+			if (incident.getEnding() == null) {
+				selectedIncidentService.add(incident);
+			}
+		}
+		return selectedIncidentService;
+	}
+
+	public List<Incident> getAllIncidentClose() {
+		incidentsList = incidentIBusiness.extraireToutLesIncidentParIdAccount(serviceSelect.getId());
+		List<Incident> selectedIncidentService = new ArrayList<Incident>();
+		for (Incident incident : incidentsList) {
+			if (incident.getEnding() != null) {
+				selectedIncidentService.add(incident);
+			}
+		}
+		return selectedIncidentService;
+	}
+
+	public List<Datum> getAllDatum() {
+		datums = datumIBusiness.extraireToutesLesDatum();
 		return datums;
+	}
+
+	public List<Clocking> getAllClocking() {
+//		List<Clocking> clockingService = clockingIBusiness.extraireTouteLesraces();
+		List<Clocking> clockingService = new ArrayList<Clocking>();
+		clockingService = clockingIBusiness.extraireTouteLesraces();
+
+		return clockingService;
+	}
+
+	public void addClocking(PrestationManageBean bean) {
+		Clocking clocking = new Clocking();
+		clocking.setDone(new Date());
+		clocking.setService(serviceSelect);
+		clockingIBusiness.addClocking(clocking);
+		bean.setServiceView("service_detail");
+
 	}
 
 	public void addService(Herd herd, Field field, PrestationManageBean p, PageManageBean bean) {
@@ -122,7 +175,8 @@ public class ServiceManagedBean implements Serializable {
 		System.out.println("test de la valeur: " + selectRefusal);
 		System.out.println("Service selected id: " + serviceSelect.getId());
 		serviceSelect.setRefusal(getAllRefusal().get(Integer.parseInt(selectRefusal)));
-		//manque update
+		serviceSelect.setPayment(new Date());
+		serviceIBusiness.mettreAJourUnePrestation(serviceSelect);
 		p.setServiceViewPopup("blank");
 		p.setServiceView("annuler");
 	}
@@ -342,11 +396,11 @@ public class ServiceManagedBean implements Serializable {
 		this.incidentsList = incidentsList;
 	}
 
-	public List<String> getDatums() {
+	public List<Datum> getDatums() {
 		return datums;
 	}
 
-	public void setDatums(List<String> datums) {
+	public void setDatums(List<Datum> datums) {
 		this.datums = datums;
 	}
 
@@ -380,6 +434,30 @@ public class ServiceManagedBean implements Serializable {
 
 	public void setSelectRefusal(String selectRefusal) {
 		this.selectRefusal = selectRefusal;
+	}
+
+	public String getSelectIncident() {
+		return selectIncident;
+	}
+
+	public void setSelectIncident(String selectIncident) {
+		this.selectIncident = selectIncident;
+	}
+
+	public String getDescriptionIncident() {
+		return descriptionIncident;
+	}
+
+	public void setDescriptionIncident(String descriptionIncident) {
+		this.descriptionIncident = descriptionIncident;
+	}
+
+	public String getClassClient() {
+		return classClient;
+	}
+
+	public void setClassClient(String classClient) {
+		this.classClient = classClient;
 	}
 
 }
