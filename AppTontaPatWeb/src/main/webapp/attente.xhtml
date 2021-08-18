@@ -40,7 +40,7 @@
 							<f:ajax render=":contentPage">
 								<h:commandLink 
 									styleClass="card-link-hover" value=""
-									action="#{mbService.getServiceDetail(PageManageBean,s)}">
+									action="#{mbService.getServiceDetail(ServicePageMBean,s, 'service_detail_waiting', false)}">
 								</h:commandLink>
 							</f:ajax>
 						</h:form>
@@ -78,7 +78,7 @@
 							<f:ajax render=":contentPage">
 								<h:commandLink 
 									styleClass="card-link-hover" value=""
-									action="#{mbService.getServiceDetail(PageManageBean,s)}">
+									action="#{mbService.getServiceDetail(ServicePageMBean,h, 'service_detail_waiting', true)}">
 								</h:commandLink>
 							</f:ajax>
 						</h:form>

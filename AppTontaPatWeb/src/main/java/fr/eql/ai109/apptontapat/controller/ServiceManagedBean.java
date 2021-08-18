@@ -24,6 +24,7 @@ import fr.eql.ai109.apptontapat.ibusiness.FieldIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.IncidentIBusiness;
 import fr.eql.ai109.apptontapat.ibusiness.ServiceIBusiness;
 import fr.eql.ai109.apptontapat.web.PageManageBean;
+import fr.eql.ai109.apptontapat.web.PrestationManageBean;
 
 @ManagedBean(name = "mbService")
 @SessionScoped
@@ -46,7 +47,15 @@ public class ServiceManagedBean implements Serializable {
 	private List<String> datums  = new ArrayList<String>();
 	private Integer rating ;
 	private int serviceCost;
+	private String classEleveur;
+	private String classClient;
 
+	public String getClassClient() {
+		return classClient;
+	}
+	public void setClassClient(String classClient) {
+		this.classClient = classClient;
+	}
 	@EJB
 	private ServiceIBusiness serviceIBusiness;
 
@@ -68,7 +77,7 @@ public class ServiceManagedBean implements Serializable {
 		return datums ; 
 	}
 	
-	public void addService(Herd herd, Field field, PageManageBean p) {
+	public void addService(Herd herd, Field field, PrestationManageBean p, PageManageBean bean) {
 		Service service = new Service();
 		Random r = new Random();
 		service.setNbService(r.nextInt());
@@ -88,14 +97,30 @@ public class ServiceManagedBean implements Serializable {
 		service.setField(field);
 
 		serviceIBusiness.ajoutPrestation(service);
-		getServiceDetail(p, service);
+		bean.setPage("ConnectedPage");
+		getServiceDetail(p, service, "service_detail_waiting", false);
 
 	}
 
-	public void getServiceDetail(PageManageBean p, Service s) {
+	public void validateService(PrestationManageBean p) {
+		serviceIBusiness.validationService(serviceSelect, new Date());
+		p.setServiceView("enCours");
+	}
+	
+	public void getServiceDetail(PrestationManageBean p, Service s, String page, Boolean eleveur) {
 
+//		si eleveur true string class eleveur display && string class client hiden
+		
+		if(eleveur) {
+			classEleveur = "displayblock";
+			classClient = "displaynone";
+		}else {
+			classEleveur = "displaynone";
+			classClient = "displayblock";
+		}
+		
 		serviceSelect = s;
-		p.setPage("service_detail");
+		p.setServiceView(page);
 	}
 
 	public List<Service> getAllByIdAccount(int id) {
@@ -311,6 +336,12 @@ public class ServiceManagedBean implements Serializable {
 
 	public void setServiceCost(int serviceCost) {
 		this.serviceCost = serviceCost;
+	}
+	public String getClassEleveur() {
+		return classEleveur;
+	}
+	public void setClassEleveur(String classEleveur) {
+		this.classEleveur = classEleveur;
 	}
 
 }
