@@ -53,8 +53,8 @@ public class AccountManagedBean implements Serializable {
 	private Date dBirth;
 	private int phone;
 	private List<String> evacuateas = new ArrayList<String>();
-	private String selectedEvacuatea ;
-	private EvacuateA evacuateavalue ;
+	private String selectedEvacuatea;
+	private EvacuateA evacuateavalue;
 	private String selectedZipcode;
 	private List<Field> fields = new ArrayList<Field>();
 	private List<Service> waitserviceFields = new ArrayList<Service>();
@@ -68,22 +68,19 @@ public class AccountManagedBean implements Serializable {
 	private List<Service> refuseServiceHerds = new ArrayList<Service>();
 	private List<Service> ruptureServiceHerds = new ArrayList<Service>();
 	private List<Herd> herds = new ArrayList<Herd>();
-	
-	
+
 	@EJB
 	private AccountIBusiness accountIBusiness;
 	@EJB
 	private ZipCodeIBusiness zipcodeibusiness;
 	@EJB
-	private EvacuateaIBusiness evacuateaIBusiness ; 
-	
-	
+	private EvacuateaIBusiness evacuateaIBusiness;
+
 	@PostConstruct
 	private void init() {
 		evacuateas = getAllEvacuateaLabels();
 	}
-	
-	
+
 	public List<String> getAllEvacuateaLabels() {
 		return evacuateaIBusiness.extraireToutesLesEvacuateALabels();
 	}
@@ -103,27 +100,21 @@ public class AccountManagedBean implements Serializable {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		} else {
-			FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_WARN,
-					"Identifiant et/ou mot de passe incorrect(s)", "Identifiant et/ou mot de passe incorrect(s)");
-			FacesContext.getCurrentInstance().addMessage("loginForm:inpLogin", facesMessage);
-			FacesContext.getCurrentInstance().addMessage("loginForm:inpPassword", facesMessage);
+		} 
+		return forward;
+	}
+
+	public String disconnect() {
+		account = null;
+		String forward = "welcomePage.xhtml?faces-redirection=true";
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		try {
+			ec.redirect(ec.getRequestContextPath() + "/welcomePage.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		return forward;
 	}
-	
-	public String disconnect() {
-		HttpSession session = (HttpSession) FacesContext
-				.getCurrentInstance()
-				.getExternalContext()
-				.getSession(true);
-		session.invalidate();
-		email = "";
-		password = "";
-		account = new Account();
-		return "/login.xhtml?faces-redirection=true";
-	}
-
 
 	public String addAccount() {
 		String forward = null;
@@ -238,42 +229,40 @@ public class AccountManagedBean implements Serializable {
 		}
 
 	}
-	
 
 	public String maj() {
 		List<ZipCode> zipcodesList = zipcodeibusiness.getAllBu();
-		zipCode = zipcodesList.get(Integer.parseInt(selectedZipcode)-1) ;
+		zipCode = zipcodesList.get(Integer.parseInt(selectedZipcode) - 1);
 		System.out.println("valeur de zipCode ----------------------------" + zipCode);
 		System.out.println("valeur de selectedZipcode ----------------------------" + selectedZipcode);
 		account.setZipcode(zipCode);
-    	System.out.println("mon name account----------------" + name);
-    	System.out.println("mon surNname account----------------" + surNname);
-    	System.out.println("mon phone account----------------" + phone);
-    	System.out.println("mon dBirth account----------------" + dBirth);
-    	System.out.println("mon email account----------------" + email);
-    	System.out.println("mon password account----------------" + password);
-    	System.out.println("mon adress account----------------" + adress);
-    	System.out.println("mon description account----------------" + description);
-		accountIBusiness.mettreAjourUnCompte(account) ;
-		return "simpleArch.xhtml"; 
+		System.out.println("mon name account----------------" + name);
+		System.out.println("mon surNname account----------------" + surNname);
+		System.out.println("mon phone account----------------" + phone);
+		System.out.println("mon dBirth account----------------" + dBirth);
+		System.out.println("mon email account----------------" + email);
+		System.out.println("mon password account----------------" + password);
+		System.out.println("mon adress account----------------" + adress);
+		System.out.println("mon description account----------------" + description);
+		accountIBusiness.mettreAjourUnCompte(account);
+		return "simpleArch.xhtml";
 	}
-	
+
 	public String supprimer(List<EvacuateA> evacuateasList) {
-	
-		evacuateavalue = evacuateasList.get(Integer.parseInt(selectedEvacuatea)-1) ;
+
+		evacuateavalue = evacuateasList.get(Integer.parseInt(selectedEvacuatea) - 1);
 		account.setWithdraw(new Date());
 		account.setEvacuateA(evacuateavalue);
-		accountIBusiness.mettreAjourUnCompte(account) ;
-		return "simpleArch.xhtml"; 
+		accountIBusiness.mettreAjourUnCompte(account);
+		return "simpleArch.xhtml";
 	}
-	
+
 	public void getAccountById(int id) {
 		account = new Account();
 		account = accountIBusiness.extraireCompteAvecId(id);
 		System.out.println("mon id account----------------" + id);
 		System.out.println("mon accountname----------------" + account.getName());
 	}
-	
 
 	public List<Service> getFieldWaiting(int id) {
 		waitserviceFields = accountIBusiness.listFieldServiceWaiting(id);
@@ -290,12 +279,11 @@ public class AccountManagedBean implements Serializable {
 		return encourServiceFields;
 	}
 
-
 	public List<Service> getFieldFinish(int id) {
 		finishServiceFields = accountIBusiness.listFieldServiceFinish(id);
 		return finishServiceFields;
 	}
-	
+
 	public List<Service> getHerdWaiting(int id) {
 		waitserviceHerds = accountIBusiness.listHerdServiceWaiting(id);
 		return waitserviceHerds;
@@ -315,7 +303,6 @@ public class AccountManagedBean implements Serializable {
 		finishServiceHerds = accountIBusiness.listHerdServiceFinish(id);
 		return finishServiceHerds;
 	}
-
 
 	public String getName() {
 		return name;
@@ -424,16 +411,14 @@ public class AccountManagedBean implements Serializable {
 	public String getSelectedEvacuatea() {
 		return selectedEvacuatea;
 	}
-	
+
 	public void setSelectedEvacuatea(String selectedEvacuatea) {
 		this.selectedEvacuatea = selectedEvacuatea;
 	}
 
-
 	public List<Service> getServiceFields() {
 		return waitserviceFields;
 	}
-
 
 	public void setServiceFields(List<Service> serviceFields) {
 		this.waitserviceFields = serviceFields;

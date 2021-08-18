@@ -58,6 +58,8 @@ public class ServiceManagedBean implements Serializable {
 	private String selectRefusal;
 	private String selectIncident;
 	private String descriptionIncident;
+	private String desccriptionevaluate;
+	private String selectEvaluation;
 
 	@EJB
 	private ServiceIBusiness serviceIBusiness;
@@ -71,6 +73,17 @@ public class ServiceManagedBean implements Serializable {
 	private RefusalIBusiness RefusalIBusiness;
 	@EJB
 	private ClockingIBusiness clockingIBusiness;
+
+	public void ratingService(PrestationManageBean bean) {
+		// desccriptionevaluate;
+		// selectEvaluation;
+	}
+
+	public void finish(PrestationManageBean bean) {
+		serviceSelect.setFinished(new Date());
+		serviceIBusiness.mettreAJourUnePrestation(serviceSelect);
+		bean.setServiceView("service_detail_fini");
+	}
 
 	public void closeIncident(PrestationManageBean bean, Incident incident) {
 		incident.setDecision(new Date());
@@ -459,6 +472,22 @@ public class ServiceManagedBean implements Serializable {
 
 	public void setClassClient(String classClient) {
 		this.classClient = classClient;
+	}
+
+	public String getDesccriptionevaluate() {
+		return desccriptionevaluate;
+	}
+
+	public void setDesccriptionevaluate(String desccriptionevaluate) {
+		this.desccriptionevaluate = desccriptionevaluate;
+	}
+
+	public String getSelectEvaluation() {
+		return selectEvaluation;
+	}
+
+	public void setSelectEvaluation(String selectEvaluation) {
+		this.selectEvaluation = selectEvaluation;
 	}
 
 }

@@ -2,7 +2,8 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 
 
@@ -10,9 +11,9 @@
 	<div class="popup-containerIncident" id="container">
 		<section class="conexion-popupIncident">
 			<h:form>
-				<f:ajax render=":pagefooter2">
+				<f:ajax render=":contentPage">
 					<h:commandLink styleClass="btn-close" value=""
-						action="#{PageManageBean.setPage2('blank')}"
+						action="#{ServicePageMBean.setServiceViewPopup('blank')}"
 						style="position: absolute; right: 5px; top: 5px">
 					</h:commandLink>
 				</f:ajax>
@@ -20,68 +21,46 @@
 
 			<div class="container-fluid">
 				<div class="row justify-content-md-center">
-					<div class="col-1"></div>
 					<div class="col-9 py-4 my-4">
-
 						<h3>Evaluer une prestation</h3>
 						<p>Comment évaluez-vous la prestation ?</p>
-
-
-
+						<!-- etoile -->
+						<label for="customRange1" class="form-label"></label>
+						<div class="rating rating2 pb-3">
+							<a href="#5" title="Give 5 stars"
+								style="position: absolute; left: 570px;">★</a> <a href="#4"
+								title="Give 4 stars" style="position: absolute; left: 450px;">★</a>
+							<a href="#3" title="Give 3 stars"
+								style="position: absolute; left: 330px;">★</a> <a href="#2"
+								title="Give 2 stars" style="position: absolute; left: 220px;">★</a>
+							<a href="#1" title="Give 1 star"
+								style="position: absolute; left: 110px;">★</a>
+						</div>
+						<!-- Formulaire -->
 						<h:form>
-							<label for="customRange1" class="form-label"></label>
-
-
-
-							<div class="rating rating2 pb-3">
-								<a href="#5" title="Give 5 stars"
-									style="position: absolute; left: 570px;">★</a> <a href="#4"
-									title="Give 4 stars" style="position: absolute; left: 450px;">★</a>
-								<a href="#3" title="Give 3 stars"
-									style="position: absolute; left: 330px;">★</a> <a href="#2"
-									title="Give 2 stars" style="position: absolute; left: 220px;">★</a>
-								<a href="#1" title="Give 1 star"
-									style="position: absolute; left: 110px;">★</a>
-							</div>
-
-
-
-
-
-
-							<input type="range" class="form-range" id="customRange1" min="0"
-								max="4" />
+							<h:inputText pt:type="range" styleClass="form-range"
+								pt:id="customRange1" pt:min="0" pt:max="4"
+								value="#{mbService.selectEvaluation}" />
 
 							<div class="form-group col-md-12">
 
 								<div class="form-group">
 									<label for="exampleFormControlTextarea1">Description :</label>
-									<textarea class="form-control" id="exampleFormControlTextarea1"
-										rows="3" value="#{mbAccount.account.description}"></textarea>
+									<h:inputTextarea styleClass="form-control"
+										pt:id="exampleFormControlTextarea1" rows="3"
+										value="#{mbService.desccriptionevaluate}"></h:inputTextarea>
 								</div>
+							</div>
 
+							<div class="d-grid gap-2">
+
+								<button class="btn btn-primary w-25" type="submit">
+									<h:commandLink
+										styleClass="dropdown-item btn btn-primary text-white"
+										value="Annuler" action="#{mbService.finish(ServicePageMBean)}">
+									</h:commandLink>
 							</div>
 						</h:form>
-
-
-						<div class="d-grid gap-2">
-							<h:form>
-								<h:commandButton class="btn btn-primary w-25" type="submit"
-									title="valider pour confirmer la déclaration" value="Déclarer"></h:commandButton>
-								<button class="btn btn-primary w-25" type="submit">
-									<f:ajax render=":pagefooter2">
-										<h:commandLink
-											styleClass="dropdown-item btn btn-primary text-white"
-											value="Annuler" action="#{PageManageBean.setPage2('blank')}">
-
-										</h:commandLink>
-
-									</f:ajax>
-								</button>
-							</h:form>
-
-						</div>
-
 					</div>
 				</div>
 			</div>

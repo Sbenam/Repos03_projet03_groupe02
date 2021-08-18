@@ -111,19 +111,9 @@ servira pour la NAVIGATION BAR -->
 								</h:form>
 							</button>
 						</li>
-						
-						<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('declareIncident')}">
-											<em class="fas fa-sign-in-alt"></em> declarer incident</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-						
+
+
+
 						<li>
 							<button class="dropdown-item" type="button">
 								<h:form>
@@ -135,7 +125,7 @@ servira pour la NAVIGATION BAR -->
 								</h:form>
 							</button>
 						</li>
-						
+
 					</ul>
 				</div>
 			</div>
@@ -285,7 +275,11 @@ servira pour la NAVIGATION BAR -->
 				<li>
 					<hr class="dropdown-divider" />
 				</li>
-				<li><a class="dropdown-item" href="#">Déconnexion</a></li>
+				<li><f:ajax render=":pagefooter2">
+						<h:commandLink styleClass="dropdown-item" value="Déconnexion"
+							action="#{mbAccount.disconnect()}">
+						</h:commandLink>
+					</f:ajax></li>
 			</ul>
 		</div>
 	</div>

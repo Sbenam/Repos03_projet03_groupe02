@@ -194,6 +194,15 @@
 
 				<!-- carte autres prestation right -->
 				<div class="col-4">
+					<f:ajax render=":contentPage">
+						<h:form>
+							<h:commandLink
+								styleClass=" btn btn-warning text-white #{mbService.classEleveur}"
+								value=""
+								action="#{mbService.finish(ServicePageMBean)}">
+								<em class="fas fa-sign-in-alt"></em>Terminer</h:commandLink>
+						</h:form>
+					</f:ajax>
 					<h3>Pointage</h3>
 					<table class="table">
 						<thead>
@@ -271,6 +280,7 @@
 							</ui:repeat>
 						</tbody>
 					</table>
+
 				</div>
 			</div>
 		</div>

@@ -130,6 +130,15 @@
 
 								<!-- colonne troupeau -->
 								<div class="col-6 mx-auto">
+									<f:ajax render=":contentPage">
+										<h:form>
+											<h:commandLink
+												styleClass=" btn btn-warning text-white #{mbService.classClient}"
+												value=""
+												action="#{ServicePageMBean.setServiceViewPopup('evaluateService')}">
+												<em class="fas fa-sign-in-alt"></em>Terminer</h:commandLink>
+										</h:form>
+									</f:ajax>
 									<h2>Troupeau</h2>
 									<h3 style="text-align: center;">
 										<h:outputText value="#{mbService.serviceSelect.herd.name}"
