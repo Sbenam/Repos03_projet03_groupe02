@@ -45,7 +45,7 @@
 									<f:ajax render=":service">
 										<h:commandLink styleClass="nav-link py-3 px-0 px-lg-3 rounded" value=""
 											action="#{ServicePageMBean.setServiceView('annuler')}">
-											Annuler</h:commandLink>
+											Refuser</h:commandLink>
 									</f:ajax>
 								</h:form>								</li>
 						</ul>
@@ -53,6 +53,7 @@
 					<div class="col-9">
 						<h:panelGroup id="service">
 							<ui:include src="#{ServicePageMBean.serviceView}.xhtml"></ui:include>
+							<ui:include src="#{ServicePageMBean.serviceViewPopup}.xhtml"></ui:include>							
 						  </h:panelGroup>
 					
 					</div>

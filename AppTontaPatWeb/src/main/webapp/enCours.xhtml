@@ -37,7 +37,7 @@
 						<h:form>
 							<f:ajax render=":contentPage">
 								<h:commandLink styleClass="card-link-hover" value=""
-									action="#{mbService.getServiceDetail(PageManageBean,s)}">
+									action="#{mbService.getServiceDetail(ServicePageMBean,s, 'service_detail', false)}">
 
 								</h:commandLink>
 							</f:ajax>
@@ -60,7 +60,7 @@
 						</p>
 						<p class="card-text">
 							<span class="color-green-primary">Surface : </span>
-							<h:outputText value="#{h.field.surface}"></h:outputText>
+							<h:outputText value="#{h.field.surface}" ></h:outputText>
 						</p>
 						<p class="card-text">
 							<span class="color-green-primary">Debut : </span>
@@ -73,7 +73,7 @@
 						<h:form>
 							<f:ajax render=":contentPage">
 								<h:commandLink styleClass="card-link-hover" value=""
-									action="#{mbService.getServiceDetail(PageManageBean,s)}">
+									action="#{mbService.getServiceDetail(ServicePageMBean,h,'service_detail', true)}">
 
 								</h:commandLink>
 							</f:ajax>

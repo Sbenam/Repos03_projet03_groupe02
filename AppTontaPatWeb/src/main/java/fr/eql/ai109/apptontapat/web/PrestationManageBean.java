@@ -15,10 +15,12 @@ public class PrestationManageBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String serviceView;
+	private String serviceViewPopup;
 
 	@PostConstruct
 	public void init() {
 		setServiceView("attente");
+		setServiceViewPopup("blank");
 	}
 
 	public String getServiceView() {
@@ -27,6 +29,14 @@ public class PrestationManageBean implements Serializable {
 
 	public void setServiceView(String serviceView) {
 		this.serviceView = serviceView;
+	}
+
+	public String getServiceViewPopup() {
+		return serviceViewPopup;
+	}
+
+	public void setServiceViewPopup(String serviceViewPopup) {
+		this.serviceViewPopup = serviceViewPopup;
 	}
 
 }

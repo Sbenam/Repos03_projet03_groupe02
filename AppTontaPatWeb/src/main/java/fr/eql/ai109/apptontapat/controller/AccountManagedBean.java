@@ -101,7 +101,6 @@ public class AccountManagedBean implements Serializable {
 			try {
 				ec.redirect(ec.getRequestContextPath() + "/simpleArch.xhtml");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else {
@@ -277,52 +276,43 @@ public class AccountManagedBean implements Serializable {
 	
 
 	public List<Service> getFieldWaiting(int id) {
-		waitserviceFields = accountIBusiness.getFieldWaiting(id);
+		waitserviceFields = accountIBusiness.listFieldServiceWaiting(id);
 		return waitserviceFields;
 	}
 
 	public List<Service> getFieldRefuse(int id) {
-		refuseServiceFields = accountIBusiness.getFieldRefuse(id);
+		refuseServiceFields = accountIBusiness.listFieldServiceRefusal(id);
 		return refuseServiceFields;
 	}
 
 	public List<Service> getFieldEnCour(int id) {
-		encourServiceFields = accountIBusiness.getFieldEnCour(id);
+		encourServiceFields = accountIBusiness.listFieldServiceInProgress(id);
 		return encourServiceFields;
 	}
 
-	public List<Service> getFieldBreak(int id) {
-		ruptureServiceFields = accountIBusiness.getFieldBreak(id);
-		return ruptureServiceFields;
-	}
 
 	public List<Service> getFieldFinish(int id) {
-		finishServiceFields = accountIBusiness.getFieldFinish(id);
+		finishServiceFields = accountIBusiness.listFieldServiceFinish(id);
 		return finishServiceFields;
 	}
 	
 	public List<Service> getHerdWaiting(int id) {
-		waitserviceHerds = accountIBusiness.getHerdWaiting(id);
+		waitserviceHerds = accountIBusiness.listHerdServiceWaiting(id);
 		return waitserviceHerds;
 	}
 
 	public List<Service> getHerdRefuse(int id) {
-		refuseServiceHerds = accountIBusiness.getHerdRefuse(id);
+		refuseServiceHerds = accountIBusiness.listHerdServiceRefusal(id);
 		return refuseServiceHerds;
 	}
 
 	public List<Service> getHerdEnCour(int id) {
-		encourServiceHerds = accountIBusiness.getHerdEnCour(id);
+		encourServiceHerds = accountIBusiness.listHerdServiceInProgress(id);
 		return encourServiceHerds;
 	}
 
-	public List<Service> getHerdBreak(int id) {
-		ruptureServiceHerds = accountIBusiness.getHerdBreak(id);
-		return ruptureServiceHerds;
-	}
-
 	public List<Service> getHerdFinish(int id) {
-		finishServiceHerds = accountIBusiness.getHerdFinish(id);
+		finishServiceHerds = accountIBusiness.listHerdServiceFinish(id);
 		return finishServiceHerds;
 	}
 

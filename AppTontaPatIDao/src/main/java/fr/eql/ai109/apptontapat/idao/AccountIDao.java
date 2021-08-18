@@ -24,5 +24,6 @@ public interface AccountIDao extends GenericIDao<Account>{
 	List<Service> getHerdEnCour(int id);
 	List<Service> getHerdBreak(int id);
 	List<Service> getHerdFinish(int id);
-	
+	List<Service> getAllServiceHerd(int id);
+	List<Service> getAllServiceField(int id);
 }

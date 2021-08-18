@@ -4,34 +4,15 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<section>
 		<div class="container-fluid "
-			style="padding-top: 10em; padding-bottom: 3em;">
+			style=" padding-bottom: 3em;">
 			<div class="row">
 				<!-- Description service -->
-				<div class="col-12" style="padding: 48px;">
+				<div class="col-12" style="">
 					<h2>
 						Prestation n°
 						<h:outputText value="#{mbService.serviceSelect.nbService}"></h:outputText>
 					</h2>
-					<button class="btn btn-primary w-25" type="submit">
-								<f:ajax render=":contentPage">
-									<h:commandLink
-										styleClass="dropdown-item btn btn-primary text-white"
-										value="Déclarer un incident" action="#{PageManageBean.setPage2('blank')}">
-
-									</h:commandLink>
-
-								</f:ajax>
-							</button>
-					<button class="btn btn-primary w-25" type="submit">
-								<f:ajax render=":contentPage">
-									<h:commandLink
-										styleClass="dropdown-item btn btn-primary text-white"
-										value="Evaluer la prestation" action="#{PageManageBean.setPage2('blank')}">
-
-									</h:commandLink>
-
-								</f:ajax>
-					</button>
+							
 							
 							
 					<div style="display: flex; justify-content: space-evenly; font-size: 20px;">
@@ -209,6 +190,34 @@
 
 				<!-- carte autres prestation right -->
 				<div class="col-4">
+				
+					<f:ajax render=":contentPage">
+									<h:commandLink
+										styleClass="btn btn-primary text-white #{mbService.classEleveur}"
+										style="margin-bottom:1em; width:100%"
+										value="Valider" action="#{mbService.validateService(ServicePageMBean)}">
+
+									</h:commandLink>
+
+								</f:ajax>
+								
+								<f:ajax render=":contentPage">
+									<h:commandLink
+										styleClass=" btn btn-warning text-white #{mbService.classEleveur}"
+										style="margin-bottom:1em; width:100%"
+										value="Refuser" action="#{mbService.refusalView(ServicePageMBean)}">
+									</h:commandLink>
+								</f:ajax>
+								
+								<f:ajax render=":contentPage">
+									<h:commandLink
+										styleClass=" btn btn-warning text-white #{mbService.classClient}"
+										style="margin-bottom:1em; width:100%"
+										value="Annuler" action="#{mbService.refusalView(ServicePageMBean)}">
+									</h:commandLink>
+
+								</f:ajax>
+				
 					<div class="card-terrain">
 						<div class="card" style="width: 18rem;">
 							<img src="images/terrain.jpg" class="card-img-top" alt="..." />

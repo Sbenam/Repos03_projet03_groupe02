@@ -5,7 +5,7 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 	<div class="popup-containerAjoutField" id="container"
-		style="background-image: none; filter: opacity(0.8);">
+		style="background-image: none; ">
 		<section class="conexion-popupAjout">
 			<div class="container-fluid">
 				<div class="row justify-content-md-center">
@@ -21,7 +21,6 @@
 							</button>
 						</f:ajax>
 					</h:form>
-
 
 					<!-- field = new field() -->
 					<h:inputHidden value="#{mbField.cleanField()}"></h:inputHidden>
@@ -43,7 +42,6 @@
 										placeholder="9 bd du Générale de Gaulle"></h:inputText>
 									<label for="nameInput" class="form-label">Code postal
 										du terrain :</label>
-									<!-- 	attention a la recuperation du zipcode -->
 									<h:inputText styleClass="form-control" id="zipcodeInputfield"
 										value="#{mbField.zipcode}" placeholder="92300"></h:inputText>
 

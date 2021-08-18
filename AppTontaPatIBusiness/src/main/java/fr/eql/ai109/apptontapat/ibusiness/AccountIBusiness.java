@@ -40,6 +40,22 @@ public interface AccountIBusiness {
 	
 	List<Service> getHerdFinish(int id);
 
+	List<Service> listHerdServiceInProgress(int id);
+	
+	List<Service> listHerdServiceRefusal(int id);
+	
+	List<Service> listHerdServiceWaiting(int id);
+	
+	List<Service> listHerdServiceFinish(int id);
+
+	List<Service> listFieldServiceInProgress(int id);
+	
+	List<Service> listFieldServiceRefusal(int id);
+	
+	List<Service> listFieldServiceWaiting(int id);
+	
+	List<Service> listFieldServiceFinish(int id);
+
 	//	List<Account> findAll();
 
 }
