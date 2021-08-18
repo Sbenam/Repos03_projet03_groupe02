@@ -178,4 +178,10 @@ public class ServiceBusiness implements ServiceIBusiness {
 		}
 		return nb;
 	}
+
+
+	@Override
+	public Service mettreAJourUnePrestation(Service service) {
+		return serviceIDao.update(service);
+	}
 }

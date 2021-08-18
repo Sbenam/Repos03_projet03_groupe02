@@ -31,4 +31,5 @@ public interface ServiceIBusiness {
 	int numberServicerefusal();
 	int numberServiceRupture();
 	int numberServiceFinished();
+	Service mettreAJourUnePrestation(Service service);
 }
