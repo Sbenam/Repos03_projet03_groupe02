@@ -3,8 +3,7 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<section>
-		<div class="container-fluid "
-			style=" padding-bottom: 3em;">
+		<div class="container-fluid " style="padding-bottom: 3em;">
 			<div class="row">
 				<!-- Description service -->
 				<div class="col-12" style="">
@@ -12,21 +11,25 @@
 						Prestation n°
 						<h:outputText value="#{mbService.serviceSelect.nbService}"></h:outputText>
 					</h2>
-							
-							
-							
-					<div style="display: flex; justify-content: space-evenly; font-size: 20px;">
+
+
+
+					<div
+						style="display: flex; justify-content: space-evenly; font-size: 20px;">
 						<p>
-							<span class="color-green-primary" style="font-size: 20px;">Prix: </span>
+							<span class="color-green-primary" style="font-size: 20px;">Prix:
+							</span>
 							<h:outputText value="#{mbService.serviceSelect.cost}" />
 							€
 						</p>
 						<p>
-							<span class="color-green-primary" style="font-size: 20px;">Date de debut: </span>
+							<span class="color-green-primary" style="font-size: 20px;">Date
+								de debut: </span>
 							<h:outputText value="#{mbService.serviceSelect.starting}" />
 						</p>
 						<p>
-							<span class="color-green-primary" style="font-size: 20px;">Date de fin: </span>
+							<span class="color-green-primary" style="font-size: 20px;">Date
+								de fin: </span>
 							<h:outputText value="#{mbService.serviceSelect.ending}" />
 						</p>
 					</div>
@@ -190,34 +193,38 @@
 
 				<!-- carte autres prestation right -->
 				<div class="col-4">
-				
+
 					<f:ajax render=":contentPage">
-									<h:commandLink
-										styleClass="btn btn-primary text-white #{mbService.classEleveur}"
-										style="margin-bottom:1em; width:100%"
-										value="Valider" action="#{mbService.validateService(ServicePageMBean)}">
+						<h:form>
+							<h:commandLink
+								styleClass="btn btn-primary text-white #{mbService.classEleveur}"
+								style="margin-bottom:1em; width:100%" value="Valider"
+								action="#{mbService.validateService(ServicePageMBean)}">=
+							</h:commandLink>
+						</h:form>
+					</f:ajax>
 
-									</h:commandLink>
+					<f:ajax render=":contentPage">
+						<h:form>
+							<h:commandLink
+								styleClass=" btn btn-warning text-white #{mbService.classEleveur}"
+								style="margin-bottom:1em; width:100%" value="Refuser"
+								action="#{mbService.refusalView(ServicePageMBean)}">
+							</h:commandLink>
+						</h:form>
+					</f:ajax>
 
-								</f:ajax>
-								
-								<f:ajax render=":contentPage">
-									<h:commandLink
-										styleClass=" btn btn-warning text-white #{mbService.classEleveur}"
-										style="margin-bottom:1em; width:100%"
-										value="Refuser" action="#{mbService.refusalView(ServicePageMBean)}">
-									</h:commandLink>
-								</f:ajax>
-								
-								<f:ajax render=":contentPage">
-									<h:commandLink
-										styleClass=" btn btn-warning text-white #{mbService.classClient}"
-										style="margin-bottom:1em; width:100%"
-										value="Annuler" action="#{mbService.refusalView(ServicePageMBean)}">
-									</h:commandLink>
+					<f:ajax render=":contentPage">
+						<h:form>
+							<h:commandLink
+								styleClass=" btn btn-warning text-white #{mbService.classClient}"
+								style="margin-bottom:1em; width:100%" value="Annuler"
+								action="#{mbService.refusalView(ServicePageMBean)}">
+							</h:commandLink>
 
-								</f:ajax>
-				
+						</h:form>
+					</f:ajax>
+
 					<div class="card-terrain">
 						<div class="card" style="width: 18rem;">
 							<img src="images/terrain.jpg" class="card-img-top" alt="..." />

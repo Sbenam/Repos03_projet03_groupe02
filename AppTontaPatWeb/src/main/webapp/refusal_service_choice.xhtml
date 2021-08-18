@@ -4,14 +4,14 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<div class="popup-container" id="container">
 		<section class="conexion-popup" style="max-height: 200px;">
-			<h:form>
-				<f:ajax render=":pagefooter2">
+			<f:ajax render=":pagefooter2">
+				<h:form>
 					<h:commandLink styleClass="btn-close" value=""
 						action="#{PageManageBean.setPage2('blank')}"
 						style="position: absolute; right: 5px; top: 5px">
 					</h:commandLink>
-				</f:ajax>
-			</h:form>
+				</h:form>
+			</f:ajax>
 
 			<div class="container-fluid">
 				<div class="row justify-content-md-center">
