@@ -49,7 +49,7 @@ public class ServiceManagedBean implements Serializable {
 	private List<Service> serviceRefuser = new ArrayList<Service>();
 	private Service serviceSelect = new Service();
 	private Incident incident;
-	private List<Incident> incidentsList;
+	private List<Incident> incidentsList = new ArrayList<Incident>();
 	private List<Datum> datums = new ArrayList<Datum>();
 	private Integer rating;
 	private int serviceCost;
@@ -59,28 +59,10 @@ public class ServiceManagedBean implements Serializable {
 	private String selectIncident;
 	private String descriptionIncident;
 
-	public String getDescriptionIncident() {
-		return descriptionIncident;
-	}
-
-	public void setDescriptionIncident(String descriptionIncident) {
-		this.descriptionIncident = descriptionIncident;
-	}
-
-	public String getClassClient() {
-		return classClient;
-	}
-
-	public void setClassClient(String classClient) {
-		this.classClient = classClient;
-	}
-
 	@EJB
 	private ServiceIBusiness serviceIBusiness;
-
 	@EJB
 	private FieldIBusiness fieldIBusiness;
-
 	@EJB
 	private IncidentIBusiness incidentIBusiness;
 	@EJB
@@ -90,8 +72,15 @@ public class ServiceManagedBean implements Serializable {
 	@EJB
 	private ClockingIBusiness clockingIBusiness;
 
+	public void closeIncident(PrestationManageBean bean, Incident incident) {
+		incident.setDecision(new Date());
+		incident.setEnding(new Date());
+		incidentIBusiness.mettreAJourUnIncident(incident);
+		bean.setServiceView("service_detail");
+	}
+
 	public void addIncident(PrestationManageBean bean) {
-		// ajout de l'incident
+
 		Datum selectDatum = getAllDatum().get(Integer.parseInt(selectIncident));
 		Incident incident = new Incident();
 		incident.setDatum(selectDatum);
@@ -99,22 +88,30 @@ public class ServiceManagedBean implements Serializable {
 		incident.setService(serviceSelect);
 		incident.setStarting(new Date());
 		incidentIBusiness.ajoutIncident(incident);
-		// rend la vue
+
 		bean.setServiceViewPopup("blank");
 		bean.setServiceView("service_detail");
 	}
 
 	public List<Incident> getAllIncident() {
-		List<Incident> incidentService = new ArrayList<Incident>();
-		incidentsList = incidentIBusiness.extraireToutLesIncident();
-		incidentService.addAll(incidentsList);
+		incidentsList = incidentIBusiness.extraireToutLesIncidentParIdAccount(serviceSelect.getId());
 		List<Incident> selectedIncidentService = new ArrayList<Incident>();
-		for (Incident incident : incidentService) {
-			if (incident.getService().getId() == serviceSelect.getId()) {
+		for (Incident incident : incidentsList) {
+			if (incident.getEnding() == null) {
 				selectedIncidentService.add(incident);
 			}
 		}
+		return selectedIncidentService;
+	}
 
+	public List<Incident> getAllIncidentClose() {
+		incidentsList = incidentIBusiness.extraireToutLesIncidentParIdAccount(serviceSelect.getId());
+		List<Incident> selectedIncidentService = new ArrayList<Incident>();
+		for (Incident incident : incidentsList) {
+			if (incident.getEnding() != null) {
+				selectedIncidentService.add(incident);
+			}
+		}
 		return selectedIncidentService;
 	}
 
@@ -124,23 +121,20 @@ public class ServiceManagedBean implements Serializable {
 	}
 
 	public List<Clocking> getAllClocking() {
+//		List<Clocking> clockingService = clockingIBusiness.extraireTouteLesraces();
 		List<Clocking> clockingService = new ArrayList<Clocking>();
-		clockingService.addAll(clockingIBusiness.extraireTouteLesraces());
-		List<Clocking> selectedClockingService = new ArrayList<Clocking>();
+		clockingService = clockingIBusiness.extraireTouteLesraces();
 
-		for (Clocking clocking : clockingService) {
-			if (clocking.getService().getId() == serviceSelect.getId()) {
-				selectedClockingService.add(clocking);
-			}
-		}
-		return selectedClockingService;
+		return clockingService;
 	}
 
-	public void addClocking() {
+	public void addClocking(PrestationManageBean bean) {
 		Clocking clocking = new Clocking();
 		clocking.setDone(new Date());
 		clocking.setService(serviceSelect);
 		clockingIBusiness.addClocking(clocking);
+		bean.setServiceView("service_detail");
+
 	}
 
 	public void addService(Herd herd, Field field, PrestationManageBean p, PageManageBean bean) {
@@ -448,6 +442,22 @@ public class ServiceManagedBean implements Serializable {
 
 	public void setSelectIncident(String selectIncident) {
 		this.selectIncident = selectIncident;
+	}
+
+	public String getDescriptionIncident() {
+		return descriptionIncident;
+	}
+
+	public void setDescriptionIncident(String descriptionIncident) {
+		this.descriptionIncident = descriptionIncident;
+	}
+
+	public String getClassClient() {
+		return classClient;
+	}
+
+	public void setClassClient(String classClient) {
+		this.classClient = classClient;
 	}
 
 }

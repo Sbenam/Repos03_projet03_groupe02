@@ -203,11 +203,11 @@
 							</tr>
 						</thead>
 						<tbody>
-							<ui:repeat var="s" value="#{mbService.getAllClocking()}"
+							<ui:repeat var="c" value="#{mbService.getAllClocking()}"
 								varStatus="status">
 								<tr>
-									<th scope="row">#{s.id}</th>
-									<td>#{s.done}</td>
+									<th scope="row">#{c.id}</th>
+									<td>#{c.done}</td>
 								</tr>
 							</ui:repeat>
 
@@ -218,7 +218,7 @@
 						<h:commandLink
 							styleClass=" btn btn-warning text-white #{mbService.classEleveur}"
 							style="margin-top:1em; width:100%" value="Déclarer"
-							action="#{mbService.addClocking()}">
+							action="#{mbService.addClocking(ServicePageMBean)}">
 						</h:commandLink>
 
 					</f:ajax>
@@ -244,19 +244,31 @@
 							</tr>
 						</thead>
 						<tbody>
-							<ui:repeat var="s" value="#{mbService.getAllIncident()}"
+							<ui:repeat var="i" value="#{mbService.getAllIncident()}"
 								varStatus="status">
 								<tr>
-									<th scope="row">#{s.id}</th>
-									<td>#{s.starting}</td>
-									<td>#{s.description}</td>
-									<td><h:commandLink
-											styleClass=" btn btn-warning text-white " value="cloture"
-											action="#{ServicePageMBean.setServiceViewPopup('declareIncident')}">
-										</h:commandLink></td>
+									<th scope="row">#{i.id}</th>
+									<td>#{i.starting}</td>
+									<td>#{i.description}</td>
+									<td><f:ajax render=":contentPage">
+											<h:form>
+												<h:commandLink styleClass=" btn btn-warning text-white "
+													value="Cloture"
+													action="#{mbService.closeIncident(ServicePageMBean, i)}">
+												</h:commandLink>
+											</h:form>
+										</f:ajax></td>
 								</tr>
 							</ui:repeat>
-
+							<ui:repeat var="s" value="#{mbService.getAllIncidentClose()}"
+								varStatus="status">
+								<tr>
+									<th scope="row">#{ic.id}</th>
+									<td>#{ic.starting}</td>
+									<td>#{ic.description}</td>
+									<td>Fini</td>
+								</tr>
+							</ui:repeat>
 						</tbody>
 					</table>
 				</div>
