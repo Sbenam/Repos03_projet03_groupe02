@@ -13,39 +13,45 @@
 						<h:outputText value="#{mbService.serviceSelect.nbService}"></h:outputText>
 					</h2>
 					<button class="btn btn-primary w-25" type="submit">
-								<f:ajax render=":contentPage">
-									<h:commandLink
-										styleClass="dropdown-item btn btn-primary text-white"
-										value="Déclarer un incident" action="#{PageManageBean.setPage2('blank')}">
+						<f:ajax render=":contentPage">
+							<h:commandLink
+								styleClass="dropdown-item btn btn-primary text-white"
+								value="Déclarer un incident"
+								action="#{PageManageBean.setPage2('blank')}">
 
-									</h:commandLink>
+							</h:commandLink>
 
-								</f:ajax>
-							</button>
-					<button class="btn btn-primary w-25" type="submit">
-								<f:ajax render=":contentPage">
-									<h:commandLink
-										styleClass="dropdown-item btn btn-primary text-white"
-										value="Evaluer la prestation" action="#{PageManageBean.setPage2('blank')}">
-
-									</h:commandLink>
-
-								</f:ajax>
+						</f:ajax>
 					</button>
-							
-							
-					<div style="display: flex; justify-content: space-evenly; font-size: 20px;">
+					<button class="btn btn-primary w-25" type="submit">
+						<f:ajax render=":contentPage">
+							<h:commandLink
+								styleClass="dropdown-item btn btn-primary text-white"
+								value="Evaluer la prestation"
+								action="#{PageManageBean.setPage2('blank')}">
+
+							</h:commandLink>
+
+						</f:ajax>
+					</button>
+
+
+					<div
+						style="display: flex; justify-content: space-evenly; font-size: 20px;">
 						<p>
-							<span class="color-green-primary" style="font-size: 20px;">Prix: </span>
+							<span class="color-green-primary" style="font-size: 20px;">Prix:
+							</span>
 							<h:outputText value="#{mbService.serviceSelect.cost}" />
 							€
 						</p>
 						<p>
-							<span class="color-green-primary" style="font-size: 20px;">Date de debut: </span>
+							<span class="color-green-primary" style="font-size: 20px;">Date
+								de debut: </span>
 							<h:outputText value="#{mbService.serviceSelect.starting}" />
 						</p>
 						<p>
-							<span class="color-green-primary" style="font-size: 20px;">Date de fin: </span>
+							<span class="color-green-primary" style="font-size: 20px;">Date
+								de fin: </span>
 							<h:outputText value="#{mbService.serviceSelect.ending}" />
 						</p>
 					</div>
@@ -59,86 +65,71 @@
 							<div class="row">
 								<!-- colonne terrain -->
 								<div class="col-6 mx-auto">
-									<h2>Terrain</h2>
-									<h3 style="text-align: center;">
+									<h3>Terrain</h3>
+									<h4 style="text-align: center;">
 										<h:outputText value="#{mbService.serviceSelect.field.name}"
 											style="text-transform:capitalize;" />
-									</h3>
-									<em class="fas fa-star"></em> <em class="fas fa-star"></em> <em
-										class="far fa-star"></em> <em class="far fa-star"></em> <em
-										class="far fa-star"></em>
+									</h4>
+
 									<h:outputText styleClass="image-terrain"
 										style="background-image:url(#{mbService.serviceSelect.field.photo})!important; display:block; width:100%; height:230px;background-position:bottom;"></h:outputText>
 
 
 									<div class="body-terrain-container">
 
-										<div class="description-terrain "
-											style="text-align: justify; flex-direction: column;">
-											<div class="adresse-terrain">
-												<p>
-													<span class="color-green-primary">Adresse: </span>
-													<h:outputText
-														value="#{mbService.serviceSelect.field.adress}" />
-												</p>
-												<p>
-													<span class="color-green-primary">Ville: </span>
-													<h:outputText
+										<div class=" " style="text-align: justify;">
+											<ul class="list-group">
+												<li class="list-group-item"><span
+													class="color-green-primary">Adresse: </span> <h:outputText
+														value="#{mbService.serviceSelect.field.adress}" /></li>
+												<li class="list-group-item"><span
+													class="color-green-primary">Ville: </span> <h:outputText
 														value="#{mbService.serviceSelect.field.zipcode.label}" />
-												</p>
+												</li>
 
-											</div>
-											<div class="composition-terrain "
-												style="justify-content: normal; flex-direction: column; padding-top: 1em;">
-												<p>
-													<span class="color-green-primary">Surface: </span>
-													<h:outputText
-														value="#{mbService.serviceSelect.field.surface}" />
-													m2
-												</p>
-												<p>
-													<span class="color-green-primary">Composition: </span>
-													<h:outputText
+											</ul>
+											<ul class="list-group-item" style="padding-top: 1em;">
+												<li class="list-group-item"><span
+													class="color-green-primary">Surface: </span> <h:outputText
+														value="#{mbService.serviceSelect.field.surface}" /> m2</li>
+												<li class="list-group-item"><span
+													class="color-green-primary">Composition: </span> <h:outputText
 														value="#{mbService.serviceSelect.field.composition.label}" />
-												</p>
-												<p>
-													<span class="color-green-primary">Humidité: </span>
-													<h:outputText
-														value="#{mbService.serviceSelect.field.humidity.label}" />
-												</p>
-												<p>
-													<span class="color-green-primary">Hauteur herbe: </span>
-													<h:outputText
-														value="#{mbService.serviceSelect.field.glassheight.label}" />
-												</p>
-												<p>
-													<span class="color-green-primary">Vegetation: </span>
-													<h:outputText
-														value="#{mbService.serviceSelect.field.vegetation.label}" />
-												</p>
-												<p>
-													<span class="color-green-primary">Pente: </span>
-													<h:outputText
-														value="#{mbService.serviceSelect.field.slope.label}" />
-												</p>
-												<p>
-													<span class="color-green-primary">Cloture: </span>
-													<h:outputText
-														value="#{mbService.serviceSelect.field.enclosure.label}" />
-												</p>
-												<p>
-													<span class="color-green-primary">Eau à disposition:
-													</span>
-													<h:outputText
-														value="#{mbService.serviceSelect.field.water.label}" />
-												</p>
-												<p>
-													<span class="color-green-primary">Abris: </span>
-													<h:outputText
-														value="#{mbService.serviceSelect.field.shelter.label}" />
-												</p>
 
-											</div>
+												</li>
+												<li class="list-group-item"><span
+													class="color-green-primary">Humidité: </span> <h:outputText
+														value="#{mbService.serviceSelect.field.humidity.label}" />
+
+												</li>
+												<li class="list-group-item"><span
+													class="color-green-primary">Hauteur herbe: </span> <h:outputText
+														value="#{mbService.serviceSelect.field.glassheight.label}" />
+
+												</li>
+												<li class="list-group-item"><span
+													class="color-green-primary">Vegetation: </span> <h:outputText
+														value="#{mbService.serviceSelect.field.vegetation.label}" />
+
+												</li>
+												<li class="list-group-item"><span
+													class="color-green-primary">Pente: </span> <h:outputText
+														value="#{mbService.serviceSelect.field.slope.label}" /></li>
+												<li class="list-group-item"><span
+													class="color-green-primary">Cloture: </span> <h:outputText
+														value="#{mbService.serviceSelect.field.enclosure.label}" />
+
+												</li>
+												<li class="list-group-item"><span
+													class="color-green-primary">Eau à disposition: </span> <h:outputText
+														value="#{mbService.serviceSelect.field.water.label}" /></li>
+												<li class="list-group-item"><span
+													class="color-green-primary">Abris: </span> <h:outputText
+														value="#{mbService.serviceSelect.field.shelter.label}" />
+
+
+												</li>
+											</ul>
 										</div>
 									</div>
 
@@ -147,52 +138,41 @@
 
 								<!-- colonne troupeau -->
 								<div class="col-6 mx-auto">
-									<h2>Troupeau</h2>
-									<h3 style="text-align: center;">
+									<h3>Troupeau</h3>
+									<h4 style="text-align: center;">
 										<h:outputText value="#{mbService.serviceSelect.herd.name}"
 											style="text-transform:capitalize;" />
-									</h3>
-									<em class="fas fa-star"></em> <em class="fas fa-star"></em> <em
-										class="far fa-star"></em> <em class="far fa-star"></em> <em
-										class="far fa-star"></em>
+									</h4>
+
 									<h:outputText styleClass="image-terrain"
 										style="background-image:url(#{mbService.serviceSelect.herd.photo})!important; display:block; width:100%; height:230px;background-position:bottom;"></h:outputText>
 
 									<div class="body-terrain-container">
 
-										<div class="description-terrain "
-											style="text-align: justify; flex-direction: column;">
-											<div class="adresse-terrain">
-												<p>
-													<span class="color-green-primary">Propriétaire: </span>
-													<h:outputText
-														value="#{mbService.serviceSelect.herd.account.name}" />
-												</p>
-												<p>
-													<span class="color-green-primary">Adresse: </span>
-													<h:outputText
-														value="#{mbService.serviceSelect.herd.adress}" />
-												</p>
-												<p>
-													<span class="color-green-primary">Ville: </span>
-													<h:outputText
+										<div style="text-align: justify;">
+											<ul class="list-group">
+												<li class="list-group-item"><span
+													class="color-green-primary">Propriétaire: </span> <h:outputText
+														value="#{mbService.serviceSelect.herd.account.name}" /></li>
+												<li class="list-group-item"><span
+													class="color-green-primary">Adresse: </span> <h:outputText
+														value="#{mbService.serviceSelect.herd.adress}" /></li>
+												<li class="list-group-item"><span
+													class="color-green-primary">Ville: </span> <h:outputText
 														value="#{mbService.serviceSelect.herd.zipcode.label}"></h:outputText>
-												</p>
+												</li>
 
-											</div>
-											<div class="composition-terrain "
-												style="justify-content: normal; flex-direction: column; padding-top: 1em;">
-												<p>
-													<span class="color-green-primary">Race: </span>
-													<h:outputText
+											</ul>
+											<ul class="list-group" style="padding-top: 1em;">
+												<li class="list-group-item"><span
+													class="color-green-primary">Race: </span> <h:outputText
 														value="#{mbService.serviceSelect.herd.race.label}"></h:outputText>
-												</p>
-												<p>
-													<span class="color-green-primary">Taille du
-														troupeau: </span>
-													<h:outputText value="#{mbService.serviceSelect.herd.seize}"></h:outputText>
-												</p>
-											</div>
+												</li>
+												<li class="list-group-item"><span
+													class="color-green-primary">Taille du troupeau: </span> <h:outputText
+														value="#{mbService.serviceSelect.herd.seize}"></h:outputText>
+												</li>
+											</ul>
 										</div>
 
 									</div>
