@@ -36,13 +36,16 @@ servira pour la NAVIGATION BAR -->
 	<!-- NAVIGATION-->
 	<nav
 		class="navbar navbar-expand-lg navbar-dark text-uppercase fixed-top"
-		id="mainNav" style="background-color:var(--white);">
+		id="mainNav" style="background-color:transparent;">
 	<div class="container">
 		<h:form>
 			<f:ajax render=":contentPage">
 				<h:commandLink styleClass="" value=""
 					action="#{mbAccount.connect()}">
-					<img alt="" style="width: 100px" src="images/MoutonNoir.png" />
+					<div class="bookmarkRibbon"
+						style="position: absolute; z-index: -1; width: 0; height: 147px; border-right: 50px solid #457B9D; border-left: 50px solid #457B9D; border-bottom: 30px solid transparent; top: 0;"></div>
+					<img alt="" style="width: 60px; margin: 0 20px;"
+						src="images/MoutonBlanc.ico" />
 				</h:commandLink>
 			</f:ajax>
 		</h:form>
@@ -63,71 +66,7 @@ servira pour la NAVIGATION BAR -->
 		<div class="collapse navbar-collapse justify-content-md-center"
 			id="navbarResponsive">
 			<div class="nav navbar-nav navbar-right" style="margin-left: auto">
-				<div class="dropdown">
-					<button
-						class="btn-custom backgroundBoxBlue text-white dropdown-toggle"
-						type="button" id="  " data-bs-toggle="dropdown"
-						aria-expanded="false">
-						<span class="fa fa-user"></span> ☰
-					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
 
-						<!-- Tout doit disparaitre !!!!-->
-						<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('suppressField')}">
-											<em class="fas fa-sign-in-alt"></em> retrait
-                        terrain</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-
-						<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('suppressHerd')}">
-											<em class="fas fa-sign-in-alt"></em> retrait
-                        troupeau</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-
-						<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('suppressAccount')}">
-											<em class="fas fa-sign-in-alt"></em> retrait
-                        compte</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-
-
-
-						<li>
-							<button class="dropdown-item" type="button">
-								<h:form>
-									<f:ajax render=":pagefooter2">
-										<h:commandLink styleClass="dropdown-item" value=""
-											action="#{PageManageBean.setPage2('evaluateService')}">
-											<em class="fas fa-sign-in-alt"></em> évaluer une prestation</h:commandLink>
-									</f:ajax>
-								</h:form>
-							</button>
-						</li>
-
-					</ul>
-				</div>
 			</div>
 		</div>
 	</div>
