@@ -158,7 +158,7 @@ servira pour la NAVIGATION BAR -->
 						<h:commandLink styleClass="nav-link py-3 border-bottom" value=""
 							action="#{mbAccount.connect()}" pt:title="Prestations"
 							pt:data-bs-toggle="tooltip" pt:data-bs-placement="right">
-							<em class="fas fa-sticky-note"></em>
+							<em class="fa fa-list-alt"></em>
 						</h:commandLink>
 					</f:ajax>
 				</h:form></li>
@@ -200,9 +200,9 @@ servira pour la NAVIGATION BAR -->
 					<hr class="dropdown-divider" />
 				</li>
 				<li><h:form>
-						<f:ajax render=":contentPage">
+						<f:ajax render=":pagefooter2">
 							<h:commandLink styleClass="dropdown-item" value=""
-								action="#{PageManageBean.setPage('detailaccount')}">
+								action="#{PageManageBean.setPage2('detailaccount')}">
 
                 Profil</h:commandLink>
 						</f:ajax>

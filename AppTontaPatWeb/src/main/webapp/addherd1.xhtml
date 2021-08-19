@@ -4,22 +4,19 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 	<div class="popup-containerAjoutHerd" id="container">
-		<section class="conexion-popupAjout">
+		<section class="conexion-popupAjout" style="height:500px;">
 			<div class="container-fluid">
 				<div class="row justify-content-md-center">
 					<div class="col-1"></div>
-					<h:form>
 						<f:ajax render=":pagefooter2">
-							<button id="close" class="btn-close"
-								style="position: absolute; right: 5px; top: 5px">
-								<h:commandLink styleClass="dropdown-item" value=""
-									action="#{PageManageBean.setPage2('blank')}">
+					<h:form>
+								<h:commandLink styleClass="btn-close" value=""
+									action="#{PageManageBean.setPage2('blank')}" style="position: absolute; right: 5px; top: 5px">
 								</h:commandLink>
-							</button>
-						</f:ajax>
 					</h:form>
+						</f:ajax>
 
-					<div class="col-9">
+					<div class="col-9" style="height: auto;">
 						<h3 class="mt-5">Ajouter un troupeau</h3>
 						<H5>Pour profiter des services d'écopâturages près de chez
 							vous</H5>

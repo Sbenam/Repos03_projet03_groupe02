@@ -6,13 +6,13 @@
 
 
 
-	<div class="popup-containerModif" id="container">
+	<div class="popup-containerModif" id="container" style="height: auto; background: none !important; backdrop-filter: brightness(0.5); top: 0;">
 		<section class="conexion-popupModif">
 			<div class="container-fluid">
 				<div class="row justify-content-md-center">
 					<div class="col-2"></div>
 
-					<div class="col-9">
+					<div class="col-6" style="background-color: rgba(241, 250, 238);">
 
 						<h3 class="mt-5">Modifier votre profil</h3>
 						<h5>Pour profiter des services d'écopâturages près de chez
@@ -20,7 +20,8 @@
 						<div class="mb-3 align-left">
 							<h:form>
 								<div>
-									<img class="photo" src="#{mbAccount.account.photo}" />
+									<img class="photo" src="#{mbAccount.account.photo}" style="background-size: contain; width: 150px;
+	 height: auto; position: absolute; right: 368px; border-color: var(--primary); border-style: solid; top: 24px;" />
 								</div>
 								<label for="nameInput" class="form-label">Adresse Email
 									:</label>
@@ -72,9 +73,9 @@
 										<h:commandButton styleClass="btn btn-primary " type="submit"
 											action="#{mbAccount.maj()}" value="Enregister"></h:commandButton>
 									</f:ajax>
-									<f:ajax render=":contentPage">
+									<f:ajax render=":pagefooter2">
 										<h:commandLink styleClass="btn btn-warning text-white"
-											value="Annuler" action="#{PageManageBean.setPage('ConnectedPage')}">
+											value="Annuler" action="#{PageManageBean.setPage2('blank')}">
 										</h:commandLink>
 									</f:ajax>
 

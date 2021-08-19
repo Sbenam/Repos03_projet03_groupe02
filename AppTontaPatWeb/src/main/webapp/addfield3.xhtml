@@ -4,8 +4,8 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
-	<div class="popup-containerAjoutField" id="container"
-		style="background-image: none; ">
+	<div class="popup-containerAjoutHerd" id="container"
+		style="background-image: none;">
 		<section class="conexion-popupAjout">
 			<div class="container-fluid">
 				<div class="row justify-content-md-center">
@@ -28,7 +28,7 @@
 							<div class="padding-form">
 								<f:ajax render=":pagefooter2">
 									<h:form>
-										<div class="form-group">
+										<div class="form-group" style="margin-bottom: 1em;">
 											<label for="exampleFormControlTextarea1">Description
 												:</label>
 											<h:inputTextarea value="#{mbField.field.description}"
@@ -36,6 +36,8 @@
 												rows="3"></h:inputTextarea>
 										</div>
 
+										<label for="dispoinput" class="form-label ">Fin de
+											disponibilité</label>
 										<h:inputText pt:type="date" styleClass="form-control w-25"
 											pt:id="dispoinput" pt:rows="3"
 											value="#{mbField.selectedStarting}"></h:inputText>
@@ -57,9 +59,8 @@
 
 
 
-											<h:commandLink styleClass="dropdown-item" value=""
+											<h:commandLink styleClass="btn btn-warning" value="Annuler"
 												action="#{PageManageBean.setPage2('blank')}">
-												<button class="btn btn-primary w-25" type="submit">Annuler</button>
 											</h:commandLink>
 										</div>
 									</h:form>
