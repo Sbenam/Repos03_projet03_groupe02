@@ -62,10 +62,6 @@
 								troupeau :</label><input type="name" class="form-control "
 								id="nameInput" placeholder="200"
 								value="#{mbHerd.selectHerd.seize}" />
-
-
-
-
 							<hr />
 							<h:form>
 								<div class="form-group">
@@ -86,10 +82,8 @@
 								<input type="date" class="form-control " id="dispo_end_input"
 									rows="3" value="#{mbHerd.selectHerd.ending}"></input>
 
-
-
 							</h:form>
-							<div class="d-grid gap-2" style="margin-top:1em;">
+							<div class="d-grid gap-2" style="margin-top: 1em;">
 								<f:ajax render=":pagefooter2">
 									<h:commandButton class="btn btn-primary " type="submit"
 										action="#{mbField.maj(mbField.selectHerd)}"
@@ -97,30 +91,24 @@
 								</f:ajax>
 
 								<f:ajax render=":pagefooter2">
-									<h:commandLink styleClass=" btn btn-primary text-white"
+									<h:commandLink styleClass=" btn btn-warning text-white"
 										value="Annuler" action="#{PageManageBean.setPage2('blank')}">
 									</h:commandLink>
 								</f:ajax>
 
 								<f:ajax render=":pagefooter2">
 									<h:form>
-										<h:commandLink styleClass="btn btn-primary text-white"
-											value="" style="width:100%;"
+										<h:commandLink styleClass="btn btn-danger text-white" value=""
+											style="width:100%;"
 											action="#{PageManageBean.setPage2('suppressHerd')}">
-											<em class="fas fa-sign-in-alt"></em> Supprimer</h:commandLink>
+											Supprimer</h:commandLink>
 									</h:form>
 								</f:ajax>
 							</div>
-
-
-
-
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</section>
 	</div>
-
 </ui:composition>
