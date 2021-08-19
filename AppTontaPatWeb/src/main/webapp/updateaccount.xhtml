@@ -66,32 +66,24 @@
 								</div>
 
 
-								<div class="d-grid gap-2">
-									<h:commandButton styleClass="btn btn-primary w-25"
-										type="submit" action="#{mbAccount.maj()}" value="Enregister"></h:commandButton>
+								<div class="d-grid gap-2"
+									style="display: flex !important; justify-content: space-around; margin-top: 1em; margin-bottom: 2em;">
+									<f:ajax render=":pagefooter2">
+										<h:commandButton styleClass="btn btn-primary " type="submit"
+											action="#{mbAccount.maj()}" value="Enregister"></h:commandButton>
+									</f:ajax>
+									<f:ajax render=":contentPage">
+										<h:commandLink styleClass="btn btn-warning text-white"
+											value="Annuler" action="#{PageManageBean.setPage('ConnectedPage')}">
+										</h:commandLink>
+									</f:ajax>
 
-									<button class="btn btn-primary w-25" type="submit">
-										<f:ajax render=":pagefooter2">
-											<h:commandLink
-												styleClass="dropdown-item btn btn-primary text-white"
-												value="Annuler" action="#{PageManageBean.setPage2('blank')}">
-
-											</h:commandLink>
-
-										</f:ajax>
-									</button>
-
-									<button class="btn btn-primary w-25" type="submit">
-										<f:ajax render=":pagefooter2">
-											<h:commandLink
-												styleClass="dropdown-item btn btn-primary text-white"
-												value="Supprimer le compte"
-												action="#{PageManageBean.setPage2('blank')}">
-
-											</h:commandLink>
-
-										</f:ajax>
-									</button>
+									<f:ajax render=":contentPage">
+										<h:commandLink styleClass=" btn btn-danger text-white"
+											value="Supprimer le compte"
+											action="#{PageManageBean.setPage('ConnectedPage')}">
+										</h:commandLink>
+									</f:ajax>
 
 								</div>
 							</h:form>
