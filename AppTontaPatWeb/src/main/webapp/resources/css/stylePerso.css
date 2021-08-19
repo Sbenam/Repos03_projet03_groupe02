@@ -15,6 +15,10 @@ body {
     color: var(--black);
 }
 
+#javax_faces_developmentstage_messages{
+	display:none !important;
+}
+
 p,
 h3,
 h4,

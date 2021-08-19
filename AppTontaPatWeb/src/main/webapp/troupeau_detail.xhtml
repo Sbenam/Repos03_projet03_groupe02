@@ -5,7 +5,7 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 	<!-- Attend l'id acompte -->
-	<h:inputHidden value="#{mbHerd.getAllHerdById(mbAccount.account.id)}"></h:inputHidden>
+	<!--  <h:inputHidden value="#{mbHerd.getAllHerdById(mbAccount.account.id)}"></h:inputHidden>-->
 
 	<section>
 		<div class="container-fluid padding-container-terrain" id="top">
@@ -15,13 +15,10 @@
 						<h2>
 							<h:outputText value="#{mbHerd.selectHerd.name}"></h:outputText>
 						</h2>
-						<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
-							class="far fa-star"></i> <i class="far fa-star"></i> <i
-							class="far fa-star"></i>
 					</div>
 					<!--  Separator -->
 					<span class="placeholder col-12 bg-secondary" style="height: 1px;"></span>
-					
+
 					<div class="body-terrain-container">
 
 						<div class="description-terrain ">
@@ -79,18 +76,16 @@
 								error iste quibusdam laborum debitis laudantium ab fuga</p>
 
 							<div class="button-modifier-terrain" style="place-self: center;">
-								<button class="btn btn-primary" type="button">
+								<f:ajax render=":pagefooter2">
 									<h:form>
-										<f:ajax render=":contentPage">
-											<h:commandLink styleClass="dropdown-item" value=""
-												style="color:white;"
-												action="#{PageManageBean.setPage('updateherd')}">
 
-										Modifier
-									</h:commandLink>
-										</f:ajax>
+										<h:commandLink styleClass="btn btn-primary" value="Modifier"
+											style="color:white;"
+											action="#{mbHerd.updateHerd(PageManageBean,mbHerd.selectHerd)}">
+
+										</h:commandLink>
 									</h:form>
-								</button>
+								</f:ajax>
 							</div>
 						</div>
 					</div>
@@ -140,14 +135,14 @@
 											</h:commandLink>
 										</f:ajax>
 									</h:form>
-									<h:form>
-										<f:ajax render=":contentPage">
+									<f:ajax render=":pagefooter2">
+										<h:form>
 											<h:commandLink styleClass="card-link" value=""
 												action="#{mbHerd.updateHerd(PageManageBean,h)}">
 												Modifiée
 											</h:commandLink>
-										</f:ajax>
-									</h:form>
+										</h:form>
+									</f:ajax>
 
 									<a class="btn btn-primary btn-infos-terrain"
 										data-bs-toggle="collapse" href="#collapseExample"

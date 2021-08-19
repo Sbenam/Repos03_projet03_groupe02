@@ -9,7 +9,8 @@
 	<h:inputHidden value="#{mbField.mapField()}">
 	</h:inputHidden>
 
-	<div class="popup-containerModif" id="container">
+	<div class="popup-containerModif scrollTrue" id="container"
+		style="top: 14%; height: 758px !important; background-color: #f1faee; justify-content: center; overflow-x: scroll; width: 26%; left: 68%;">
 		<section class="conexion-popupModif">
 			<div class="container-fluid">
 				<div class="row justify-content-md-center">
@@ -17,31 +18,31 @@
 
 					<!-- debut du form -->
 					<h:form>
-						<div class="col-9">
+						<div class="col-11" style="display: flex; flex-direction: column;">
 							<h3 class="mt-5">Modifier un terrain</h3>
 							<div class="mb-3 align-left">
 
 								<label for="updateHerdName" class="form-label">Nom du
 									terrain :</label>
-								<h:inputText pt:type="text" styleClass="form-control w-50"
+								<h:inputText pt:type="text" styleClass="form-control "
 									pt:id="updateHerdName" placeholder="Jardin de mamie"
 									value="#{mbField.selectField.name}" />
 
 								<label for="adresseInput" class="form-label ">Adresse du
 									terrain :</label>
-								<h:inputText type="adresse" class="form-control w-50"
+								<h:inputText type="adresse" class="form-control "
 									id="adresseInput" placeholder="9 bd du Générale de Gaulle"
 									value="#{mbField.selectField.adress}" />
 
 								<label for="nameInput" class="form-label">Code postal du
 									terrain :</label>
-								<h:inputText pt:type="text" class="form-control w-25"
+								<h:inputText pt:type="text" class="form-control "
 									id="surfaceterrainUpdate" placeholder="92300"
 									value="#{mbField.zipcode}" />
 
 								<label for="surfaceterrainUpdate" class="form-label ">Surface
 									du terrain : </label>
-								<div class="input-group w-25">
+								<div class="input-group ">
 									<h:inputText pt:type="number" class="form-control"
 										placeholder="1000" value="#{mbField.selectField.surface}" />
 									<div class="input-group-append">
@@ -50,7 +51,7 @@
 								</div>
 
 								<!-- combobox -->
-								<div class="form-group col-md-4">
+								<div class="form-group ">
 									<!-- hauteur herbe -->
 									<h:outputLabel for="grass" value="Hauteur d'herbe :" />
 									<h:selectOneMenu id="grass" class="form-control"
@@ -64,7 +65,7 @@
 								</div>
 
 								<!-- pente du terrain -->
-								<div class="form-group col-md-4">
+								<div class="form-group ">
 									<h:outputLabel for="slope" value="Pente :" />
 									<h:selectOneMenu id="slope" class="form-control"
 										value="{mbField.intSelectedSlope}">
@@ -76,7 +77,7 @@
 								</div>
 
 								<!-- humidité -->
-								<div class="form-group col-md-4">
+								<div class="form-group ">
 									<h:outputLabel for="humidity" value="Humidité :" />
 									<h:selectOneMenu id="humidity" class="form-control"
 										value="{mbField.intSelectedHumidity}">
@@ -89,7 +90,7 @@
 								</div>
 
 								<!-- Vegetation -->
-								<div class="form-group col-md-4">
+								<div class="form-group ">
 									<h:outputLabel for="veggie" value="Végétation :" />
 									<h:selectOneMenu id="veggie" class="form-control"
 										value="{mbField.intSelectedVeggy}">
@@ -102,7 +103,7 @@
 								</div>
 
 								<!-- composition -->
-								<div class="form-group col-md-4">
+								<div class="form-group ">
 									<h:outputLabel for="composition" value="Composition :" />
 									<h:selectOneMenu id="composition" class="form-control"
 										value="{mbField.intSelectedCompo}">
@@ -115,7 +116,7 @@
 								</div>
 
 								<!-- cloture -->
-								<div class="form-group col-md-4">
+								<div class="form-group ">
 									<h:outputLabel for="cloture" value="Clôture :" />
 									<h:selectOneMenu id="enclos" class="form-control"
 										value="{mbField.selectEnclosure}">
@@ -128,7 +129,7 @@
 								</div>
 
 								<!-- eau -->
-								<div class="form-group col-md-4">
+								<div class="form-group ">
 									<h:outputLabel for="eau" value="Eau à disposition :" />
 									<h:selectOneMenu id="eau" class="form-control"
 										value="{mbField.selectedWater}">
@@ -140,7 +141,7 @@
 								</div>
 
 								<!-- abri -->
-								<div class="form-group col-md-4">
+								<div class="form-group ">
 									<h:outputLabel for="abri" value="Présence d'abri :" />
 									<h:selectOneMenu id="shelter" class="form-control"
 										value="{mbField.intSelectedShelter}">
@@ -155,27 +156,30 @@
 							<!-- description -->
 							<div class="form-group">
 								<label for="exampleFormControlTextarea1">Description :</label>
-								<h:inputTextarea styleClass="form-control w-50"
-									pt:id="exampleFormControlTextarea1" rows="3" value="#{mbField.selectField.description}">
+								<h:inputTextarea styleClass="form-control"
+									pt:id="exampleFormControlTextarea1" rows="3"
+									value="#{mbField.selectField.description}">
 								</h:inputTextarea>
 							</div>
 
 							<!-- date de debut  -->
 							<label for="dispoinput" class="form-label">Début de
 								disponibilité</label>
-							<h:inputText pt:type="date" styleClass="form-control w-25"
+							<h:inputText pt:type="date" styleClass="form-control "
 								id="dispoinput" rows="3" value="#{mbField.selectedStarting}"></h:inputText>
 
 							<!-- date de fin -->
 							<label for="dispo_end_input" class="form-label ">Fin de
 								disponibilité</label>
-							<h:inputText pt:type="date" styleClass="form-control w-25"
-								pt:id="dispo_end_input" rows="3" value="#{mbField.selectedEnding}">
+							<h:inputText pt:type="date" styleClass="form-control "
+								pt:id="dispo_end_input" rows="3"
+								value="#{mbField.selectedEnding}">
 							</h:inputText>
 
 							<!-- button enregistrer -->
-							<h:commandLink styleClass="btn btn-primary w-25" type="submit"
-								value="Enregistrer" action="#{mbField.maj()}">
+							<h:commandLink styleClass="btn btn-primary " type="submit"
+								value="Enregistrer" action="#{mbField.maj(PageManageBean)}"
+								style="margin-bottom:1em; margin-top:1em;">
 							</h:commandLink>
 						</div>
 					</h:form>
@@ -184,19 +188,29 @@
 			<!-- bouton annuler -->
 			<f:ajax render=":pagefooter2">
 				<h:form>
-					<h:commandLink
-						styleClass="dropdown-item btn btn-primary text-white"
-						value="Annuler" action="#{PageManageBean.setPage2('blank')}">
+					<h:commandLink styleClass="btn btn-warning text-white"
+						value="Annuler" action="#{PageManageBean.setPage2('blank')}"
+						style="    margin-bottom: 1em;
+    margin-top: 1em;
+    width: 84%;
+    margin: 14px;
+    margin-right: 2em;">
 					</h:commandLink>
 				</h:form>
 			</f:ajax>
 
 			<!-- bouton supprimer -->
 			<f:ajax render=":pagefooter2">
-				<h:commandLink styleClass="dropdown-item btn btn-primary text-white"
-					value="Supprimer le terrain"
-					action="#{PageManageBean.setPage2('blank')}">
-				</h:commandLink>
+				<h:form>
+					<h:commandLink styleClass="btn btn-danger text-white" value=""
+						style="    margin-bottom: 1em;
+    margin-top: 1em;
+    width: 84%;
+    margin: 14px;
+    margin-right: 2em;"
+						action="#{PageManageBean.setPage2('suppressField')}">
+						Supprimer</h:commandLink>
+				</h:form>
 			</f:ajax>
 		</section>
 	</div>

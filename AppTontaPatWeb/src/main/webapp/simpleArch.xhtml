@@ -222,11 +222,7 @@ servira pour la NAVIGATION BAR -->
 							<em class="fas fa-sticky-note"></em>
 						</h:commandLink>
 					</f:ajax>
-				</h:form> <!-- 	<a href="#" class="nav-link py-3 border-bottom"
-				title="Prestations" data-bs-toggle="tooltip"
-				data-bs-placement="right"> <em class="fas fa-sticky-note"></em>
-			</a>
-		 --></li>
+				</h:form></li>
 		</ul>
 		<!-- Profil + ajout terrain + troupeau -->
 		<div class="dropdown border-top">
@@ -246,13 +242,13 @@ servira pour la NAVIGATION BAR -->
 			</a>
 			<ul class="dropdown-menu text-small shadow"
 				aria-labelledby="dropdownUser3">
-				<li><h:form>
-						<f:ajax render=":pagefooter2">
+				<li><f:ajax render=":pagefooter2">
+						<h:form>
 							<h:commandLink styleClass="dropdown-item" value=""
 								action="#{PageManageBean.setPage2('addfield1')}">
                 Nouveau terrain</h:commandLink>
-						</f:ajax>
-					</h:form></li>
+						</h:form>
+					</f:ajax></li>
 				<li><h:form>
 						<f:ajax render=":pagefooter2">
 							<h:commandLink styleClass="dropdown-item" value=""

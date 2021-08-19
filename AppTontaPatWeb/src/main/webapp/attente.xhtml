@@ -10,13 +10,17 @@
 	<div class="row justify-content-center text-center">
 		<div class="col md-5 lg-2 col-card">
 
-			<ui:repeat var="s" value="#{mbAccount.getFieldWaiting(mbAccount.account.id)}"
+			<ui:repeat var="s"
+				value="#{mbAccount.getFieldWaiting(mbAccount.account.id)}"
 				varStatus="status">
 				<div class="card" style="width: 18rem">
-					<div class="card-body align-left">
+					<div class="card-header">
 						<h5 class="card-title">
+							<span class="badge bg-secondary text-white" style="float: left;">Client</span>
 							<h:outputText value="#{s.field.name}"></h:outputText>
 						</h5>
+					</div>
+					<div class="card-body align-left">
 						<h:graphicImage styleClass="img-thumbnail"
 							value="#{s.field.photo}"></h:graphicImage>
 						<p class="card-text">
@@ -38,8 +42,7 @@
 
 						<h:form>
 							<f:ajax render=":contentPage">
-								<h:commandLink 
-									styleClass="card-link-hover" value=""
+								<h:commandLink styleClass="card-link-hover" value=""
 									action="#{mbService.getServiceDetail(ServicePageMBean,s, 'service_detail_waiting', false)}">
 								</h:commandLink>
 							</f:ajax>
@@ -48,13 +51,18 @@
 				</div>
 			</ui:repeat>
 
-			<ui:repeat var="h" value="#{mbAccount.getHerdWaiting(mbAccount.account.id)}"
+			<ui:repeat var="h"
+				value="#{mbAccount.getHerdWaiting(mbAccount.account.id)}"
 				varStatus="status">
 				<div class="card" style="width: 18rem">
-					<div class="card-body align-left">
+					<div class="card-header">
 						<h5 class="card-title">
+							<span class="badge bg-light text-dark" style="float: left;">Eleveur</span>
 							<h:outputText value="#{h.field.name}"></h:outputText>
+
 						</h5>
+					</div>
+					<div class="card-body align-left">
 						<h:graphicImage styleClass="img-thumbnail"
 							value="#{h.field.photo}"></h:graphicImage>
 						<p class="card-text">
@@ -76,8 +84,7 @@
 
 						<h:form>
 							<f:ajax render=":contentPage">
-								<h:commandLink 
-									styleClass="card-link-hover" value=""
+								<h:commandLink styleClass="card-link-hover" value=""
 									action="#{mbService.getServiceDetail(ServicePageMBean,h, 'service_detail_waiting', true)}">
 								</h:commandLink>
 							</f:ajax>
