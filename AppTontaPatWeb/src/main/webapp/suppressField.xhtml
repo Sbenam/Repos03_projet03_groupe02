@@ -27,44 +27,41 @@
 
 
 						<h:form>
-							<div class="form-group col-md-10">
+							<div class="form-group ">
 								<h:outputLabel for="delete" value="" />
 								<h:selectOneMenu id="delete" class="form-control"
 									value="#{mbField.selectedRetret}">
-									<f:selectItem itemLabel="Motif de suppression : * "
+									<f:selectItem itemLabel="Motif de suppression :  "
 										itemValue="" noSelectionOption="true"></f:selectItem>
 									<f:selectItems value="#{mbRetret.getAllRetret()}" var="obj"
 										itemLabel="#{obj.label}" itemValue="#{obj.id}"></f:selectItems>
 									<!-- 	<f:ajax execute="delete" event="change" render="@form"/>  -->
 								</h:selectOneMenu>
-
-
 							</div>
 
-							<div class="d-grid gap-2">
 
-
-
+							<div style="padding-top: 1em;
+    display: flex;
+    justify-content: space-around;">
 								<h:commandButton class="btn btn-primary w-25" type="submit"
-									action="#{mbField.supprimer(mbRetret.retretsList)}"
+									action="#{mbField.supprimer(mbRetret.retretsList, PageManageBean)}"
 									title="valider pour confirmer la suppression" value="Valider"></h:commandButton>
-								<button class="btn btn-primary w-25" type="submit">
-									<f:ajax render=":pagefooter2">
-										<h:commandLink
-											styleClass="dropdown-item btn btn-primary text-white"
-											value="Annuler" action="#{PageManageBean.setPage2('blank')}">
+								<f:ajax render=":pagefooter2">
+									<h:form>
+											<h:commandLink
+												styleClass="btn btn-warning w-25 text-white"
+												value="Annuler" action="#{PageManageBean.setPage2('blank')}">
 
-										</h:commandLink>
-
-									</f:ajax>
-								</button>
+											</h:commandLink>
+									</h:form>
+								</f:ajax>
 							</div>
 						</h:form>
-
 
 					</div>
 				</div>
 			</div>
+
 		</section>
 	</div>
 </ui:composition>

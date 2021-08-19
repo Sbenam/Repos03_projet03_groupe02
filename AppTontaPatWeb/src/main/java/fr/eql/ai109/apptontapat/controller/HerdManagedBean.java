@@ -142,7 +142,8 @@ public class HerdManagedBean implements Serializable {
 
 	public void updateHerd(PageManageBean pageManageBean, Herd herd) {
 		selectHerd = herd;
-		pageManageBean.setPage("updateherd");
+		pageManageBean.setPage("troupeau_detail");
+		pageManageBean.setPage2("updateherd");
 	}
 
 	public void getHerdDetail(PageManageBean pageManageBean, Herd herd) {

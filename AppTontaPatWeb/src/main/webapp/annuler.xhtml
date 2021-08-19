@@ -11,10 +11,14 @@
 			<ui:repeat var="s" value="#{mbAccount.getFieldRefuse(mbAccount.account.id)}"
 				varStatus="status">
 				<div class="card" style="width: 18rem; ">
-					<div class="card-body align-left">
+				<div class="card-header">
 						<h5 class="card-title">
+						<span class="badge bg-secondary text-white" style="    float: left;">Client</span>
 							<h:outputText value="#{s.field.name}"></h:outputText>
 						</h5>
+					</div>
+					<div class="card-body align-left">
+						
 						<h:graphicImage styleClass="img-thumbnail"
 							value="#{s.field.photo}"></h:graphicImage>
 						<p class="card-text">
@@ -47,10 +51,14 @@
 			<ui:repeat var="h" value="#{mbAccount.getHerdRefuse(mbAccount.account.id)}"
 				varStatus="status">
 				<div class="card" style="width: 18rem; ">
-					<div class="card-body align-left">
+					<div class="card-header">
 						<h5 class="card-title">
+						<span class="badge bg-light text-dark" style="    float: left;">Eleveur</span>
 							<h:outputText value="#{h.field.name}"></h:outputText>
 						</h5>
+					</div>
+					<div class="card-body align-left">
+					
 						<h:graphicImage styleClass="img-thumbnail"
 							value="#{h.field.photo}"></h:graphicImage>
 						<p class="card-text">

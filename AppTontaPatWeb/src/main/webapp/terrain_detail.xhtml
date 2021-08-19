@@ -17,12 +17,9 @@
 						<h2>
 							<h:outputText value="#{mbField.selectField.name}"></h:outputText>
 						</h2>
-						<em class="fas fa-star"></em> <em class="fas fa-star"></em> <em
-							class="far fa-star"></em> <em class="far fa-star"></em> <em
-							class="far fa-star"></em>
 					</div>
-					<span class="placeholder col-12 bg-secondary" style="height: 1px;    margin-top: 1em;
-    margin-bottom: 1em; "></span>
+					<span class="placeholder col-12 bg-secondary"
+						style="height: 1px; margin-top: 1em; margin-bottom: 1em;"></span>
 					<div class="body-terrain-container">
 
 						<div class="description-terrain ">
@@ -47,7 +44,8 @@
 							<div class="composition-terrain ">
 								<p>
 									<span class="color-green-primary">Surface: </span>
-									<h:outputText value="#{mbField.selectField.surface}"></h:outputText> m²
+									<h:outputText value="#{mbField.selectField.surface}"></h:outputText>
+									m²
 								</p>
 								<p>
 									<span class="color-green-primary">Composition: </span>
@@ -81,16 +79,14 @@
 									<span class="color-green-primary">Abri</span> <em
 										class="fas fa-window-close"></em>
 								</p>
-								
+
 							</div>
 
 						</div>
 
 					</div>
 					<div class="description-user-terrain"
-						style="display: flex; justify-content: center; align-items: center; 
-    margin-left: 10em;
-						">
+						style="display: flex; justify-content: center; align-items: center; width: 100%">
 						<div class="image-terrain"
 							style="background-image:url(#{mbField.selectField.photo});"></div>
 						<div
@@ -100,18 +96,16 @@
 
 
 							<div class="button-modifier-terrain" style="place-self: center;">
-								<button class="btn btn-primary" type="button">
+								<f:ajax render=":pagefooter2">
 									<h:form>
-										<f:ajax render=":contentPage">
-											<h:commandLink styleClass="dropdown-item" value=""
-												style="color:white;"
-												action="#{mbField.updateField(PageManageBean,mbField.selectField)}">
+										<h:commandLink styleClass="btn btn-primary" value=""
+											style="color:white;"
+											action="#{mbField.updateField(PageManageBean,mbField.selectField)}">
 
 										Modifier
 									</h:commandLink>
-										</f:ajax>
 									</h:form>
-								</button>
+								</f:ajax>
 							</div>
 						</div>
 					</div>
@@ -154,22 +148,22 @@
 								</div>
 								<div class="card-body">
 
-									<h:form>
-										<f:ajax render=":contentPage">
+									<f:ajax render=":contentPage">
+										<h:form>
 											<h:commandLink styleClass="card-link" value=""
 												action="#{mbField.getFieldDetail(PageManageBean,f)}">
 												Vue détaillée
 											</h:commandLink>
-										</f:ajax>
-									</h:form>
-									<h:form>
-										<f:ajax render=":contentPage">
+										</h:form>
+									</f:ajax>
+									<f:ajax render=":contentPage">
+										<h:form>
 											<h:commandLink styleClass="card-link" value=""
 												action="#{mbField.updateField(PageManageBean,f)}">
 												Modifier
 											</h:commandLink>
-										</f:ajax>
-									</h:form>
+										</h:form>
+									</f:ajax>
 									<a class="btn btn-primary btn-infos-terrain"
 										data-bs-toggle="collapse" href="#collapseExample"
 										role="button" aria-expanded="false"

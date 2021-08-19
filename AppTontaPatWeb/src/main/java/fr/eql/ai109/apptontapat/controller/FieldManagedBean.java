@@ -130,11 +130,13 @@ public class FieldManagedBean implements Serializable {
 		getCityWithZipCodeCode(zipcode);
 	}
 
+	
+	
 	public void mapField() {
 		zipcode = selectField.getZipcode().getCode();
 	}
 
-	public String maj() {
+	public void maj(PageManageBean bean) {
 
 		selectField.setShelter(getListShelter().get(intSelectedShelter));
 		selectField.setWater(getListWater().get(intselectWater));
@@ -159,7 +161,8 @@ public class FieldManagedBean implements Serializable {
 		selectField.setEnding(dending);
 
 		fieldIBusiness.mettreAJourUnTerrain(selectField);
-		return "simpleArch.xhtml";
+		bean.setPage2("blank");
+		bean.setPage("terrain_detail");
 	}
 
 	public List<Shelter> getListShelter() {
@@ -258,7 +261,7 @@ public class FieldManagedBean implements Serializable {
 
 	public void updateField(PageManageBean pageManagedBean, Field field) {
 		selectField = field;
-		pageManagedBean.setPage("updatefield");
+		pageManagedBean.setPage2("updatefield");
 
 	}
 
@@ -291,13 +294,16 @@ public class FieldManagedBean implements Serializable {
 		return zipCodeIBusiness.extraireIncidentParId(20225);
 	}
 
-	public String supprimer(List<Retret> retretsList) {
+	public void supprimer(List<Retret> retretsList, PageManageBean bean) {
 
-		retretvalue = retretsList.get(Integer.parseInt(selectedRetret) - 1);
-		field.setWithdraw(new Date());
-		field.setRetret(retretvalue);
-		fieldIBusiness.mettreAJourUnTerrain(field);
-		return "simpleArch.xhtml";
+		System.out.println("liste de retrait: "+retretsList);
+		System.out.println("nom du terrain a retirer: "+selectField.getName());
+		retretvalue = retretsList.get(Integer.parseInt(selectedRetret));
+		System.out.println("retret value: "+retretvalue.getLabel());
+		selectField.setWithdraw(new Date());
+		selectField.setRetret(retretvalue);
+		fieldIBusiness.mettreAJourUnTerrain(selectField);
+		bean.setPage("ConnectedPage");
 	}
 
 	public Field getField() {

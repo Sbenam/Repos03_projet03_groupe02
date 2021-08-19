@@ -9,13 +9,17 @@
 		<div class="col md-5 lg-2 col-card">
 
 
-			<ui:repeat var="s" value="#{mbAccount.getFieldEnCour(mbAccount.account.id)}"
+			<ui:repeat var="s"
+				value="#{mbAccount.getFieldEnCour(mbAccount.account.id)}"
 				varStatus="status">
 				<div class="card" style="width: 18rem">
-					<div class="card-body align-left">
+					<div class="card-header">
 						<h5 class="card-title">
+						<span class="badge bg-secondary text-white" style="    float: left;">Client</span>
 							<h:outputText value="#{s.field.name}"></h:outputText>
 						</h5>
+					</div>
+					<div class="card-body align-left">
 						<h:graphicImage styleClass="img-thumbnail"
 							value="#{s.field.photo}"></h:graphicImage>
 						<p class="card-text">
@@ -45,13 +49,18 @@
 					</div>
 				</div>
 			</ui:repeat>
-			<ui:repeat var="h" value="#{mbAccount.getHerdEnCour(mbAccount.account.id)}"
+			<ui:repeat var="h"
+				value="#{mbAccount.getHerdEnCour(mbAccount.account.id)}"
 				varStatus="status">
 				<div class="card" style="width: 18rem">
-					<div class="card-body align-left">
+				<div class="card-header">
 						<h5 class="card-title">
+						<span class="badge bg-light text-dark" style="    float: left;">Eleveur</span>
 							<h:outputText value="#{h.field.name}"></h:outputText>
+						
 						</h5>
+					</div>
+					<div class="card-body align-left">
 						<h:graphicImage styleClass="img-thumbnail"
 							value="#{h.field.photo}"></h:graphicImage>
 						<p class="card-text">
@@ -60,7 +69,7 @@
 						</p>
 						<p class="card-text">
 							<span class="color-green-primary">Surface : </span>
-							<h:outputText value="#{h.field.surface}" ></h:outputText>
+							<h:outputText value="#{h.field.surface}"></h:outputText>
 						</p>
 						<p class="card-text">
 							<span class="color-green-primary">Debut : </span>

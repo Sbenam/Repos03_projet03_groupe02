@@ -4,11 +4,12 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
-	<div class="popup-containerModif" id="container">
+
+	<div class="popup-containerModif scrollTrue" id="container"
+		style="top: 14%; height: 758px !important; background-color: #f1faee; justify-content: center; overflow-x: scroll; width: 26%; left: 68%;">
 		<section class="conexion-popupModif">
 			<div class="container-fluid">
 				<div class="row justify-content-md-center">
-					<div class="col-2"></div>
 
 					<div class="col-9">
 
@@ -32,34 +33,31 @@
 								aria-label="Ville" disabled="true"
 								value="#{mbHerd.selectHerd.zipcode.label}" />
 
-							<hr />
-							<h:form>
 
 
 
-								<div class="form-group col-md-4">
-									<h:outputLabel for="specie" value="Espèce :" />
-									<h:selectOneMenu id="specie" class="form-control"
-										value="{mbHerd.selectedSpecie}">
-										<f:selectItem
-											itemLabel="#{mbHerd.selectHerd.race.specie.label}"
-											itemValue="" noSelectionOption="true"></f:selectItem>
-										<f:selectItems value="#{mbHerd.species}"></f:selectItems>
-									</h:selectOneMenu>
+							<div class="form-group col-md-4">
+								<h:outputLabel for="specie" value="Espèce :" />
+								<h:selectOneMenu id="specie" class="form-control"
+									value="{mbHerd.selectedSpecie}">
+									<f:selectItem
+										itemLabel="#{mbHerd.selectHerd.race.specie.label}"
+										itemValue="" noSelectionOption="true"></f:selectItem>
+									<f:selectItems value="#{mbHerd.species}"></f:selectItems>
+								</h:selectOneMenu>
 
-								</div>
+							</div>
 
-								<div class="form-group col-md-4">
-									<h:outputLabel for="race" value="Race :" />
-									<h:selectOneMenu id="race" class="form-control"
-										value="{mbHerd.selectedRace}">
-										<f:selectItem itemLabel="#{mbHerd.selectHerd.race.label}"
-											itemValue="" noSelectionOption="true"></f:selectItem>
-										<f:selectItems value="#{mbHerd.races}"></f:selectItems>
-									</h:selectOneMenu>
+							<div class="form-group col-md-4">
+								<h:outputLabel for="race" value="Race :" />
+								<h:selectOneMenu id="race" class="form-control"
+									value="{mbHerd.selectedRace}">
+									<f:selectItem itemLabel="#{mbHerd.selectHerd.race.label}"
+										itemValue="" noSelectionOption="true"></f:selectItem>
+									<f:selectItems value="#{mbHerd.races}"></f:selectItems>
+								</h:selectOneMenu>
 
-								</div>
-							</h:form>
+							</div>
 							<label for="nameInput" class="form-label">Taille du
 								troupeau :</label><input type="name" class="form-control w-25"
 								id="nameInput" placeholder="200"
@@ -107,16 +105,16 @@
 								</button>
 
 
-								<button class="btn btn-primary w-25" type="submit">
-									<f:ajax render=":pagefooter2">
-										<h:commandLink
-											styleClass="dropdown-item btn btn-primary text-white"
-											value="Supprimer le troupeau"
-											action="#{PageManageBean.setPage2('blank')}">
-										</h:commandLink>
-									</f:ajax>
-								</button>
 
+
+								<f:ajax render=":contentPage">
+									<h:form>
+										<h:commandLink styleClass="btn btn-primary w-25 text-white"
+											value=""
+											action="#{ServicePageMBean.setServiceViewPopup('suppressField')}">
+											<em class="fas fa-sign-in-alt"></em> Supprimer</h:commandLink>
+									</h:form>
+								</f:ajax>
 							</div>
 
 
